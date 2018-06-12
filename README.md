@@ -1,4 +1,4 @@
-# plugins-client-sdk
+# plugins-client-sdk [![Build Status](https://travis-ci.org/Staffbase/plugins-client-sdk.svg?branch=master)](https://travis-ci.org/Staffbase/plugins-client-sdk)
 If you are developing your own plugin for your Staffbase app you may want your plugin to communicate with our clients.
 In order to make this possible we implemented a Javascript based API and communication layer for all our apps.
 We want to provide a library to help you improve your plugin functionality.
