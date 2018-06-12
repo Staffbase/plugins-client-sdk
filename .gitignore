@@ -1,0 +1,11 @@
+#IntelliJ Idea
+.idea
+
+# DS_Store file created by OSx
+.DS_Store
+
+# Dependency directories
+node_modules/
+
+# Disabled package-lock
+package-lock.json
