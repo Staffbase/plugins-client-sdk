@@ -10,7 +10,7 @@ We provide our Plugin Client SDK via [npm](https://www.npmjs.com/package/staffba
 Thus, you can just use npm for installation:
 
 ```
-npm install staffbase/plugins-client-sdk
+npm install @staffbase/plugins-client-sdk
 ```
 
 
