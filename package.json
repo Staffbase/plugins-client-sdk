@@ -1,5 +1,5 @@
 {
-  "name": "plugins-client-sdk",
+  "name": "@staffbase/plugins-client-sdk",
   "version": "0.0.1",
   "description": "Staffbase plugins client SDK for JavaScript",
   "main": "./src/main.js",
@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/Staffbase/plugins-client-sdk/issues"
   },
-  "homepage": "https://github.com/Staffbase/plugins-client-sdk#readme"
+  "homepage": "https://github.com/Staffbase/plugins-client-sdk#readme",
+  "directories": {
+    "test": "test"
+  }
 }
