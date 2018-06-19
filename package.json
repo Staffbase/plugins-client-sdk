@@ -1,0 +1,30 @@
+{
+  "name": "@staffbase/plugins-client-sdk",
+  "version": "0.0.1",
+  "description": "Staffbase plugins client SDK for JavaScript",
+  "main": "./src/main.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Staffbase/plugins-client-sdk.git"
+  },
+  "keywords": [
+    "staffbase",
+    "client",
+    "sdk",
+    "javascript",
+    "plugin",
+    "api"
+  ],
+  "author": "Stefan Staude <stefan.staude@staffbase.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Staffbase/plugins-client-sdk/issues"
+  },
+  "homepage": "https://github.com/Staffbase/plugins-client-sdk#readme",
+  "directories": {
+    "test": "test"
+  }
+}

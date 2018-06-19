@@ -1,0 +1,3 @@
+# Authors ordered by first contribution
+
+Stefan Staude - https://github.com/staust
