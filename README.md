@@ -6,7 +6,7 @@ This SDK provides the basic functionality to get information provided by the Sta
 
 ## Installation
 
-We provide our Plugin Client SDK via [npm](https://www.npmjs.com/package/staffbase/plugins-client-sdk). 
+We provide our Plugin Client SDK via [npm](https://www.npmjs.com/package/@staffbase/plugins-client-sdk). 
 Thus, you can just use npm for installation:
 
 ```
