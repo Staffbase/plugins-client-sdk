@@ -29,12 +29,37 @@ export async function isMobile() {
 }
 
 /**
- * Open a link in a native Browser
+ * Open a link through the app
  *
- * @param {string} url the url to open in the browsers
+ * Where Staffbase decides which browser (External/Internal)
+ * should be used.
+ *
+ * @param {string} url the url to open in the browser
  *
  * @return {Promise<any>}
  */
 export async function openLink(url) {
   return sendMessage(cmd.openLink, url);
+}
+
+/**
+ * Open a link explicitly in the external browser
+ *
+ * @param {string} url the url to open in the browser
+ *
+ * @return {Promise<any>}
+ */
+export async function openLinkExternal(url) {
+  return sendMessage(cmd.openLink, url, { inAppBrowser: false });
+}
+
+/**
+ * Open a link explicitly in the internal browser
+ *
+ * @param {string} url the url to open in the browser
+ *
+ * @return {Promise<any>}
+ */
+export async function openLinkInternal(url) {
+  return sendMessage(cmd.openLink, url, { inAppBrowser: true });
 }
