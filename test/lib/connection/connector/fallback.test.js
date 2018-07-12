@@ -48,6 +48,9 @@ describe('connector/fallback', function() {
       });
 
       describe('accepts all comands', async function() {
+        // mock window open
+        window.open = function() {};
+
         for (let cmd in command) {
           if (command.hasOwnProperty(cmd)) {
             it('command.' + cmd, async () => {
