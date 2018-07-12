@@ -16,7 +16,7 @@
     "lint": "npm run lint-code && npm run lint-size",
     "lint-code": "npx eslint src test",
     "lint-size": "npx size-limit",
-    "lint-fix": "eslint --fix 'src/**/*.js' 'test/**/*.js'"
+    "fix": "eslint --fix 'src/**/*.js' 'test/**/*.js'"
   },
   "repository": {
     "type": "git",
