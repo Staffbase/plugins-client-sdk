@@ -68,7 +68,24 @@ export function disconnect() {
  * Can be attached to window.onPostMessage
  * @param {MessageEvent} evt onPostMessage event result
  */
-async function receiveMessage({ data: [type, id, payload] }) {
+async function receiveMessage(evt) {
+  let type;
+  let id;
+  let payload;
+
+  // safe destructure
+  try {
+    ({
+      data: [type, id, payload]
+    } = evt);
+  } catch (e) {
+    // even thougth catch-ignore is a bad style
+    // there may be other participants listening
+    // to messages in a diffrent format so we
+    // silently ignore here
+    return;
+  }
+
   switch (type) {
     case protocol.SUCCESS:
       resolvePromise(id, payload);
