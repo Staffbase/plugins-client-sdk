@@ -2,4 +2,6 @@
  * interface exports
  */
 export { canDownload as deviceCanDownload } from './lib/device';
-export { openLink as openExternalLink } from './lib/app';
+export { openLink } from './lib/app';
+export { openLinkExternal } from './lib/app';
+export { openLinkInternal } from './lib/app';

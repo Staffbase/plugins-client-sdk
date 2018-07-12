@@ -29,7 +29,7 @@ describe('connector/fallback', function() {
       let start = new Date().getTime();
       return connect().then(() => {
         let end = new Date().getTime();
-        expect(end - start).to.be.above(500);
+        expect(end - start).to.be.at.least(499);
       });
     });
 
@@ -37,7 +37,7 @@ describe('connector/fallback', function() {
       let start = new Date().getTime();
       return connect().then(() => {
         let end = new Date().getTime();
-        expect(end - start).to.be.below(600);
+        expect(end - start).to.be.at.most(600);
       });
     });
 
