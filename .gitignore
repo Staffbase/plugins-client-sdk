@@ -9,3 +9,6 @@ node_modules/
 
 # Disabled package-lock
 package-lock.json
+
+# No dist in repo
+dist
