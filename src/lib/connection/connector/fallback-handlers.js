@@ -67,3 +67,14 @@ export function isIos() {
 export function openLink(url) {
   window.open(url, '_blank');
 }
+
+/**
+ * Open an external link
+ *
+ * @return {Object} containing various language informations
+ */
+export function langInfos() {
+  return {
+    contentLanguages: ['en_EN', 'de_DE']
+  };
+}

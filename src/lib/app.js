@@ -63,3 +63,12 @@ export async function openLinkExternal(url) {
 export async function openLinkInternal(url) {
   return sendMessage(cmd.openLink, url, { inAppBrowser: true });
 }
+
+/**
+ * Get content languages configured in the app.
+ *
+ * @return {Promise<any>}
+ */
+export async function getContentLanguages() {
+  return sendMessage(cmd.langInfos).then(res => res.contentLanguages);
+}
