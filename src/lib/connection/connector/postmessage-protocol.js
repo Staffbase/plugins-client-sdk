@@ -12,5 +12,6 @@ export default {
 };
 
 export const invocationMapping = {
-  [commands.openLink]: 'openLink'
+  [commands.openLink]: 'openLink',
+  [commands.nativeUpload]: 'nativeFileUpload'
 };

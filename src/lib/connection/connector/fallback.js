@@ -55,6 +55,8 @@ async function sendMessage(cmd, payload) {
       return sendValue(fallbacks.isAndroid());
     case action.openLink:
       return sendValue(fallbacks.openLink.apply(payload));
+    case action.nativeUpload:
+      return sendValue(fallbacks.nativeUpload());
     default:
       // should actualy never ever happen
       throw new Error('Command ' + cmd + ' not supported by driver');

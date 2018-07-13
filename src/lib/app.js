@@ -63,3 +63,16 @@ export async function openLinkExternal(url) {
 export async function openLinkInternal(url) {
   return sendMessage(cmd.openLink, url, { inAppBrowser: true });
 }
+
+/**
+ * Start an upload in the native app
+ *
+ * Works only for android now
+ *
+ * @param {string} url the url to open in the browser
+ *
+ * @return {Promise<any>}
+ */
+export async function nativeFileUpload() {
+  return sendMessage(cmd.nativeUpload);
+}

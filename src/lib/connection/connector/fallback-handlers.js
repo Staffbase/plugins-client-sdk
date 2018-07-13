@@ -67,3 +67,13 @@ export function isIos() {
 export function openLink(url) {
   window.open(url, '_blank');
 }
+
+/**
+ * Open an external link
+ *
+ * @param {String} url address
+ */
+export function nativeUpload(url) {
+  // nothing we can do here
+  return;
+}
