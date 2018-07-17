@@ -1,8 +1,9 @@
 import postMessageLegacy from './connector/postmessage-legacy.js';
 import fallback from './connector/fallback.js';
 import postMessage from './connector/postmessage.js';
+import putMessage from './connector/putMessage.js';
 
-let connect = Promise.race([postMessage(), postMessageLegacy(), fallback()]);
+let connect = Promise.race([postMessage(), postMessageLegacy(), putMessage(), fallback()]);
 
 /**
  * Send a message to the App
