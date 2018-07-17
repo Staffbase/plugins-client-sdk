@@ -41,7 +41,7 @@ export function disconnect() {
  * @return {Promise<any>} which awaits the response of the Staffbase App
  * @throws {Error} on commands not supported by protocol
  */
-async function sendMessage(cmd, payload) {
+async function sendMessage(cmd, ...payload) {
   switch (cmd) {
     case action.version:
       return sendValue(fallbacks.getVersion());
