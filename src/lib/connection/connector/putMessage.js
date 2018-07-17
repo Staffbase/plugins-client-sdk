@@ -8,7 +8,6 @@ import {
   unload as unloadManager
 } from '../manager.js';
 
-
 let connection = null;
 let outMsgQueue = [];
 
@@ -28,7 +27,6 @@ const dataStore = initial => ({
   android: initial.native === 'android'
 });
 
-
 /**
  * Connect to the Staffbase App.
  *
@@ -44,35 +42,43 @@ export default function connect() {
   connection = getPromise(connectId).then(payload => sendMessage(dataStore(payload)));
 
   window.Staffbase = window.Staffbase || {};
-  window.Staffbase.plugins = Staffbase.Staffbase || {};
+  window.Staffbase.plugins = window.Staffbase.Staffbase || {};
   window.Staffbase.plugins.getMessages = mutliMessageProvider;
   window.Staffbase.plugins.putMessage = singleMessageReceiver;
+
+  outMsgQueue.push([protocol.HELLO, connectId, []]);
 
   return connection;
 }
 
+/**
+ * A function which returns an array off messags
+ *
+ * The return value holds all messages in the order the were
+ * received over time by sendMessage
+ *
+ * @return {Array} ordered list of messages
+ */
 function mutliMessageProvider() {
-
-  var queueRef = outMsgQueue;
+  let queueRef = outMsgQueue;
   outMsgQueue = [];
   return queueRef;
 }
 
 /**
- * Handler that receives a message from the Staffbase app
+ * A function which can receive a single message.
  *
  * Can be attached to window.onPostMessage
- * @param {MessageEvent} evt onPostMessage event result
+ * @param {Array} msg Staffbase 3.6 message
  */
 function singleMessageReceiver(msg) {
-
   let type;
   let id;
   let payload;
 
   // safe destructure
   try {
-    ([type, id, payload] = evt);
+    [type, id, payload] = msg;
 
     switch (type) {
       case protocol.SUCCESS:
@@ -88,7 +94,6 @@ function singleMessageReceiver(msg) {
         // silently ignore here
         return;
     }
-
   } catch (e) {
     // even thougth catch-ignore is a bad style
     // there may be other participants listening
@@ -96,7 +101,6 @@ function singleMessageReceiver(msg) {
     // silently ignore here
     return;
   }
-
 }
 
 /**
