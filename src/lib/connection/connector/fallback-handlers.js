@@ -67,3 +67,25 @@ export function isIos() {
 export function openLink(url) {
   window.open(url, '_blank');
 }
+
+/**
+ * Open an external link
+ *
+ * @param {String} url address
+ */
+export function nativeUpload(url) {
+  // TODO logging
+  // nothing we can do here
+  return;
+}
+
+/**
+ * Get extensive locale information.
+ *
+ * @return {Object} containing various language informations
+ */
+export function langInfos() {
+  return {
+    contentLanguages: ['en_EN', 'de_DE']
+  };
+}

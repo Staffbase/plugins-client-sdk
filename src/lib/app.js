@@ -63,3 +63,25 @@ export async function openLinkExternal(url) {
 export async function openLinkInternal(url) {
   return sendMessage(cmd.openLink, url, { inAppBrowser: true });
 }
+
+/**
+ * Open a native file upload dialog on device which do not support it by default.
+ *
+ * Works only for android now
+ *
+ * @param {string} url the url to open in the browser
+ *
+ * @return {Promise<any>}
+ */
+export async function openNativeFileDialog() {
+  return sendMessage(cmd.nativeUpload);
+}
+
+/**
+ * Get content languages configured in the app.
+ *
+ * @return {Promise<any>}
+ */
+export async function getContentLanguages() {
+  return sendMessage(cmd.langInfos).then(res => res.contentLanguages);
+}
