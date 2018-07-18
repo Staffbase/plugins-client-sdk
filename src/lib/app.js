@@ -65,7 +65,7 @@ export async function openLinkInternal(url) {
 }
 
 /**
- * Start an upload in the native app
+ * Open a native file upload dialog on device which do not support it by default.
  *
  * Works only for android now
  *
@@ -73,6 +73,6 @@ export async function openLinkInternal(url) {
  *
  * @return {Promise<any>}
  */
-export async function nativeFileUpload() {
+export async function openNativeFileDialog() {
   return sendMessage(cmd.nativeUpload);
 }

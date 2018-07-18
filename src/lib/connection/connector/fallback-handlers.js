@@ -74,6 +74,7 @@ export function openLink(url) {
  * @param {String} url address
  */
 export function nativeUpload(url) {
+  // TODO logging
   // nothing we can do here
   return;
 }
