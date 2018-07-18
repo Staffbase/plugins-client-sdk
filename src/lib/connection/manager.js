@@ -1,3 +1,4 @@
+let log = require('loglevel');
 /**
  * @type {Object.<string, {resolve: function, reject: function, promise: Promise}>}
  */
@@ -26,7 +27,6 @@ function createPromiseObject() {
   if (promiseMap.hasOwnProperty(id)) return createPromiseObject();
 
   promiseMap[id] = { resolve: null, reject: null, promise: null };
-
   return id;
 }
 
@@ -46,7 +46,7 @@ export function create() {
   });
 
   promiseMap[id].promise = p;
-
+  log.debug('promiseManager: created promise ' + id);
   return id;
 }
 
@@ -62,7 +62,9 @@ export function resolve(id, msg) {
   if (!promiseMap.hasOwnProperty(id))
     throw new Error('Tried to resolve an unknown [' + id + '] promise.');
 
+  log.debug('promiseManager: resolving promise ' + id);
   promiseMap[id].resolve(msg);
+
   delete promiseMap[id];
 }
 
@@ -77,6 +79,7 @@ export function reject(id, err) {
   if (!promiseMap.hasOwnProperty(id))
     throw new Error('Tried to reject an unknown [' + id + '] promise.');
 
+  log.debug('promiseManager: rejecting promise ' + id);
   promiseMap[id].reject(err);
   delete promiseMap[id];
 }

@@ -1,5 +1,6 @@
 import { commands as action } from '../commands';
 import * as fallbacks from './fallback-handlers';
+let log = require('loglevel');
 
 let connection = null;
 const fallbackKickIn = 500;
@@ -17,7 +18,10 @@ export default function connect() {
   }
 
   connection = new Promise((resolve, reject) => {
-    setTimeout(() => resolve(sendMessage), fallbackKickIn);
+    setTimeout(function() {
+      log.info('fallback/connect: succeeded');
+      resolve(sendMessage);
+    }, fallbackKickIn);
   });
 
   return connection;
@@ -42,6 +46,9 @@ export function disconnect() {
  * @throws {Error} on commands not supported by protocol
  */
 async function sendMessage(cmd, ...payload) {
+  log.info('fallback/sendMessage: ' + cmd);
+  log.debug('fallback/sendMessage-payload: ' + JSON.stringify(payload));
+
   switch (cmd) {
     case action.version:
       return sendValue(fallbacks.getVersion());
@@ -73,5 +80,6 @@ async function sendMessage(cmd, ...payload) {
  * @return {Promise<any>} the promissified val
  */
 async function sendValue(val) {
+  log.debug('fallback/sendValue: ' + JSON.stringify(val));
   return connection.then(() => val);
 }

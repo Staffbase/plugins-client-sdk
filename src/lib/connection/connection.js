@@ -2,7 +2,7 @@ import postMessageLegacy from './connector/postmessage-legacy.js';
 import fallback from './connector/fallback.js';
 import postMessage from './connector/postmessage.js';
 import putMessage from './connector/putMessage.js';
-
+let log = require('loglevel');
 let connect = Promise.race([postMessage(), postMessageLegacy(), putMessage(), fallback()]);
 
 /**
@@ -16,5 +16,8 @@ let connect = Promise.race([postMessage(), postMessageLegacy(), putMessage(), fa
  * @return {Promis<any>} result of the request
  */
 export default async function sendMessage(msg, ...payload) {
+  log.info('connection/sendMessage: ' + msg);
+  log.debug('connection/sendMessage-payload: ' + JSON.stringify(payload));
+
   return connect.then(sendFn => sendFn(msg, ...payload));
 }

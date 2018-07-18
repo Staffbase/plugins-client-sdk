@@ -7,7 +7,7 @@ import {
   get as getPromise,
   unload as unloadManager
 } from '../manager.js';
-
+let log = require('loglevel');
 /**
  * @typedef {{mobile: boolean, version: string|number, native: string}} InitialValues
  * @typedef {{mobile: boolean, version: string|number, native: string, ios: boolean, android: boolean}} StaticValueStore
@@ -44,7 +44,10 @@ export default function connect() {
   }
 
   const connectId = createPromise();
-  connection = getPromise(connectId).then(payload => sendMessage(dataStore(payload)));
+  connection = getPromise(connectId).then(function(payload) {
+    log.info('postMessage/connect: succeeded');
+    return sendMessage(dataStore(payload));
+  });
 
   window.addEventListener('message', receiveMessage);
   window.parent.postMessage([protocol.HELLO, connectId, []], targetOrigin);
@@ -69,6 +72,8 @@ export function disconnect() {
  * @param {MessageEvent} evt onPostMessage event result
  */
 async function receiveMessage(evt) {
+  log.info('postMessage/receiveMessage: ' + evt);
+
   let type;
   let id;
   let payload;
@@ -86,11 +91,15 @@ async function receiveMessage(evt) {
     return;
   }
 
+  log.debug('postMessage/receiveMessage-payload: ' + JSON.stringify([type, id, payload]));
+
   switch (type) {
     case protocol.SUCCESS:
+      log.debug('postMessage/receiveMessage-resolve: ' + JSON.stringify(id));
       resolvePromise(id, payload);
       break;
     case protocol.ERROR:
+      log.debug('postMessage/receiveMessage-reject: ' + JSON.stringify(id));
       rejectPromise(id, payload);
       break;
     default:
@@ -113,6 +122,9 @@ async function receiveMessage(evt) {
  * @throws {Error} on commands not supported by protocol
  */
 const sendMessage = store => async (cmd, ...payload) => {
+  log.info('postMessage/sendMessage: ' + cmd);
+  log.debug('postMessage/sendMessage-payload: ' + JSON.stringify(payload));
+
   switch (cmd) {
     case actions.version:
     case actions.native:
@@ -136,6 +148,9 @@ const sendMessage = store => async (cmd, ...payload) => {
  * @return {Promise}
  */
 const sendInvocationCall = (process, args) => {
+  log.info('postMessage/sendInvocationCall: ' + process);
+  log.debug('postMessage/sendInvocationCall-payload: ' + JSON.stringify(args));
+
   const promiseID = createPromise();
   window.parent.postMessage([protocol.INVOCATION, promiseID, process, args], targetOrigin);
 
@@ -150,5 +165,6 @@ const sendInvocationCall = (process, args) => {
  * @return {Promise<any>} the promissified val
  */
 async function sendValue(val) {
+  log.debug('postMessage/sendValue: ' + JSON.stringify(val));
   return connection.then(() => val);
 }
