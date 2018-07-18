@@ -78,3 +78,14 @@ export function nativeUpload(url) {
   // nothing we can do here
   return;
 }
+
+/**
+ * Get extensive locale information.
+ *
+ * @return {Object} containing various language informations
+ */
+export function langInfos() {
+  return {
+    contentLanguages: ['en_EN', 'de_DE']
+  };
+}

@@ -76,3 +76,12 @@ export async function openLinkInternal(url) {
 export async function openNativeFileDialog() {
   return sendMessage(cmd.nativeUpload);
 }
+
+/**
+ * Get content languages configured in the app.
+ *
+ * @return {Promise<any>}
+ */
+export async function getContentLanguages() {
+  return sendMessage(cmd.langInfos).then(res => res.contentLanguages);
+}
