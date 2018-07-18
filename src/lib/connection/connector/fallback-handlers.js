@@ -69,7 +69,7 @@ export function openLink(url) {
 }
 
 /**
- * Get extensive locale information. 
+ * Get extensive locale information.
  *
  * @return {Object} containing various language informations
  */
