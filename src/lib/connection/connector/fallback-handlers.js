@@ -69,6 +69,17 @@ export function openLink(url) {
 }
 
 /**
+ * Open an external link
+ *
+ * @param {String} url address
+ */
+export function nativeUpload(url) {
+  // TODO logging
+  // nothing we can do here
+  return;
+}
+
+/**
  * Get extensive locale information.
  *
  * @return {Object} containing various language informations

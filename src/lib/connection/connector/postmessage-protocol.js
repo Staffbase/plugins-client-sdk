@@ -13,5 +13,6 @@ export default {
 
 export const invocationMapping = {
   [commands.openLink]: 'openLink',
+  [commands.nativeUpload]: 'nativeFileUpload',
   [commands.langInfos]: 'getPluginLanguageInfo'
 };
