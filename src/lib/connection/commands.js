@@ -18,7 +18,7 @@ export const commands = {
   mobile: 'app-mobile',
   native: 'app-native',
   openLink: 'openExternalLink',
-  nativeUpload: 'nativeFileUpload'
+  nativeUpload: 'nativeFileUpload',
   langInfos: 'getLanguageInfos'
 };
 
