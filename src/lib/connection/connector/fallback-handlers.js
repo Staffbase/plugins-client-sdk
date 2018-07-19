@@ -1,7 +1,7 @@
 /**
  * Fallbacks for all sdk commands
  */
-
+let log = require('loglevel');
 let userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
 /**
  * Get the current Staffbase app version
@@ -9,7 +9,8 @@ let userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
  * @return {String} version
  */
 export function getVersion() {
-  return '3.5';
+  log.trace('fallback/getVersion');
+  return '3.4';
 }
 
 /**
@@ -19,6 +20,7 @@ export function getVersion() {
  * @return {Boolean}
  */
 export function isNative() {
+  log.trace('fallback/isNative');
   let safari = /safari/i.test(userAgent);
   return !safari && isIos();
 }
@@ -29,6 +31,7 @@ export function isNative() {
  * @return {Boolean}
  */
 export function isMobile() {
+  log.trace('fallback/isMobile');
   return /Android|webOS|iPhone|iPad|BlackBerry|BB10|IEMobile|Opera Mini/i.test(userAgent);
 }
 
@@ -38,6 +41,7 @@ export function isMobile() {
  * @return {Boolean}
  */
 export function isDesktop() {
+  log.trace('fallback/isDesktop');
   return /Win|Mac|Linux/i.test(userAgent);
 }
 
@@ -47,6 +51,7 @@ export function isDesktop() {
  * @return {Boolean}
  */
 export function isAndroid() {
+  log.trace('fallback/isAndroid');
   return /Android/i.test(userAgent);
 }
 
@@ -56,6 +61,7 @@ export function isAndroid() {
  * @return {Boolean}
  */
 export function isIos() {
+  log.trace('fallback/isIos');
   return /iPhone|iPad|iPod/i.test(userAgent);
 }
 
@@ -65,6 +71,7 @@ export function isIos() {
  * @param {String} url address
  */
 export function openLink(url) {
+  log.trace('fallback/openLink');
   window.open(url, '_blank');
 }
 
@@ -74,7 +81,8 @@ export function openLink(url) {
  * @param {String} url address
  */
 export function nativeUpload(url) {
-  // TODO logging
+  log.trace('fallback/nativeUpload');
+  log.warn('Native upload is not possible in fallback mode.');
   // nothing we can do here
   return;
 }
@@ -85,6 +93,7 @@ export function nativeUpload(url) {
  * @return {Object} containing various language informations
  */
 export function langInfos() {
+  log.trace('fallback/langInfos');
   return {
     contentLanguages: ['en_EN', 'de_DE']
   };

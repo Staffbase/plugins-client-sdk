@@ -41,7 +41,7 @@ export default function connect() {
 
   const connectId = createPromise();
   connection = getPromise(connectId).then(function(payload) {
-    log.info('putMessage/connect: succeeded');
+    log.debug('putMessage/connect succeeded');
     return sendMessage(dataStore(payload));
   });
 
@@ -66,9 +66,9 @@ export default function connect() {
 function mutliMessageProvider() {
   log.debug('putMessage/mutliMessageProvider');
   let queueRef = outMsgQueue;
-  log.debug('putMessage/mutliMessageProvider/queue-before: ' + JSON.stringify(outMsgQueue));
+  log.trace('putMessage/mutliMessageProvider/queue/before ' + JSON.stringify(outMsgQueue));
   outMsgQueue = [];
-  log.debug('putMessage/mutliMessageProvider/queue-after: ' + JSON.stringify(outMsgQueue));
+  log.trace('putMessage/mutliMessageProvider/queue/after ' + JSON.stringify(outMsgQueue));
   return queueRef;
 }
 
@@ -79,7 +79,7 @@ function mutliMessageProvider() {
  * @param {Array} msg Staffbase 3.6 message
  */
 function singleMessageReceiver(msg) {
-  log.debug('putMessage/singleMessageReceiver: ' + JSON.stringify(msg));
+  log.debug('putMessage/singleMessageReceiver ' + JSON.stringify(msg));
 
   let type;
   let id;
@@ -91,11 +91,11 @@ function singleMessageReceiver(msg) {
 
     switch (type) {
       case protocol.SUCCESS:
-        log.debug('putMessage/singleMessageReceiver-resolve: ' + id);
+        log.trace('putMessage/singleMessageReceiver/success ' + id);
         resolvePromise(id, payload);
         break;
       case protocol.ERROR:
-        log.debug('putMessage/singleMessageReceiver-reject: ' + id);
+        log.trace('putMessage/singleMessageReceiver/error ' + id);
         rejectPromise(id, payload);
         break;
       default:
@@ -136,8 +136,8 @@ export function disconnect() {
  * @throws {Error} on commands not supported by protocol
  */
 const sendMessage = store => async (cmd, ...payload) => {
-  log.info('putMessage/sendMessage: ' + cmd);
-  log.debug('putMessage/sendMessage-payload: ' + JSON.stringify(payload));
+  log.debug('putMessage/sendMessage ' + cmd);
+  log.trace('putMessage/sendMessage/payload ' + JSON.stringify(payload));
   switch (cmd) {
     case actions.version:
     case actions.native:
@@ -161,14 +161,14 @@ const sendMessage = store => async (cmd, ...payload) => {
  * @return {Promise}
  */
 const sendInvocationCall = (process, args) => {
-  log.info('putMessage/sendInvocationCall: ' + process);
-  log.debug('putMessage/sendInvocationCall-payload: ' + JSON.stringify(args));
+  log.debug('putMessage/sendInvocationCall ' + process);
+  log.trace('putMessage/sendInvocationCall/payload: ' + JSON.stringify(args));
 
   const promiseID = createPromise();
 
-  log.debug('putMessage/sendInvocationCall/queue-before: ' + JSON.stringify(outMsgQueue));
+  log.trace('putMessage/sendInvocationCall/queue/before ' + JSON.stringify(outMsgQueue));
   outMsgQueue.push([protocol.INVOCATION, promiseID, process, args]);
-  log.debug('putMessage/sendInvocationCall/queue-before: ' + JSON.stringify(outMsgQueue));
+  log.trace('putMessage/sendInvocationCall/queue/after ' + JSON.stringify(outMsgQueue));
 
   return getPromise(promiseID);
 };
@@ -181,6 +181,6 @@ const sendInvocationCall = (process, args) => {
  * @return {Promise<any>} the promissified val
  */
 async function sendValue(val) {
-  log.debug('putMessage/sendValue: ' + JSON.stringify(val));
+  log.debug('putMessage/sendValue ' + JSON.stringify(val));
   return connection.then(() => val);
 }

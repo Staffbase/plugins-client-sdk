@@ -55,8 +55,8 @@ export function disconnect() {
  * @param {Object} an onPostMessage event result
  */
 async function receiveMessage({ data = {} }) {
-  log.info('pm-legacy/receiveMessage: ' + data.state);
-  log.debug('pm-legacy/receiveMessage-payload: ' + JSON.stringify(data));
+  log.debug('pm-legacy/receiveMessage ' + data.state);
+  log.trace('pm-legacy/receiveMessage/payload ' + JSON.stringify(data));
 
   switch (data.state) {
     case protocol.platformInfo:
@@ -65,7 +65,7 @@ async function receiveMessage({ data = {} }) {
       native = !!data.info.native;
       ios = data.info.native === 'ios';
       android = data.info.native === 'android';
-      log.info('pm-legacy/connect: succeeded');
+      log.debug('pm-legacy/connect succeeded');
       resolvePromise(connectId, sendMessage);
       break;
     default:
@@ -87,8 +87,8 @@ async function receiveMessage({ data = {} }) {
  * @throws {Error} on commands not supported by protocol
  */
 async function sendMessage(cmd, payload) {
-  log.info('pm-legacy/sendMessage: ' + cmd);
-  log.debug('pm-legacy/sendMessage-payload: ' + JSON.stringify(payload));
+  log.debug('pm-legacy/sendMessage ' + cmd);
+  log.trace('pm-legacy/sendMessage/payload ' + JSON.stringify(payload));
 
   switch (cmd) {
     case action.version:
@@ -114,6 +114,6 @@ async function sendMessage(cmd, payload) {
  * @return {Promise<any>} the promissified val
  */
 async function sendValue(val) {
-  log.debug('pm-legacy/sendValue: ' + JSON.stringify(val));
+  log.debug('pm-legacy/sendValue ' + JSON.stringify(val));
   return connection.then(() => val);
 }

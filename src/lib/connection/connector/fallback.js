@@ -19,7 +19,7 @@ export default function connect() {
 
   connection = new Promise((resolve, reject) => {
     setTimeout(function() {
-      log.info('fallback/connect: succeeded');
+      log.debug('fallback/connect succeeded');
       resolve(sendMessage);
     }, fallbackKickIn);
   });
@@ -46,8 +46,8 @@ export function disconnect() {
  * @throws {Error} on commands not supported by protocol
  */
 async function sendMessage(cmd, ...payload) {
-  log.info('fallback/sendMessage: ' + cmd);
-  log.debug('fallback/sendMessage-payload: ' + JSON.stringify(payload));
+  log.debug('fallback/sendMessage ' + cmd);
+  log.trace('fallback/sendMessage/payload ' + JSON.stringify(payload));
 
   switch (cmd) {
     case action.version:
@@ -80,6 +80,6 @@ async function sendMessage(cmd, ...payload) {
  * @return {Promise<any>} the promissified val
  */
 async function sendValue(val) {
-  log.debug('fallback/sendValue: ' + JSON.stringify(val));
+  log.debug('fallback/sendValue ' + JSON.stringify(val));
   return connection.then(() => val);
 }

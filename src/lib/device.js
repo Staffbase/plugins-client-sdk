@@ -11,7 +11,7 @@ let log = require('loglevel');
  * @return {Promise<boolean>}
  */
 async function isIos() {
-  log.debug('interface call: isIos');
+  log.trace('device/isIos');
   return sendMessage(cmd.ios);
 }
 
@@ -21,7 +21,7 @@ async function isIos() {
  * @return {Promise<boolean>}
  */
 async function isAndroid() {
-  log.debug('interface call: isAndroid');
+  log.trace('device/isAndroid');
   return sendMessage(cmd.android);
 }
 
@@ -31,7 +31,7 @@ async function isAndroid() {
  * @return {Promise<boolean>}
  */
 export async function canDownload() {
-  log.debug('interface call: canDownload');
+  log.trace('device/canDownload');
   let [native, version, ios] = await Promise.all([isNative(), getVersion(), isIos()]);
 
   // mobile ios devices can not download with an app version less than 3.5

@@ -16,8 +16,8 @@ let connect = Promise.race([postMessage(), postMessageLegacy(), putMessage(), fa
  * @return {Promis<any>} result of the request
  */
 export default async function sendMessage(msg, ...payload) {
-  log.info('connection/sendMessage: ' + msg);
-  log.debug('connection/sendMessage-payload: ' + JSON.stringify(payload));
+  log.debug('connection/sendMessage ' + msg);
+  log.trace('connection/sendMessage/payload ' + JSON.stringify(payload));
 
   return connect.then(sendFn => sendFn(msg, ...payload));
 }
