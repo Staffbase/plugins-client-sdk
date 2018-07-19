@@ -10,7 +10,7 @@ let log = require('loglevel');
  *
  * @return {Promise<boolean>}
  */
-async function isIos() {
+export async function isIos() {
   log.trace('device/isIos');
   return sendMessage(cmd.ios);
 }
@@ -20,7 +20,7 @@ async function isIos() {
  *
  * @return {Promise<boolean>}
  */
-async function isAndroid() {
+export async function isAndroid() {
   log.trace('device/isAndroid');
   return sendMessage(cmd.android);
 }
