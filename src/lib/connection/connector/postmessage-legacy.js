@@ -5,6 +5,7 @@ import {
   resolve as resolvePromise,
   get as getPromise
 } from '../manager.js';
+let log = require('loglevel');
 
 // initial data
 let mobile = false;
@@ -54,6 +55,9 @@ export function disconnect() {
  * @param {Object} an onPostMessage event result
  */
 async function receiveMessage({ data = {} }) {
+  log.info('pm-legacy/receiveMessage ' + data.state);
+  log.debug('pm-legacy/receiveMessage/payload ' + JSON.stringify(data));
+
   switch (data.state) {
     case protocol.platformInfo:
       mobile = data.info.mobile;
@@ -61,6 +65,7 @@ async function receiveMessage({ data = {} }) {
       native = !!data.info.native;
       ios = data.info.native === 'ios';
       android = data.info.native === 'android';
+      log.info('pm-legacy/connect succeeded');
       resolvePromise(connectId, sendMessage);
       break;
     default:
@@ -82,6 +87,9 @@ async function receiveMessage({ data = {} }) {
  * @throws {Error} on commands not supported by protocol
  */
 async function sendMessage(cmd, payload) {
+  log.info('pm-legacy/sendMessage ' + cmd);
+  log.debug('pm-legacy/sendMessage/payload ' + JSON.stringify(payload));
+
   switch (cmd) {
     case action.version:
       return sendValue(version);
@@ -106,5 +114,6 @@ async function sendMessage(cmd, payload) {
  * @return {Promise<any>} the promissified val
  */
 async function sendValue(val) {
+  log.info('pm-legacy/sendValue ' + JSON.stringify(val));
   return connection.then(() => val);
 }

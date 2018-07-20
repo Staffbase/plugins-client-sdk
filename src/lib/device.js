@@ -4,13 +4,14 @@ import sendMessage from './connection/connection';
 import { isNative, getVersion } from './app';
 import compareVersions from 'compare-versions';
 import catchLinks from './polyfills/catch-links';
-
+let log = require('loglevel');
 /**
  * Check if device is using ios
  *
  * @return {Promise<boolean>}
  */
-async function isIos() {
+export async function isIos() {
+  log.debug('device/isIos');
   return sendMessage(cmd.ios);
 }
 
@@ -19,7 +20,8 @@ async function isIos() {
  *
  * @return {Promise<boolean>}
  */
-async function isAndroid() {
+export async function isAndroid() {
+  log.debug('device/isAndroid');
   return sendMessage(cmd.android);
 }
 
@@ -29,6 +31,7 @@ async function isAndroid() {
  * @return {Promise<boolean>}
  */
 export async function canDownload() {
+  log.debug('device/canDownload');
   let [native, version, ios] = await Promise.all([isNative(), getVersion(), isIos()]);
 
   // mobile ios devices can not download with an app version less than 3.5
@@ -37,13 +40,3 @@ export async function canDownload() {
 
   return !(compareVersions(version, '3.5') < 0 && native && ios);
 }
-
-/**
- * Initialize the connection and add the link handling on ios
- */
-Promise.all([isIos(), isNative()]).then(([isIOS, isNative]) => {
-  if (isIOS && isNative) {
-    console.log('Activating external link handler.'); // eslint-disable-line no-console
-    catchLinks(window, url => console.log('external link ', url)); // eslint-disable-line no-console
-  }
-});
