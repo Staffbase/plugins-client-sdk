@@ -7,7 +7,7 @@ import {
   get as getPromise,
   unload as unloadManager
 } from '../manager.js';
-import * as log from 'loglevel';
+let log = require('loglevel');
 /**
  * @typedef {{mobile: boolean, version: string|number, native: string}} InitialValues
  * @typedef {{mobile: boolean, version: string|number, native: string, ios: boolean, android: boolean}} StaticValueStore

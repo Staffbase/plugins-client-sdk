@@ -4,7 +4,7 @@ import sendMessage from './connection/connection';
 import { isNative, getVersion } from './app';
 import compareVersions from 'compare-versions';
 import catchLinks from './polyfills/catch-links';
-import * as log from 'loglevel';
+let log = require('loglevel');
 /**
  * Check if device is using ios
  *

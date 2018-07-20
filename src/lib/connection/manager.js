@@ -1,4 +1,4 @@
-import * as log from 'loglevel';
+let log = require('loglevel');
 /**
  * @type {Object.<string, {resolve: function, reject: function, promise: Promise}>}
  */

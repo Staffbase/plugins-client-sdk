@@ -2,7 +2,7 @@ import postMessageLegacy from './connector/postmessage-legacy.js';
 import fallback from './connector/fallback.js';
 import postMessage from './connector/postmessage.js';
 import putMessage from './connector/putMessage.js';
-import * as log from 'loglevel';
+let log = require('loglevel');
 let connect = Promise.race([postMessage(), postMessageLegacy(), putMessage(), fallback()]);
 
 /**

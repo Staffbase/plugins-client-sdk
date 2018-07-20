@@ -5,7 +5,7 @@ import {
   resolve as resolvePromise,
   get as getPromise
 } from '../manager.js';
-import * as log from 'loglevel';
+let log = require('loglevel');
 
 // initial data
 let mobile = false;

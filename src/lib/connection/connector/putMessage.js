@@ -7,7 +7,8 @@ import {
   get as getPromise,
   unload as unloadManager
 } from '../manager.js';
-import * as log from 'loglevel';
+
+let log = require('loglevel');
 
 let connection = null;
 let outMsgQueue = [];

@@ -1,6 +1,6 @@
 import { commands as action } from '../commands';
 import * as fallbacks from './fallback-handlers';
-import * as log from 'loglevel';
+let log = require('loglevel');
 
 let connection = null;
 const fallbackKickIn = 500;

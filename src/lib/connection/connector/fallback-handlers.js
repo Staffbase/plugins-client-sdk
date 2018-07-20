@@ -1,7 +1,7 @@
 /**
  * Fallbacks for all sdk commands
  */
-import * as log from 'loglevel';
+let log = require('loglevel');
 let userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
 /**
  * Get the current Staffbase app version

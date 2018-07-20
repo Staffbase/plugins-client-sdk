@@ -3,7 +3,7 @@ import 'babel-polyfill';
  * interface exports
  */
 
-import log from 'loglevel';
+let log = require('loglevel');
 log.enableAll(); /* experimental */
 
 export { canDownload as deviceCanDownload } from './lib/device';
