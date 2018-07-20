@@ -9,8 +9,13 @@ import {
 } from '../manager.js';
 
 /**
- * @typedef {{mobile: boolean, version: string|number, native: string}} InitialValues
- * @typedef {{mobile: boolean, version: string|number, native: string, ios: boolean, android: boolean}} StaticValueStore
+ * @typedef {{ mobile: boolean, version: string|number, native: string }} PlatformInfos
+ * @typedef {{ key: string, locale: string, name: string, localizedName: string }} BranchDefaultLanguage
+ * @typedef { Object.<string, BranchDefaultLanguage> } BranchLanguage
+ * @typedef {{ branchDefaultLanguage: BranchDefaultLanguage, branchLanguage: BranchLanguage, contentLanguage: BranchDefaultLanguage, contentLanguages: BranchLanguage, deviceLanguage: BranchDefaultLanguage }} LanguageInfos
+ * @typedef {{ platform: PlatformInfos, language: LanguageInfos }} InitialValues
+ *
+ * @typedef {{ mobile: boolean, version: string|number, native: string, ios: boolean, android: boolean }} StaticValueStore
  */
 
 /**
@@ -21,12 +26,12 @@ import {
  * @static
  * @return {StaticValueStore}
  */
-const dataStore = initial => ({
-  mobile: initial.mobile,
-  version: initial.version,
-  native: initial.native,
-  ios: initial.native === 'ios',
-  android: initial.native === 'android'
+const dataStore = ({ platform, language }) => ({
+  mobile: platform.mobile,
+  version: platform.version,
+  native: platform.native,
+  ios: platform.native === 'ios',
+  android: platform.native === 'android'
 });
 
 let connection = null;
