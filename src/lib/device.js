@@ -4,14 +4,14 @@ import sendMessage from './connection/connection';
 import { isNative, getVersion } from './app';
 import compareVersions from 'compare-versions';
 import catchLinks from './polyfills/catch-links';
-let log = require('loglevel');
+import * as log from 'loglevel';
 /**
  * Check if device is using ios
  *
  * @return {Promise<boolean>}
  */
 export async function isIos() {
-  log.trace('device/isIos');
+  log.debug('device/isIos');
   return sendMessage(cmd.ios);
 }
 
@@ -21,7 +21,7 @@ export async function isIos() {
  * @return {Promise<boolean>}
  */
 export async function isAndroid() {
-  log.trace('device/isAndroid');
+  log.debug('device/isAndroid');
   return sendMessage(cmd.android);
 }
 
@@ -31,7 +31,7 @@ export async function isAndroid() {
  * @return {Promise<boolean>}
  */
 export async function canDownload() {
-  log.trace('device/canDownload');
+  log.debug('device/canDownload');
   let [native, version, ios] = await Promise.all([isNative(), getVersion(), isIos()]);
 
   // mobile ios devices can not download with an app version less than 3.5

@@ -1,6 +1,6 @@
 import cmd from './connection/commands';
 import sendMessage from './connection/connection';
-let log = require('loglevel');
+import * as log from 'loglevel';
 
 /**
  * Get the version of the Staffbase App
@@ -8,7 +8,7 @@ let log = require('loglevel');
  * @return {Promise<string>}
  */
 export async function getVersion() {
-  log.trace('app/getVersion');
+  log.debug('app/getVersion');
   return sendMessage(cmd.version);
 }
 
@@ -18,7 +18,7 @@ export async function getVersion() {
  * @return {Promise<boolean>}
  */
 export async function isNative() {
-  log.trace('app/isNative');
+  log.debug('app/isNative');
   return sendMessage(cmd.native);
 }
 
@@ -28,7 +28,7 @@ export async function isNative() {
  * @return {Promise<boolean>}
  */
 export async function isMobile() {
-  log.trace('app/isMobile');
+  log.debug('app/isMobile');
   return sendMessage(cmd.mobile);
 }
 
@@ -43,7 +43,7 @@ export async function isMobile() {
  * @return {Promise<any>}
  */
 export async function openLink(url) {
-  log.trace('app/openLink');
+  log.debug('app/openLink');
   return sendMessage(cmd.openLink, url);
 }
 
@@ -55,7 +55,7 @@ export async function openLink(url) {
  * @return {Promise<any>}
  */
 export async function openLinkExternal(url) {
-  log.trace('app/openLinkExternal');
+  log.debug('app/openLinkExternal');
   return sendMessage(cmd.openLink, url, { inAppBrowser: false });
 }
 
@@ -67,7 +67,7 @@ export async function openLinkExternal(url) {
  * @return {Promise<any>}
  */
 export async function openLinkInternal(url) {
-  log.trace('app/openLinkInternal');
+  log.debug('app/openLinkInternal');
   return sendMessage(cmd.openLink, url, { inAppBrowser: true });
 }
 
@@ -81,7 +81,7 @@ export async function openLinkInternal(url) {
  * @return {Promise<any>}
  */
 export async function openNativeFileDialog() {
-  log.trace('app/openNativeFileDialog');
+  log.debug('app/openNativeFileDialog');
   return sendMessage(cmd.nativeUpload);
 }
 
@@ -94,7 +94,7 @@ export async function openNativeFileDialog() {
  * @return {Promise<any>}
  */
 export async function getLanguageInfos() {
-  log.trace('app/getLanguageInfos');
+  log.debug('app/getLanguageInfos');
   return sendMessage(cmd.langInfos);
 }
 
@@ -104,6 +104,6 @@ export async function getLanguageInfos() {
  * @return {Promise<any>}
  */
 export async function getContentLanguages() {
-  log.trace('app/getContentLanguages');
+  log.debug('app/getContentLanguages');
   return sendMessage(cmd.langInfos).then(res => res.contentLanguages);
 }
