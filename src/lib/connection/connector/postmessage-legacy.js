@@ -1,5 +1,5 @@
 import { commands as actions, reversedCommands as reversedActions } from '../commands.js';
-import protocol from './postmessage-legacy-protocol.js';
+import protocol, { invocationMapping } from './postmessage-legacy-protocol.js';
 import {
   create as createPromise,
   resolve as resolvePromise,
@@ -9,6 +9,7 @@ let log = require('loglevel');
 
 let connection = null;
 let connectId = null;
+let targetOrigin = '*';
 
 /**
  * @typedef {{ mobile: boolean, version: string|number, native: string }} PlatformInfos
@@ -42,8 +43,6 @@ export default function connect() {
     throw new Error('Connect called twice.');
   }
 
-  let origin = '*';
-
   connectId = createPromise();
   connection = getPromise(connectId).then(function(payload) {
     log.info('pm-legacy/connect succeeded');
@@ -51,7 +50,7 @@ export default function connect() {
   });
 
   window.addEventListener('message', receiveMessage);
-  window.parent.postMessage(protocol.init, origin);
+  window.parent.postMessage(protocol.init, targetOrigin);
   return connection;
 }
 
@@ -79,6 +78,10 @@ async function receiveMessage({ data = {} }) {
     case protocol.platformInfo:
       log.info('pm-legacy/connect succeeded');
       resolvePromise(connectId, data.info);
+      break;
+    case protocol.finishUpload:
+      log.info('pm-legacy/nativeUpload succeeded');
+      resolvePromise(connectId, data.file);
       break;
     default:
       // even thougth catch-ignore is a bad style
@@ -110,9 +113,29 @@ const sendMessage = store => async (cmd, ...payload) => {
     case actions.ios:
     case actions.android:
       return sendValue(store[reversedActions[cmd]]);
+    case actions.nativeUpload:
+      return sendInvocationCall(invocationMapping[cmd], payload);
     default:
       throw new Error('Command ' + cmd + ' not supported by driver');
   }
+};
+
+/**
+ * Create a promise and send an invocation call to the frontend
+ *
+ * @param {string} process the name of the process to call
+ * @param {array} args an array of arguments
+ *
+ * @return {Promise}
+ */
+const sendInvocationCall = (process, args) => {
+  log.info('pm-legacy/sendInvocationCall ' + process);
+  log.debug('pm-legacy/sendInvocationCall/payload ' + JSON.stringify(args));
+
+  connectId = createPromise();
+  window.parent.postMessage(protocol.startUpload, targetOrigin);
+
+  return getPromise(connectId);
 };
 
 /**

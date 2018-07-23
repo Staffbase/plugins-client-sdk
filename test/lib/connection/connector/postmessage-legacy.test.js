@@ -5,6 +5,7 @@ let chaiAsPromised = require('chai-as-promised');
 let expect = chai.expect;
 let sinon = require('sinon');
 chai.use(chaiAsPromised);
+let sandbox;
 
 import connect from '../../../../src/lib/connection/connector/postmessage-legacy';
 import { disconnect } from '../../../../src/lib/connection/connector/postmessage-legacy';
@@ -13,11 +14,13 @@ import command from '../../../../src/lib/connection/commands.js';
 describe('connector/postmessage-legacy', function() {
   describe('connect', function() {
     beforeEach(function() {
+      sandbox = sinon.createSandbox();
       mockPostMessage();
     });
 
     afterEach(function() {
       disconnect();
+      sandbox.restore();
     });
 
     it('should be a function', () => {
@@ -30,13 +33,15 @@ describe('connector/postmessage-legacy', function() {
     });
 
     it('should use postMessage', () => {
-      sinon.spy(window.parent, 'postMessage');
+      sandbox.restore();
+      sandbox.spy(window.parent, 'postMessage');
       connect();
       expect(window.parent.postMessage.calledOnce).to.be.true;
     });
 
     it('should send a pluginLoaded message', () => {
-      sinon.spy(window.parent, 'postMessage');
+      sandbox.restore();
+      sandbox.spy(window.parent, 'postMessage');
       connect();
       let firstArg = window.parent.postMessage.getCalls()[0].args[0];
       expect(firstArg).to.equal('pluginLoaded');
@@ -100,6 +105,23 @@ describe('connector/postmessage-legacy', function() {
           }
         });
       });
+
+      describe('invoke commands', async function() {
+        let fileUpload = {
+          state: 'finishedImageUploadForPlugin',
+          file: true
+        };
+
+        beforeEach(function() {
+          stubPostMessage(fileUpload);
+        });
+
+        it(command.nativeUpload, async () => {
+          let sendFn = await connect();
+          let nativeUpload = await sendFn(command.nativeUpload);
+          expect(nativeUpload).to.equal(true);
+        });
+      });
     });
   });
 });
@@ -118,8 +140,11 @@ function stubPostMessage(msg) {
   let addEventListener = (m, cb) => {
     callback = cb;
   };
+
   let postMessage = (m, o) => {
-    callback(fakeEvent);
+    window.setTimeout(() => {
+      callback(fakeEvent);
+    }, 10);
   };
 
   mockPostMessage(addEventListener, postMessage);
@@ -135,8 +160,7 @@ function stubPostMessage(msg) {
  * @param {function} cbPM window.postMessage implementation
  */
 function mockPostMessage(cbAEL, cbPM) {
-  window = {};
-  window.parent = {};
-  window.addEventListener = cbAEL || function(message, receiveMessage) {};
-  window.parent.postMessage = cbPM || function(message, origin) {};
+  sandbox.restore();
+  sandbox.stub(window, 'addEventListener').callsFake(cbAEL || function(message, receiveMessage) {});
+  sandbox.stub(window.parent, 'postMessage').callsFake(cbPM || function(message, origin) {});
 }
