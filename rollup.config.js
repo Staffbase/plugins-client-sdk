@@ -45,7 +45,8 @@ export default [
     output: {
       name: 'plugins-client-sdk',
       file: pkg.browser,
-      format: 'umd'
+      format: 'umd',
+      sourcemap: true
     },
     plugins: defaultBrowserPluginOptions
   },
@@ -76,7 +77,10 @@ export default [
   // `file` and `format` for each target)
   {
     input: 'src/main.js',
-    output: [{ file: pkg.main, format: 'cjs' }, { file: pkg.module, format: 'es' }],
+    output: [
+      { file: pkg.main, format: 'cjs', sourcemap: true },
+      { file: pkg.module, format: 'es', sourcemap: true }
+    ],
     plugins: [resolve(), commonjs()]
   }
 ];
