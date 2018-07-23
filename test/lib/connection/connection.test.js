@@ -8,7 +8,7 @@ describe('connection', function() {
   describe('sendMessage', () => {
     it('should provide a working sendmesage without a connection', async () => {
       let result = await sendMessage(command.version);
-      expect(result).to.be.equal('3.5');
+      expect(result).to.be.equal('3.4');
     });
   });
 });

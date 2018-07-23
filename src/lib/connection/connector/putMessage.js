@@ -7,11 +7,11 @@ import {
   get as getPromise,
   unload as unloadManager
 } from '../manager.js';
+
 let log = require('loglevel');
-/**
- * @typedef {{mobile: boolean, version: string|number, native: string}} InitialValues
- * @typedef {{mobile: boolean, version: string|number, native: string, ios: boolean, android: boolean}} StaticValueStore
- */
+
+let connection = null;
+let outMsgQueue = [];
 
 /**
  * Simple store solution to make the initial data available
@@ -29,13 +29,10 @@ const dataStore = initial => ({
   android: initial.native === 'android'
 });
 
-let connection = null;
-let targetOrigin = '*';
-
 /**
  * Connect to the Staffbase App.
  *
- * Create a connection to a Staffbase app 3.6
+ * Create a connection to a Staffbase app 3.6 from a native tab
  * @return {Promise<function>} An appropriate send function
  */
 export default function connect() {
@@ -45,14 +42,77 @@ export default function connect() {
 
   const connectId = createPromise();
   connection = getPromise(connectId).then(function(payload) {
-    log.info('postMessage/connect succeeded');
+    log.info('putMessage/connect succeeded');
     return sendMessage(dataStore(payload));
   });
 
-  window.addEventListener('message', receiveMessage);
-  window.parent.postMessage([protocol.HELLO, connectId, []], targetOrigin);
+  window.Staffbase = window.Staffbase || {};
+  window.Staffbase.plugins = window.Staffbase.Staffbase || {};
+  window.Staffbase.plugins.getMessages = mutliMessageProvider;
+  window.Staffbase.plugins.putMessage = singleMessageReceiver;
+
+  outMsgQueue.push([protocol.HELLO, connectId, []]);
 
   return connection;
+}
+
+/**
+ * A function which returns an array off messags
+ *
+ * The return value holds all messages in the order the were
+ * received over time by sendMessage
+ *
+ * @return {Array} ordered list of messages
+ */
+function mutliMessageProvider() {
+  log.info('putMessage/mutliMessageProvider');
+  let queueRef = outMsgQueue;
+  log.debug('putMessage/mutliMessageProvider/queue/before ' + JSON.stringify(outMsgQueue));
+  outMsgQueue = [];
+  log.debug('putMessage/mutliMessageProvider/queue/after ' + JSON.stringify(outMsgQueue));
+  return queueRef;
+}
+
+/**
+ * A function which can receive a single message.
+ *
+ * Can be attached to window.onPostMessage
+ * @param {Array} msg Staffbase 3.6 message
+ */
+function singleMessageReceiver(msg) {
+  log.info('putMessage/singleMessageReceiver ' + JSON.stringify(msg));
+
+  let type;
+  let id;
+  let payload;
+
+  // safe destructure
+  try {
+    [type, id, payload] = msg;
+
+    switch (type) {
+      case protocol.SUCCESS:
+        log.debug('putMessage/singleMessageReceiver/success ' + id);
+        resolvePromise(id, payload);
+        break;
+      case protocol.ERROR:
+        log.debug('putMessage/singleMessageReceiver/error ' + id);
+        rejectPromise(id, payload);
+        break;
+      default:
+        // even thougth catch-ignore is a bad style
+        // there may be other participants listening
+        // to messages in a diffrent format so we
+        // silently ignore here
+        return;
+    }
+  } catch (e) {
+    // even thougth catch-ignore is a bad style
+    // there may be other participants listening
+    // to messages in a diffrent format so we
+    // silently ignore here
+    return;
+  }
 }
 
 /**
@@ -63,52 +123,7 @@ export default function connect() {
 export function disconnect() {
   unloadManager();
   connection = null;
-}
-
-/**
- * Handler that receives a message from the Staffbase app
- *
- * Can be attached to window.onPostMessage
- * @param {MessageEvent} evt onPostMessage event result
- */
-async function receiveMessage(evt) {
-  log.info('postMessage/receiveMessage ' + evt);
-
-  let type;
-  let id;
-  let payload;
-
-  // safe destructure
-  try {
-    ({
-      data: [type, id, payload]
-    } = evt);
-  } catch (e) {
-    // even thougth catch-ignore is a bad style
-    // there may be other participants listening
-    // to messages in a diffrent format so we
-    // silently ignore here
-    return;
-  }
-
-  log.debug('postMessage/receiveMessage/payload ' + JSON.stringify([type, id, payload]));
-
-  switch (type) {
-    case protocol.SUCCESS:
-      log.debug('postMessage/receiveMessage/success ' + JSON.stringify(id));
-      resolvePromise(id, payload);
-      break;
-    case protocol.ERROR:
-      log.debug('postMessage/receiveMessage/error ' + JSON.stringify(id));
-      rejectPromise(id, payload);
-      break;
-    default:
-      // even thougth catch-ignore is a bad style
-      // there may be other participants listening
-      // to messages in a diffrent format so we
-      // silently ignore here
-      return;
-  }
+  outMsgQueue = [];
 }
 
 /**
@@ -122,9 +137,8 @@ async function receiveMessage(evt) {
  * @throws {Error} on commands not supported by protocol
  */
 const sendMessage = store => async (cmd, ...payload) => {
-  log.info('postMessage/sendMessage ' + cmd);
-  log.debug('postMessage/sendMessage/payload ' + JSON.stringify(payload));
-
+  log.info('putMessage/sendMessage ' + cmd);
+  log.debug('putMessage/sendMessage/payload ' + JSON.stringify(payload));
   switch (cmd) {
     case actions.version:
     case actions.native:
@@ -148,11 +162,14 @@ const sendMessage = store => async (cmd, ...payload) => {
  * @return {Promise}
  */
 const sendInvocationCall = (process, args) => {
-  log.info('postMessage/sendInvocationCall ' + process);
-  log.debug('postMessage/sendInvocationCall/payload ' + JSON.stringify(args));
+  log.info('putMessage/sendInvocationCall ' + process);
+  log.debug('putMessage/sendInvocationCall/payload: ' + JSON.stringify(args));
 
   const promiseID = createPromise();
-  window.parent.postMessage([protocol.INVOCATION, promiseID, process, args], targetOrigin);
+
+  log.debug('putMessage/sendInvocationCall/queue/before ' + JSON.stringify(outMsgQueue));
+  outMsgQueue.push([protocol.INVOCATION, promiseID, process, args]);
+  log.debug('putMessage/sendInvocationCall/queue/after ' + JSON.stringify(outMsgQueue));
 
   return getPromise(promiseID);
 };
@@ -165,6 +182,6 @@ const sendInvocationCall = (process, args) => {
  * @return {Promise<any>} the promissified val
  */
 async function sendValue(val) {
-  log.info('postMessage/sendValue ' + JSON.stringify(val));
+  log.info('putMessage/sendValue ' + JSON.stringify(val));
   return connection.then(() => val);
 }

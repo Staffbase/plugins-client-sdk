@@ -1,5 +1,6 @@
 import cmd from './connection/commands';
 import sendMessage from './connection/connection';
+let log = require('loglevel');
 
 /**
  * Get the version of the Staffbase App
@@ -7,6 +8,7 @@ import sendMessage from './connection/connection';
  * @return {Promise<string>}
  */
 export async function getVersion() {
+  log.debug('app/getVersion');
   return sendMessage(cmd.version);
 }
 
@@ -16,6 +18,7 @@ export async function getVersion() {
  * @return {Promise<boolean>}
  */
 export async function isNative() {
+  log.debug('app/isNative');
   return sendMessage(cmd.native);
 }
 
@@ -25,6 +28,7 @@ export async function isNative() {
  * @return {Promise<boolean>}
  */
 export async function isMobile() {
+  log.debug('app/isMobile');
   return sendMessage(cmd.mobile);
 }
 
@@ -39,6 +43,7 @@ export async function isMobile() {
  * @return {Promise<any>}
  */
 export async function openLink(url) {
+  log.debug('app/openLink');
   return sendMessage(cmd.openLink, url);
 }
 
@@ -50,6 +55,7 @@ export async function openLink(url) {
  * @return {Promise<any>}
  */
 export async function openLinkExternal(url) {
+  log.debug('app/openLinkExternal');
   return sendMessage(cmd.openLink, url, { inAppBrowser: false });
 }
 
@@ -61,6 +67,7 @@ export async function openLinkExternal(url) {
  * @return {Promise<any>}
  */
 export async function openLinkInternal(url) {
+  log.debug('app/openLinkInternal');
   return sendMessage(cmd.openLink, url, { inAppBrowser: true });
 }
 
@@ -74,7 +81,21 @@ export async function openLinkInternal(url) {
  * @return {Promise<any>}
  */
 export async function openNativeFileDialog() {
+  log.debug('app/openNativeFileDialog');
   return sendMessage(cmd.nativeUpload);
+}
+
+/**
+ * Get all language info from the app.
+ *
+ * Shoud get split up in the future and
+ * removed from the public interface
+ *
+ * @return {Promise<any>}
+ */
+export async function getLanguageInfos() {
+  log.debug('app/getLanguageInfos');
+  return sendMessage(cmd.langInfos);
 }
 
 /**
@@ -83,5 +104,6 @@ export async function openNativeFileDialog() {
  * @return {Promise<any>}
  */
 export async function getContentLanguages() {
+  log.debug('app/getContentLanguages');
   return sendMessage(cmd.langInfos).then(res => res.contentLanguages);
 }
