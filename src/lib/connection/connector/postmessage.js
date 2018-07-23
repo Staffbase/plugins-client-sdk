@@ -138,8 +138,8 @@ const sendMessage = store => async (cmd, ...payload) => {
     case actions.mobile:
     case actions.ios:
     case actions.android:
-    case actions.langInfos:
       return sendValue(store[reversedActions[cmd]]);
+    case actions.langInfos:
     case actions.openLink:
     case actions.nativeUpload:
       return sendInvocationCall(invocationMapping[cmd], payload);
