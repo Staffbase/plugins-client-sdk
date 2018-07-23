@@ -1,4 +1,4 @@
-import { commands as action } from '../commands.js';
+import { commands as actions, reversedCommands as reversedActions } from '../commands.js';
 import protocol from './postmessage-legacy-protocol.js';
 import {
   create as createPromise,
@@ -7,15 +7,29 @@ import {
 } from '../manager.js';
 let log = require('loglevel');
 
-// initial data
-let mobile = false;
-let native = false;
-let version = 0.0;
-let ios = false;
-let android = false;
-
 let connection = null;
 let connectId = null;
+
+/**
+ * @typedef {{ mobile: boolean, version: string|number, native: string }} PlatformInfos
+ * @typedef {{ mobile: boolean, version: string|number, native: string, ios: boolean, android: boolean }} StaticValueStore
+ */
+
+/**
+ * Simple store solution to make the initial data available
+ * as static values
+ *
+ * @param {PlatformInfos} initial the initial data from the frontend
+ * @static
+ * @return {StaticValueStore}
+ */
+const dataStore = initial => ({
+  mobile: initial.mobile,
+  version: initial.version,
+  native: initial.native,
+  ios: initial.native === 'ios',
+  android: initial.native === 'android'
+});
 
 /**
  * Connect to the Staffbase App.
@@ -31,7 +45,10 @@ export default function connect() {
   let origin = '*';
 
   connectId = createPromise();
-  connection = getPromise(connectId);
+  connection = getPromise(connectId).then(function(payload) {
+    log.info('pm-legacy/connect succeeded');
+    return sendMessage(dataStore(payload));
+  });
 
   window.addEventListener('message', receiveMessage);
   window.parent.postMessage(protocol.init, origin);
@@ -60,13 +77,8 @@ async function receiveMessage({ data = {} }) {
 
   switch (data.state) {
     case protocol.platformInfo:
-      mobile = data.info.mobile;
-      version = data.info.version;
-      native = !!data.info.native;
-      ios = data.info.native === 'ios';
-      android = data.info.native === 'android';
       log.info('pm-legacy/connect succeeded');
-      resolvePromise(connectId, sendMessage);
+      resolvePromise(connectId, data.info);
       break;
     default:
       // even thougth catch-ignore is a bad style
@@ -81,30 +93,27 @@ async function receiveMessage({ data = {} }) {
  * Send a SDK command to the Staffbase App.
  *
  * Translates SDK commands into protocol native commands.
+ * @param {StaticValueStore} store the store object
  * @param {String} cmd an SDK command
- * @param {any} payload for the command
+ * @param {array} payload for the command
  * @return {Promise<any>} which awaits the response of the Staffbase App
  * @throws {Error} on commands not supported by protocol
  */
-async function sendMessage(cmd, payload) {
+const sendMessage = store => async (cmd, ...payload) => {
   log.info('pm-legacy/sendMessage ' + cmd);
   log.debug('pm-legacy/sendMessage/payload ' + JSON.stringify(payload));
 
   switch (cmd) {
-    case action.version:
-      return sendValue(version);
-    case action.native:
-      return sendValue(native);
-    case action.mobile:
-      return sendValue(mobile);
-    case action.ios:
-      return sendValue(ios);
-    case action.android:
-      return sendValue(android);
+    case actions.version:
+    case actions.native:
+    case actions.mobile:
+    case actions.ios:
+    case actions.android:
+      return sendValue(store[reversedActions[cmd]]);
     default:
       throw new Error('Command ' + cmd + ' not supported by driver');
   }
-}
+};
 
 /**
  * Fake initial values as real calls
