@@ -13,7 +13,7 @@ let connect = Promise.race([postMessage(), postMessageLegacy(), putMessage(), fa
  *
  * @param {any} msg message to send to Staffbase App
  * @param {any} payload that will be attached to the message
- * @return {Promis<any>} result of the request
+ * @return {Promise<any>} result of the request
  */
 export default async function sendMessage(msg, ...payload) {
   log.info('connection/sendMessage ' + msg);
