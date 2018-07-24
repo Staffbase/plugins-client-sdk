@@ -34,9 +34,12 @@ export async function canDownload() {
   log.debug('device/canDownload');
   let [native, version, ios] = await Promise.all([isNative(), getVersion(), isIos()]);
 
+  // support any development versions like X.Y-dev for compare versions
+  let dashIndex = version.indexOf('-');
+  version = version.substring(0, dashIndex != -1 ? dashIndex : version.length);
+
   // mobile ios devices can not download with an app version less than 3.5
   // but apps below 3.5 don't have the platform information from the frontend available
   // so we disable download for all native ios devices under these conditions
-
   return !(compareVersions(version, '3.5') < 0 && native && ios);
 }
