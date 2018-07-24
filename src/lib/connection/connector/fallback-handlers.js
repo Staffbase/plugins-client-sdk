@@ -3,6 +3,18 @@
  */
 let log = require('loglevel');
 let userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
+
+// initialize Staffbase/platform namespace for ios frontend js code injection
+// in case of executeJs of app version 3.5 this object gets overwritten
+if (typeof window !== 'undefined') {
+  window.Staffbase = window.Staffbase || {};
+  window.Staffbase.platform = window.Staffbase.platform || {
+    version: '3.4',
+    mobile: /Android|webOS|iPhone|iPad|BlackBerry|BB10|IEMobile|Opera Mini/i.test(userAgent),
+    native: false
+  };
+}
+
 /**
  * Get the current Staffbase app version
  *
@@ -10,19 +22,23 @@ let userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
  */
 export function getVersion() {
   log.debug('fallback/getVersion');
-  return '3.4';
+  return window.Staffbase.platform.version;
 }
 
 /**
  * Are we running in a native app
  *
- * works only for ios
+ * works only for ios or old initial native data
  * @return {Boolean}
  */
 export function isNative() {
   log.debug('fallback/isNative');
   let safari = /safari/i.test(userAgent);
-  return !safari && isIos();
+  return (
+    window.Staffbase.platform.native === 'android' ||
+    window.Staffbase.platform.native === 'ios' ||
+    (!safari && isIos())
+  );
 }
 
 /**
@@ -32,7 +48,7 @@ export function isNative() {
  */
 export function isMobile() {
   log.debug('fallback/isMobile');
-  return /Android|webOS|iPhone|iPad|BlackBerry|BB10|IEMobile|Opera Mini/i.test(userAgent);
+  return window.Staffbase.platform.mobile;
 }
 
 /**
@@ -52,7 +68,7 @@ export function isDesktop() {
  */
 export function isAndroid() {
   log.debug('fallback/isAndroid');
-  return /Android/i.test(userAgent);
+  return window.Staffbase.platform.native === 'android' || /Android/i.test(userAgent);
 }
 
 /**
@@ -62,7 +78,7 @@ export function isAndroid() {
  */
 export function isIos() {
   log.debug('fallback/isIos');
-  return /iPhone|iPad|iPod/i.test(userAgent);
+  return window.Staffbase.platform.native === 'ios' || /iPhone|iPad|iPod/i.test(userAgent);
 }
 
 /**
