@@ -1,8 +1,8 @@
 import reverse from '../utils/reverseObject';
 
 /**
- * @typedef {{ ios: string, android: string, version: string, mobile: string, native: string, openLink: string}} PlatformCommands
- * @typedef {{ 'dev-ios': string, 'dev-android': string, 'app-version': string, 'app-mobile': string, 'app-native': string, 'openExternalLink':string}} ReversedPlatformCommands
+ * @typedef { Object.<string, string> } PlatformCommands
+ * @typedef { Object.<string, string> } ReversedPlatformCommands
  */
 
 /**
@@ -19,7 +19,9 @@ export const commands = {
   native: 'app-native',
   openLink: 'openExternalLink',
   nativeUpload: 'nativeFileUpload',
-  langInfos: 'getLanguageInfos'
+  langInfos: 'getLanguageInfos',
+  branchDefaultLang: 'getBranchDefaultLanguage',
+  prefContentLang: 'getPreferredContentLocale'
 };
 
 /**
