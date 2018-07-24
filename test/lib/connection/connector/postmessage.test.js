@@ -167,7 +167,11 @@ describe('postmessage', function() {
 function stubPostMessage(msg) {
   let mockVersion = '3.6-test';
   let callback = null;
-  let fakeEvent = ['SUCCESS', 0, { native: 'ios', mobile: true, version: mockVersion }];
+  let fakeEvent = [
+    'SUCCESS',
+    0,
+    { platform: { native: 'ios', mobile: true, version: mockVersion } }
+  ];
   let addEventListener = (m, cb) => {
     callback = cb;
   };

@@ -21,12 +21,13 @@ let outMsgQueue = [];
  * @static
  * @return {StaticValueStore}
  */
-const dataStore = initial => ({
-  mobile: initial.mobile,
-  version: initial.version,
-  native: initial.native,
-  ios: initial.native === 'ios',
-  android: initial.native === 'android'
+const dataStore = ({ platform, language }) => ({
+  mobile: platform.mobile,
+  version: platform.version,
+  native: platform.native,
+  ios: platform.native === 'ios',
+  android: platform.native === 'android',
+  langInfos: language
 });
 
 /**
@@ -145,6 +146,7 @@ const sendMessage = store => async (cmd, ...payload) => {
     case actions.mobile:
     case actions.ios:
     case actions.android:
+    case actions.langInfos:
       return sendValue(store[reversedActions[cmd]]);
     case actions.openLink:
       return sendInvocationCall(invocationMapping[cmd], payload);
