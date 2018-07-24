@@ -61,7 +61,7 @@ async function sendMessage(cmd, ...payload) {
     case action.android:
       return sendValue(fallbacks.isAndroid());
     case action.openLink:
-      return sendValue(fallbacks.openLink.apply(payload));
+      return sendValue(fallbacks.openLink.apply(null, payload));
     case action.nativeUpload:
       return sendValue(fallbacks.nativeUpload());
     case action.langInfos:
