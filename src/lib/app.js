@@ -113,7 +113,7 @@ export async function getBranchLanguages() {
  */
 export async function getBranchDefaultLanguage() {
   log.debug('app/getBranchDefaultLanguage');
-  return sendMessage(cmd.branchDefaultLang);
+  return sendMessage(cmd.langInfos).then(res => res.branchDefaultLanguage);
 }
 
 /**
