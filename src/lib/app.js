@@ -103,7 +103,7 @@ export async function getLanguageInfos() {
  *
  * @return {Promise<any>}
  */
-export async function getContentLanguages() {
+export async function getBranchLanguages() {
   log.debug('app/getContentLanguages');
-  return sendMessage(cmd.langInfos).then(res => res.contentLanguages);
+  return sendMessage(cmd.langInfos).then(res => res.branchLanguages);
 }
