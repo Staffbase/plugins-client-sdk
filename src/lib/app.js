@@ -75,9 +75,7 @@ export async function openLinkInternal(url) {
  * Open a native file upload dialog on device which do not support it by default.
  *
  * Works only for android now
- *
- * @param {string} url the url to open in the browser
- *
+ * *
  * @return {Promise<any>}
  */
 export async function openNativeFileDialog() {
@@ -106,4 +104,30 @@ export async function getLanguageInfos() {
 export async function getBranchLanguages() {
   log.debug('app/getContentLanguages');
   return sendMessage(cmd.langInfos).then(res => res.branchLanguages);
+}
+
+/**
+ * Get content languages configured in the app.
+ *
+ * @return {Promise<any>}
+ */
+export async function getBranchDefaultLanguage() {
+  log.debug('app/getBranchDefaultLanguage');
+  return sendMessage(cmd.branchDefaultLang);
+}
+
+/**
+ * Gets the choosen language from a given content object
+ *
+ * @example
+ *    getPreferredContentLocale(['de_DE', 'en_EN']) // => 'de_DE'
+ *    getPreferredContentLocale({'de_DE': {1,'eins'}, 'en_EN': {1: 'one'}}) // => 'de_DE'
+ *
+ * @param {object|array} content the content to choose the locale from
+ *
+ * @return {Promise<string>}
+ */
+export async function getPreferredContentLocale(content) {
+  log.debug('app/getPreferredContentLocale');
+  return sendMessage(cmd.prefContentLang, content);
 }

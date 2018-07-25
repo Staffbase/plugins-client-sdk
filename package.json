@@ -57,6 +57,9 @@
       "limit": "40 KB"
     }
   ],
+  "dependencies": {
+    "loglevel": "^1.6.1"
+  },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-plugin-external-helpers": "^6.22.0",
@@ -74,7 +77,6 @@
     "eslint-plugin-prettier": "^2.6.0",
     "jsdom": "11.11.0",
     "jsdom-global": "3.0.2",
-    "loglevel": "^1.6.1",
     "mocha": "^3.5.3",
     "mocha-jsdom": "^2.0.0",
     "prettier": "^1.13.5",

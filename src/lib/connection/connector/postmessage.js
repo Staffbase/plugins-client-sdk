@@ -16,7 +16,7 @@ let log = require('loglevel');
  * @typedef {{ branchDefaultLanguage: BranchDefaultLanguage, branchLanguage: BranchLanguage, contentLanguage: BranchDefaultLanguage, contentLanguages: BranchLanguage, deviceLanguage: BranchDefaultLanguage }} LanguageInfos
  * @typedef {{ platform: PlatformInfos, language: LanguageInfos }} InitialValues
  *
- * @typedef {{ mobile: boolean, version: string|number, native: string, ios: boolean, android: boolean, langInfos: LanguageInfos }} StaticValueStore
+ * @typedef {{ mobile: boolean, version: string|number, native: string, ios: boolean, android: boolean, langInfos: LanguageInfos, branchDefaultLang: BranchDefaultLanguage }} StaticValueStore
  */
 
 /**
@@ -33,7 +33,8 @@ const dataStore = ({ platform, language }) => ({
   native: platform.native,
   ios: platform.native === 'ios',
   android: platform.native === 'android',
-  langInfos: language
+  langInfos: language,
+  branchDefaultLang: language.branchDefaultLanguage
 });
 
 let connection = null;
@@ -138,10 +139,12 @@ const sendMessage = store => async (cmd, ...payload) => {
     case actions.mobile:
     case actions.ios:
     case actions.android:
+    case actions.branchDefaultLang:
       return sendValue(store[reversedActions[cmd]]);
     case actions.langInfos:
     case actions.openLink:
     case actions.nativeUpload:
+    case actions.prefContentLang:
       return sendInvocationCall(invocationMapping[cmd], payload);
     default:
       throw new Error('Command ' + cmd + ' not supported by driver');
