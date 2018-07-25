@@ -3,7 +3,7 @@ import fallback from './connector/fallback.js';
 import postMessage from './connector/postmessage.js';
 import putMessage from './connector/putMessage.js';
 let log = require('loglevel');
-let connect = Promise.race([postMessage(), postMessageLegacy(), putMessage(), fallback()]);
+let connect = Promise.race([putMessage(), postMessage(), postMessageLegacy(), fallback()]);
 
 /**
  * Send a message to the App
