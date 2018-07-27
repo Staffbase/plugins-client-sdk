@@ -51,11 +51,15 @@ describe('connector/fallback', function() {
         // mock window open
         window.open = function() {};
 
+        let commandData = {
+          prefContentLang: ['de_DE', 'en_EN']
+        };
+
         for (let cmd in command) {
           if (command.hasOwnProperty(cmd)) {
             it('command.' + cmd, async () => {
               let sendFn = await connect();
-              return expect(sendFn(command[cmd])).to.be.fulfilled;
+              return expect(sendFn(command[cmd], commandData[cmd])).to.be.fulfilled;
             });
           }
         }

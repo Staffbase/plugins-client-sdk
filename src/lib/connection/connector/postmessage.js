@@ -16,7 +16,7 @@ let log = require('loglevel');
  * @typedef {{ branchDefaultLanguage: BranchDefaultLanguage, branchLanguage: BranchLanguage, contentLanguage: BranchDefaultLanguage, contentLanguages: BranchLanguage, deviceLanguage: BranchDefaultLanguage }} LanguageInfos
  * @typedef {{ platform: PlatformInfos, language: LanguageInfos }} InitialValues
  *
- * @typedef {{ mobile: boolean, version: string|number, native: string, ios: boolean, android: boolean, langInfos: LanguageInfos, branchDefaultLang: BranchDefaultLanguage }} StaticValueStore
+ * @typedef {{ mobile: boolean, version: string|number, native: string, ios: boolean, android: boolean, langInfos: LanguageInfos, branchDefaultLanguage: BranchDefaultLanguage }} StaticValueStore
  */
 
 /**
@@ -34,7 +34,7 @@ const dataStore = ({ platform, language }) => ({
   ios: platform.native === 'ios',
   android: platform.native === 'android',
   langInfos: language,
-  branchDefaultLang: language.branchDefaultLanguage
+  branchDefaultLanguage: language.branchDefaultLanguage
 });
 
 let connection = null;
