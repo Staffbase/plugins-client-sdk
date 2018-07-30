@@ -66,6 +66,10 @@ async function sendMessage(cmd, ...payload) {
       return sendValue(fallbacks.nativeUpload());
     case action.langInfos:
       return sendValue(fallbacks.langInfos());
+    case action.branchDefaultLang:
+      return sendValue(fallbacks.getBranchDefaultLanguage());
+    case action.prefContentLang:
+      return sendValue(fallbacks.getPreferredContentLocale.apply(null, payload));
     default:
       // should actualy never ever happen
       throw new Error('Command ' + cmd + ' not supported by driver');

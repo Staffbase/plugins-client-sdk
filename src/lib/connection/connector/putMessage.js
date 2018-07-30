@@ -27,7 +27,8 @@ const dataStore = ({ platform, language }) => ({
   native: platform.native,
   ios: platform.native === 'ios',
   android: platform.native === 'android',
-  langInfos: language
+  langInfos: language,
+  branchDefaultLang: language.branchDefaultLanguage
 });
 
 /**
@@ -147,8 +148,10 @@ const sendMessage = store => async (cmd, ...payload) => {
     case actions.ios:
     case actions.android:
     case actions.langInfos:
+    case actions.branchDefaultLang:
       return sendValue(store[reversedActions[cmd]]);
     case actions.openLink:
+    case actions.prefContentLang:
       return sendInvocationCall(invocationMapping[cmd], payload);
     default:
       throw new Error('Command ' + cmd + ' not supported by driver');

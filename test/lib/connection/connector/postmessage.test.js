@@ -170,7 +170,25 @@ function stubPostMessage(msg) {
   let fakeEvent = [
     'SUCCESS',
     0,
-    { platform: { native: 'ios', mobile: true, version: mockVersion } }
+    {
+      platform: { native: 'ios', mobile: true, version: mockVersion },
+      language: {
+        branchLanguages: {
+          de: {
+            key: 'de',
+            locale: 'de_DE',
+            name: 'Deutsch',
+            localizedName: 'Deutsch'
+          },
+          en: {
+            key: 'en',
+            locale: 'en_US',
+            name: 'English',
+            localizedName: 'Englisch'
+          }
+        }
+      }
+    }
   ];
   let addEventListener = (m, cb) => {
     callback = cb;

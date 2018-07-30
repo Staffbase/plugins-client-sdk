@@ -3,6 +3,7 @@
  */
 let log = require('loglevel');
 let userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
+let currentLanguage = window && window.navigator.language.split('-').shift();
 
 // initialize Staffbase/platform namespace for ios frontend js code injection
 // in case of executeJs of app version 3.5 this object gets overwritten
@@ -129,4 +130,54 @@ export function nativeUpload(url) {
 export function langInfos() {
   log.debug('fallback/langInfos');
   return langData;
+}
+
+/**
+ * Get the default language object
+ *
+ * @return {Object} the language object
+ */
+export function getBranchDefaultLanguage() {
+  log.debug('fallback/getBranchDefaultLanguage');
+
+  // TODO: Add additional languages or maybe load the language from an url
+  const defaultLanguages = {
+    de: {
+      key: 'de',
+      locale: 'de_DE',
+      name: 'Deutsch',
+      localizedName: 'Deutsch'
+    },
+    en: {
+      key: 'en',
+      locale: 'en_US',
+      name: 'English',
+      localizedName: 'Englisch'
+    }
+  };
+
+  return defaultLanguages[currentLanguage] || defaultLanguages.en;
+}
+
+/**
+ * Gets the choosen language from a given content object
+ *
+ * @param {object|array} content
+ *
+ * @return {string}
+ */
+export function getPreferredContentLocale(content) {
+  log.debug('fallback/getPreferredContentLocale');
+  const locale = getBranchDefaultLanguage().locale;
+
+  if (Array.isArray(content)) {
+    const index = content.indexOf(locale);
+
+    return content[index] || content[0];
+  } else {
+    const keys = Object.keys(content);
+    const index = keys.indexOf(locale);
+
+    return keys[index] || keys[0];
+  }
 }
