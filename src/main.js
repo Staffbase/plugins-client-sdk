@@ -17,7 +17,7 @@ export { isMobile as isMobileApp } from './lib/app';
 export { openLink } from './lib/app';
 export { openLinkExternal } from './lib/app';
 export { openLinkInternal } from './lib/app';
-export { getContentLanguages } from './lib/app';
+export { getBranchLanguages } from './lib/app';
 export { getBranchDefaultLanguage } from './lib/app';
 export { getPreferredContentLocale } from './lib/app';
 

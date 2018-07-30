@@ -16,6 +16,24 @@ if (typeof window !== 'undefined') {
   };
 }
 
+// TODO: Add additional languages or maybe load the language from an url
+let langData = {
+  branchLanguages: {
+    de: {
+      key: 'de',
+      locale: 'de_DE',
+      name: 'Deutsch',
+      localizedName: 'Deutsch'
+    },
+    en: {
+      key: 'en',
+      locale: 'en_US',
+      name: 'English',
+      localizedName: 'Englisch'
+    }
+  }
+};
+
 /**
  * Get the current Staffbase app version
  *
@@ -111,9 +129,7 @@ export function nativeUpload(url) {
  */
 export function langInfos() {
   log.debug('fallback/langInfos');
-  return {
-    contentLanguages: ['en_EN', 'de_DE']
-  };
+  return langData;
 }
 
 /**
