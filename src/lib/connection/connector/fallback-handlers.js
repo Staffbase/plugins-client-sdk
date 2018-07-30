@@ -5,6 +5,8 @@ let log = require('loglevel');
 let userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
 let currentLanguage = window && window.navigator.language.split('-').shift();
 
+const languageObject = require('./fallback-languages.json');
+
 // initialize Staffbase/platform namespace for ios frontend js code injection
 // in case of executeJs of app version 3.5 this object gets overwritten
 if (typeof window !== 'undefined') {
@@ -15,24 +17,6 @@ if (typeof window !== 'undefined') {
     native: false
   };
 }
-
-// TODO: Add additional languages or maybe load the language from an url
-let langData = {
-  branchLanguages: {
-    de: {
-      key: 'de',
-      locale: 'de_DE',
-      name: 'Deutsch',
-      localizedName: 'Deutsch'
-    },
-    en: {
-      key: 'en',
-      locale: 'en_US',
-      name: 'English',
-      localizedName: 'Englisch'
-    }
-  }
-};
 
 /**
  * Get the current Staffbase app version
@@ -129,7 +113,11 @@ export function nativeUpload(url) {
  */
 export function langInfos() {
   log.debug('fallback/langInfos');
-  return langData;
+  const defaultLanguages = languageObject;
+
+  return {
+    contentLanguages: Object.keys(languageObject).map(langKey => defaultLanguages[langKey].locale)
+  };
 }
 
 /**
@@ -140,23 +128,7 @@ export function langInfos() {
 export function getBranchDefaultLanguage() {
   log.debug('fallback/getBranchDefaultLanguage');
 
-  // TODO: Add additional languages or maybe load the language from an url
-  const defaultLanguages = {
-    de: {
-      key: 'de',
-      locale: 'de_DE',
-      name: 'Deutsch',
-      localizedName: 'Deutsch'
-    },
-    en: {
-      key: 'en',
-      locale: 'en_US',
-      name: 'English',
-      localizedName: 'Englisch'
-    }
-  };
-
-  return defaultLanguages[currentLanguage] || defaultLanguages.en;
+  return languageObject[currentLanguage] || languageObject.en;
 }
 
 /**
