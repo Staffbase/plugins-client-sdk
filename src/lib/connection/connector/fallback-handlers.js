@@ -2,10 +2,11 @@
  * Fallbacks for all sdk commands
  */
 import locales from './../../../model/locales';
+import normalize from './../../utils/normalize';
 
 let log = require('loglevel');
 let userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
-let currentLanguage = window && window.navigator.language.split('-').shift();
+let currentLanguage = normalize(window && window.navigator.language);
 
 // initialize Staffbase/platform namespace for ios frontend js code injection
 // in case of executeJs of app version 3.5 this object gets overwritten
@@ -113,10 +114,12 @@ export function nativeUpload(url) {
  */
 export function langInfos() {
   log.debug('fallback/langInfos');
-  const defaultLanguages = locales;
 
   return {
-    contentLanguages: Object.keys(locales).map(langKey => defaultLanguages[langKey].locale)
+    contentLanguage: getBranchDefaultLanguage(),
+    branchLanguages: locales,
+    deviceLanguage: getBranchDefaultLanguage(),
+    contentLanguages: locales
   };
 }
 
@@ -128,7 +131,7 @@ export function langInfos() {
 export function getBranchDefaultLanguage() {
   log.debug('fallback/getBranchDefaultLanguage');
 
-  return locales[currentLanguage] || locales.en;
+  return locales[currentLanguage] || locales.en || locales[Object.keys(locales)[0]];
 }
 
 /**
