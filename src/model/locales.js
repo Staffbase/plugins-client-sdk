@@ -2,235 +2,196 @@ export default {
   ar: {
     key: 'ar',
     locale: 'ar_AE',
-    name: 'العربية',
-    localizedName: 'Arabic'
+    name: 'العربية'
   },
   bg: {
     key: 'bg',
     locale: 'bg_BG',
-    name: 'български',
-    localizedName: 'Bulgarian'
+    name: 'български'
   },
   bn: {
     key: 'bn',
     locale: 'bn_BD',
-    name: 'বাংলা',
-    localizedName: 'Bengali'
+    name: 'বাংলা'
   },
   cs: {
     key: 'cs',
     locale: 'cs_CZ',
-    name: 'Čeština',
-    localizedName: 'Czech'
+    name: 'Čeština'
   },
   da: {
     key: 'da',
     locale: 'da_DK',
-    name: 'Dansk',
-    localizedName: 'Danish'
+    name: 'Dansk'
   },
   de: {
     key: 'de',
     locale: 'de_DE',
-    name: 'Deutsch',
-    localizedName: 'German'
+    name: 'Deutsch'
   },
   el: {
     key: 'el',
     locale: 'el_GR',
-    name: 'Ελληνικά',
-    localizedName: 'Greek'
+    name: 'Ελληνικά'
   },
   en: {
     key: 'en',
     locale: 'en_US',
-    name: 'English',
-    localizedName: 'English'
+    name: 'English'
   },
   es: {
     key: 'es',
     locale: 'es_ES',
-    name: 'Español',
-    localizedName: 'Spanish'
+    name: 'Español'
   },
   et: {
     key: 'et',
     locale: 'et_EE',
-    name: 'Eesti keel',
-    localizedName: 'Estonian'
+    name: 'Eesti keel'
   },
   fi: {
     key: 'fi',
     locale: 'fi_FI',
-    name: 'Suomi',
-    localizedName: 'Finnish'
+    name: 'Suomi'
   },
   fr: {
     key: 'fr',
     locale: 'fr_FR',
-    name: 'Français',
-    localizedName: 'French'
+    name: 'Français'
   },
   he: {
     key: 'he',
     locale: 'he_IL',
-    name: 'עִבְרִית',
-    localizedName: 'Hebrew'
+    name: 'עִבְרִית'
   },
   hi: {
     key: 'hi',
     locale: 'hi_IN',
-    name: 'िन्दी',
-    localizedName: 'Hindi'
+    name: 'िन्दी'
   },
   hr: {
     key: 'hr',
     locale: 'hr_HR',
-    name: 'Hrvatski',
-    localizedName: 'Croatian'
+    name: 'Hrvatski'
   },
   hu: {
     key: 'hu',
     locale: 'hu_HU',
-    name: 'Magyar',
-    localizedName: 'Hungarian'
+    name: 'Magyar'
   },
   is: {
     key: 'is',
     locale: 'is_IS',
-    name: 'Íslenska',
-    localizedName: 'Icelandic'
+    name: 'Íslenska'
   },
   it: {
     key: 'it',
     locale: 'it_IT',
-    name: 'Italiano',
-    localizedName: 'Italian'
+    name: 'Italiano'
   },
   ja: {
     key: 'ja',
     locale: 'ja_JP',
-    name: '日本語',
-    localizedName: 'Japanese'
+    name: '日本語'
   },
   ko: {
     key: 'ko',
     locale: 'ko_KR',
-    name: '한국어',
-    localizedName: 'Korean'
+    name: '한국어'
   },
   lt: {
     key: 'lt',
     locale: 'lt_LT',
-    name: 'Lietuvių',
-    localizedName: 'Lithuanian'
+    name: 'Lietuvių'
   },
   lv: {
     key: 'lv',
     locale: 'lv_LV',
-    name: 'Latviešu',
-    localizedName: 'Latvian'
+    name: 'Latviešu'
   },
   mk: {
     key: 'mk',
     locale: 'mk_MK',
-    name: 'Македонски',
-    localizedName: 'Macedonian'
+    name: 'Македонски'
   },
   ms: {
     key: 'ms',
     locale: 'ms_MY',
-    name: 'Bahasa Melayu',
-    localizedName: 'Malay'
+    name: 'Bahasa Melayu'
   },
   nl: {
     key: 'nl',
     locale: 'nl_NL',
-    name: 'Nederlands',
-    localizedName: 'Dutch'
+    name: 'Nederlands'
   },
   no: {
     key: 'no',
     locale: 'no_NO',
-    name: 'Norsk',
-    localizedName: 'Norwegian'
+    name: 'Norsk'
   },
   pl: {
     key: 'pl',
     locale: 'pl_PL',
-    name: 'Polski',
-    localizedName: 'Polish'
+    name: 'Polski'
   },
   pt: {
     key: 'pt',
     locale: 'pt_BR',
-    name: 'Português',
-    localizedName: 'Portuguese'
+    name: 'Português'
   },
   ro: {
     key: 'ro',
     locale: 'ro_RO',
-    name: 'Română',
-    localizedName: 'Romanian'
+    name: 'Română'
   },
   ru: {
     key: 'ru',
     locale: 'ru_RU',
-    name: 'Русский',
-    localizedName: 'Russian'
+    name: 'Русский'
   },
   sk: {
     key: 'sk',
     locale: 'sk_SK',
-    name: 'Slovenský',
-    localizedName: 'Slovak'
+    name: 'Slovenský'
   },
   sl: {
     key: 'sl',
     locale: 'sl_SI',
-    name: 'Slovenščina',
-    localizedName: 'Slovenian'
+    name: 'Slovenščina'
   },
   sr: {
     key: 'sr',
     locale: 'sr_RS',
-    name: 'Српски',
-    localizedName: 'Serbian'
+    name: 'Српски'
   },
   sv: {
     key: 'sv',
     locale: 'sv_SE',
-    name: 'Svenska',
-    localizedName: 'Swedish'
+    name: 'Svenska'
   },
   th: {
     key: 'th',
     locale: 'th_TH',
-    name: 'ภาษาไทย',
-    localizedName: 'Thai'
+    name: 'ภาษาไทย'
   },
   tr: {
     key: 'tr',
     locale: 'tr_TR',
-    name: 'Türkçe',
-    localizedName: 'Turkish'
+    name: 'Türkçe'
   },
   uk: {
     key: 'uk',
     locale: 'uk_UA',
-    name: 'Українська',
-    localizedName: 'Ukrainian'
+    name: 'Українська'
   },
   vi: {
     key: 'vi',
     locale: 'vi_VN',
-    name: 'Tiếng Việt',
-    localizedName: 'Vietnamese'
+    name: 'Tiếng Việt'
   },
   zh: {
     key: 'zh',
     locale: 'zh_CN',
-    name: '简体中文',
-    localizedName: 'Chinese'
+    name: '简体中文'
   }
 };
