@@ -114,11 +114,13 @@ export function nativeUpload(url) {
  */
 export function langInfos() {
   log.debug('fallback/langInfos');
+  const branchDefaultLanguage = getBranchDefaultLanguage();
 
   return {
-    contentLanguage: getBranchDefaultLanguage(),
+    contentLanguage: branchDefaultLanguage,
     branchLanguages: locales,
-    deviceLanguage: getBranchDefaultLanguage(),
+    branchDefaultLanguage: branchDefaultLanguage,
+    deviceLanguage: branchDefaultLanguage,
     contentLanguages: locales
   };
 }
@@ -131,7 +133,7 @@ export function langInfos() {
 export function getBranchDefaultLanguage() {
   log.debug('fallback/getBranchDefaultLanguage');
 
-  return locales[currentLanguage] || locales.en || locales[Object.keys(locales)[0]];
+  return locales[currentLanguage] || locales.en;
 }
 
 /**
