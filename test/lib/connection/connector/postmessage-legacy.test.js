@@ -70,38 +70,26 @@ describe('connector/postmessage-legacy', function() {
           stubPostMessage(info);
         });
 
-        it(command.ios, async () => {
+        it('should reject on unknown commands', async () => {
           let sendFn = await connect();
-          let ios = await sendFn(command.ios);
-          expect(ios).to.equal(true);
+          return expect(sendFn('unknown-asdf-command')).to.be.rejected;
         });
 
-        it(command.android, async () => {
-          let sendFn = await connect();
-          let android = await sendFn(command.android);
-          expect(android).to.equal(false);
-        });
+        describe('accepts all comands', async function() {
+          // mock window open
+          window.open = function() {};
 
-        it(command.mobile, async () => {
-          let sendFn = await connect();
-          let mobile = await sendFn(command.mobile);
-          expect(mobile).to.equal(true);
-        });
+          let commandData = {
+            prefContentLang: ['de_DE', 'en_US']
+          };
 
-        it(command.version, async () => {
-          let sendFn = await connect();
-          let version = await sendFn(command.version);
-          expect(version).to.equal(mockVersion);
-        });
-
-        it('throw error on unknown commands', async () => {
-          let sendFn = await connect();
-          let data = 'Command unknown not supported by driver';
-
-          try {
-            await sendFn('unknown');
-          } catch (error) {
-            expect(error.message).to.equal(data);
+          for (let cmd in command) {
+            if (command.hasOwnProperty(cmd)) {
+              it('command.' + cmd, async () => {
+                let sendFn = await connect();
+                return expect(sendFn(command[cmd], commandData[cmd])).to.be.fulfilled;
+              });
+            }
           }
         });
       });
