@@ -1,9 +1,12 @@
 /**
  * Fallbacks for all sdk commands
  */
+import locales from './../../../model/locales';
+import normalize from './../../utils/normalize';
+
 let log = require('loglevel');
 let userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
-let currentLanguage = window && window.navigator.language.split('-').shift();
+let currentLanguage = normalize(window && window.navigator.language);
 
 // initialize Staffbase/platform namespace for ios frontend js code injection
 // in case of executeJs of app version 3.5 this object gets overwritten
@@ -15,24 +18,6 @@ if (typeof window !== 'undefined') {
     native: false
   };
 }
-
-// TODO: Add additional languages or maybe load the language from an url
-let langData = {
-  branchLanguages: {
-    de: {
-      key: 'de',
-      locale: 'de_DE',
-      name: 'Deutsch',
-      localizedName: 'Deutsch'
-    },
-    en: {
-      key: 'en',
-      locale: 'en_US',
-      name: 'English',
-      localizedName: 'Englisch'
-    }
-  }
-};
 
 /**
  * Get the current Staffbase app version
@@ -129,7 +114,15 @@ export function nativeUpload(url) {
  */
 export function langInfos() {
   log.debug('fallback/langInfos');
-  return langData;
+  const branchDefaultLanguage = getBranchDefaultLanguage();
+
+  return {
+    contentLanguage: branchDefaultLanguage,
+    branchLanguages: locales,
+    branchDefaultLanguage: branchDefaultLanguage,
+    deviceLanguage: branchDefaultLanguage,
+    contentLanguages: locales
+  };
 }
 
 /**
@@ -140,23 +133,7 @@ export function langInfos() {
 export function getBranchDefaultLanguage() {
   log.debug('fallback/getBranchDefaultLanguage');
 
-  // TODO: Add additional languages or maybe load the language from an url
-  const defaultLanguages = {
-    de: {
-      key: 'de',
-      locale: 'de_DE',
-      name: 'Deutsch',
-      localizedName: 'Deutsch'
-    },
-    en: {
-      key: 'en',
-      locale: 'en_US',
-      name: 'English',
-      localizedName: 'Englisch'
-    }
-  };
-
-  return defaultLanguages[currentLanguage] || defaultLanguages.en;
+  return locales[currentLanguage] || locales.en;
 }
 
 /**
