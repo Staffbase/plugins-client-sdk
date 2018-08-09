@@ -139,13 +139,17 @@ export function getBranchDefaultLanguage() {
 /**
  * Gets the choosen language from a given content object
  *
- * @param {object|array} content
+ * @param {?object|array} content
  *
  * @return {string}
  */
 export function getPreferredContentLocale(content) {
   log.debug('fallback/getPreferredContentLocale');
   const locale = getBranchDefaultLanguage().locale;
+
+  if (!content) {
+    return locale;
+  }
 
   if (Array.isArray(content)) {
     const index = content.indexOf(locale);
