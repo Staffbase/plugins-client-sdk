@@ -72,7 +72,7 @@ describe('connector/postmessage-legacy', function() {
 
         it('should reject on unknown commands', async () => {
           let sendFn = await connect();
-          return expect(sendFn('unknown-asdf-command')).to.be.rejected;
+          return expect(sendFn('unknown-command')).to.be.rejected;
         });
 
         describe('accepts all comands', async function() {
