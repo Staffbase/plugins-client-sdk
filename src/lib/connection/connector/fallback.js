@@ -45,45 +45,33 @@ export function disconnect() {
  * @return {Promise<any>} which awaits the response of the Staffbase App
  * @throws {Error} on commands not supported by protocol
  */
-async function sendMessage(cmd, ...payload) {
+export async function sendMessage(cmd, ...payload) {
   log.info('fallback/sendMessage ' + cmd);
   log.debug('fallback/sendMessage/payload ' + JSON.stringify(payload));
 
   switch (cmd) {
     case action.version:
-      return sendValue(fallbacks.getVersion());
+      return fallbacks.getVersion();
     case action.native:
-      return sendValue(fallbacks.isNative());
+      return fallbacks.isNative();
     case action.mobile:
-      return sendValue(fallbacks.isMobile());
+      return fallbacks.isMobile();
     case action.ios:
-      return sendValue(fallbacks.isIos());
+      return fallbacks.isIos();
     case action.android:
-      return sendValue(fallbacks.isAndroid());
+      return fallbacks.isAndroid();
     case action.openLink:
-      return sendValue(fallbacks.openLink.apply(null, payload));
+      return fallbacks.openLink.apply(null, payload);
     case action.nativeUpload:
-      return sendValue(fallbacks.nativeUpload());
+      return fallbacks.nativeUpload();
     case action.langInfos:
-      return sendValue(fallbacks.langInfos());
+      return fallbacks.langInfos();
     case action.branchDefaultLang:
-      return sendValue(fallbacks.getBranchDefaultLanguage());
+      return fallbacks.getBranchDefaultLanguage();
     case action.prefContentLang:
-      return sendValue(fallbacks.getPreferredContentLocale.apply(null, payload));
+      return fallbacks.getPreferredContentLocale.apply(null, payload);
     default:
       // should actualy never ever happen
       throw new Error('Command ' + cmd + ' not supported by driver');
   }
-}
-
-/**
- * Fake values as real calls
- *
- * Binds all values to the connect promise
- * @param {any} val that will be sent when it's ready
- * @return {Promise<any>} the promissified val
- */
-async function sendValue(val) {
-  log.info('fallback/sendValue ' + JSON.stringify(val));
-  return connection.then(() => val);
 }
