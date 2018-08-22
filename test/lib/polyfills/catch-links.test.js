@@ -54,7 +54,7 @@ describe('catch-links', () => {
 
     eventFire(clickElement, 'click');
 
-    expect(globalCallbackSpy.mock.calls.length).toBeFalsy();
+    expect(globalCallbackSpy.mock.calls.length).toBe.false;
   });
 
   test('should do nothing if link is local', () => {
@@ -66,7 +66,7 @@ describe('catch-links', () => {
 
     eventFire(clickElement, 'click');
 
-    expect(globalCallbackSpy.mock.calls.length).toBeFalsy();
+    expect(globalCallbackSpy.mock.calls.length).toBe.false;
   });
 
   test('should invoke callback if link has target _blank', () => {
@@ -78,10 +78,10 @@ describe('catch-links', () => {
 
     eventFire(clickElement, 'click');
 
-    expect(globalCallbackSpy.mock.calls.length).toBeTruthy();
+    expect(globalCallbackSpy.mock.calls.length).toBe.true;
   });
 
-  xit('should invoke callback if link is external', () => {
+  test('should invoke callback if link is external', () => {
     const element = document.createElement('div');
     element.innerHTML = nestedStructureWithLinks;
     const clickElement = element.querySelector('#anchorDomain');
@@ -90,11 +90,11 @@ describe('catch-links', () => {
 
     eventFire(clickElement, 'click');
 
-    expect(globalCallbackSpy.mock.calls.length).toBeTruthy();
+    expect(globalCallbackSpy.mock.calls.length).toBe.true;
   });
 
   // Disabled as the callback is somehow not set correctly
-  xit('should invoke callback if link open via onclick handler', () => {
+  test('should invoke callback if link open via onclick handler', () => {
     const element = document.createElement('div');
 
     element.innerHTML = nestedStructureWithLinks;
@@ -108,7 +108,7 @@ describe('catch-links', () => {
 
     eventFire(clickElement, 'click');
 
-    expect(globalCallbackSpy.mock.calls.length).toBeTruthy();
+    expect(globalCallbackSpy.mock.calls.length).toBe.true;
   });
 });
 

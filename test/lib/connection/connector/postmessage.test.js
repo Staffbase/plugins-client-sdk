@@ -4,6 +4,9 @@
 import connect from '../../../../src/lib/connection/connector/postmessage';
 import { disconnect } from '../../../../src/lib/connection/connector/postmessage';
 import command from '../../../../src/lib/connection/commands.js';
+import genId from '../../../../src/lib/utils/genId';
+
+jest.mock('../../../../src/lib/utils/genId');
 
 describe('postmessage', () => {
   describe('connect', () => {
@@ -57,7 +60,7 @@ describe('postmessage', () => {
 
         beforeEach(() => {
           responseSpy = jest.fn();
-          stubPostMessage(responseSpy.mockReturnValueOnce(info));
+          stubPostMessage();
         });
 
         afterEach(() => {
@@ -106,39 +109,32 @@ describe('postmessage', () => {
         let responseSpy;
 
         beforeEach(() => {
-          responseSpy = jest.fn();
-          stubPostMessage(responseSpy.mockReturnValueOnce(info));
+          responseSpy = stubPostMessage();
         });
 
         afterEach(() => {
           disconnect();
         });
-
-        xit(command.openLink, async () => {
+        test(command.openLink, async () => {
           let sendFn = await connect();
           let data = 'Link opened';
-          let success = ['SUCCESS', 1, data];
+          let success = ['SUCCESS', 'ff22', data];
 
-          responseSpy.mockReturnValueOnce(success);
+          genId.mockReturnValue('ff22');
+          responseSpy.changeMsg(success);
           let result = await sendFn(command.openLink, 'http://staffbase.com');
 
-          expect(result).to.equal(data);
+          expect(result).toEqual(data);
         });
 
-        xit('reject on error', async () => {
+        test('reject on error', async () => {
           let sendFn = await connect();
           let data = 'No url set.';
-          let error = ['ERROR', 1, data];
+          let error = ['ERROR', 'ff22', data];
 
-          responseSpy.mockReturnValueOnce(error);
-
-          try {
-            await sendFn(command.openLink, 'http://staffbase.com');
-            /* eslint-disable no-undef */
-            done(new Error('it did not throw'));
-          } catch (error) {
-            expect(error).to.equal(data);
-          }
+          genId.mockReturnValue('ff22');
+          responseSpy.changeMsg(error);
+          expect(sendFn(command.openLink, 'http://staffbase.com')).rejects.toEqual(data);
         });
       });
     });
@@ -152,11 +148,12 @@ describe('postmessage', () => {
  * either with default event mock or the provided msg
  *
  * @param {any} msg to send to the eventListener
+ * @return {function}
  */
 function stubPostMessage(msg) {
   let mockVersion = '3.6-test';
   let callback = null;
-  let fakeEvent = [
+  let fakeEvent = msg || [
     'SUCCESS',
     0,
     {
@@ -182,13 +179,19 @@ function stubPostMessage(msg) {
   let addEventListener = (m, cb) => {
     callback = cb;
   };
+
   let postMessage = (m, o) => {
     // forwards correct message id
     fakeEvent[1] = m[1];
-    callback({ data: fakeEvent });
+
+    window.setTimeout(() => {
+      callback({ data: fakeEvent });
+    }, 10);
   };
 
   mockPostMessage(addEventListener, postMessage);
+
+  return { changeMsg: msg => (fakeEvent = msg) };
 }
 
 /**
@@ -201,8 +204,8 @@ function stubPostMessage(msg) {
  * @param {function} cbPM window.postMessage implementation
  */
 function mockPostMessage(cbAEL, cbPM) {
-  window = {};
-  window.parent = {};
-  window.addEventListener = cbAEL || function(message, receiveMessage) {};
-  window.parent.postMessage = cbPM || function(message, origin) {};
+  jest
+    .spyOn(window, 'addEventListener')
+    .mockImplementation(cbAEL || function(message, receiveMessage) {});
+  jest.spyOn(window.parent, 'postMessage').mockImplementation(cbPM || function(message, origin) {});
 }
