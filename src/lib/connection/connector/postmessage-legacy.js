@@ -115,11 +115,11 @@ const sendMessage = store => async (cmd, ...payload) => {
     case actions.mobile:
     case actions.ios:
     case actions.android:
-      return sendValue(store[reversedActions[cmd]]);
+      return store[reversedActions[cmd]];
     case actions.nativeUpload:
       return sendInvocationCall(invocationMapping[cmd], payload);
     default:
-      return sendValue(fallBackSendMessage.apply(null, [cmd, ...payload]));
+      return fallBackSendMessage.apply(null, [cmd, ...payload]);
   }
 };
 
@@ -140,15 +140,3 @@ const sendInvocationCall = (process, args) => {
 
   return getPromise(connectId);
 };
-
-/**
- * Fake initial values as real calls
- *
- * Binds all values to the connect promise
- * @param {any} val that will be sent when it's ready
- * @return {Promise<any>} the promissified val
- */
-async function sendValue(val) {
-  log.info('pm-legacy/sendValue ' + JSON.stringify(val));
-  return connection.then(() => val);
-}

@@ -140,12 +140,12 @@ const sendMessage = store => async (cmd, ...payload) => {
     case actions.ios:
     case actions.android:
     case actions.branchDefaultLang:
-      return sendValue(store[reversedActions[cmd]]);
+      return store[reversedActions[cmd]];
     case actions.langInfos:
     case actions.openLink:
     case actions.nativeUpload:
     case actions.prefContentLang:
-      return sendInvocationCall(invocationMapping[cmd], payload);
+      return sendInvocationCall(createPromise())(invocationMapping[cmd], payload);
     default:
       throw new Error('Command ' + cmd + ' not supported by driver');
   }
@@ -154,29 +154,17 @@ const sendMessage = store => async (cmd, ...payload) => {
 /**
  * Create a promise and send an invocation call to the frontend
  *
+ * @param {number} promiseID the id of the connection promise
  * @param {string} process the name of the process to call
  * @param {array} args an array of arguments
  *
  * @return {Promise}
  */
-const sendInvocationCall = (process, args) => {
+const sendInvocationCall = promiseID => (process, args) => {
   log.info('postMessage/sendInvocationCall ' + process);
   log.debug('postMessage/sendInvocationCall/payload ' + JSON.stringify(args));
 
-  const promiseID = createPromise();
   window.parent.postMessage([protocol.INVOCATION, promiseID, process, args], targetOrigin);
 
   return getPromise(promiseID);
 };
-
-/**
- * Fake initial values as real calls
- *
- * Binds all values to the connect promise
- * @param {any} val that will be sent when it's ready
- * @return {Promise<any>} the promissified val
- */
-async function sendValue(val) {
-  log.info('postMessage/sendValue ' + JSON.stringify(val));
-  return connection.then(() => val);
-}
