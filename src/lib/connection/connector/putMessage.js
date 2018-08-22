@@ -49,9 +49,10 @@ export default function connect() {
   });
 
   window.Staffbase = window.Staffbase || {};
-  window.Staffbase.plugins = window.Staffbase.Staffbase || {};
-  window.Staffbase.plugins.getMessages = mutliMessageProvider;
-  window.Staffbase.plugins.putMessage = singleMessageReceiver;
+  window.Staffbase.plugins = {
+    getMessages: multiMessageProvider,
+    putMessage: singleMessageReceiver
+  };
 
   outMsgQueue.push([protocol.HELLO, connectId, []]);
 
@@ -66,12 +67,12 @@ export default function connect() {
  *
  * @return {Array} ordered list of messages
  */
-function mutliMessageProvider() {
-  log.info('putMessage/mutliMessageProvider');
+function multiMessageProvider() {
+  log.info('putMessage/multiMessageProvider');
   let queueRef = outMsgQueue;
-  log.debug('putMessage/mutliMessageProvider/queue/before ' + JSON.stringify(outMsgQueue));
+  log.debug('putMessage/multiMessageProvider/queue/before ' + JSON.stringify(outMsgQueue));
   outMsgQueue = [];
-  log.debug('putMessage/mutliMessageProvider/queue/after ' + JSON.stringify(outMsgQueue));
+  log.debug('putMessage/multiMessageProvider/queue/after ' + JSON.stringify(outMsgQueue));
   return queueRef;
 }
 
