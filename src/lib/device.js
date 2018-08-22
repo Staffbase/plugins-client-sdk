@@ -10,27 +10,27 @@ let log = require('loglevel');
  *
  * @return {Promise<boolean>}
  */
-export async function isIos() {
+export const isIos = async () => {
   log.debug('device/isIos');
   return sendMessage(cmd.ios);
-}
+};
 
 /**
  * Check if device is using android
  *
  * @return {Promise<boolean>}
  */
-export async function isAndroid() {
+export const isAndroid = async () => {
   log.debug('device/isAndroid');
   return sendMessage(cmd.android);
-}
+};
 
 /**
  * Check if device is able to perform a download.
  *
  * @return {Promise<boolean>}
  */
-export async function canDownload() {
+export const canDownload = async () => {
   log.debug('device/canDownload');
   let [native, version, ios] = await Promise.all([isNative(), getVersion(), isIos()]);
 
@@ -42,4 +42,4 @@ export async function canDownload() {
   // but apps below 3.5 don't have the platform information from the frontend available
   // so we disable download for all native ios devices under these conditions
   return !(compareVersions(version, '3.5') < 0 && native && ios);
-}
+};

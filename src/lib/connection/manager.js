@@ -37,7 +37,7 @@ function createPromiseObject() {
  *
  * @return {string} id of the promise
  */
-export function create() {
+export const create = () => {
   let id = createPromiseObject();
 
   let p = new Promise(function(resolve, reject) {
@@ -48,7 +48,7 @@ export function create() {
   promiseMap[id].promise = p;
   log.debug('promiseManager/create ' + id);
   return id;
-}
+};
 
 /**
  * Resolve a promise by id.
@@ -58,7 +58,7 @@ export function create() {
  *
  * @throws {Error} on unknown id
  */
-export function resolve(id, msg) {
+export const resolve = (id, msg) => {
   log.debug('promiseManager/resolve ' + id);
   if (!promiseMap.hasOwnProperty(id))
     throw new Error('Tried to resolve an unknown [' + id + '] promise.');
@@ -66,7 +66,7 @@ export function resolve(id, msg) {
   promiseMap[id].resolve(msg);
 
   delete promiseMap[id];
-}
+};
 
 /**
  * Reject a promise by id.
@@ -75,14 +75,14 @@ export function resolve(id, msg) {
  * @param {any} err the error which will will be passed to reject
  * @throws {Error} on unknown id
  */
-export function reject(id, err) {
+export const reject = (id, err) => {
   log.debug('promiseManager/reject ' + id);
   if (!promiseMap.hasOwnProperty(id))
     throw new Error('Tried to reject an unknown [' + id + '] promise.');
 
   promiseMap[id].reject(err);
   delete promiseMap[id];
-}
+};
 
 /**
  * Get a promise by id.
@@ -91,16 +91,16 @@ export function reject(id, err) {
  * @return {Promise} the promise identified by id
  * @throws {Error} on unknown id
  */
-export function get(id) {
+export const get = id => {
   if (!promiseMap.hasOwnProperty(id))
     throw new Error('Tried to get an unknown [' + id + '] promise.');
 
   return promiseMap[id].promise;
-}
+};
 
 /**
  * Resets the state to the default
  */
-export function unload() {
+export const unload = () => {
   promiseMap = {};
-}
+};
