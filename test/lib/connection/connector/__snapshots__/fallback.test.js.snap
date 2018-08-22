@@ -1,0 +1,439 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`connector/fallback connect send function accepts all comands command.android 1`] = `false`;
+
+exports[`connector/fallback connect send function accepts all comands command.branchDefaultLang 1`] = `
+Object {
+  "key": "en",
+  "locale": "en_US",
+  "name": "English",
+}
+`;
+
+exports[`connector/fallback connect send function accepts all comands command.ios 1`] = `false`;
+
+exports[`connector/fallback connect send function accepts all comands command.langInfos 1`] = `
+Object {
+  "branchDefaultLanguage": Object {
+    "key": "en",
+    "locale": "en_US",
+    "name": "English",
+  },
+  "branchLanguages": Object {
+    "ar": Object {
+      "key": "ar",
+      "locale": "ar_AE",
+      "name": "العربية",
+    },
+    "bg": Object {
+      "key": "bg",
+      "locale": "bg_BG",
+      "name": "български",
+    },
+    "bn": Object {
+      "key": "bn",
+      "locale": "bn_BD",
+      "name": "বাংলা",
+    },
+    "cs": Object {
+      "key": "cs",
+      "locale": "cs_CZ",
+      "name": "Čeština",
+    },
+    "da": Object {
+      "key": "da",
+      "locale": "da_DK",
+      "name": "Dansk",
+    },
+    "de": Object {
+      "key": "de",
+      "locale": "de_DE",
+      "name": "Deutsch",
+    },
+    "el": Object {
+      "key": "el",
+      "locale": "el_GR",
+      "name": "Ελληνικά",
+    },
+    "en": Object {
+      "key": "en",
+      "locale": "en_US",
+      "name": "English",
+    },
+    "es": Object {
+      "key": "es",
+      "locale": "es_ES",
+      "name": "Español",
+    },
+    "et": Object {
+      "key": "et",
+      "locale": "et_EE",
+      "name": "Eesti keel",
+    },
+    "fi": Object {
+      "key": "fi",
+      "locale": "fi_FI",
+      "name": "Suomi",
+    },
+    "fr": Object {
+      "key": "fr",
+      "locale": "fr_FR",
+      "name": "Français",
+    },
+    "he": Object {
+      "key": "he",
+      "locale": "he_IL",
+      "name": "עִבְרִית",
+    },
+    "hi": Object {
+      "key": "hi",
+      "locale": "hi_IN",
+      "name": "िन्दी",
+    },
+    "hr": Object {
+      "key": "hr",
+      "locale": "hr_HR",
+      "name": "Hrvatski",
+    },
+    "hu": Object {
+      "key": "hu",
+      "locale": "hu_HU",
+      "name": "Magyar",
+    },
+    "is": Object {
+      "key": "is",
+      "locale": "is_IS",
+      "name": "Íslenska",
+    },
+    "it": Object {
+      "key": "it",
+      "locale": "it_IT",
+      "name": "Italiano",
+    },
+    "ja": Object {
+      "key": "ja",
+      "locale": "ja_JP",
+      "name": "日本語",
+    },
+    "ko": Object {
+      "key": "ko",
+      "locale": "ko_KR",
+      "name": "한국어",
+    },
+    "lt": Object {
+      "key": "lt",
+      "locale": "lt_LT",
+      "name": "Lietuvių",
+    },
+    "lv": Object {
+      "key": "lv",
+      "locale": "lv_LV",
+      "name": "Latviešu",
+    },
+    "mk": Object {
+      "key": "mk",
+      "locale": "mk_MK",
+      "name": "Македонски",
+    },
+    "ms": Object {
+      "key": "ms",
+      "locale": "ms_MY",
+      "name": "Bahasa Melayu",
+    },
+    "nl": Object {
+      "key": "nl",
+      "locale": "nl_NL",
+      "name": "Nederlands",
+    },
+    "no": Object {
+      "key": "no",
+      "locale": "no_NO",
+      "name": "Norsk",
+    },
+    "pl": Object {
+      "key": "pl",
+      "locale": "pl_PL",
+      "name": "Polski",
+    },
+    "pt": Object {
+      "key": "pt",
+      "locale": "pt_BR",
+      "name": "Português",
+    },
+    "ro": Object {
+      "key": "ro",
+      "locale": "ro_RO",
+      "name": "Română",
+    },
+    "ru": Object {
+      "key": "ru",
+      "locale": "ru_RU",
+      "name": "Русский",
+    },
+    "sk": Object {
+      "key": "sk",
+      "locale": "sk_SK",
+      "name": "Slovenský",
+    },
+    "sl": Object {
+      "key": "sl",
+      "locale": "sl_SI",
+      "name": "Slovenščina",
+    },
+    "sr": Object {
+      "key": "sr",
+      "locale": "sr_RS",
+      "name": "Српски",
+    },
+    "sv": Object {
+      "key": "sv",
+      "locale": "sv_SE",
+      "name": "Svenska",
+    },
+    "th": Object {
+      "key": "th",
+      "locale": "th_TH",
+      "name": "ภาษาไทย",
+    },
+    "tr": Object {
+      "key": "tr",
+      "locale": "tr_TR",
+      "name": "Türkçe",
+    },
+    "uk": Object {
+      "key": "uk",
+      "locale": "uk_UA",
+      "name": "Українська",
+    },
+    "vi": Object {
+      "key": "vi",
+      "locale": "vi_VN",
+      "name": "Tiếng Việt",
+    },
+    "zh": Object {
+      "key": "zh",
+      "locale": "zh_CN",
+      "name": "简体中文",
+    },
+  },
+  "contentLanguage": Object {
+    "key": "en",
+    "locale": "en_US",
+    "name": "English",
+  },
+  "contentLanguages": Object {
+    "ar": Object {
+      "key": "ar",
+      "locale": "ar_AE",
+      "name": "العربية",
+    },
+    "bg": Object {
+      "key": "bg",
+      "locale": "bg_BG",
+      "name": "български",
+    },
+    "bn": Object {
+      "key": "bn",
+      "locale": "bn_BD",
+      "name": "বাংলা",
+    },
+    "cs": Object {
+      "key": "cs",
+      "locale": "cs_CZ",
+      "name": "Čeština",
+    },
+    "da": Object {
+      "key": "da",
+      "locale": "da_DK",
+      "name": "Dansk",
+    },
+    "de": Object {
+      "key": "de",
+      "locale": "de_DE",
+      "name": "Deutsch",
+    },
+    "el": Object {
+      "key": "el",
+      "locale": "el_GR",
+      "name": "Ελληνικά",
+    },
+    "en": Object {
+      "key": "en",
+      "locale": "en_US",
+      "name": "English",
+    },
+    "es": Object {
+      "key": "es",
+      "locale": "es_ES",
+      "name": "Español",
+    },
+    "et": Object {
+      "key": "et",
+      "locale": "et_EE",
+      "name": "Eesti keel",
+    },
+    "fi": Object {
+      "key": "fi",
+      "locale": "fi_FI",
+      "name": "Suomi",
+    },
+    "fr": Object {
+      "key": "fr",
+      "locale": "fr_FR",
+      "name": "Français",
+    },
+    "he": Object {
+      "key": "he",
+      "locale": "he_IL",
+      "name": "עִבְרִית",
+    },
+    "hi": Object {
+      "key": "hi",
+      "locale": "hi_IN",
+      "name": "िन्दी",
+    },
+    "hr": Object {
+      "key": "hr",
+      "locale": "hr_HR",
+      "name": "Hrvatski",
+    },
+    "hu": Object {
+      "key": "hu",
+      "locale": "hu_HU",
+      "name": "Magyar",
+    },
+    "is": Object {
+      "key": "is",
+      "locale": "is_IS",
+      "name": "Íslenska",
+    },
+    "it": Object {
+      "key": "it",
+      "locale": "it_IT",
+      "name": "Italiano",
+    },
+    "ja": Object {
+      "key": "ja",
+      "locale": "ja_JP",
+      "name": "日本語",
+    },
+    "ko": Object {
+      "key": "ko",
+      "locale": "ko_KR",
+      "name": "한국어",
+    },
+    "lt": Object {
+      "key": "lt",
+      "locale": "lt_LT",
+      "name": "Lietuvių",
+    },
+    "lv": Object {
+      "key": "lv",
+      "locale": "lv_LV",
+      "name": "Latviešu",
+    },
+    "mk": Object {
+      "key": "mk",
+      "locale": "mk_MK",
+      "name": "Македонски",
+    },
+    "ms": Object {
+      "key": "ms",
+      "locale": "ms_MY",
+      "name": "Bahasa Melayu",
+    },
+    "nl": Object {
+      "key": "nl",
+      "locale": "nl_NL",
+      "name": "Nederlands",
+    },
+    "no": Object {
+      "key": "no",
+      "locale": "no_NO",
+      "name": "Norsk",
+    },
+    "pl": Object {
+      "key": "pl",
+      "locale": "pl_PL",
+      "name": "Polski",
+    },
+    "pt": Object {
+      "key": "pt",
+      "locale": "pt_BR",
+      "name": "Português",
+    },
+    "ro": Object {
+      "key": "ro",
+      "locale": "ro_RO",
+      "name": "Română",
+    },
+    "ru": Object {
+      "key": "ru",
+      "locale": "ru_RU",
+      "name": "Русский",
+    },
+    "sk": Object {
+      "key": "sk",
+      "locale": "sk_SK",
+      "name": "Slovenský",
+    },
+    "sl": Object {
+      "key": "sl",
+      "locale": "sl_SI",
+      "name": "Slovenščina",
+    },
+    "sr": Object {
+      "key": "sr",
+      "locale": "sr_RS",
+      "name": "Српски",
+    },
+    "sv": Object {
+      "key": "sv",
+      "locale": "sv_SE",
+      "name": "Svenska",
+    },
+    "th": Object {
+      "key": "th",
+      "locale": "th_TH",
+      "name": "ภาษาไทย",
+    },
+    "tr": Object {
+      "key": "tr",
+      "locale": "tr_TR",
+      "name": "Türkçe",
+    },
+    "uk": Object {
+      "key": "uk",
+      "locale": "uk_UA",
+      "name": "Українська",
+    },
+    "vi": Object {
+      "key": "vi",
+      "locale": "vi_VN",
+      "name": "Tiếng Việt",
+    },
+    "zh": Object {
+      "key": "zh",
+      "locale": "zh_CN",
+      "name": "简体中文",
+    },
+  },
+  "deviceLanguage": Object {
+    "key": "en",
+    "locale": "en_US",
+    "name": "English",
+  },
+}
+`;
+
+exports[`connector/fallback connect send function accepts all comands command.mobile 1`] = `false`;
+
+exports[`connector/fallback connect send function accepts all comands command.native 1`] = `false`;
+
+exports[`connector/fallback connect send function accepts all comands command.nativeUpload 1`] = `undefined`;
+
+exports[`connector/fallback connect send function accepts all comands command.openLink 1`] = `undefined`;
+
+exports[`connector/fallback connect send function accepts all comands command.prefContentLang 1`] = `"en_US"`;
+
+exports[`connector/fallback connect send function accepts all comands command.version 1`] = `"3.4"`;

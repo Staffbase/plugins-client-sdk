@@ -1,46 +1,44 @@
+/* eslint-env jest, es6 */
+
 import { canDownload } from '../../src/lib/device';
 import connect, { disconnect } from '../../src/lib/connection/connector/fallback';
 import * as App from './../../src/lib/app';
 import * as FallbackHandler from './../../src/lib/connection/connector/fallback-handlers';
 
-let chai = require('chai');
-let expect = chai.expect;
-let sinon = require('sinon');
-
-describe('device', function() {
+describe('device', () => {
   describe('canDownload', () => {
-    let isNativeStub = sinon.stub(App, 'isNative');
-    let getVersionStub = sinon.stub(App, 'getVersion');
-    let isIosStub = sinon.stub(FallbackHandler, 'isIos');
-    beforeEach(function() {
+    let isNativeStub = jest.spyOn(App, 'isNative');
+    let getVersionStub = jest.spyOn(App, 'getVersion');
+    let isIosStub = jest.spyOn(FallbackHandler, 'isIos');
+    beforeEach(() => {
       disconnect();
     });
 
-    it('should return that the device can download', async () => {
+    test('should return that the device can download', async () => {
       await connect();
-      isNativeStub.returns(false);
-      getVersionStub.returns('3.4');
-      isIosStub.returns(false);
+      isNativeStub.mockReturnValue(false);
+      getVersionStub.mockReturnValue('3.4');
+      isIosStub.mockReturnValue(false);
       let result = await canDownload();
-      expect(result).to.be.true;
+      expect(result).toBeTruthy();
     });
 
-    it('should return that the device can not download', async () => {
+    test('should return that the device can not download', async () => {
       await connect();
-      isNativeStub.returns(true);
-      getVersionStub.returns('3.4');
-      isIosStub.returns(true);
+      isNativeStub.mockReturnValue(true);
+      getVersionStub.mockReturnValue('3.4');
+      isIosStub.mockReturnValue(true);
       let result = await canDownload();
-      expect(result).to.be.false;
+      expect(result).toBeFalsy();
     });
 
-    it('should return that the device can download with development version', async () => {
+    test('should return that the device can download with development version', async () => {
       await connect();
-      isNativeStub.returns(true);
-      getVersionStub.returns('3.6-dev');
-      isIosStub.returns(true);
+      isNativeStub.mockReturnValue(true);
+      getVersionStub.mockReturnValue('3.6-dev');
+      isIosStub.mockReturnValue(true);
       let result = await canDownload();
-      expect(result).to.be.true;
+      expect(result).toBeTruthy();
     });
   });
 });

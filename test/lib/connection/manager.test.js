@@ -1,17 +1,14 @@
 /* eslint-disable no-global-assign */
-
-let chai = require('chai');
-let expect = chai.expect;
-// let sinon = require('sinon');
+/* eslint-env jest, es6 */
 
 import * as manager from '../../../src/lib/connection/manager';
 
-describe('manager', function() {
-  beforeEach(function() {});
+describe('manager', () => {
+  beforeEach(() => {});
 
-  afterEach(function() {});
+  afterEach(() => {});
 
-  it('should delete a promise after resolving', done => {
+  test('should delete a promise after resolving', done => {
     const promiseID = manager.create();
     const promise = manager.get(promiseID);
 
@@ -20,14 +17,14 @@ describe('manager', function() {
         manager.get(promiseID);
       })
       .catch(function(error) {
-        expect(error).to.be.ok;
+        expect(error).toBe.ok;
         done();
       });
 
     manager.resolve(promiseID, true);
   });
 
-  it('should delete a promise after rejecting', done => {
+  test('should delete a promise after rejecting', done => {
     const promiseID = manager.create();
     const promise = manager.get(promiseID);
 
@@ -37,7 +34,7 @@ describe('manager', function() {
         manager.get(promiseID);
       })
       .catch(function(error) {
-        expect(error).to.be.ok;
+        expect(error).toBe.ok;
         done();
       });
 

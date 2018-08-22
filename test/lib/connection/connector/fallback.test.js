@@ -1,53 +1,56 @@
+/* eslint-env jest, es6 */
+
 import connect from '../../../../src/lib/connection/connector/fallback';
 import { disconnect } from '../../../../src/lib/connection/connector/fallback';
 import command from '../../../../src/lib/connection/commands';
 
-let chai = require('chai');
-let expect = chai.expect;
-
-describe('connector/fallback', function() {
-  describe('connect', function() {
-    afterEach(function() {
+describe('connector/fallback', () => {
+  describe('connect', () => {
+    afterEach(() => {
       disconnect();
     });
 
-    it('should be a function', () => {
-      expect(connect).to.be.a('function');
+    test('should be a function', () => {
+      expect(connect).toBeFunction();
     });
 
-    it('should yield a Promise', () => {
+    test('should yield a Promise', () => {
       let res = connect();
-      expect(res).to.be.a('promise');
+      expect(res instanceof Promise).toBeTrue;
     });
 
-    it('should provide a function', async () => {
+    test('should provide a function', async () => {
       let fn = await connect();
-      expect(fn).to.be.a('function');
+      expect(fn).toBeFunction();
     });
 
-    it('should resolve after 500 ms', async () => {
+    test('should resolve after 500 ms', async () => {
       let start = new Date().getTime();
       return connect().then(() => {
         let end = new Date().getTime();
-        expect(end - start).to.be.at.least(499);
+        expect(end - start).toBeGreaterThan(499);
       });
     });
 
-    it('should resolve before 600 ms', async () => {
+    test('should resolve before 600 ms', async () => {
       let start = new Date().getTime();
       return connect().then(() => {
         let end = new Date().getTime();
-        expect(end - start).to.be.at.most(600);
+        expect(end - start).toBeLessThan(600);
       });
     });
 
-    describe('send function', async function() {
-      it('should reject on unknown commands', async () => {
+    describe('send function', async () => {
+      test('should reject on unknown commands', async () => {
         let sendFn = await connect();
-        return expect(sendFn('unknown-asdf-command')).to.be.rejected;
+        try {
+          await sendFn('unknown-command');
+        } catch (e) {
+          expect(e.message).toEqual('Command unknown-command not supported by driver');
+        }
       });
 
-      describe('accepts all comands', async function() {
+      describe('accepts all comands', async () => {
         // mock window open
         window.open = function() {};
 
@@ -57,9 +60,9 @@ describe('connector/fallback', function() {
 
         for (let cmd in command) {
           if (command.hasOwnProperty(cmd)) {
-            it('command.' + cmd, async () => {
+            test('command.' + cmd, async () => {
               let sendFn = await connect();
-              return expect(sendFn(command[cmd], commandData[cmd])).to.be.fulfilled;
+              return expect(sendFn(command[cmd], commandData[cmd])).resolves.toMatchSnapshot();
             });
           }
         }

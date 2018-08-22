@@ -1,128 +1,117 @@
 /* eslint-disable no-global-assign */
-
-let chai = require('chai');
-let expect = chai.expect;
-let sinon = require('sinon');
+/* eslint-env jest, es6 */
 
 import connect from '../../../../src/lib/connection/connector/postmessage';
 import { disconnect } from '../../../../src/lib/connection/connector/postmessage';
 import command from '../../../../src/lib/connection/commands.js';
 
-describe('postmessage', function() {
-  describe('connect', function() {
-    let sandbox;
-
-    beforeEach(function() {
+describe('postmessage', () => {
+  describe('connect', () => {
+    beforeEach(() => {
       disconnect();
-      sandbox = sinon.createSandbox();
       mockPostMessage();
     });
 
-    afterEach(function() {
+    afterEach(() => {
       disconnect();
-      sandbox.restore();
     });
 
-    it('should be a function', () => {
-      expect(connect).to.be.a('function');
+    test('should be a function', () => {
+      expect(connect).toBeFunction();
     });
 
-    it('should yield a Promise', () => {
+    test('should yield a Promise', () => {
       let res = connect();
-      expect(res).to.be.a('promise');
+      expect(res instanceof Promise).toBeTrue;
     });
 
-    it('should use postMessage', () => {
-      sandbox.spy(window.parent, 'postMessage');
+    test('should use postMessage', () => {
+      jest.spyOn(window.parent, 'postMessage');
       connect();
-      expect(window.parent.postMessage.calledOnce).to.be.true;
+      expect(window.parent.postMessage).toHaveBeenCalledTimes(1);
     });
 
-    it('should send a HELLO message', () => {
-      sandbox.spy(window.parent, 'postMessage');
+    test('should send a HELLO message', () => {
+      jest.spyOn(window.parent, 'postMessage');
       connect();
-      let message = window.parent.postMessage.getCalls()[0].args[0];
-      expect(message[0]).to.equal('HELLO');
+      let message = window.parent.postMessage.mock.calls[0][0];
+      expect(message[0]).toEqual('HELLO');
     });
 
-    it('should resolve on SUCCESS message', async () => {
+    test('should resolve on SUCCESS message', async () => {
       stubPostMessage();
-      return expect(await connect()).to.be.ok;
+      return expect(await connect()).toBe.ok;
     });
 
-    it('should provide a function', async () => {
+    test('should provide a function', async () => {
       stubPostMessage();
       let fn = await connect();
-      return expect(fn).to.be.a('function');
+      return expect(fn).toBeFunction();
     });
 
-    describe('send function', async function() {
-      describe('should accept sdk commands', async function() {
+    describe('send function', async () => {
+      describe('should accept sdk commands', async () => {
         let mockVersion = '3.6-test';
         let info = ['SUCCESS', 0, { native: 'ios', mobile: true, version: mockVersion }];
         let responseSpy;
 
         beforeEach(() => {
-          sandbox = sinon.createSandbox();
-          responseSpy = sandbox.stub();
-          stubPostMessage(responseSpy.onFirstCall().returns(info));
+          responseSpy = jest.fn();
+          stubPostMessage(responseSpy.mockReturnValueOnce(info));
         });
 
         afterEach(() => {
           disconnect();
-          sandbox.restore();
         });
 
-        it(command.ios, async () => {
+        test(command.ios, async () => {
           let sendFn = await connect();
           let ios = await sendFn(command.ios);
-          expect(ios).to.equal(true);
+          expect(ios).toBe.true;
         });
 
-        it(command.android, async () => {
+        test(command.android, async () => {
           let sendFn = await connect();
           let android = await sendFn(command.android);
-          expect(android).to.equal(false);
+          expect(android).toBe.false;
         });
 
-        it(command.mobile, async () => {
+        test(command.mobile, async () => {
           let sendFn = await connect();
           let mobile = await sendFn(command.mobile);
-          expect(mobile).to.equal(true);
+          expect(mobile).toBe.true;
         });
 
-        it(command.version, async () => {
+        test(command.version, async () => {
           let sendFn = await connect();
           let version = await sendFn(command.version);
-          expect(version).to.equal(mockVersion);
+          expect(version).toEqual(mockVersion);
         });
 
-        it('throw error on unknown commands', async () => {
+        test('throw error on unknown commands', async () => {
           let sendFn = await connect();
           let data = 'Command unknown not supported by driver';
 
           try {
             await sendFn('unknown');
           } catch (error) {
-            expect(error.message).to.equal(data);
+            expect(error.message).toEqual(data);
           }
         });
       });
 
-      describe('should send invoke commands', async function() {
+      describe('should send invoke commands', async () => {
         let mockVersion = '3.6-test';
         let info = ['SUCCESS', 0, { native: 'ios', mobile: true, version: mockVersion }];
         let responseSpy;
 
         beforeEach(() => {
-          sandbox = sinon.createSandbox();
-          responseSpy = sandbox.stub();
-          stubPostMessage(responseSpy.onFirstCall().returns(info));
+          responseSpy = jest.fn();
+          stubPostMessage(responseSpy.mockReturnValueOnce(info));
         });
 
         afterEach(() => {
           disconnect();
-          sandbox.restore();
         });
 
         xit(command.openLink, async () => {
@@ -130,7 +119,7 @@ describe('postmessage', function() {
           let data = 'Link opened';
           let success = ['SUCCESS', 1, data];
 
-          responseSpy.onSecondCall().returns(success);
+          responseSpy.mockReturnValueOnce(success);
           let result = await sendFn(command.openLink, 'http://staffbase.com');
 
           expect(result).to.equal(data);
@@ -141,7 +130,7 @@ describe('postmessage', function() {
           let data = 'No url set.';
           let error = ['ERROR', 1, data];
 
-          responseSpy.onSecondCall().returns(error);
+          responseSpy.mockReturnValueOnce(error);
 
           try {
             await sendFn(command.openLink, 'http://staffbase.com');
