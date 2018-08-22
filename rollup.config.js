@@ -2,6 +2,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 import { uglify } from 'rollup-plugin-uglify';
+import stripLogger from 'rollup-plugin-strip-logger';
 import license from 'rollup-plugin-license';
 import pkg from './package.json';
 
@@ -18,6 +19,11 @@ Bundle of <%= pkg.name %>
 `;
 
 const defaultBrowserPluginOptions = [
+  stripLogger({
+    variableNames: ['log'],
+    propertyNames: ['debug', 'info', 'enableAll'],
+    packageNames: ['log-level']
+  }),
   resolve(),
   commonjs(),
   babel({
@@ -93,6 +99,14 @@ export default [
       { file: pkg.main, format: 'cjs', sourcemap: true },
       { file: pkg.module, format: 'es', sourcemap: true }
     ],
-    plugins: [resolve(), commonjs()]
+    plugins: [
+      stripLogger({
+        variableNames: ['log'],
+        propertyNames: ['debug', 'info', 'enableAll'],
+        packageNames: ['log-level']
+      }),
+      resolve(),
+      commonjs()
+    ]
   }
 ];
