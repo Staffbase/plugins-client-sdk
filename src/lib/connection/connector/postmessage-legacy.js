@@ -5,6 +5,9 @@ import {
   resolve as resolvePromise,
   get as getPromise
 } from '../manager.js';
+
+import { sendMessage as fallBackSendMessage } from './fallback.js';
+
 let log = require('loglevel');
 
 let connection = null;
@@ -116,7 +119,7 @@ const sendMessage = store => async (cmd, ...payload) => {
     case actions.nativeUpload:
       return sendInvocationCall(invocationMapping[cmd], payload);
     default:
-      throw new Error('Command ' + cmd + ' not supported by driver');
+      return sendValue(fallBackSendMessage.apply(null, [cmd, ...payload]));
   }
 };
 

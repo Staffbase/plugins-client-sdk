@@ -52,7 +52,7 @@ describe('connector/fallback', function() {
         window.open = function() {};
 
         let commandData = {
-          prefContentLang: ['de_DE', 'en_EN']
+          prefContentLang: ['de_DE', 'en_US']
         };
 
         for (let cmd in command) {
