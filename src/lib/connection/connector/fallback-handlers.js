@@ -24,10 +24,10 @@ if (typeof window !== 'undefined') {
  *
  * @return {String} version
  */
-export function getVersion() {
+export const getVersion = () => {
   log.debug('fallback/getVersion');
   return window.Staffbase.platform.version;
-}
+};
 
 /**
  * Are we running in a native app
@@ -35,7 +35,7 @@ export function getVersion() {
  * works only for ios or old initial native data
  * @return {Boolean}
  */
-export function isNative() {
+export const isNative = () => {
   log.debug('fallback/isNative');
   let safari = /safari/i.test(userAgent);
   return (
@@ -43,76 +43,76 @@ export function isNative() {
     window.Staffbase.platform.native === 'ios' ||
     (!safari && isIos())
   );
-}
+};
 
 /**
  * Are we running on a mobile device
  *
  * @return {Boolean}
  */
-export function isMobile() {
+export const isMobile = () => {
   log.debug('fallback/isMobile');
   return window.Staffbase.platform.mobile;
-}
+};
 
 /**
  * Are we running on a desktop device
  *
  * @return {Boolean}
  */
-export function isDesktop() {
+export const isDesktop = () => {
   log.debug('fallback/isDesktop');
   return /Win|Mac|Linux/i.test(userAgent);
-}
+};
 
 /**
  * Are we running on android
  *
  * @return {Boolean}
  */
-export function isAndroid() {
+export const isAndroid = () => {
   log.debug('fallback/isAndroid');
   return window.Staffbase.platform.native === 'android' || /Android/i.test(userAgent);
-}
+};
 
 /**
  * Are we running on ios
  *
  * @return {Boolean}
  */
-export function isIos() {
+export const isIos = () => {
   log.debug('fallback/isIos');
   return window.Staffbase.platform.native === 'ios' || /iPhone|iPad|iPod/i.test(userAgent);
-}
+};
 
 /**
  * Open an external link
  *
  * @param {String} url address
  */
-export function openLink(url) {
+export const openLink = url => {
   log.debug('fallback/openLink');
   window.open(url, '_blank');
-}
+};
 
 /**
  * Open an external link
  *
  * @param {String} url address
  */
-export function nativeUpload(url) {
+export const nativeUpload = url => {
   log.debug('fallback/nativeUpload');
   log.warn('Native upload is not possible in fallback mode.');
   // nothing we can do here
   return;
-}
+};
 
 /**
  * Get extensive locale information.
  *
  * @return {Object} containing various language informations
  */
-export function langInfos() {
+export const langInfos = () => {
   log.debug('fallback/langInfos');
   const branchDefaultLanguage = getBranchDefaultLanguage();
 
@@ -123,18 +123,18 @@ export function langInfos() {
     deviceLanguage: branchDefaultLanguage,
     contentLanguages: locales
   };
-}
+};
 
 /**
  * Get the default language object
  *
  * @return {Object} the language object
  */
-export function getBranchDefaultLanguage() {
+export const getBranchDefaultLanguage = () => {
   log.debug('fallback/getBranchDefaultLanguage');
 
   return locales[currentLanguage] || locales.en;
-}
+};
 
 /**
  * Gets the choosen language from a given content object
@@ -143,7 +143,7 @@ export function getBranchDefaultLanguage() {
  *
  * @return {string}
  */
-export function getPreferredContentLocale(content) {
+export const getPreferredContentLocale = content => {
   log.debug('fallback/getPreferredContentLocale');
   const locale = getBranchDefaultLanguage().locale;
 
@@ -161,4 +161,4 @@ export function getPreferredContentLocale(content) {
 
     return keys[index] || keys[0];
   }
-}
+};
