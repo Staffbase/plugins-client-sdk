@@ -15,9 +15,11 @@ let connect = Promise.race([putMessage(), postMessage(), postMessageLegacy(), fa
  * @param {any} payload that will be attached to the message
  * @return {Promise<any>} result of the request
  */
-export default async (msg, ...payload) => {
+const sendMessage = async (msg, ...payload) => {
   log.info('connection/sendMessage ' + msg);
   log.debug('connection/sendMessage/payload ' + JSON.stringify(payload));
 
   return connect.then(sendFn => sendFn(msg, ...payload));
 };
+
+export default sendMessage;

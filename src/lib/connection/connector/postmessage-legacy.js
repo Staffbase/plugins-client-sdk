@@ -41,7 +41,7 @@ const dataStore = initial => ({
  * Create a connection to a Staffbase app 3.5
  * @return {Promise<function>} An appropriate send function
  */
-export default () => {
+const connect = () => {
   if (connection) {
     throw new Error('Connect called twice.');
   }
@@ -56,6 +56,8 @@ export default () => {
   window.parent.postMessage(protocol.init, targetOrigin);
   return connection;
 };
+
+export default connect;
 
 /**
  * Disconnect from the Staffbase App

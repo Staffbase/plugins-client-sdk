@@ -37,7 +37,7 @@ const dataStore = ({ platform, language }) => ({
  * Create a connection to a Staffbase app 3.6 from a native tab
  * @return {Promise<function>} An appropriate send function
  */
-export default () => {
+const connect = () => {
   if (connection) {
     throw new Error('Connect called twice.');
   }
@@ -57,6 +57,8 @@ export default () => {
 
   return connection;
 };
+
+export default connect;
 
 /**
  * A function which returns an array off messags

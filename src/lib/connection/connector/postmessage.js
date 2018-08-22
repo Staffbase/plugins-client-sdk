@@ -46,7 +46,7 @@ let targetOrigin = '*';
  * Create a connection to a Staffbase app 3.6
  * @return {Promise<function>} An appropriate send function
  */
-export default () => {
+const connect = () => {
   if (connection) {
     throw new Error('Connect called twice.');
   }
@@ -62,6 +62,8 @@ export default () => {
 
   return connection;
 };
+
+export default connect;
 
 /**
  * Disconnect from the Staffbase App
