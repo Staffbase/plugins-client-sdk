@@ -103,16 +103,16 @@ function singleMessageReceiver(msg) {
         rejectPromise(id, payload);
         break;
       default:
-        // even thougth catch-ignore is a bad style
+        // even thought catch-ignore is a bad style
         // there may be other participants listening
-        // to messages in a diffrent format so we
+        // to messages in a different format so we
         // silently ignore here
         return;
     }
   } catch (e) {
-    // even thougth catch-ignore is a bad style
+    // even thought catch-ignore is a bad style
     // there may be other participants listening
-    // to messages in a diffrent format so we
+    // to messages in a different format so we
     // silently ignore here
     return;
   }
@@ -121,7 +121,7 @@ function singleMessageReceiver(msg) {
 /**
  * Disconnect from the Staffbase App
  *
- * Only usefull for tests.
+ * Only useful for tests.
  */
 export function disconnect() {
   unloadManager();
@@ -185,7 +185,7 @@ const sendInvocationCall = (process, args) => {
  *
  * Binds all values to the connect promise
  * @param {any} val that will be sent when it's ready
- * @return {Promise<any>} the promissified val
+ * @return {Promise<any>} the promisified val
  */
 async function sendValue(val) {
   log.info('putMessage/sendValue ' + JSON.stringify(val));

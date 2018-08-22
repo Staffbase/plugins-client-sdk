@@ -66,7 +66,7 @@ export default function connect() {
 /**
  * Disconnect from the Staffbase App
  *
- * Only usefull for tests.
+ * Only useful for tests.
  */
 export function disconnect() {
   unloadManager();
@@ -92,9 +92,9 @@ async function receiveMessage(evt) {
       data: [type, id, payload]
     } = evt);
   } catch (e) {
-    // even thougth catch-ignore is a bad style
+    // even thought catch-ignore is a bad style
     // there may be other participants listening
-    // to messages in a diffrent format so we
+    // to messages in a different format so we
     // silently ignore here
     return;
   }
@@ -111,9 +111,9 @@ async function receiveMessage(evt) {
       rejectPromise(id, payload);
       break;
     default:
-      // even thougth catch-ignore is a bad style
+      // even thought catch-ignore is a bad style
       // there may be other participants listening
-      // to messages in a diffrent format so we
+      // to messages in a different format so we
       // silently ignore here
       return;
   }

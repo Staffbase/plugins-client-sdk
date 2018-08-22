@@ -30,7 +30,7 @@ export default function connect() {
 /**
  * Disconnect from the Staffbase App
  *
- * Only usefull for tests.
+ * Only useful for tests.
  */
 export function disconnect() {
   connection = null;

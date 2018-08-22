@@ -60,7 +60,7 @@ export default function connect() {
 /**
  * Disconnect from the Staffbase App
  *
- * Only usefull for tests.
+ * Only useful for tests.
  */
 export function disconnect() {
   connection = null;
@@ -87,9 +87,9 @@ async function receiveMessage({ data = {} }) {
       resolvePromise(connectId, data.file);
       break;
     default:
-      // even thougth catch-ignore is a bad style
+      // even thought catch-ignore is a bad style
       // there may be other participants listening
-      // to messages in a diffrent format so we
+      // to messages in a different format so we
       // silently ignore here
       return;
   }
