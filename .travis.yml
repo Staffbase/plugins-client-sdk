@@ -6,5 +6,5 @@ node_js:
   - '9'
   - '8'
 script:
-  - npm test
+  - npx jest --coverage
   - npx danger ci

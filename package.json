@@ -9,7 +9,6 @@
     "build": "rollup -c",
     "prebuild": "npm run lint",
     "dev": "rollup -c -w",
-    "test": "jest --coverage",
     "test-unit": "jest",
     "test-dev": "jest --watch",
     "lint": "npm run lint-code && npm run lint-size",
