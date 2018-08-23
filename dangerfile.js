@@ -6,7 +6,7 @@ import { compact, includes, uniq } from 'lodash';
 
 // Setup
 const modified = danger.git.modified_files;
-const body = (danger.github.pr.body && danger.github.pr.pody.toLowerCase()) || '';
+const body = (danger.github.pr.body && danger.github.pr.body.toLowerCase()) || '';
 const title = (danger.github.pr.title && danger.github.pr.title.toLowerCase()) || '';
 
 const bodyAndTitle = body + title;
