@@ -31,15 +31,20 @@ const touchedAppOnlyFiles = touchedFiles.filter(p => includes(p, 'src/lib/'));
 
 // No PR is too small to include a description of why you made a change
 if (!body || body.length < 10) {
-  fail(':grey_question: This pull request needs a description.');
+  const title = ':grey_question: No description.';
+  const idea = 'This pull request needs a meaningful description.';
+  fail(`${title} - <i>${idea}</i>`);
 }
 
 // When there are app-changes and it's not a PR marked as trivial, expect
 // there to be CHANGELOG changes.
-const changelogChanges = includes(modified, 'CHANGELOG.md');
-if (modifiedAppFiles.length > 0 && !trivialPR && !changelogChanges) {
-  fail('No CHANGELOG added.');
-}
+// const changelogChanges = includes(modified, 'CHANGELOG.md');
+// if (modifiedAppFiles.length > 0 && !trivialPR && !changelogChanges) {
+//   const title = ':bulb: No CHANGELOG added.';
+//   const idea =
+//     "This PR needs a description of the changes which are made. If your changes don't need a log, include #trivial to the description";
+//   fail(`${title} - <i>${idea}</i>`);
+// }
 
 // Warns if the PR title contains [WIP]
 if (isWIP) {
@@ -63,9 +68,12 @@ if (!includesTestPlan) {
   warn(`${title} - <i>${idea}</i>`);
 }
 
-// Always ensure we assign someone, so that our Slackbot can do its work correctly
+// Always ensure we assign someone to review
 if (danger.github.pr.assignee === null) {
-  fail('Please assign someone to merge this PR, and optionally include people who should review.');
+  const title = ':mag: No reviewers!';
+  const idea =
+    'Please assign someone to merge this PR, and optionally include people who should review.';
+  fail(`${title} - <i>${idea}</i>`);
 }
 
 // Tags big PRs
@@ -85,7 +93,7 @@ const correspondingTestsForAppFiles = touchedAppOnlyFiles.map(f => {
 });
 
 // New app files should get new test files
-// Allow warning instead of failing if you say "Skip New Tests" inside the body, make it explicit.
+// Allow warning instead of failing if you add "#skip_new_tests" inside the body, make it explicit.
 const testFilesThatDontExist = correspondingTestsForAppFiles.filter(f => fs.existsSync(f));
 
 if (testFilesThatDontExist.length > 0) {
@@ -93,6 +101,6 @@ if (testFilesThatDontExist.length > 0) {
 
   const title = ':exclamation: Missing Test Files';
   const idea = `${testFilesThatDontExist.map(f => `  - [] \`${f}\``).join('\n')} 
-  If these files are supposed to not exist, please update your PR body to include "Skip New Tests".`;
+  If these files are supposed to not exist, please update your PR body to include "#skip_new_tests".`;
   callout(`${title} - <i>${idea}</i>`);
 }
