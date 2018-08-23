@@ -4,9 +4,6 @@ import * as path from 'path';
 import { danger, fail, markdown, schedule, warn } from 'danger';
 import { compact, includes, uniq } from 'lodash';
 
-import * as recurseSync from 'recursive-readdir-sync';
-const allFiles = recurseSync('./src');
-
 // Setup
 const pr = danger.github.pr;
 const modified = danger.git.modified_files;
