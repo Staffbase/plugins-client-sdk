@@ -1,6 +1,10 @@
+cache:
+  directories:
+    - "node_modules"
 language: node_js
 node_js:
   - '9'
   - '8'
-before_script:
+- script:
+  - npm test
   - npx danger ci

@@ -6,10 +6,10 @@
   "module": "dist/plugins-client-sdk.esm.js",
   "browser": "dist/plugins-client-sdk.umd.js",
   "scripts": {
-    "pretest": "npm run build",
     "build": "rollup -c",
     "prebuild": "npm run lint",
     "dev": "rollup -c -w",
+    "test": "jest --coverage",
     "test-unit": "jest",
     "test-dev": "jest --watch",
     "lint": "npm run lint-code && npm run lint-size",
