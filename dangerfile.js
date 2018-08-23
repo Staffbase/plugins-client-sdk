@@ -5,10 +5,10 @@ import { danger, fail, markdown, schedule, warn } from 'danger';
 import { compact, includes, uniq } from 'lodash';
 
 // Setup
-const pr = danger.github.pr;
 const modified = danger.git.modified_files;
-const body = pr.pody.toLowerCase();
-const title = pr.title.toLowerCase();
+const body = (danger.github.pr.body && danger.github.pr.pody.toLowerCase()) || '';
+const title = (danger.github.pr.title && danger.github.pr.title.toLowerCase()) || '';
+
 const bodyAndTitle = body + title;
 
 // Custom modifiers for people submitting PRs to be able to say "skip this"
@@ -66,7 +66,7 @@ if (!includesTestPlan) {
 }
 
 // Always ensure we assign someone, so that our Slackbot can do its work correctly
-if (pr.assignee === null) {
+if (danger.github.pr.assignee === null) {
   fail('Please assign someone to merge this PR, and optionally include people who should review.');
 }
 
