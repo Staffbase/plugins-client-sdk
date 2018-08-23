@@ -1,13 +1,9 @@
 /* eslint-disable no-global-assign */
-
-let chai = require('chai');
-let expect = chai.expect;
-let sinon = require('sinon');
+/* eslint-env jest, es6 */
 
 import linkCatcher from '../../../src/lib/polyfills/catch-links';
 
-describe('catch-links', function() {
-  let sandbox;
+describe('catch-links', () => {
   let globalCallbackSpy;
 
   const nestedStructureWithoutLink = `
@@ -33,26 +29,23 @@ describe('catch-links', function() {
         </div>
     </div>`;
 
-  beforeEach(function() {
-    sandbox = sinon.createSandbox();
-    globalCallbackSpy = sandbox.spy();
+  beforeEach(() => {
+    globalCallbackSpy = jest.fn();
     mockWindowEnv();
   });
 
-  afterEach(function() {
-    sandbox.restore();
-  });
+  afterEach(() => {});
 
-  it('should add a click event handler', () => {
+  test('should add a click event handler', () => {
     const element = document.createElement('div');
-    const addEventListenerSpy = sandbox.spy();
+    const addEventListenerSpy = jest.fn();
     element.addEventListener = addEventListenerSpy;
 
     linkCatcher(element, globalCallbackSpy);
-    expect(addEventListenerSpy.getCall(0).args[0]).to.equal('click');
+    expect(addEventListenerSpy.mock.calls[0][0]).toBe('click');
   });
 
-  it('should do nothing if no anchor is clicked', () => {
+  test('should do nothing if no anchor is clicked', () => {
     const element = document.createElement('div');
     element.innerHTML = nestedStructureWithoutLink;
     const clickElement = element.querySelector('#clickElement');
@@ -61,10 +54,10 @@ describe('catch-links', function() {
 
     eventFire(clickElement, 'click');
 
-    expect(globalCallbackSpy.called).to.be.false;
+    expect(globalCallbackSpy.mock.calls.length).toBe.false;
   });
 
-  it('should do nothing if link is local', () => {
+  test('should do nothing if link is local', () => {
     const element = document.createElement('div');
     element.innerHTML = nestedStructureWithLinks;
     const clickElement = element.querySelector('#anchorEmpty');
@@ -73,10 +66,10 @@ describe('catch-links', function() {
 
     eventFire(clickElement, 'click');
 
-    expect(globalCallbackSpy.called).to.be.false;
+    expect(globalCallbackSpy.mock.calls.length).toBe.false;
   });
 
-  it('should invoke callback if link has target _blank', () => {
+  test('should invoke callback if link has target _blank', () => {
     const element = document.createElement('div');
     element.innerHTML = nestedStructureWithLinks;
     const clickElement = element.querySelector('#anchorBlank');
@@ -85,10 +78,10 @@ describe('catch-links', function() {
 
     eventFire(clickElement, 'click');
 
-    expect(globalCallbackSpy.called).to.be.true;
+    expect(globalCallbackSpy.mock.calls.length).toBe.true;
   });
 
-  xit('should invoke callback if link is external', () => {
+  test('should invoke callback if link is external', () => {
     const element = document.createElement('div');
     element.innerHTML = nestedStructureWithLinks;
     const clickElement = element.querySelector('#anchorDomain');
@@ -97,11 +90,11 @@ describe('catch-links', function() {
 
     eventFire(clickElement, 'click');
 
-    expect(globalCallbackSpy.called).to.be.true;
+    expect(globalCallbackSpy.mock.calls.length).toBe.true;
   });
 
   // Disabled as the callback is somehow not set correctly
-  xit('should invoke callback if link open via onclick handler', () => {
+  test('should invoke callback if link open via onclick handler', () => {
     const element = document.createElement('div');
 
     element.innerHTML = nestedStructureWithLinks;
@@ -115,7 +108,7 @@ describe('catch-links', function() {
 
     eventFire(clickElement, 'click');
 
-    expect(globalCallbackSpy.called).to.be.true;
+    expect(globalCallbackSpy.mock.calls.length).toBe.true;
   });
 });
 

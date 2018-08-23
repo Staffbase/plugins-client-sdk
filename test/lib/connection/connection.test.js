@@ -1,14 +1,13 @@
+/* eslint-env jest, es6 */
+
 import sendMessage from '../../../src/lib/connection/connection.js';
 import command from '../../../src/lib/connection/commands.js';
 
-let chai = require('chai');
-let expect = chai.expect;
-
-describe('connection', function() {
+describe('connection', () => {
   describe('sendMessage', () => {
-    it('should provide a working sendmesage without a connection', async () => {
+    test('should provide a working sendmesage without a connection', async () => {
       let result = await sendMessage(command.version);
-      expect(result).to.be.equal('3.4');
+      expect(result).toBe('3.4');
     });
   });
 });
