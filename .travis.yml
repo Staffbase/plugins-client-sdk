@@ -3,4 +3,4 @@ node_js:
   - '9'
   - '8'
 before_script:
-  - npm danger ci
+  - npx danger ci
