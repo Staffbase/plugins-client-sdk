@@ -32,7 +32,6 @@ const touchedAppOnlyFiles = touchedFiles.filter(p => includes(p, 'src/lib/'));
 // No PR is too small to include a description of why you made a change
 if (!body || body.length < 10) {
   fail(':grey_question: This pull request needs a description.');
-  markdown('@staffbot label Needs more information');
 }
 
 // When there are app-changes and it's not a PR marked as trivial, expect
@@ -62,7 +61,6 @@ if (!includesTestPlan) {
   const title = ':clipboard: Test Plan';
   const idea = 'This PR appears to be missing a Test Plan.';
   warn(`${title} - <i>${idea}</i>`);
-  markdown('@staffbot label Needs more information');
 }
 
 // Always ensure we assign someone, so that our Slackbot can do its work correctly
@@ -77,8 +75,6 @@ if (danger.github.pr.additions + danger.github.pr.deletions > bigPRThreshold) {
   const idea = `This PR is difficult to review because it touches ${danger.github.pr.additions +
     danger.github.pr.deletions} lines.`;
   warn(`${title} - <i>${idea}</i>`);
-
-  markdown('@staffbot label large-pr');
 }
 
 // Check that every file touched has a corresponding test file
