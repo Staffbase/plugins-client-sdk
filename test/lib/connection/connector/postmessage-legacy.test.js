@@ -1,81 +1,75 @@
 /* eslint-disable no-global-assign */
-
-let chai = require('chai');
-let chaiAsPromised = require('chai-as-promised');
-let expect = chai.expect;
-let sinon = require('sinon');
-chai.use(chaiAsPromised);
-let sandbox;
+/* eslint-env jest, es6 */
 
 import connect from '../../../../src/lib/connection/connector/postmessage-legacy';
 import { disconnect } from '../../../../src/lib/connection/connector/postmessage-legacy';
 import command from '../../../../src/lib/connection/commands.js';
 
-describe('connector/postmessage-legacy', function() {
-  describe('connect', function() {
-    beforeEach(function() {
-      sandbox = sinon.createSandbox();
+describe('connector/postmessage-legacy', () => {
+  describe('connect', () => {
+    beforeEach(() => {
       mockPostMessage();
     });
 
-    afterEach(function() {
+    afterEach(() => {
       disconnect();
-      sandbox.restore();
     });
 
-    it('should be a function', () => {
-      expect(connect).to.be.a('function');
+    test('should be a function', () => {
+      expect(connect).toBeFunction();
     });
 
-    it('should yield a Promise', () => {
+    test('should yield a Promise', () => {
       let res = connect();
-      expect(res).to.be.a('promise');
+      expect(res instanceof Promise).toBeTrue;
     });
 
-    it('should use postMessage', () => {
-      sandbox.restore();
-      sandbox.spy(window.parent, 'postMessage');
+    test('should use postMessage', () => {
+      jest.spyOn(window.parent, 'postMessage');
       connect();
-      expect(window.parent.postMessage.calledOnce).to.be.true;
+      expect(window.parent.postMessage.calledOnce).toBeTrue;
     });
 
-    it('should send a pluginLoaded message', () => {
-      sandbox.restore();
-      sandbox.spy(window.parent, 'postMessage');
+    test('should send a pluginLoaded message', () => {
+      jest.spyOn(window.parent, 'postMessage');
       connect();
-      let firstArg = window.parent.postMessage.getCalls()[0].args[0];
-      expect(firstArg).to.equal('pluginLoaded');
+
+      expect(window.parent.postMessage).toHaveBeenCalledWith('pluginLoaded', '*');
     });
 
-    it('should resolve on platformInfo message', () => {
+    test('should resolve on platformInfo message', () => {
       stubPostMessage();
-      return expect(connect()).to.be.fulfilled;
+      return expect(connect()).resolves.toBeFunction();
     });
 
-    it('should provide a function', async () => {
+    test('should provide a function', async () => {
       stubPostMessage();
       let fn = await connect();
-      return expect(fn).to.be.a('function');
+      return expect(fn).toBeFunction();
     });
 
     describe('send function', async () => {
-      describe('accepts sdk commands', async function() {
+      describe('accepts sdk commands', async () => {
         let mockVersion = '3.5-test';
         let info = {
           state: 'platformInfo',
           info: { native: 'ios', mobile: true, version: mockVersion }
         };
 
-        beforeEach(function() {
+        beforeEach(() => {
           stubPostMessage(info);
         });
 
-        it('should reject on unknown commands', async () => {
+        test('should reject on unknown commands', async () => {
           let sendFn = await connect();
-          return expect(sendFn('unknown-command')).to.be.rejected;
+          try {
+            await sendFn('unknown-command');
+          } catch (e) {
+            expect(e.message).toEqual('Command unknown-command not supported by driver');
+          }
         });
 
-        describe('accepts all comands', async function() {
+        describe('accepts all comands', async () => {
           // mock window open
           window.open = function() {};
 
@@ -85,29 +79,29 @@ describe('connector/postmessage-legacy', function() {
 
           for (let cmd in command) {
             if (command.hasOwnProperty(cmd)) {
-              it('command.' + cmd, async () => {
+              test('command.' + cmd, async () => {
                 let sendFn = await connect();
-                return expect(sendFn(command[cmd], commandData[cmd])).to.be.fulfilled;
+                return expect(sendFn(command[cmd], commandData[cmd])).resolves.toMatchSnapshot();
               });
             }
           }
         });
       });
 
-      describe('invoke commands', async function() {
+      describe('invoke commands', async () => {
         let fileUpload = {
           state: 'finishedImageUploadForPlugin',
           file: true
         };
 
-        beforeEach(function() {
+        beforeEach(() => {
           stubPostMessage(fileUpload);
         });
 
-        it(command.nativeUpload, async () => {
+        test(command.nativeUpload, async () => {
           let sendFn = await connect();
           let nativeUpload = await sendFn(command.nativeUpload);
-          expect(nativeUpload).to.equal(true);
+          expect(nativeUpload).toEqual(true);
         });
       });
     });
@@ -148,7 +142,8 @@ function stubPostMessage(msg) {
  * @param {function} cbPM window.postMessage implementation
  */
 function mockPostMessage(cbAEL, cbPM) {
-  sandbox.restore();
-  sandbox.stub(window, 'addEventListener').callsFake(cbAEL || function(message, receiveMessage) {});
-  sandbox.stub(window.parent, 'postMessage').callsFake(cbPM || function(message, origin) {});
+  jest
+    .spyOn(window, 'addEventListener')
+    .mockImplementation(cbAEL || function(message, receiveMessage) {});
+  jest.spyOn(window.parent, 'postMessage').mockImplementation(cbPM || function(message, origin) {});
 }

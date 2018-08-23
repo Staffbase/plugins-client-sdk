@@ -12,7 +12,7 @@ const fallbackKickIn = 500;
  * after the time specified in fallbackKickIn runs out.
  * @return {Promise<function>} An appropriate send function
  */
-export default function connect() {
+export default () => {
   if (connection) {
     throw new Error('Connect called twice.');
   }
@@ -25,16 +25,16 @@ export default function connect() {
   });
 
   return connection;
-}
+};
 
 /**
  * Disconnect from the Staffbase App
  *
  * Only useful for tests.
  */
-export function disconnect() {
+export const disconnect = () => {
   connection = null;
-}
+};
 
 /**
  * Send a SDK command to the Staffbase App.
@@ -45,7 +45,7 @@ export function disconnect() {
  * @return {Promise<any>} which awaits the response of the Staffbase App
  * @throws {Error} on commands not supported by protocol
  */
-export async function sendMessage(cmd, ...payload) {
+export const sendMessage = async (cmd, ...payload) => {
   log.info('fallback/sendMessage ' + cmd);
   log.debug('fallback/sendMessage/payload ' + JSON.stringify(payload));
 
@@ -74,4 +74,4 @@ export async function sendMessage(cmd, ...payload) {
       // should actualy never ever happen
       throw new Error('Command ' + cmd + ' not supported by driver');
   }
-}
+};

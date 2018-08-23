@@ -7,30 +7,30 @@ let log = require('loglevel');
  *
  * @return {Promise<string>}
  */
-export async function getVersion() {
+export const getVersion = async () => {
   log.debug('app/getVersion');
   return sendMessage(cmd.version);
-}
+};
 
 /**
  * Check if app is native
  *
  * @return {Promise<boolean>}
  */
-export async function isNative() {
+export const isNative = async () => {
   log.debug('app/isNative');
   return sendMessage(cmd.native);
-}
+};
 
 /**
  * Check if app is mobile
  *
  * @return {Promise<boolean>}
  */
-export async function isMobile() {
+export const isMobile = async () => {
   log.debug('app/isMobile');
   return sendMessage(cmd.mobile);
-}
+};
 
 /**
  * Open a link through the app
@@ -42,10 +42,10 @@ export async function isMobile() {
  *
  * @return {Promise<any>}
  */
-export async function openLink(url) {
+export const openLink = async url => {
   log.debug('app/openLink');
   return sendMessage(cmd.openLink, url);
-}
+};
 
 /**
  * Open a link explicitly in the external browser
@@ -54,10 +54,10 @@ export async function openLink(url) {
  *
  * @return {Promise<any>}
  */
-export async function openLinkExternal(url) {
+export const openLinkExternal = async url => {
   log.debug('app/openLinkExternal');
   return sendMessage(cmd.openLink, url, { inAppBrowser: false });
-}
+};
 
 /**
  * Open a link explicitly in the internal browser
@@ -66,10 +66,10 @@ export async function openLinkExternal(url) {
  *
  * @return {Promise<any>}
  */
-export async function openLinkInternal(url) {
+export const openLinkInternal = async url => {
   log.debug('app/openLinkInternal');
   return sendMessage(cmd.openLink, url, { inAppBrowser: true });
-}
+};
 
 /**
  * Open a native file upload dialog on device which do not support it by default.
@@ -78,10 +78,10 @@ export async function openLinkInternal(url) {
  *
  * @return {Promise<any>}
  */
-export async function openNativeFileDialog() {
+export const openNativeFileDialog = async () => {
   log.debug('app/openNativeFileDialog');
   return sendMessage(cmd.nativeUpload);
-}
+};
 
 /**
  * Get all language info from the app.
@@ -91,30 +91,30 @@ export async function openNativeFileDialog() {
  *
  * @return {Promise<any>}
  */
-export async function getLanguageInfos() {
+export const getLanguageInfos = async () => {
   log.debug('app/getLanguageInfos');
   return sendMessage(cmd.langInfos);
-}
+};
 
 /**
  * Get content languages configured in the app.
  *
  * @return {Promise<any>}
  */
-export async function getBranchLanguages() {
+export const getBranchLanguages = async () => {
   log.debug('app/getContentLanguages');
   return sendMessage(cmd.langInfos).then(res => res.branchLanguages);
-}
+};
 
 /**
  * Get content languages configured in the app.
  *
  * @return {Promise<any>}
  */
-export async function getBranchDefaultLanguage() {
+export const getBranchDefaultLanguage = async () => {
   log.debug('app/getBranchDefaultLanguage');
   return sendMessage(cmd.langInfos).then(res => res.branchDefaultLanguage);
-}
+};
 
 /**
  * Gets the choosen language from a given content object
@@ -127,7 +127,7 @@ export async function getBranchDefaultLanguage() {
  *
  * @return {Promise<string>}
  */
-export async function getPreferredContentLocale(content) {
+export const getPreferredContentLocale = async content => {
   log.debug('app/getPreferredContentLocale');
   return sendMessage(cmd.prefContentLang, content);
-}
+};
