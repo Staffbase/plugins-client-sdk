@@ -3,8 +3,7 @@ cache:
     - "node_modules"
 language: node_js
 node_js:
-  - '9'
-  - '8'
+  - 'node'
 script:
   - npx jest --coverage
   - npx danger ci
