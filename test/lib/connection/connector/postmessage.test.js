@@ -55,11 +55,8 @@ describe('postmessage', () => {
     describe('send function', async () => {
       describe('should accept sdk commands', async () => {
         let mockVersion = '3.6-test';
-        let info = ['SUCCESS', 0, { native: 'ios', mobile: true, version: mockVersion }];
-        let responseSpy;
 
         beforeEach(() => {
-          responseSpy = jest.fn();
           stubPostMessage();
         });
 
@@ -104,8 +101,6 @@ describe('postmessage', () => {
       });
 
       describe('should send invoke commands', async () => {
-        let mockVersion = '3.6-test';
-        let info = ['SUCCESS', 0, { native: 'ios', mobile: true, version: mockVersion }];
         let responseSpy;
 
         beforeEach(() => {
