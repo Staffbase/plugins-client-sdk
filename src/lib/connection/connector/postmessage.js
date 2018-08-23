@@ -46,7 +46,7 @@ let targetOrigin = '*';
  * Create a connection to a Staffbase app 3.6
  * @return {Promise<function>} An appropriate send function
  */
-export default function connect() {
+const connect = () => {
   if (connection) {
     throw new Error('Connect called twice.');
   }
@@ -61,17 +61,19 @@ export default function connect() {
   window.parent.postMessage([protocol.HELLO, connectId, []], targetOrigin);
 
   return connection;
-}
+};
+
+export default connect;
 
 /**
  * Disconnect from the Staffbase App
  *
  * Only usefull for tests.
  */
-export function disconnect() {
+export const disconnect = () => {
   unloadManager();
   connection = null;
-}
+};
 
 /**
  * Handler that receives a message from the Staffbase app
@@ -79,7 +81,7 @@ export function disconnect() {
  * Can be attached to window.onPostMessage
  * @param {MessageEvent} evt onPostMessage event result
  */
-async function receiveMessage(evt) {
+const receiveMessage = async evt => {
   log.info('postMessage/receiveMessage ' + evt);
 
   let type;
@@ -117,7 +119,7 @@ async function receiveMessage(evt) {
       // silently ignore here
       return;
   }
-}
+};
 
 /**
  * Send a SDK command to the Staffbase App.
@@ -176,7 +178,7 @@ const sendInvocationCall = (process, args) => {
  * @param {any} val that will be sent when it's ready
  * @return {Promise<any>} the promissified val
  */
-async function sendValue(val) {
+const sendValue = async val => {
   log.info('postMessage/sendValue ' + JSON.stringify(val));
   return connection.then(() => val);
-}
+};

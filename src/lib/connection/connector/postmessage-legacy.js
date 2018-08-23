@@ -41,7 +41,7 @@ const dataStore = initial => ({
  * Create a connection to a Staffbase app 3.5
  * @return {Promise<function>} An appropriate send function
  */
-export default function connect() {
+const connect = () => {
   if (connection) {
     throw new Error('Connect called twice.');
   }
@@ -55,17 +55,19 @@ export default function connect() {
   window.addEventListener('message', receiveMessage);
   window.parent.postMessage(protocol.init, targetOrigin);
   return connection;
-}
+};
+
+export default connect;
 
 /**
  * Disconnect from the Staffbase App
  *
  * Only usefull for tests.
  */
-export function disconnect() {
+export const disconnect = () => {
   connection = null;
   connectId = null;
-}
+};
 
 /**
  * Handler that receives a message from the Staffbase app
@@ -73,7 +75,7 @@ export function disconnect() {
  * Can be attached to window.onPostMessage
  * @param {Object} an onPostMessage event result
  */
-async function receiveMessage({ data = {} }) {
+const receiveMessage = async ({ data = {} }) => {
   log.info('pm-legacy/receiveMessage ' + data.state);
   log.debug('pm-legacy/receiveMessage/payload ' + JSON.stringify(data));
 
@@ -93,7 +95,7 @@ async function receiveMessage({ data = {} }) {
       // silently ignore here
       return;
   }
-}
+};
 
 /**
  * Send a SDK command to the Staffbase App.
@@ -148,7 +150,7 @@ const sendInvocationCall = (process, args) => {
  * @param {any} val that will be sent when it's ready
  * @return {Promise<any>} the promissified val
  */
-async function sendValue(val) {
+const sendValue = async val => {
   log.info('pm-legacy/sendValue ' + JSON.stringify(val));
   return connection.then(() => val);
-}
+};

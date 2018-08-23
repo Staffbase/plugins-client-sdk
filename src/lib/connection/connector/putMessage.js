@@ -37,7 +37,7 @@ const dataStore = ({ platform, language }) => ({
  * Create a connection to a Staffbase app 3.6 from a native tab
  * @return {Promise<function>} An appropriate send function
  */
-export default function connect() {
+const connect = () => {
   if (connection) {
     throw new Error('Connect called twice.');
   }
@@ -56,7 +56,9 @@ export default function connect() {
   outMsgQueue.push([protocol.HELLO, connectId, []]);
 
   return connection;
-}
+};
+
+export default connect;
 
 /**
  * A function which returns an array off messags
@@ -122,11 +124,11 @@ function singleMessageReceiver(msg) {
  *
  * Only usefull for tests.
  */
-export function disconnect() {
+export const disconnect = () => {
   unloadManager();
   connection = null;
   outMsgQueue = [];
-}
+};
 
 /**
  * Send a SDK command to the Staffbase App.
@@ -186,7 +188,7 @@ const sendInvocationCall = (process, args) => {
  * @param {any} val that will be sent when it's ready
  * @return {Promise<any>} the promissified val
  */
-async function sendValue(val) {
+const sendValue = async val => {
   log.info('putMessage/sendValue ' + JSON.stringify(val));
   return connection.then(() => val);
-}
+};
