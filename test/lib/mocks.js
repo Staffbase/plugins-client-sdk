@@ -7,30 +7,56 @@
  * either with default event mock or the provided msg
  *
  * @param {any} msg to send to the eventListener
+ * @param {number} timeout the timeout, the postmessage takes to answer
  * @return {function}
  */
-const stubPostMessage = (msg = '') => {
-  let callback = null;
+const stubPostMessage = (msg = '', timeout = 10) => {
+  let callbacks = [];
   let fakeEvent = msg;
+  let timeouts = [];
 
-  let addEventListener = (m, cb) => {
-    callback = cb;
+  const addEventListener = (m, cb) => {
+    // console.log('add eventlistener', m, cb.toString().match(/log\.info\((.*)\);/)[1]);
+    callbacks.push(cb);
   };
 
-  let postMessage = (m, o) => {
+  const answerMessage = receiver => {
+    // console.log(
+    //   'send message ',
+    //   fakeEvent,
+    //   'to ',
+    //   receiver.toString().match(/log\.info\((.*)\);/)[1]
+    // );
+    receiver({ data: fakeEvent });
+  };
+
+  const postMessage = (m, o) => {
+    // console.log('postmessage received ', m, o);
     // forwards correct message id
-    if (Array.isArray(fakeEvent)) {
+    if (Array.isArray(fakeEvent) && Array.isArray(m)) {
       fakeEvent[1] = m[1];
+      // console.log(fakeEvent);
     }
 
-    window.setTimeout(() => {
-      callback({ data: fakeEvent });
-    }, 10);
+    stopMessaging();
+
+    timeouts = timeouts.concat(
+      callbacks.map(cb => {
+        return window.setTimeout(answerMessage, timeout, cb);
+      })
+    );
+  };
+
+  const stopMessaging = () => {
+    timeouts.forEach(timeout => window.clearTimeout(timeout));
   };
 
   mockPostMessage(addEventListener, postMessage);
 
-  return { changeMsg: msg => (fakeEvent = msg) };
+  return {
+    changeMsg: msg => (fakeEvent = msg),
+    stopMessaging: stopMessaging
+  };
 };
 
 /**
