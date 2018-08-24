@@ -109,6 +109,13 @@ if (testFilesThatDontExist.length > 0) {
 schedule(
   istanbulCoverage({
     // The location of the istanbul coverage file.
-    coveragePath: { path: './coverage/lcov.info', type: 'lcov' /* ||  "json-summary" */ }
+    coveragePath: { path: './coverage/lcov.info', type: 'lcov' /* ||  "json-summary" */ },
+    reportFileSet: 'createdOrModified',
+    threshold: {
+      statements: 70,
+      branches: 70,
+      functions: 70,
+      lines: 70
+    }
   })
 ); // Use default configuration
