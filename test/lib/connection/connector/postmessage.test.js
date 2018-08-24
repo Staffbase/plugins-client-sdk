@@ -5,6 +5,8 @@ import stubPostMessage, { mockPostMessage } from '../../mocks';
 import connect from '../../../../src/lib/connection/connector/postmessage';
 import { disconnect } from '../../../../src/lib/connection/connector/postmessage';
 import command from '../../../../src/lib/connection/commands.js';
+import { unload as unloadManager } from '../../../../src/lib/connection/manager';
+
 import genId from '../../../../src/lib/utils/genId';
 
 jest.mock('../../../../src/lib/utils/genId');
@@ -42,6 +44,7 @@ describe('postmessage', () => {
 
     afterEach(() => {
       disconnect();
+      unloadManager();
     });
 
     test('should be a function', () => {

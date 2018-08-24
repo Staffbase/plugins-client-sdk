@@ -5,6 +5,7 @@ import stubPostMessage, { mockPostMessage } from '../../mocks';
 import connect from '../../../../src/lib/connection/connector/postmessage-legacy';
 import { disconnect } from '../../../../src/lib/connection/connector/postmessage-legacy';
 import command from '../../../../src/lib/connection/commands.js';
+import { unload as unloadManager } from '../../../../src/lib/connection/manager';
 
 const mockVersion = '3.5-test';
 const standardMsg = { state: 'platformInfo', info: {} };
@@ -17,6 +18,7 @@ describe('connector/postmessage-legacy', () => {
 
     afterEach(() => {
       disconnect();
+      unloadManager();
     });
 
     test('should be a function', () => {
