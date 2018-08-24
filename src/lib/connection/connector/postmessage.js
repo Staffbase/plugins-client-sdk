@@ -4,8 +4,7 @@ import {
   create as createPromise,
   resolve as resolvePromise,
   reject as rejectPromise,
-  get as getPromise,
-  unload as unloadManager
+  get as getPromise
 } from '../manager.js';
 let log = require('loglevel');
 
@@ -48,7 +47,7 @@ let targetOrigin = '*';
  */
 const connect = () => {
   if (connection) {
-    throw new Error('Connect called twice.');
+    return connection;
   }
 
   const connectId = createPromise();
@@ -71,7 +70,7 @@ export default connect;
  * Only useful for tests.
  */
 export const disconnect = () => {
-  unloadManager();
+  window.removeEventListener('message', receiveMessage);
   connection = null;
 };
 

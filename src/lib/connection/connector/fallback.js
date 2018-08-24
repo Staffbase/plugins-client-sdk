@@ -14,7 +14,7 @@ const fallbackKickIn = 500;
  */
 export default () => {
   if (connection) {
-    throw new Error('Connect called twice.');
+    return connection;
   }
 
   connection = new Promise((resolve, reject) => {

@@ -43,7 +43,7 @@ const dataStore = initial => ({
  */
 const connect = () => {
   if (connection) {
-    throw new Error('Connect called twice.');
+    return connection;
   }
 
   connectId = createPromise();
@@ -65,6 +65,7 @@ export default connect;
  * Only useful for tests.
  */
 export const disconnect = () => {
+  window.removeEventListener('message', receiveMessage);
   connection = null;
   connectId = null;
 };
