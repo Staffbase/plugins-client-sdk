@@ -1,6 +1,9 @@
+cache:
+  directories:
+    - "node_modules"
 language: node_js
 node_js:
-  - '9'
-  - '8'
-before_script:
+  - 'node'
+script:
+  - npx jest --coverage
   - npx danger ci

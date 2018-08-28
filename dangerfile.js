@@ -3,6 +3,7 @@ import * as path from 'path';
 
 import { danger, fail, markdown, schedule, warn } from 'danger';
 import { compact, includes, uniq } from 'lodash';
+import { istanbulCoverage } from 'danger-plugin-istanbul-coverage';
 
 // Setup
 const modified = danger.git.modified_files;
@@ -104,3 +105,17 @@ if (testFilesThatDontExist.length > 0) {
   If these files are supposed to not exist, please update your PR body to include "#skip_new_tests".`;
   callout(`${title} - <i>${idea}</i>`);
 }
+
+schedule(
+  istanbulCoverage({
+    // The location of the istanbul coverage file.
+    coveragePath: { path: './coverage/lcov.info', type: 'lcov' /* ||  "json-summary" */ },
+    reportFileSet: 'createdOrModified',
+    threshold: {
+      statements: 70,
+      branches: 70,
+      functions: 70,
+      lines: 70
+    }
+  })
+); // Use default configuration
