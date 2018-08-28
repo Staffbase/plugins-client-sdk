@@ -1,6 +1,6 @@
 {
   "name": "@staffbase/plugins-client-sdk",
-  "version": "0.3.2",
+  "version": "0.0.0-semantic-release",
   "description": "Staffbase plugins client SDK for JavaScript",
   "main": "dist/plugins-client-sdk.js",
   "module": "dist/plugins-client-sdk.esm.js",
@@ -14,11 +14,13 @@
     "lint": "npm run lint-code && npm run lint-size",
     "lint-code": "npx eslint src test",
     "lint-size": "npx size-limit",
-    "fix": "eslint --fix 'src/**/*.js' 'test/**/*.js'"
+    "fix": "eslint --fix 'src/**/*.js' 'test/**/*.js'",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Staffbase/plugins-client-sdk.git"
+    "url": "https://github.com/Staffbase/plugins-client-sdk.git"
   },
   "keywords": [
     "staffbase",
@@ -85,6 +87,8 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-strip-logger": "0.4.1",
     "rollup-plugin-uglify": "4.0.0",
-    "size-limit": "^0.19.2"
+    "size-limit": "^0.19.2",
+    "travis-deploy-once": "^5.0.4",
+    "semantic-release": "^15.9.12"
   }
 }
