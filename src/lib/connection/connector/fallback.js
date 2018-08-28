@@ -14,7 +14,7 @@ const fallbackKickIn = 500;
  */
 export default () => {
   if (connection) {
-    throw new Error('Connect called twice.');
+    return connection;
   }
 
   connection = new Promise((resolve, reject) => {
@@ -30,7 +30,7 @@ export default () => {
 /**
  * Disconnect from the Staffbase App
  *
- * Only usefull for tests.
+ * Only useful for tests.
  */
 export const disconnect = () => {
   connection = null;

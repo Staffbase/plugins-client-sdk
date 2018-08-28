@@ -4,8 +4,7 @@ import {
   create as createPromise,
   resolve as resolvePromise,
   reject as rejectPromise,
-  get as getPromise,
-  unload as unloadManager
+  get as getPromise
 } from '../manager.js';
 let log = require('loglevel');
 
@@ -48,7 +47,7 @@ let targetOrigin = '*';
  */
 const connect = () => {
   if (connection) {
-    throw new Error('Connect called twice.');
+    return connection;
   }
 
   const connectId = createPromise();
@@ -68,10 +67,10 @@ export default connect;
 /**
  * Disconnect from the Staffbase App
  *
- * Only usefull for tests.
+ * Only useful for tests.
  */
 export const disconnect = () => {
-  unloadManager();
+  window.removeEventListener('message', receiveMessage);
   connection = null;
 };
 
@@ -94,9 +93,9 @@ const receiveMessage = async evt => {
       data: [type, id, payload]
     } = evt);
   } catch (e) {
-    // even thougth catch-ignore is a bad style
+    // even thought catch-ignore is a bad style
     // there may be other participants listening
-    // to messages in a diffrent format so we
+    // to messages in a different format so we
     // silently ignore here
     return;
   }
@@ -113,9 +112,9 @@ const receiveMessage = async evt => {
       rejectPromise(id, payload);
       break;
     default:
-      // even thougth catch-ignore is a bad style
+      // even thought catch-ignore is a bad style
       // there may be other participants listening
-      // to messages in a diffrent format so we
+      // to messages in a different format so we
       // silently ignore here
       return;
   }
@@ -142,12 +141,12 @@ const sendMessage = store => async (cmd, ...payload) => {
     case actions.ios:
     case actions.android:
     case actions.branchDefaultLang:
-      return sendValue(store[reversedActions[cmd]]);
+      return store[reversedActions[cmd]];
     case actions.langInfos:
     case actions.openLink:
     case actions.nativeUpload:
     case actions.prefContentLang:
-      return sendInvocationCall(invocationMapping[cmd], payload);
+      return sendInvocationCall(createPromise())(invocationMapping[cmd], payload);
     default:
       throw new Error('Command ' + cmd + ' not supported by driver');
   }
@@ -156,29 +155,17 @@ const sendMessage = store => async (cmd, ...payload) => {
 /**
  * Create a promise and send an invocation call to the frontend
  *
+ * @param {number} promiseID the id of the connection promise
  * @param {string} process the name of the process to call
  * @param {array} args an array of arguments
  *
  * @return {Promise}
  */
-const sendInvocationCall = (process, args) => {
+const sendInvocationCall = promiseID => (process, args) => {
   log.info('postMessage/sendInvocationCall ' + process);
   log.debug('postMessage/sendInvocationCall/payload ' + JSON.stringify(args));
 
-  const promiseID = createPromise();
   window.parent.postMessage([protocol.INVOCATION, promiseID, process, args], targetOrigin);
 
   return getPromise(promiseID);
-};
-
-/**
- * Fake initial values as real calls
- *
- * Binds all values to the connect promise
- * @param {any} val that will be sent when it's ready
- * @return {Promise<any>} the promissified val
- */
-const sendValue = async val => {
-  log.info('postMessage/sendValue ' + JSON.stringify(val));
-  return connection.then(() => val);
 };

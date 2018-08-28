@@ -1,9 +1,14 @@
 /* eslint-disable no-global-assign */
 /* eslint-env jest, es6 */
 
+import stubPostMessage, { mockPostMessage } from '../../mocks';
 import connect from '../../../../src/lib/connection/connector/postmessage-legacy';
 import { disconnect } from '../../../../src/lib/connection/connector/postmessage-legacy';
 import command from '../../../../src/lib/connection/commands.js';
+import { unload as unloadManager } from '../../../../src/lib/connection/manager';
+
+const mockVersion = '3.5-test';
+const standardMsg = { state: 'platformInfo', info: {} };
 
 describe('connector/postmessage-legacy', () => {
   describe('connect', () => {
@@ -13,6 +18,7 @@ describe('connector/postmessage-legacy', () => {
 
     afterEach(() => {
       disconnect();
+      unloadManager();
     });
 
     test('should be a function', () => {
@@ -38,19 +44,18 @@ describe('connector/postmessage-legacy', () => {
     });
 
     test('should resolve on platformInfo message', () => {
-      stubPostMessage();
+      stubPostMessage(standardMsg);
       return expect(connect()).resolves.toBeFunction();
     });
 
     test('should provide a function', async () => {
-      stubPostMessage();
+      stubPostMessage(standardMsg);
       let fn = await connect();
       return expect(fn).toBeFunction();
     });
 
     describe('send function', async () => {
       describe('accepts sdk commands', async () => {
-        let mockVersion = '3.5-test';
         let info = {
           state: 'platformInfo',
           info: { native: 'ios', mobile: true, version: mockVersion }
@@ -58,6 +63,10 @@ describe('connector/postmessage-legacy', () => {
 
         beforeEach(() => {
           stubPostMessage(info);
+        });
+
+        afterEach(() => {
+          disconnect();
         });
 
         test('should reject on unknown commands', async () => {
@@ -107,43 +116,3 @@ describe('connector/postmessage-legacy', () => {
     });
   });
 });
-
-/**
- * Stub the post message interface
- *
- * postMessage will triger the registered message handler directly
- * either with default event mock or the provided msg
- *
- * @param {any} msg to send to the eventListener
- */
-function stubPostMessage(msg) {
-  let callback = null;
-  let fakeEvent = { data: msg || { state: 'platformInfo', info: {} } };
-  let addEventListener = (m, cb) => {
-    callback = cb;
-  };
-
-  let postMessage = (m, o) => {
-    window.setTimeout(() => {
-      callback(fakeEvent);
-    }, 10);
-  };
-
-  mockPostMessage(addEventListener, postMessage);
-}
-
-/**
- * Mock the post message interface
- *
- * so acting on post message will yield no results by default
- * or provide custom implementations
- *
- * @param {function} cbAEL window.addEventListener implementation
- * @param {function} cbPM window.postMessage implementation
- */
-function mockPostMessage(cbAEL, cbPM) {
-  jest
-    .spyOn(window, 'addEventListener')
-    .mockImplementation(cbAEL || function(message, receiveMessage) {});
-  jest.spyOn(window.parent, 'postMessage').mockImplementation(cbPM || function(message, origin) {});
-}

@@ -6,7 +6,7 @@
  */
 const isExternalLink = url => {
   try {
-    // if the url string is no valid URI, this thows an error
+    // if the url string is no valid URI, this throws an error
     let u = window.URL && new URL(url);
 
     if (u.hostname && u.hostname !== location.host) {
@@ -42,10 +42,10 @@ const replaceWindowOpen = (open, cb) => {
 };
 
 /**
- * Adds a click eventlistener which tests for a click on an anchor element
+ * Adds a click event listener which tests for a click on an anchor element
  * with an external link and calls a function to handle the link
  *
- * @param {HTMLElement} root the node to add the eventhandler to
+ * @param {HTMLElement} root the node to add the event handler to
  * @param {function} cb The callback which is called when the link is external
  *
  */
@@ -90,7 +90,7 @@ const linkCatcher = (root, cb) => {
 
     const windowOpenReplacement = replaceWindowOpen(window.open, cb);
 
-    // Removes the replacemnt after 100 ms to prevent further invocations
+    // Removes the replacement after 100 ms to prevent further invocations
     window.setTimeout(windowOpenReplacement.stop, 100);
 
     return true;
