@@ -62,17 +62,6 @@ describe('putmessage', () => {
 
     describe('send function', async () => {
       describe('should accept sdk commands', async () => {
-        let messageMock;
-
-        beforeEach(() => {
-          messageMock = stubPutMessage(welcomeMessage);
-        });
-
-        afterEach(() => {
-          messageMock.stopMessaging();
-          disconnect();
-        });
-
         it(command.ios, async () => {
           let sendFn = await connect();
           let ios = await sendFn(command.ios);
@@ -108,24 +97,15 @@ describe('putmessage', () => {
           }
         });
       });
-      /* 
+
       describe('should send invoke commands', async () => {
-        let responseSpy;
-
-        beforeEach(() => {
-          responseSpy = stubPostMessage();
-        });
-
-        afterEach(() => {
-          disconnect();
-        });
         it(command.openLink, async () => {
           let sendFn = await connect();
           let data = 'Link opened';
-          let success = ['SUCCESS', 'ff22', data];
+          let success = ['SUCCESS', 'ff33', data];
 
-          genId.mockReturnValue('ff22');
-          responseSpy.changeMsg(success);
+          genId.mockReturnValue('ff33');
+          messageMock.changeMsg(success);
           let result = await sendFn(command.openLink, 'http://staffbase.com');
 
           expect(result).toEqual(data);
@@ -134,13 +114,13 @@ describe('putmessage', () => {
         it('reject on error', async () => {
           let sendFn = await connect();
           let data = 'No url set.';
-          let error = ['ERROR', 'ff22', data];
+          let error = ['ERROR', 'ff33', data];
 
-          genId.mockReturnValue('ff22');
-          responseSpy.changeMsg(error);
+          genId.mockReturnValue('ff33');
+          messageMock.changeMsg(error);
           expect(sendFn(command.openLink, 'http://staffbase.com')).rejects.toEqual(data);
         });
-      }); */
+      });
     });
   });
 });

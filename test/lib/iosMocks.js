@@ -30,6 +30,10 @@ const stubPutMessage = (msg = '', rate = 50) => {
     }
   };
 
+  const changeMsg = msg => {
+    fakeEvent = msg;
+  };
+
   const stopMessaging = () => {
     window.clearInterval(interval);
   };
@@ -37,7 +41,7 @@ const stubPutMessage = (msg = '', rate = 50) => {
   interval = window.setInterval(getMessages, rate);
 
   return {
-    changeMsg: msg => (fakeEvent = msg),
+    changeMsg: changeMsg,
     stopMessaging: stopMessaging
   };
 };
