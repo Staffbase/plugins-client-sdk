@@ -56,7 +56,7 @@
       "@semantic-release/git",
       "@semantic-release/github"
     ],
-    "prepare":[
+    "prepare": [
       "@semantic-release/git"
     ],
     "publish": [
