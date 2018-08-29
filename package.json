@@ -46,7 +46,7 @@
   },
   "homepage": "https://github.com/Staffbase/plugins-client-sdk#readme",
   "release": {
-    "branch": "master",
+    "branch": "introduce-semantic-release",
     "verifyConditions": [
       "@semantic-release/changelog",
       {
