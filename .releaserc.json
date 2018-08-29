@@ -2,8 +2,7 @@
   "branch": "introduce-semantic-release",
   "verifyConditions": [
     "@semantic-release/changelog",
-    "@semantic-release/npm",
-    "@semantic-release/github"
+    "@semantic-release/npm"
   ],
   "prepare": [
     "@semantic-release/npm",
