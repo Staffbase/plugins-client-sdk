@@ -45,6 +45,9 @@
     "url": "https://github.com/Staffbase/plugins-client-sdk/issues"
   },
   "homepage": "https://github.com/Staffbase/plugins-client-sdk#readme",
+  "release": {
+    "branch": "introduce-semantic-release"
+  },
   "directories": {
     "test": "test"
   },
