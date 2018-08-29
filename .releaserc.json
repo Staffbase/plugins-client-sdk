@@ -1,8 +1,5 @@
 {
-  "branch": [
-    "master",
-    "introduce-semantic-release"
-  ],
+  "branch": "introduce-semantic-release",
   "verifyConditions": [
     "@semantic-release/changelog",
     "@semantic-release/npm",
