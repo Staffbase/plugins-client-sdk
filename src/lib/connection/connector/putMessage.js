@@ -151,7 +151,7 @@ const sendMessage = store => async (cmd, ...payload) => {
     case actions.android:
     case actions.langInfos:
     case actions.branchDefaultLang:
-      return sendValue(store[reversedActions[cmd]]);
+      return store[reversedActions[cmd]];
     case actions.openLink:
     case actions.prefContentLang:
       return sendInvocationCall(invocationMapping[cmd], payload);
@@ -179,16 +179,4 @@ const sendInvocationCall = (process, args) => {
   log.debug('putMessage/sendInvocationCall/queue/after ' + JSON.stringify(outMsgQueue));
 
   return getPromise(promiseID);
-};
-
-/**
- * Fake initial values as real calls
- *
- * Binds all values to the connect promise
- * @param {any} val that will be sent when it's ready
- * @return {Promise<any>} the promissified val
- */
-const sendValue = async val => {
-  log.info('putMessage/sendValue ' + JSON.stringify(val));
-  return connection.then(() => val);
 };
