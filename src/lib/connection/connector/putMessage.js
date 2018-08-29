@@ -4,8 +4,7 @@ import {
   create as createPromise,
   resolve as resolvePromise,
   reject as rejectPromise,
-  get as getPromise,
-  unload as unloadManager
+  get as getPromise
 } from '../manager.js';
 
 let log = require('loglevel');
@@ -39,7 +38,7 @@ const dataStore = ({ platform, language }) => ({
  */
 const connect = () => {
   if (connection) {
-    throw new Error('Connect called twice.');
+    return connection;
   }
 
   const connectId = createPromise();
@@ -49,9 +48,10 @@ const connect = () => {
   });
 
   window.Staffbase = window.Staffbase || {};
-  window.Staffbase.plugins = window.Staffbase.Staffbase || {};
-  window.Staffbase.plugins.getMessages = mutliMessageProvider;
-  window.Staffbase.plugins.putMessage = singleMessageReceiver;
+  window.Staffbase.plugins = {
+    getMessages: multiMessageProvider,
+    putMessage: singleMessageReceiver
+  };
 
   outMsgQueue.push([protocol.HELLO, connectId, []]);
 
@@ -68,12 +68,12 @@ export default connect;
  *
  * @return {Array} ordered list of messages
  */
-function mutliMessageProvider() {
-  log.info('putMessage/mutliMessageProvider');
+function multiMessageProvider() {
+  log.info('putMessage/multiMessageProvider');
   let queueRef = outMsgQueue;
-  log.debug('putMessage/mutliMessageProvider/queue/before ' + JSON.stringify(outMsgQueue));
+  log.debug('putMessage/multiMessageProvider/queue/before ' + JSON.stringify(outMsgQueue));
   outMsgQueue = [];
-  log.debug('putMessage/mutliMessageProvider/queue/after ' + JSON.stringify(outMsgQueue));
+  log.debug('putMessage/multiMessageProvider/queue/after ' + JSON.stringify(outMsgQueue));
   return queueRef;
 }
 
@@ -104,16 +104,16 @@ function singleMessageReceiver(msg) {
         rejectPromise(id, payload);
         break;
       default:
-        // even thougth catch-ignore is a bad style
+        // even thought catch-ignore is a bad style
         // there may be other participants listening
-        // to messages in a diffrent format so we
+        // to messages in a different format so we
         // silently ignore here
         return;
     }
   } catch (e) {
-    // even thougth catch-ignore is a bad style
+    // even thought catch-ignore is a bad style
     // there may be other participants listening
-    // to messages in a diffrent format so we
+    // to messages in a different format so we
     // silently ignore here
     return;
   }
@@ -122,10 +122,9 @@ function singleMessageReceiver(msg) {
 /**
  * Disconnect from the Staffbase App
  *
- * Only usefull for tests.
+ * Only useful for tests.
  */
 export const disconnect = () => {
-  unloadManager();
   connection = null;
   outMsgQueue = [];
 };

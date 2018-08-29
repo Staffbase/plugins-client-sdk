@@ -1,12 +1,39 @@
 /* eslint-disable no-global-assign */
 /* eslint-env jest, es6 */
 
+import stubPostMessage, { mockPostMessage } from '../../mocks';
 import connect from '../../../../src/lib/connection/connector/postmessage';
 import { disconnect } from '../../../../src/lib/connection/connector/postmessage';
 import command from '../../../../src/lib/connection/commands.js';
+import { unload as unloadManager } from '../../../../src/lib/connection/manager';
+
 import genId from '../../../../src/lib/utils/genId';
 
 jest.mock('../../../../src/lib/utils/genId');
+const mockVersion = '3.6-dev';
+const standardMsg = [
+  'SUCCESS',
+  0,
+  {
+    platform: { native: 'ios', mobile: true, version: mockVersion },
+    language: {
+      branchLanguages: {
+        de: {
+          key: 'de',
+          locale: 'de_DE',
+          name: 'Deutsch',
+          localizedName: 'Deutsch'
+        },
+        en: {
+          key: 'en',
+          locale: 'en_US',
+          name: 'English',
+          localizedName: 'Englisch'
+        }
+      }
+    }
+  }
+];
 
 describe('postmessage', () => {
   describe('connect', () => {
@@ -17,6 +44,7 @@ describe('postmessage', () => {
 
     afterEach(() => {
       disconnect();
+      unloadManager();
     });
 
     it('should be a function', () => {
@@ -42,26 +70,20 @@ describe('postmessage', () => {
     });
 
     it('should resolve on SUCCESS message', async () => {
-      stubPostMessage();
+      stubPostMessage(standardMsg);
       return expect(await connect()).toBe.ok;
     });
 
     it('should provide a function', async () => {
-      stubPostMessage();
+      stubPostMessage(standardMsg);
       let fn = await connect();
       return expect(fn).toBeFunction();
     });
 
     describe('send function', async () => {
       describe('should accept sdk commands', async () => {
-        let mockVersion = '3.6-test';
-
         beforeEach(() => {
-          stubPostMessage();
-        });
-
-        afterEach(() => {
-          disconnect();
+          stubPostMessage(standardMsg);
         });
 
         it(command.ios, async () => {
@@ -104,12 +126,9 @@ describe('postmessage', () => {
         let responseSpy;
 
         beforeEach(() => {
-          responseSpy = stubPostMessage();
+          responseSpy = stubPostMessage(standardMsg);
         });
 
-        afterEach(() => {
-          disconnect();
-        });
         it(command.openLink, async () => {
           let sendFn = await connect();
           let data = 'Link opened';
@@ -135,72 +154,3 @@ describe('postmessage', () => {
     });
   });
 });
-
-/**
- * Stub the post message interface
- *
- * postMessage will triger the registered message handler directly
- * either with default event mock or the provided msg
- *
- * @param {any} msg to send to the eventListener
- * @return {function}
- */
-function stubPostMessage(msg) {
-  let mockVersion = '3.6-test';
-  let callback = null;
-  let fakeEvent = msg || [
-    'SUCCESS',
-    0,
-    {
-      platform: { native: 'ios', mobile: true, version: mockVersion },
-      language: {
-        branchLanguages: {
-          de: {
-            key: 'de',
-            locale: 'de_DE',
-            name: 'Deutsch',
-            localizedName: 'Deutsch'
-          },
-          en: {
-            key: 'en',
-            locale: 'en_US',
-            name: 'English',
-            localizedName: 'Englisch'
-          }
-        }
-      }
-    }
-  ];
-  let addEventListener = (m, cb) => {
-    callback = cb;
-  };
-
-  let postMessage = (m, o) => {
-    // forwards correct message id
-    fakeEvent[1] = m[1];
-
-    window.setTimeout(() => {
-      callback({ data: fakeEvent });
-    }, 10);
-  };
-
-  mockPostMessage(addEventListener, postMessage);
-
-  return { changeMsg: msg => (fakeEvent = msg) };
-}
-
-/**
- * Mock the post message interface
- *
- * so acting on post message will yield no results by default
- * or provide custom implementations
- *
- * @param {function} cbAEL window.addEventListener implementation
- * @param {function} cbPM window.postMessage implementation
- */
-function mockPostMessage(cbAEL, cbPM) {
-  jest
-    .spyOn(window, 'addEventListener')
-    .mockImplementation(cbAEL || function(message, receiveMessage) {});
-  jest.spyOn(window.parent, 'postMessage').mockImplementation(cbPM || function(message, origin) {});
-}

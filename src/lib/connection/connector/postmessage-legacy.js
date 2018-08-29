@@ -43,7 +43,7 @@ const dataStore = initial => ({
  */
 const connect = () => {
   if (connection) {
-    throw new Error('Connect called twice.');
+    return connection;
   }
 
   connectId = createPromise();
@@ -62,9 +62,10 @@ export default connect;
 /**
  * Disconnect from the Staffbase App
  *
- * Only usefull for tests.
+ * Only useful for tests.
  */
 export const disconnect = () => {
+  window.removeEventListener('message', receiveMessage);
   connection = null;
   connectId = null;
 };
@@ -89,9 +90,9 @@ const receiveMessage = async ({ data = {} }) => {
       resolvePromise(connectId, data.file);
       break;
     default:
-      // even thougth catch-ignore is a bad style
+      // even thought catch-ignore is a bad style
       // there may be other participants listening
-      // to messages in a diffrent format so we
+      // to messages in a different format so we
       // silently ignore here
       return;
   }
@@ -117,11 +118,11 @@ const sendMessage = store => async (cmd, ...payload) => {
     case actions.mobile:
     case actions.ios:
     case actions.android:
-      return sendValue(store[reversedActions[cmd]]);
+      return store[reversedActions[cmd]];
     case actions.nativeUpload:
       return sendInvocationCall(invocationMapping[cmd], payload);
     default:
-      return sendValue(fallBackSendMessage.apply(null, [cmd, ...payload]));
+      return fallBackSendMessage.apply(null, [cmd, ...payload]);
   }
 };
 
@@ -141,16 +142,4 @@ const sendInvocationCall = (process, args) => {
   window.parent.postMessage(protocol.startUpload, targetOrigin);
 
   return getPromise(connectId);
-};
-
-/**
- * Fake initial values as real calls
- *
- * Binds all values to the connect promise
- * @param {any} val that will be sent when it's ready
- * @return {Promise<any>} the promissified val
- */
-const sendValue = async val => {
-  log.info('pm-legacy/sendValue ' + JSON.stringify(val));
-  return connection.then(() => val);
 };

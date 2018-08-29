@@ -1,9 +1,45 @@
-import postMessageLegacy from './connector/postmessage-legacy.js';
-import fallback from './connector/fallback.js';
-import postMessage from './connector/postmessage.js';
-import putMessage from './connector/putMessage.js';
+import postMessageLegacy, {
+  disconnect as postMessageLegacyDisconnect
+} from './connector/postmessage-legacy.js';
+import fallback, { disconnect as fallbackDisconnect } from './connector/fallback.js';
+import postMessage, { disconnect as postMessageDisconnect } from './connector/postmessage.js';
+import putMessage, { disconnect as putMessageDisconnect } from './connector/putMessage.js';
+import { unload as unloadManager } from './manager';
 let log = require('loglevel');
-let connect = Promise.race([putMessage(), postMessage(), postMessageLegacy(), fallback()]);
+
+let connector;
+
+const connect = async () => {
+  const putMessageConnection = putMessage();
+  const postMessageConnection = postMessage();
+  const postMessagLegacyConnection = postMessageLegacy();
+  const fallbackConnection = fallback();
+
+  const realConnectionBucket = [
+    putMessageConnection,
+    postMessageConnection,
+    postMessagLegacyConnection
+  ];
+
+  const fallbackConnectionBucket = realConnectionBucket.concat(fallbackConnection);
+
+  // Wait on the real communication and replace the connector with
+  Promise.race(realConnectionBucket).then(newConnector => {
+    log.debug('connection/replace connector ' + newConnector.toString());
+    connector = newConnector;
+  });
+
+  return await Promise.race(fallbackConnectionBucket);
+};
+
+export const disconnect = () => {
+  postMessageDisconnect();
+  putMessageDisconnect();
+  postMessageLegacyDisconnect();
+  fallbackDisconnect();
+  unloadManager();
+  connector = null;
+};
 
 /**
  * Send a message to the App
@@ -18,8 +54,11 @@ let connect = Promise.race([putMessage(), postMessage(), postMessageLegacy(), fa
 const sendMessage = async (msg, ...payload) => {
   log.info('connection/sendMessage ' + msg);
   log.debug('connection/sendMessage/payload ' + JSON.stringify(payload));
+  if (!connector) {
+    connector = await connect();
+  }
 
-  return connect.then(sendFn => sendFn(msg, ...payload));
+  return connector(msg, ...payload);
 };
 
 export default sendMessage;
