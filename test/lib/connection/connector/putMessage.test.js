@@ -6,6 +6,7 @@ import { disconnect } from '../../../../src/lib/connection/connector/putMessage'
 import stubPutMessage from '../../iosMocks';
 import command from '../../../../src/lib/connection/commands.js';
 import genId from '../../../../src/lib/utils/genId';
+import { unload as unloadManager } from '../../../../src/lib/connection/manager';
 
 jest.mock('../../../../src/lib/utils/genId');
 
@@ -14,20 +15,21 @@ let info = { native: 'ios', mobile: true, version: mockVersion };
 
 let language = { branchDefaultLanguage: 'de_DE' };
 
-let welcomeMessage = ['SUCCESS', 'ff22', { platform: info, language: language }];
+let welcomeMessage = ['SUCCESS', 'abcd', { platform: info, language: language }];
 
 describe('putmessage', () => {
   describe('connect', () => {
     let messageMock;
 
     beforeEach(() => {
-      genId.mockReturnValue('ff22');
+      genId.mockReturnValue('abcd');
       messageMock = stubPutMessage(welcomeMessage);
     });
 
     afterEach(() => {
       messageMock.stopMessaging();
       disconnect();
+      unloadManager();
     });
 
     it('should be a function', () => {
