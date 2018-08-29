@@ -16,7 +16,7 @@ describe('connector/fallback', () => {
 
     test('should yield a Promise', () => {
       let res = connect();
-      expect(res instanceof Promise).toBeTrue;
+      expect(res instanceof Promise).toBeTrue();
     });
 
     test('should provide a function', async () => {
