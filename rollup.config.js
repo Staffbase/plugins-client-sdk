@@ -27,28 +27,13 @@ const defaultBrowserPluginOptions = [
   resolve(),
   commonjs(),
   babel({
-    babelrc: false, // stops babel from using .babelrc files
     plugins: [
       [
-        'transform-runtime',
+        '@babel/plugin-transform-runtime',
         {
           helpers: false,
-          polyfill: false,
           runtimeHelpers: true,
-          regenerator: true,
-          moduleName: 'babel-runtime'
-        }
-      ],
-      'external-helpers'
-    ], // [1]
-    presets: [
-      [
-        'env',
-        {
-          modules: false, // stop module conversion
-          targets: {
-            browsers: ['last 2 versions', 'IE >= 10'] // whatever you want here
-          }
+          regenerator: true
         }
       ]
     ],
