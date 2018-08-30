@@ -131,7 +131,7 @@ export const getContentLanguages = async () => {
  *
  * @example
  *    getPreferredContentLocale(['de_DE', 'en_EN']) // => 'de_DE'
- *    getPreferredContentLocale({'de_DE': {1,'eins'}, 'en_EN': {1: 'one'}}) // => {1,'eins'}}
+ *    getPreferredContentLocale({'de_DE': {1,'eins'}, 'en_EN': {1: 'one'}}) // => 'de_DE'
  *
  * @param {object|array} content the content to choose the locale from
  *
