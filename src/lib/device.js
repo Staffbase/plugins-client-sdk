@@ -6,7 +6,7 @@ import compareVersions from 'compare-versions';
 import catchLinks from './polyfills/catch-links';
 let log = require('loglevel');
 /**
- * Check if device is using ios
+ * Check if device is using ios.
  *
  * @return {Promise<boolean>}
  */
@@ -16,7 +16,7 @@ export const isIos = async () => {
 };
 
 /**
- * Check if device is using android
+ * Check if device is using android.
  *
  * @return {Promise<boolean>}
  */

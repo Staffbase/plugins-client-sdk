@@ -3,7 +3,7 @@ import sendMessage from './connection/connection';
 let log = require('loglevel');
 
 /**
- * Get the version of the Staffbase App
+ * Get the version of the Staffbase App.
  *
  * @return {Promise<string>}
  */
@@ -13,7 +13,7 @@ export const getVersion = async () => {
 };
 
 /**
- * Check if app is native
+ * Check if app is native.
  *
  * @return {Promise<boolean>}
  */
@@ -23,7 +23,7 @@ export const isNative = async () => {
 };
 
 /**
- * Check if app is mobile
+ * Check if app is mobile.
  *
  * @return {Promise<boolean>}
  */
@@ -33,7 +33,7 @@ export const isMobile = async () => {
 };
 
 /**
- * Open a link through the app
+ * Open a link through the app.
  *
  * Where Staffbase decides which browser (External/Internal)
  * should be used.
@@ -48,7 +48,7 @@ export const openLink = async url => {
 };
 
 /**
- * Open a link explicitly in the external browser
+ * Open a link explicitly in the external browser.
  *
  * @param {string} url the url to open in the browser
  *
@@ -60,7 +60,7 @@ export const openLinkExternal = async url => {
 };
 
 /**
- * Open a link explicitly in the internal browser
+ * Open a link explicitly in the internal browser.
  *
  * @param {string} url the url to open in the browser
  *

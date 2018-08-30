@@ -15,6 +15,7 @@
     "lint-code": "npx eslint src test",
     "lint-size": "npx size-limit",
     "fix": "eslint --fix 'src/**/*.js' 'test/**/*.js'",
+    "doc": "mkdir -p doc && npx jsdoc2md src/main.js > doc/api.md",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release",
     "commitmsg": "validate-commit-msg"
@@ -79,6 +80,7 @@
     }
   ],
   "dependencies": {
+    "jsdoc": "^3.5.5",
     "loglevel": "^1.6.1"
   },
   "devDependencies": {
@@ -104,6 +106,7 @@
     "husky": "^0.14.3",
     "jest": "23.5.0",
     "jest-extended": "0.8.1",
+    "jsdoc-to-markdown": "^4.0.1",
     "prettier": "^1.14.2",
     "prettier-eslint": "^8.8.2",
     "rollup": "^0.64.1",
