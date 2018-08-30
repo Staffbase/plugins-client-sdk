@@ -35,5 +35,5 @@
 - [ ] I have added tests to cover my changes.
 - [ ] All new and existing tests passed.
 
-## Test part:
+## Test plan:
 <!--- Explain what has to be tested manually, to confirm the PR is ok -->
