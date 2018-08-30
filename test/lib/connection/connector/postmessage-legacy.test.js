@@ -21,34 +21,34 @@ describe('connector/postmessage-legacy', () => {
       unloadManager();
     });
 
-    test('should be a function', () => {
+    it('should be a function', () => {
       expect(connect).toBeFunction();
     });
 
-    test('should yield a Promise', () => {
+    it('should yield a Promise', () => {
       let res = connect();
-      expect(res instanceof Promise).toBeTrue;
+      expect(res instanceof Promise).toBeTrue();
     });
 
-    test('should use postMessage', () => {
+    it('should use postMessage', () => {
       jest.spyOn(window.parent, 'postMessage');
       connect();
-      expect(window.parent.postMessage.calledOnce).toBeTrue;
+      expect(window.parent.postMessage).toHaveBeenCalledTimes(1);
     });
 
-    test('should send a pluginLoaded message', () => {
+    it('should send a pluginLoaded message', () => {
       jest.spyOn(window.parent, 'postMessage');
       connect();
 
       expect(window.parent.postMessage).toHaveBeenCalledWith('pluginLoaded', '*');
     });
 
-    test('should resolve on platformInfo message', () => {
+    it('should resolve on platformInfo message', () => {
       stubPostMessage(standardMsg);
       return expect(connect()).resolves.toBeFunction();
     });
 
-    test('should provide a function', async () => {
+    it('should provide a function', async () => {
       stubPostMessage(standardMsg);
       let fn = await connect();
       return expect(fn).toBeFunction();
@@ -65,11 +65,7 @@ describe('connector/postmessage-legacy', () => {
           stubPostMessage(info);
         });
 
-        afterEach(() => {
-          disconnect();
-        });
-
-        test('should reject on unknown commands', async () => {
+        it('should reject on unknown commands', async () => {
           let sendFn = await connect();
           try {
             await sendFn('unknown-command');
@@ -88,7 +84,7 @@ describe('connector/postmessage-legacy', () => {
 
           for (let cmd in command) {
             if (command.hasOwnProperty(cmd)) {
-              test('command.' + cmd, async () => {
+              it('command.' + cmd, async () => {
                 let sendFn = await connect();
                 return expect(sendFn(command[cmd], commandData[cmd])).resolves.toMatchSnapshot();
               });
@@ -107,7 +103,7 @@ describe('connector/postmessage-legacy', () => {
           stubPostMessage(fileUpload);
         });
 
-        test(command.nativeUpload, async () => {
+        it(command.nativeUpload, async () => {
           let sendFn = await connect();
           let nativeUpload = await sendFn(command.nativeUpload);
           expect(nativeUpload).toEqual(true);
