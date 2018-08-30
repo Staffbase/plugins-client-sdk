@@ -89,7 +89,7 @@ export const openNativeFileDialog = async () => {
  * Shoud get split up in the future and
  * removed from the public interface
  *
- * @return {Promise<any>}
+ * @return {Promise<Object>}
  */
 export const getLanguageInfos = async () => {
   log.debug('app/getLanguageInfos');
@@ -97,9 +97,9 @@ export const getLanguageInfos = async () => {
 };
 
 /**
- * Get content languages configured in the app.
+ * Get the content languages configured for the branch.
  *
- * @return {Promise<any>}
+ * @return {Promise<Object>}
  */
 export const getBranchLanguages = async () => {
   log.debug('app/getContentLanguages');
@@ -107,9 +107,9 @@ export const getBranchLanguages = async () => {
 };
 
 /**
- * Get content languages configured in the app.
+ * Get the default content language configured for the branch.
  *
- * @return {Promise<any>}
+ * @return {Promise<Object>}
  */
 export const getBranchDefaultLanguage = async () => {
   log.debug('app/getBranchDefaultLanguage');
@@ -117,11 +117,21 @@ export const getBranchDefaultLanguage = async () => {
 };
 
 /**
+ * Get all content languages supported by the Staffbase app.
+ *
+ * @return {Promise<Object>}
+ */
+export const getContentLanguages = async () => {
+  log.debug('app/getContentLanguages');
+  return sendMessage(cmd.langInfos).then(res => res.contentLanguages);
+};
+
+/**
  * Gets the choosen language from a given content object
  *
  * @example
  *    getPreferredContentLocale(['de_DE', 'en_EN']) // => 'de_DE'
- *    getPreferredContentLocale({'de_DE': {1,'eins'}, 'en_EN': {1: 'one'}}) // => 'de_DE'
+ *    getPreferredContentLocale({'de_DE': {1,'eins'}, 'en_EN': {1: 'one'}}) // => {1,'eins'}}
  *
  * @param {object|array} content the content to choose the locale from
  *
