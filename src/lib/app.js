@@ -84,19 +84,6 @@ export const openNativeFileDialog = async () => {
 };
 
 /**
- * Get all language info from the app.
- *
- * Shoud get split up in the future and
- * removed from the public interface
- *
- * @return {Promise<Object>}
- */
-export const getLanguageInfos = async () => {
-  log.debug('app/getLanguageInfos');
-  return sendMessage(cmd.langInfos);
-};
-
-/**
  * Get the content languages configured for the branch.
  *
  * @return {Promise<Object>}
@@ -127,7 +114,7 @@ export const getContentLanguages = async () => {
 };
 
 /**
- * Gets the choosen language from a given content object
+ * Gets the chosen language from a given content object
  *
  * @example
  *    getPreferredContentLocale(['de_DE', 'en_EN']) // => 'de_DE'

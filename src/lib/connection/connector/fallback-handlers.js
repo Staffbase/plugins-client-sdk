@@ -137,7 +137,7 @@ export const getBranchDefaultLanguage = () => {
 };
 
 /**
- * Gets the choosen language from a given content object
+ * Gets the chosen language from a given content object
  *
  * @param {?object|array} content
  *

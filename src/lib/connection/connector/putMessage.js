@@ -61,7 +61,7 @@ const connect = () => {
 export default connect;
 
 /**
- * A function which returns an array off messags
+ * A function which returns an array of messages
  *
  * The return value holds all messages in the order the were
  * received over time by sendMessage

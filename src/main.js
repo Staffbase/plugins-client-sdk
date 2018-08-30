@@ -141,6 +141,4 @@ export async function getPreferredContentLocale() {
 }
 
 /** @inheritdoc */
-export { getLanguageInfos } from './lib/app'; /* experimental */
-/** @inheritdoc */
 export { openNativeFileDialog } from './lib/app'; /* experimental */
