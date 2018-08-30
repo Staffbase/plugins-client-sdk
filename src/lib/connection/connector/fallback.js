@@ -71,7 +71,7 @@ export const sendMessage = async (cmd, ...payload) => {
     case action.prefContentLang:
       return fallbacks.getPreferredContentLocale.apply(null, payload);
     default:
-      // should actualy never ever happen
+      // should actually never ever happen
       throw new Error('Command ' + cmd + ' not supported by driver');
   }
 };

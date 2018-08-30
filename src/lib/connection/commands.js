@@ -6,7 +6,7 @@ import reverse from '../utils/reverseObject';
  */
 
 /**
- * Platform independat definition
+ * Platform independent definition
  * of supported commands
  *
  * @type {PlatformCommands}

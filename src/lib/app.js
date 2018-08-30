@@ -114,7 +114,7 @@ export const getContentLanguages = async () => {
 };
 
 /**
- * Gets the choosen language from a given content object
+ * Gets the chosen language from a given content object
  *
  * @example
  *    getPreferredContentLocale(['de_DE', 'en_EN']) // => 'de_DE'
