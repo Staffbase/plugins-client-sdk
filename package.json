@@ -1,6 +1,6 @@
 {
   "name": "@staffbase/plugins-client-sdk",
-  "version": "0.4.0",
+  "version": "0.0.0-semantically-released",
   "description": "Staffbase plugins client SDK for JavaScript",
   "main": "dist/plugins-client-sdk.js",
   "module": "dist/plugins-client-sdk.esm.js",
@@ -14,11 +14,14 @@
     "lint": "npm run lint-code && npm run lint-size",
     "lint-code": "npx eslint src test",
     "lint-size": "npx size-limit",
-    "fix": "eslint --fix 'src/**/*.js' 'test/**/*.js'"
+    "fix": "eslint --fix 'src/**/*.js' 'test/**/*.js'",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release",
+    "commitmsg": "validate-commit-msg"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Staffbase/plugins-client-sdk.git"
+    "url": "https://github.com/Staffbase/plugins-client-sdk.git"
   },
   "keywords": [
     "staffbase",
@@ -43,6 +46,25 @@
     "url": "https://github.com/Staffbase/plugins-client-sdk/issues"
   },
   "homepage": "https://github.com/Staffbase/plugins-client-sdk#readme",
+  "release": {
+    "branch": "master",
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      {
+        "path": "@semantic-release/npm",
+        "npmPublish": false
+      },
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/git"
+    ],
+    "publish": [
+      "@semantic-release/github"
+    ]
+  },
   "directories": {
     "test": "test"
   },
@@ -59,6 +81,8 @@
     "loglevel": "^1.6.1"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^3.0.0",
+    "@semantic-release/git": "^7.0.3",
     "@babel/core": "^7.0.0",
     "@babel/plugin-external-helpers": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
@@ -67,13 +91,16 @@
     "@babel/runtime": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "23.4.2",
+    "commitizen": "^2.10.1",
     "compare-versions": "^3.3.1",
+    "cz-conventional-changelog": "^2.1.0",
     "danger": "3.8.6",
     "danger-plugin-istanbul-coverage": "1.6.0",
     "eslint": "^5.4.0",
     "eslint-config-google": "^0.9.1",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-prettier": "^2.6.2",
+    "husky": "^0.14.3",
     "jest": "23.5.0",
     "jest-extended": "0.8.1",
     "prettier": "^1.14.2",
@@ -86,6 +113,14 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-strip-logger": "0.4.1",
     "rollup-plugin-uglify": "4.0.0",
-    "size-limit": "^0.19.2"
+    "semantic-release": "^15.9.12",
+    "size-limit": "^0.19.2",
+    "travis-deploy-once": "^5.0.4",
+    "validate-commit-msg": "^2.14.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

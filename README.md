@@ -1,4 +1,8 @@
-# plugins-client-sdk [![Build Status](https://travis-ci.org/Staffbase/plugins-client-sdk.svg?branch=master)](https://travis-ci.org/Staffbase/plugins-client-sdk)
+# plugins-client-sdk 
+[![Build Status](https://travis-ci.org/Staffbase/plugins-client-sdk.svg?branch=master)](https://travis-ci.org/Staffbase/plugins-client-sdk)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 If you are developing your own plugin for your Staffbase app you may want your plugin to communicate with our clients.
 In order to make this possible we implemented a Javascript based API and communication layer for all our apps.
 We want to provide a library to help you improve your plugin functionality.
@@ -28,7 +32,9 @@ TODO
 - Fork it
 - Create a branch `git checkout -b feature-description`
 - Put your name into AUTHORS.txt
-- Commit your changes `git commit -am "Added ...."`
+- Commit your changes
+    - As this repository is commitizen friendly you may use `npx git-cz` to create a commit
+    - Your commit message is validated with a husky managed githook
 - Push to the branch `git push origin feature-description`
 - Open a Pull Request
 
