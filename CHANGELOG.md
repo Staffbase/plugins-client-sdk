@@ -4,3 +4,4 @@
 ### Features
 
 * **semantic-release:** added semantic release to repository ([0b1963d](https://github.com/Staffbase/plugins-client-sdk/commit/0b1963d))
+
