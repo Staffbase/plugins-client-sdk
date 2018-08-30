@@ -1,48 +1,33 @@
 /* eslint-disable no-global-assign */
 /* eslint-env jest, es6 */
 
-import stubPostMessage, { mockPostMessage } from '../../mocks';
-import connect from '../../../../src/lib/connection/connector/postmessage';
-import { disconnect } from '../../../../src/lib/connection/connector/postmessage';
+import connect from '../../../../src/lib/connection/connector/putMessage';
+import { disconnect } from '../../../../src/lib/connection/connector/putMessage';
+import stubPutMessage from '../../iosMocks';
 import command from '../../../../src/lib/connection/commands.js';
+import genId from '../../../../src/lib/utils/genId';
 import { unload as unloadManager } from '../../../../src/lib/connection/manager';
 
-import genId from '../../../../src/lib/utils/genId';
-
 jest.mock('../../../../src/lib/utils/genId');
-const mockVersion = '3.6-dev';
-const standardMsg = [
-  'SUCCESS',
-  0,
-  {
-    platform: { native: 'ios', mobile: true, version: mockVersion },
-    language: {
-      branchLanguages: {
-        de: {
-          key: 'de',
-          locale: 'de_DE',
-          name: 'Deutsch',
-          localizedName: 'Deutsch'
-        },
-        en: {
-          key: 'en',
-          locale: 'en_US',
-          name: 'English',
-          localizedName: 'Englisch'
-        }
-      }
-    }
-  }
-];
 
-describe('postmessage', () => {
+let mockVersion = '3.6-dev';
+let info = { native: 'ios', mobile: true, version: mockVersion };
+
+let language = { branchDefaultLanguage: 'de_DE' };
+
+let welcomeMessage = ['SUCCESS', 'abcd', { platform: info, language: language }];
+
+describe('putmessage', () => {
   describe('connect', () => {
+    let messageMock;
+
     beforeEach(() => {
-      disconnect();
-      mockPostMessage();
+      genId.mockReturnValue('abcd');
+      messageMock = stubPutMessage(welcomeMessage);
     });
 
     afterEach(() => {
+      messageMock.stopMessaging();
       disconnect();
       unloadManager();
     });
@@ -56,36 +41,29 @@ describe('postmessage', () => {
       expect(res instanceof Promise).toBeTrue();
     });
 
-    it('should use postMessage', () => {
-      jest.spyOn(window.parent, 'postMessage');
+    it('should install handler functions', () => {
       connect();
-      expect(window.parent.postMessage).toHaveBeenCalledTimes(1);
+      expect(window.Staffbase.plugins.getMessages).toBeFunction();
+      expect(window.Staffbase.plugins.putMessage).toBeFunction();
     });
 
     it('should send a HELLO message', () => {
-      jest.spyOn(window.parent, 'postMessage');
       connect();
-      let message = window.parent.postMessage.mock.calls[0][0];
-      expect(message[0]).toEqual('HELLO');
+      let message = window.Staffbase.plugins.getMessages();
+      expect(message[0][0]).toEqual('HELLO');
     });
 
     it('should resolve on SUCCESS message', async () => {
-      stubPostMessage(standardMsg);
       return expect(await connect()).toBe.ok;
     });
 
     it('should provide a function', async () => {
-      stubPostMessage(standardMsg);
       let fn = await connect();
       return expect(fn).toBeFunction();
     });
 
     describe('send function', async () => {
       describe('should accept sdk commands', async () => {
-        beforeEach(() => {
-          stubPostMessage(standardMsg);
-        });
-
         it(command.ios, async () => {
           let sendFn = await connect();
           let ios = await sendFn(command.ios);
@@ -123,19 +101,13 @@ describe('postmessage', () => {
       });
 
       describe('should send invoke commands', async () => {
-        let responseSpy;
-
-        beforeEach(() => {
-          responseSpy = stubPostMessage(standardMsg);
-        });
-
         it(command.openLink, async () => {
           let sendFn = await connect();
           let data = 'Link opened';
-          let success = ['SUCCESS', 'ff22', data];
+          let success = ['SUCCESS', 'ff33', data];
 
-          genId.mockReturnValue('ff22');
-          responseSpy.changeMsg(success);
+          genId.mockReturnValue('ff33');
+          messageMock.changeMsg(success);
           let result = await sendFn(command.openLink, 'http://staffbase.com');
 
           expect(result).toEqual(data);
@@ -144,10 +116,10 @@ describe('postmessage', () => {
         it('reject on error', async () => {
           let sendFn = await connect();
           let data = 'No url set.';
-          let error = ['ERROR', 'ff22', data];
+          let error = ['ERROR', 'ff33', data];
 
-          genId.mockReturnValue('ff22');
-          responseSpy.changeMsg(error);
+          genId.mockReturnValue('ff33');
+          messageMock.changeMsg(error);
           expect(sendFn(command.openLink, 'http://staffbase.com')).rejects.toEqual(data);
         });
       });
