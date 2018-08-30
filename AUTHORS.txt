@@ -1,3 +1,5 @@
 # Authors ordered by first contribution
 
 Stefan Staude - https://github.com/staust
+Vitaly Ivanov - https://github.com/viviivanov
+Daniel Große - https://github.com/Ninerian
