@@ -99,7 +99,7 @@ export async function openLinkInternal() {
 }
 
 /**
- * Get content languages configured in the app.
+ * Get all enabled content languages configured in the app.
  *
  * @return {Promise<any>}
  */
@@ -108,12 +108,21 @@ export async function getBranchLanguages() {
 }
 
 /**
- * Get content languages configured in the app.
+ * Get the default content language configured in the app.
  *
  * @return {Promise<any>}
  */
 export async function getBranchDefaultLanguage() {
   return app.getBranchDefaultLanguage();
+}
+
+/**
+ * Get all content languages supported by the app.
+ *
+ * @return {Promise<any>}
+ */
+export async function getContentLanguages() {
+  return app.getContentLanguages();
 }
 
 /**
