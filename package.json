@@ -62,7 +62,8 @@
       "@semantic-release/git"
     ],
     "publish": [
-      "@semantic-release/github"
+      "@semantic-release/github",
+      "@semantic-release/npm"
     ]
   },
   "directories": {
