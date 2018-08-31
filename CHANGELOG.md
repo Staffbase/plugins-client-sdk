@@ -1,3 +1,22 @@
+# [1.0.0](https://github.com/Staffbase/plugins-client-sdk/compare/v0.5.2...v1.0.0) (2018-08-31)
+
+
+### Bug Fixes
+
+* **release-force:** added auth token support to npm registry ([09e2337](https://github.com/Staffbase/plugins-client-sdk/commit/09e2337))
+
+
+### chore
+
+* **catch-links:** removes module ([96adc20](https://github.com/Staffbase/plugins-client-sdk/commit/96adc20))
+* **main:** removes getLanguageInfos ([0ac13ab](https://github.com/Staffbase/plugins-client-sdk/commit/0ac13ab))
+
+
+### BREAKING CHANGES
+
+* **main:** endpoint getLanguageInfos removed
+* **catch-links:** link catcher is not available anymore
+
 # [1.0.0](https://github.com/Staffbase/plugins-client-sdk/compare/v0.5.2...v1.0.0) (2018-08-30)
 
 
