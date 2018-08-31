@@ -71,3 +71,161 @@ Promise.all([PluginSDK.isIosDevice(), PluginSDK.isNativeApp()])
         })
 ```
 
+### Getting infos from the Staffbase app
+As a developer you can request various informations from the Staffbase app.
+
+#### Device information
+
+1. `getAppVersion` -> string
+   
+   the version number of the app
+
+2. `isNativeApp` -> boolean
+   
+   indicates if the native app is used
+
+3. `isMobileApp` -> boolean
+   
+   indicates if the app is opened in a mobile browser
+
+4. `isAndroidDevice` -> boolean
+   
+   indicates if an android device is used
+
+5. `isIosDevice` -> boolean
+   
+   indicates if an IOS device is used
+
+6. `deviceCanDownload` -> boolean
+   
+   indicates if device is able to download files
+
+#### Language information
+
+1. `getBranchLanguages` -> object
+   
+   the languages, which are chosen in the admin settings
+
+   ```js
+   // example for german and english in an english app
+   {
+       de: {
+           key: 'de',
+           locale: 'de_DE',
+           name: 'Deutsch',
+           localized: 'German' // this depends on the app language
+       },
+        en: {
+           key: 'en',
+           locale: 'en_US',
+           name: 'English',
+           localized: 'English' // this depends on the app language
+       }
+   }
+   ```
+
+1. `getBranchDefaultLanguage` -> object
+   
+   the language which is set as default language
+
+   ```js
+   // example for german in an english app
+   {
+           key: 'de',
+           locale: 'de_DE',
+           name: 'Deutsch',
+           localized: 'German' // this depends on the app language
+    }
+   ```
+   
+1. `getContentLanguages` -> object
+   
+   all languages which are supported by the app
+
+   ```js
+   // example for german and english in an english app
+   {
+       de: {
+           key: 'de',
+           locale: 'de_DE',
+           name: 'Deutsch',
+           localized: 'German' // this depends on the app language
+       },
+        ...
+   }
+   ```
+   
+
+### Invoking native methods
+With the SDK you can invoke methods, which are in the scope of the native app.
+
+1. `getPreferredContentLocale` {locales: object|array} -> string
+   
+   checks a given list of locale tags, or an object with locale tags as keys and returns the matching locale tag as string.
+
+   ```js
+    const localesArray = ['de_DE', 'en_US'];
+    const localesObject = { 'de_DE': {}, 'en_US':{} };
+
+    getPreferredContentLocale(localesArray).then(function (locale) {
+        console.log(locale); // 'en_US'
+    })
+
+    getPreferredContentLocale(localesObject).then(function (locale) {
+        console.log(locale); // 'en_US'
+    })
+   ```
+
+2. `openLink` {url: string} -> boolean
+   
+   open a link in the app, supports internal and external links. Returns a boolean
+   which indicates if the link has been opened. This can be used to call the method in a click event
+
+   ```js
+    // internal link
+    openLink('/settings/password').then(function (opened) {
+        console.log(opened); // true
+    })
+
+    // external link
+    openLink('https://staffbase.com').then(function (opened) {
+        console.log(opened); // true
+    })
+   ```
+
+3. `openLinkExternal` {url: string} -> boolean
+   
+   open a link in the device browser. Returns a boolean which indicates if the link has been opened. This can be used to call the method in a click event
+
+   ```js
+    // external link
+    openLinkExternal('https://staffbase.com').then(function (opened) {
+        console.log(opened); // true
+    })
+   ```
+
+3. `openLinkInternal` {url: string} -> boolean
+   
+   open a link in the app browser. Returns a boolean which indicates if the link has been opened. This can be used to call the method in a click event
+
+   ```js
+    // external link
+    openLinkInternal('https://staffbase.com').then(function (opened) {
+        console.log(opened); // true
+    })
+   ```
+
+4. `openNativeFileDialog` -> Blob **!experimental**
+   
+   open a native file upload dialog, which is currently only needed for Android devices.
+   After the file has been chosen, the data is returned as a blob.
+
+   > Attention! Currently the promise also rejects, if the user cancels the file upload dialog!
+
+   > Attention! This function is still in development and will have a changed behavior in the future!
+
+   ```js
+    openNativeFileDialog().then(function (res) {
+		console.log('Fileurl: ' + URL.createObjectURL(res)); // blob:d3958f5c-0777-0845-9dcf-2cb28783acaf
+	});
+   ```
