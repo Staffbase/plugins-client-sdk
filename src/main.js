@@ -2,6 +2,9 @@
  * interface exports
  */
 
+/**
+ * @ignore
+ */
 let log = require('loglevel');
 log.enableAll(); /* experimental */
 
@@ -60,7 +63,7 @@ export const isMobileApp = async () => app.isMobile();
  *
  * @return {Promise<any>}
  */
-export const openLink = async () => app.openLink();
+export const openLink = async url => app.openLink(url);
 
 /**
  * Open a link explicitly in the external browser.
@@ -69,7 +72,7 @@ export const openLink = async () => app.openLink();
  *
  * @return {Promise<any>}
  */
-export const openLinkExternal = async () => app.openLinkExternal();
+export const openLinkExternal = async url => app.openLinkExternal(url);
 
 /**
  * Open a link explicitly in the internal browser.
@@ -78,7 +81,7 @@ export const openLinkExternal = async () => app.openLinkExternal();
  *
  * @return {Promise<any>}
  */
-export const openLinkInternal = async () => app.openLinkInternal();
+export const openLinkInternal = async url => app.openLinkInternal(url);
 
 /**
  * Get all enabled content languages configured in the app.
@@ -112,7 +115,7 @@ export const getContentLanguages = async () => app.getContentLanguages();
  *
  * @return {Promise<string>}
  */
-export const getPreferredContentLocale = async () => app.getPreferredContentLocale();
+export const getPreferredContentLocale = async content => app.getPreferredContentLocale(content);
 
 /** @inheritdoc */
 export { openNativeFileDialog } from './lib/app'; /* experimental */
