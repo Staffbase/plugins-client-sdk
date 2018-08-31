@@ -13,54 +13,42 @@ import * as app from './lib/app';
  *
  * @return {Promise<boolean>}
  */
-export async function deviceCanDownload() {
-  return device.canDownload();
-}
+export const deviceCanDownload = async () => device.canDownload();
 
 /**
  * Check if device is using ios.
  *
  * @return {Promise<boolean>}
  */
-export async function isIosDevice() {
-  return device.isIos();
-}
+export const isIosDevice = async () => device.isIos();
 
 /**
  * Check if device is using android.
  *
  * @return {Promise<boolean>}
  */
-export async function isAndroidDevice() {
-  return device.isAndroid();
-}
+export const isAndroidDevice = async () => device.isAndroid();
 
 /**
  * Get the version of the Staffbase App.
  *
  * @return {Promise<string>}
  */
-export async function getAppVersion() {
-  return app.getVersion();
-}
+export const getAppVersion = async () => app.getVersion();
 
 /**
  * Check if app is native.
  *
  * @return {Promise<boolean>}
  */
-export async function isNativeApp() {
-  return app.isNative();
-}
+export const isNativeApp = async () => app.isNative();
 
 /**
  * Check if app is mobile.
  *
  * @return {Promise<boolean>}
  */
-export async function isMobileApp() {
-  return app.isMobile();
-}
+export const isMobileApp = async () => app.isMobile();
 
 /**
  * Open a link through the app.
@@ -72,9 +60,7 @@ export async function isMobileApp() {
  *
  * @return {Promise<any>}
  */
-export async function openLink() {
-  return app.openLink();
-}
+export const openLink = async () => app.openLink();
 
 /**
  * Open a link explicitly in the external browser.
@@ -83,9 +69,7 @@ export async function openLink() {
  *
  * @return {Promise<any>}
  */
-export async function openLinkExternal() {
-  return app.openLinkExternal();
-}
+export const openLinkExternal = async () => app.openLinkExternal();
 
 /**
  * Open a link explicitly in the internal browser.
@@ -94,39 +78,31 @@ export async function openLinkExternal() {
  *
  * @return {Promise<any>}
  */
-export async function openLinkInternal() {
-  return app.openLinkInternal();
-}
+export const openLinkInternal = async () => app.openLinkInternal();
 
 /**
  * Get all enabled content languages configured in the app.
  *
  * @return {Promise<any>}
  */
-export async function getBranchLanguages() {
-  return app.getBranchLanguages();
-}
+export const getBranchLanguages = async () => app.getBranchLanguages();
 
 /**
  * Get the default content language configured in the app.
  *
  * @return {Promise<any>}
  */
-export async function getBranchDefaultLanguage() {
-  return app.getBranchDefaultLanguage();
-}
+export const getBranchDefaultLanguage = async () => app.getBranchDefaultLanguage();
 
 /**
  * Get all content languages supported by the app.
  *
  * @return {Promise<any>}
  */
-export async function getContentLanguages() {
-  return app.getContentLanguages();
-}
+export const getContentLanguages = async () => app.getContentLanguages();
 
 /**
- * Gets the choosen language from a given content object
+ * Gets the chosen language from a given content object
  *
  * @example
  *    getPreferredContentLocale(['de_DE', 'en_EN']) // => 'de_DE'
@@ -136,9 +112,7 @@ export async function getContentLanguages() {
  *
  * @return {Promise<string>}
  */
-export async function getPreferredContentLocale() {
-  return app.getPreferredContentLocale();
-}
+export const getPreferredContentLocale = async () => app.getPreferredContentLocale();
 
 /** @inheritdoc */
 export { openNativeFileDialog } from './lib/app'; /* experimental */
