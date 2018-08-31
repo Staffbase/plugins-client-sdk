@@ -1,27 +1,29 @@
-# [1.0.0](https://github.com/Staffbase/plugins-client-sdk/compare/v0.5.2...v1.0.0) (2018-08-30)
-
-
-### chore
-
-* **catch-links:** removes module ([96adc20](https://github.com/Staffbase/plugins-client-sdk/commit/96adc20))
-* **main:** removes getLanguageInfos ([0ac13ab](https://github.com/Staffbase/plugins-client-sdk/commit/0ac13ab))
-
-
-### BREAKING CHANGES
-
-* **main:** endpoint getLanguageInfos removed
-* **catch-links:** link catcher is not available anymore
-
-## [0.5.2](https://github.com/Staffbase/plugins-client-sdk/compare/v0.5.1...v0.5.2) (2018-08-30)
-
-
-### Bug Fixes
-
-* **release-force:** this is just a commit to enforce and test a new release ([58a1b32](https://github.com/Staffbase/plugins-client-sdk/commit/58a1b32))
-
-# [0.5.0](https://github.com/Staffbase/plugins-client-sdk/compare/v0.4.0...v0.5.0) (2018-08-30)
-
+# [1.0.0]
+Initial Release
 
 ### Features
 
-* **semantic-release:** added semantic release to repository ([0b1963d](https://github.com/Staffbase/plugins-client-sdk/commit/0b1963d))
+#### Device informations
+
+1. `getAppVersion` -> string
+2. `isNativeApp` -> boolean
+3. `isMobileApp` -> boolean
+4. `isAndroidDevice` -> boolean
+5. `isIosDevice` -> boolean
+6. `deviceCanDownload` -> boolean
+
+#### Language information
+
+1. `getBranchLanguages` -> object
+2. `getBranchDefaultLanguage` -> object
+3. `getContentLanguages` -> object
+
+#### Invoke native methods
+
+1. `getPreferredContentLocale` {locales: object|array} -> string
+2. `openLink` {url: string} -> boolean
+3. `openLinkExternal` {url: string} -> boolean
+4. `openLinkInternal` {url: string} -> boolean
+5. `openNativeFileDialog` -> Blob **!experimental**
+
+

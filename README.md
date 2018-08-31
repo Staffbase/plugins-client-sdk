@@ -20,11 +20,11 @@ npm install @staffbase/plugins-client-sdk
 
 ## API Reference
 
-TODO
+Please look into our [API documentation](doc/api.md)
 
 ## Usage
 
-TODO
+Please look into our [Usage documentation](doc/usage.md)
 
 
 ## Contribution
