@@ -10,7 +10,7 @@ script:
   - npx jest --coverage
   - npx danger ci
 before_install:
-- echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+- echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> .npmrc
 after_success:
 - npm run travis-deploy-once "npm run semantic-release"
 branches:
