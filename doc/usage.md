@@ -13,19 +13,19 @@ The Plugin Client SDK is designed to be included as easy as possible and doesn't
 1. Add the Plugin Client SDK to your project:
 
 ```shell
-npm install --save @staffbase/plugin-client-sdk
+npm install --save @staffbase/plugins-client-sdk
 ```
 
 2. Import the whole SDK or a required method in your script:
 
 ```js
 // ES6 Syntax supports tree shaking
-import * as PluginSDK from '@staffbase/plugin-client-sdk';
-import { openLink } from '@staffbase/plugin-client-sdk';
+import * as PluginSDK from '@staffbase/plugins-client-sdk';
+import { openLink } from '@staffbase/plugins-client-sdk';
 
 // Common JS
-var PluginSDK = require('@staffbase/plugin-client-sdk');
-var openLink = require('@staffbase/plugin-client-sdk').openLink;
+var PluginSDK = require('@staffbase/plugins-client-sdk');
+var openLink = require('@staffbase/plugins-client-sdk').openLink;
 ```
 
 You can load the SDK direct in your page, all available methods are then available from the `window['plugins-client-sdk']` object.
