@@ -81,7 +81,8 @@
   ],
   "dependencies": {
     "jsdoc": "^3.5.5",
-    "loglevel": "^1.6.1"
+    "loglevel": "^1.6.1",
+    "object.entries-ponyfill": "1.0.1"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.0",
