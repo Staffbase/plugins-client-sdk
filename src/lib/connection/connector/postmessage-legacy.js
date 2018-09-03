@@ -30,7 +30,7 @@ let targetOrigin = '*';
 const dataStore = initial => ({
   mobile: initial.mobile,
   version: initial.version,
-  native: initial.native,
+  native: !!initial.native,
   ios: initial.native === 'ios',
   android: initial.native === 'android'
 });
@@ -77,7 +77,7 @@ export const disconnect = () => {
  * @param {Object} an onPostMessage event result
  */
 const receiveMessage = async ({ data = {} }) => {
-  log.info('pm-legacy/receiveMessage ' + data.state);
+  log.info('pm-legacy/receiveMessage ' + data);
   log.debug('pm-legacy/receiveMessage/payload ' + JSON.stringify(data));
 
   switch (data.state) {

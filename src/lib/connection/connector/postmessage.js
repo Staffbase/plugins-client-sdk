@@ -29,7 +29,7 @@ let log = require('loglevel');
 const dataStore = ({ platform, language }) => ({
   mobile: platform.mobile,
   version: platform.version,
-  native: platform.native,
+  native: !!platform.native,
   ios: platform.native === 'ios',
   android: platform.native === 'android',
   langInfos: language,
