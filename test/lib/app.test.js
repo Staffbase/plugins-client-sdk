@@ -1,11 +1,8 @@
 /* eslint-env jest, es6 */
 
-import stubPostMessage, { mockPostMessage } from './mocks';
-import connect, { disconnect } from '../../src/lib/connection/connection';
+import stubPostMessage from './mocks';
+import { disconnect } from '../../src/lib/connection/connection';
 import * as App from './../../src/lib/app';
-import genId from '../../src/lib/utils/genId';
-
-// jest.mock('../../src/lib/utils/genId');
 
 const branchLanguages = {
   de: {
