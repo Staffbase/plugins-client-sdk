@@ -1,6 +1,6 @@
 # Documentation
 ## What is the Plugin Client SDK
-This SDK is a toolchain that helps a developer to access internal informations or invoke native methods of the Staffbase App. The main usages are:
+This SDK is a toolchain that helps a developer to access internal information or invoke native methods of the Staffbase App. The main usages are:
 - get device informations
 - get languages and localizations
 - open links in the app browser or device browser
