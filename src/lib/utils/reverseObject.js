@@ -1,4 +1,4 @@
-import '../polyfills/objectEntries';
+import entries from 'object.entries-ponyfill';
 
 /**
  * Reverses the keys and properties of the given object
@@ -7,7 +7,7 @@ import '../polyfills/objectEntries';
  * @return {object}
  */
 const reverse = obj =>
-  Object.entries(obj).reduce((acc, [k, p]) => {
+  entries(obj).reduce((acc, [k, p]) => {
     acc[p] = k;
     return acc;
   }, {});
