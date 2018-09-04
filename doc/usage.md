@@ -48,7 +48,7 @@ The Plugin Client SDK uses an asynchronous communication between the plugin and 
 > We recommend to request data always on demand with the SDK methods!
 
 ### General flow
-Every SDK method returns a promise, which resolves with the requested information or throws an error if something breaks.
+Every SDK method returns a promise, which resolves with the requested information or throws an error if something has gone wrong.
 
 ```js
 PluginSDK.isIosDevice().then(function(isIOS) {
