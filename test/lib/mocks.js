@@ -12,7 +12,7 @@
  */
 const stubPostMessage = (msg = '', timeout = 10) => {
   let callbacks = [];
-  let fakeEvent = msg;
+  let fakeEvent = [msg];
   let timeouts = [];
 
   const addEventListener = (m, cb) => {
@@ -20,29 +20,35 @@ const stubPostMessage = (msg = '', timeout = 10) => {
     callbacks.push(cb);
   };
 
-  const answerMessage = receiver => {
+  const answerMessage = message => receiver => {
     // console.log(
     //   'send message ',
     //   fakeEvent,
     //   'to ',
     //   receiver.toString().match(/log\.info\((.*)\);/)[1]
     // );
-    receiver({ data: fakeEvent });
+    receiver({ data: message });
   };
 
   const postMessage = (m, o) => {
     // console.log('postmessage received ', m, o);
+    let message;
+
+    if (m === 'pluginLoaded' || m[0] === 'HELLO') {
+      message = fakeEvent[0];
+    } else {
+      message = fakeEvent[1] || fakeEvent[0];
+    }
     // forwards correct message id
-    if (Array.isArray(fakeEvent) && Array.isArray(m)) {
-      fakeEvent[1] = m[1];
-      // console.log(fakeEvent);
+    if (Array.isArray(message) && Array.isArray(m)) {
+      message[1] = m[1];
     }
 
     stopMessaging();
 
     timeouts = timeouts.concat(
       callbacks.map(cb => {
-        return window.setTimeout(answerMessage, timeout, cb);
+        return window.setTimeout(answerMessage(message), timeout, cb);
       })
     );
   };
@@ -54,7 +60,7 @@ const stubPostMessage = (msg = '', timeout = 10) => {
   mockPostMessage(addEventListener, postMessage);
 
   return {
-    changeMsg: msg => (fakeEvent = msg),
+    changeMsg: msg => fakeEvent.push(msg),
     stopMessaging: stopMessaging
   };
 };

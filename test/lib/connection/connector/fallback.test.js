@@ -28,7 +28,7 @@ describe('connector/fallback', () => {
       let start = new Date().getTime();
       return connect().then(() => {
         let end = new Date().getTime();
-        expect(end - start).toBeGreaterThan(499);
+        expect(end - start).toBeGreaterThan(490);
       });
     });
 
