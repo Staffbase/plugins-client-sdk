@@ -16,7 +16,6 @@
     "lint-size": "npx size-limit",
     "fix": "eslint --fix 'src/**/*.js' 'test/**/*.js'",
     "doc": "mkdir -p doc && npx jsdoc2md src/main.js > doc/api.md",
-    "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release",
     "commitmsg": "validate-commit-msg"
   },
@@ -119,7 +118,6 @@
     "rollup-plugin-uglify": "4.0.0",
     "semantic-release": "^15.9.12",
     "size-limit": "^0.19.2",
-    "travis-deploy-once": "^5.0.4",
     "validate-commit-msg": "^2.14.0"
   },
   "config": {
