@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/Staffbase/plugins-client-sdk/compare/v1.0.3...v1.0.4) (2018-09-10)
+
+
+### Bug Fixes
+
+* **docs:** switch from relative to absolute links in README.md to fix path mistake in npm ([a1af8d9](https://github.com/Staffbase/plugins-client-sdk/commit/a1af8d9))
+
 ## [1.0.3](https://github.com/Staffbase/plugins-client-sdk/compare/v1.0.2...v1.0.3) (2018-09-04)
 
 
