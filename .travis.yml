@@ -10,8 +10,6 @@ script:
   - npm run build
   - npx jest --coverage
   - npx danger ci
-before_deploy:
-- echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> .npmrc
 deploy:
   provider: script
   skip_cleanup: true
