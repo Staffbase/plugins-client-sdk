@@ -54,7 +54,7 @@ export const disconnect = () => {
 const sendMessage = async (msg, ...payload) => {
   log.info('connection/sendMessage ' + msg);
   log.debug('connection/sendMessage/payload ' + JSON.stringify(payload));
-  
+
   if (!connector) {
     connector = connect();
   }
