@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/Staffbase/plugins-client-sdk/compare/v1.0.4...v1.0.5) (2018-09-14)
+
+
+### Bug Fixes
+
+* **connection:** prevent multiple connection promisses ([1b9cea9](https://github.com/Staffbase/plugins-client-sdk/commit/1b9cea9))
+
 ## [1.0.4](https://github.com/Staffbase/plugins-client-sdk/compare/v1.0.3...v1.0.4) (2018-09-10)
 
 
