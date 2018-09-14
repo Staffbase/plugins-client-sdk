@@ -54,11 +54,13 @@ export const disconnect = () => {
 const sendMessage = async (msg, ...payload) => {
   log.info('connection/sendMessage ' + msg);
   log.debug('connection/sendMessage/payload ' + JSON.stringify(payload));
+
   if (!connector) {
-    connector = await connect();
+    connector = connect();
   }
 
-  return connector(msg, ...payload);
+  let sendFn = await connector;
+  return sendFn(msg, ...payload);
 };
 
 export default sendMessage;
