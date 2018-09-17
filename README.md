@@ -11,10 +11,10 @@ This SDK provides the basic functionality to get information provided by the Sta
 ## Installation
 
 We provide our Plugin Client SDK via [npm](https://www.npmjs.com/package/@staffbase/plugins-client-sdk). 
-Thus, you can just use npm for installation:
+Thus, you can just use yarn for installation:
 
 ```
-npm install @staffbase/plugins-client-sdk
+yarn add @staffbase/plugins-client-sdk
 ```
 
 
@@ -33,7 +33,7 @@ Please look into our [Usage documentation](https://github.com/Staffbase/plugins-
 - Create a branch `git checkout -b feature-description`
 - Put your name into AUTHORS.txt
 - Commit your changes
-    - As this repository is commitizen friendly you may use `npx git-cz` to create a commit
+    - As this repository is commitizen friendly you may use `yarn git-cz` to create a commit
     - Your commit message is validated with a husky managed githook
 - Push to the branch `git push origin feature-description`
 - Open a Pull Request
@@ -41,7 +41,7 @@ Please look into our [Usage documentation](https://github.com/Staffbase/plugins-
 
 ## Running Tests
 
-To run the tests a simple `# npm test` command in the root directory will suffice.
+To run the tests a simple `# yarn jest` command in the root directory will suffice.
 
 ## License
 
