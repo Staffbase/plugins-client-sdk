@@ -84,14 +84,12 @@ export default [
       { file: pkg.main, format: 'cjs', sourcemap: true },
       { file: pkg.module, format: 'es', sourcemap: true }
     ],
-    plugins: [
+    plugins: defaultBrowserPluginOptions.concat([
       stripLogger({
         variableNames: ['log'],
         propertyNames: ['debug', 'info', 'enableAll'],
         packageNames: ['log-level']
-      }),
-      resolve(),
-      commonjs()
-    ]
+      })
+    ])
   }
 ];
