@@ -16,8 +16,7 @@
     "lint-size": "npx size-limit",
     "fix": "eslint --fix 'src/**/*.js' 'test/**/*.js'",
     "doc": "mkdir -p doc && npx jsdoc2md src/main.js > doc/api.md",
-    "semantic-release": "semantic-release",
-    "commitmsg": "validate-commit-msg"
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -122,6 +121,11 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "validate-commit-msg"
     }
   }
 }
