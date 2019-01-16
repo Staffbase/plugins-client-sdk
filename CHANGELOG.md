@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/Staffbase/plugins-client-sdk/compare/v1.0.5...v1.0.6) (2018-12-10)
+
+
+### Bug Fixes
+
+* **rollup:** converts all builds to es5 ([526f87a](https://github.com/Staffbase/plugins-client-sdk/commit/526f87a))
+
 ## [1.0.5](https://github.com/Staffbase/plugins-client-sdk/compare/v1.0.4...v1.0.5) (2018-09-14)
 
 
