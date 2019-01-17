@@ -1,5 +1,10 @@
+sudo: false
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.9.4
+  - export PATH=$HOME/.yarn/bin:$PATH
 language: node_js
 cache:
+  yarn: true
   directories:
     - "node_modules"
 notifications:
@@ -7,12 +12,12 @@ notifications:
 node_js:
   - 'node'
 script:
-  - npm run build
-  - npx jest --coverage
-  - npx danger ci
+  - yarn run build
+  - yarn jest --coverage
+  - yarn danger ci
 deploy:
   provider: script
   skip_cleanup: true
   script:
-    - npx semantic-release
+    - yarn semantic-release
 

@@ -13,7 +13,7 @@ The Plugin Client SDK is designed to be included as easy as possible and doesn't
 1. Add the Plugin Client SDK to your project:
 
 ```shell
-npm install --save @staffbase/plugins-client-sdk
+yarn add @staffbase/plugins-client-sdk
 ```
 
 2. Import the whole SDK or a required method in your script:

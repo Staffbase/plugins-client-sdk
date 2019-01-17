@@ -7,21 +7,19 @@
   "browser": "dist/plugins-client-sdk.umd.js",
   "scripts": {
     "build": "rollup -c",
-    "prebuild": "npm run lint",
+    "prebuild": "yarn run lint",
     "dev": "rollup -c -w",
     "test-unit": "jest",
     "test-dev": "jest --watch",
-    "lint": "npm run lint-code && npm run lint-size",
-    "lint-code": "npx eslint src test",
-    "lint-size": "npx size-limit",
+    "lint": "yarn run lint-code && yarn run lint-size",
+    "lint-code": "yarn eslint src test",
+    "lint-size": "yarn size-limit",
     "fix": "eslint --fix 'src/**/*.js' 'test/**/*.js'",
-    "doc": "mkdir -p doc && npx jsdoc2md src/main.js > doc/api.md",
-    "semantic-release": "semantic-release"
+    "doc": "mkdir -p doc && yarn jsdoc2md src/main.js > doc/api.md",
+    "semantic-release": "semantic-release",
+    "commitmsg": "validate-commit-msg"  
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Staffbase/plugins-client-sdk.git"
-  },
+  "repository": "https://github.com/Staffbase/plugins-client-sdk.git",
   "keywords": [
     "staffbase",
     "client",
@@ -30,11 +28,7 @@
     "plugin",
     "api"
   ],
-  "author": {
-    "name": "Staffbase GmbH",
-    "email": "",
-    "url": "https://staffbase.com/"
-  },
+  "author": "Staffbase GmbH (https://staffbase.com/)",
   "contributors": [
     "Stefan Staude <stefan.staude@staffbase.com>",
     "Vitaliy Ivanov <vitaliy@staffbase.com>",
@@ -81,21 +75,22 @@
     "object.entries-ponyfill": "1.0.1"
   },
   "devDependencies": {
-    "@semantic-release/changelog": "^3.0.0",
-    "@semantic-release/git": "^7.0.3",
-    "@babel/core": "^7.0.0",
+    "@babel/core": "7.0.1",
     "@babel/plugin-external-helpers": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.0.0",
+    "@semantic-release/changelog": "^3.0.0",
+    "@semantic-release/git": "^7.0.3",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "23.6.0",
+    "babel-plugin-istanbul": "^5.1.0",
     "commitizen": "^3.0.5",
     "compare-versions": "^3.3.1",
     "cz-conventional-changelog": "^2.1.0",
     "danger": "6.1.9",
-    "danger-plugin-istanbul-coverage": "1.6.1",
+    "danger-plugin-istanbul-coverage": "1.6.0",
     "eslint": "^5.4.0",
     "eslint-config-google": "^0.11.0",
     "eslint-config-prettier": "^3.0.1",
@@ -106,6 +101,7 @@
     "jsdoc-to-markdown": "^4.0.1",
     "prettier": "^1.14.2",
     "prettier-eslint": "^8.8.2",
+    "regenerator-runtime": "0.12.1",
     "rollup": "^0.67.4",
     "rollup-plugin-async": "1.2.0",
     "rollup-plugin-babel": "4.0.3",
