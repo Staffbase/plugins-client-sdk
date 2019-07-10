@@ -52,7 +52,7 @@ describe('postmessage', () => {
     });
 
     it('should yield a Promise', () => {
-      let res = connect();
+      const res = connect();
       expect(res instanceof Promise).toBeTrue();
     });
 
@@ -65,7 +65,7 @@ describe('postmessage', () => {
     it('should send a HELLO message', () => {
       jest.spyOn(window.parent, 'postMessage');
       connect();
-      let message = window.parent.postMessage.mock.calls[0][0];
+      const message = window.parent.postMessage.mock.calls[0][0];
       expect(message[0]).toEqual('HELLO');
     });
 
@@ -76,43 +76,43 @@ describe('postmessage', () => {
 
     it('should provide a function', async () => {
       stubPostMessage(standardMsg);
-      let fn = await connect();
+      const fn = await connect();
       return expect(fn).toBeFunction();
     });
 
-    describe('send function', async () => {
-      describe('should accept sdk commands', async () => {
+    describe('send function', () => {
+      describe('should accept sdk commands', () => {
         beforeEach(() => {
           stubPostMessage(standardMsg);
         });
 
         it(command.ios, async () => {
-          let sendFn = await connect();
-          let ios = await sendFn(command.ios);
+          const sendFn = await connect();
+          const ios = await sendFn(command.ios);
           expect(ios).toBeTrue();
         });
 
         it(command.android, async () => {
-          let sendFn = await connect();
-          let android = await sendFn(command.android);
+          const sendFn = await connect();
+          const android = await sendFn(command.android);
           expect(android).toBeFalse();
         });
 
         it(command.mobile, async () => {
-          let sendFn = await connect();
-          let mobile = await sendFn(command.mobile);
+          const sendFn = await connect();
+          const mobile = await sendFn(command.mobile);
           expect(mobile).toBeTrue();
         });
 
         it(command.version, async () => {
-          let sendFn = await connect();
-          let version = await sendFn(command.version);
+          const sendFn = await connect();
+          const version = await sendFn(command.version);
           expect(version).toEqual(mockVersion);
         });
 
         it('throw error on unknown commands', async () => {
-          let sendFn = await connect();
-          let data = 'Command unknown not supported by driver';
+          const sendFn = await connect();
+          const data = 'Command unknown not supported by driver';
 
           try {
             await sendFn('unknown');
@@ -122,7 +122,7 @@ describe('postmessage', () => {
         });
       });
 
-      describe('should send invoke commands', async () => {
+      describe('should send invoke commands', () => {
         let responseSpy;
 
         beforeEach(() => {
@@ -130,21 +130,21 @@ describe('postmessage', () => {
         });
 
         it(command.openLink, async () => {
-          let sendFn = await connect();
-          let data = 'Link opened';
-          let success = ['SUCCESS', 'ff22', data];
+          const sendFn = await connect();
+          const data = 'Link opened';
+          const success = ['SUCCESS', 'ff22', data];
 
           genId.mockReturnValue('ff22');
           responseSpy.changeMsg(success);
-          let result = await sendFn(command.openLink, 'http://staffbase.com');
+          const result = await sendFn(command.openLink, 'http://staffbase.com');
 
           expect(result).toEqual(data);
         });
 
         it('reject on error', async () => {
-          let sendFn = await connect();
-          let data = 'No url set.';
-          let error = ['ERROR', 'ff22', data];
+          const sendFn = await connect();
+          const data = 'No url set.';
+          const error = ['ERROR', 'ff22', data];
 
           genId.mockReturnValue('ff22');
           responseSpy.changeMsg(error);

@@ -44,14 +44,14 @@ describe('connection', () => {
     });
 
     test('should provide a working sendmessage without a connection', async () => {
-      let result = await sendMessage(command.version);
+      const result = await sendMessage(command.version);
 
       expect(result).toBe('3.4');
     });
 
     test('should receive a message from postmessage connector if available', async () => {
       messageStup = stubPostMessage(standardMsg36);
-      let result = await sendMessage(command.version);
+      const result = await sendMessage(command.version);
       messageStup.stopMessaging();
 
       expect(result).toBe(mockVersion36);
@@ -59,7 +59,7 @@ describe('connection', () => {
 
     test('should receive a message from postmessage legacy connector if available', async () => {
       messageStup = stubPostMessage(standardMsg35);
-      let result = await sendMessage(command.version);
+      const result = await sendMessage(command.version);
       messageStup.stopMessaging();
 
       expect(result).toBe(mockVersion35);

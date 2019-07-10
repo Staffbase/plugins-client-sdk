@@ -26,7 +26,7 @@ describe('connector/postmessage-legacy', () => {
     });
 
     it('should yield a Promise', () => {
-      let res = connect();
+      const res = connect();
       expect(res instanceof Promise).toBeTrue();
     });
 
@@ -50,13 +50,13 @@ describe('connector/postmessage-legacy', () => {
 
     it('should provide a function', async () => {
       stubPostMessage(standardMsg);
-      let fn = await connect();
+      const fn = await connect();
       return expect(fn).toBeFunction();
     });
 
-    describe('send function', async () => {
-      describe('accepts sdk commands', async () => {
-        let info = {
+    describe('send function', () => {
+      describe('accepts sdk commands', () => {
+        const info = {
           state: 'platformInfo',
           info: { native: 'ios', mobile: true, version: mockVersion }
         };
@@ -66,7 +66,7 @@ describe('connector/postmessage-legacy', () => {
         });
 
         it('should reject on unknown commands', async () => {
-          let sendFn = await connect();
+          const sendFn = await connect();
           try {
             await sendFn('unknown-command');
           } catch (e) {
@@ -74,18 +74,18 @@ describe('connector/postmessage-legacy', () => {
           }
         });
 
-        describe('accepts all comands', async () => {
+        describe('accepts all comands', () => {
           // mock window open
           window.open = function() {};
 
-          let commandData = {
+          const commandData = {
             prefContentLang: ['de_DE', 'en_US']
           };
 
-          for (let cmd in command) {
+          for (const cmd in command) {
             if (command.hasOwnProperty(cmd)) {
               it('command.' + cmd, async () => {
-                let sendFn = await connect();
+                const sendFn = await connect();
                 return expect(sendFn(command[cmd], commandData[cmd])).resolves.toMatchSnapshot();
               });
             }
@@ -93,8 +93,8 @@ describe('connector/postmessage-legacy', () => {
         });
       });
 
-      describe('invoke commands', async () => {
-        let fileUpload = {
+      describe('invoke commands', () => {
+        const fileUpload = {
           state: 'finishedImageUploadForPlugin',
           file: true
         };
@@ -104,8 +104,8 @@ describe('connector/postmessage-legacy', () => {
         });
 
         it(command.nativeUpload, async () => {
-          let sendFn = await connect();
-          let nativeUpload = await sendFn(command.nativeUpload);
+          const sendFn = await connect();
+          const nativeUpload = await sendFn(command.nativeUpload);
           expect(nativeUpload).toEqual(true);
         });
       });
