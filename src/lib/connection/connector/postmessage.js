@@ -6,7 +6,7 @@ import {
   reject as rejectPromise,
   get as getPromise
 } from '../manager.js';
-let log = require('loglevel');
+const log = require('loglevel');
 
 /**
  * @typedef {{ mobile: boolean, version: string|number, native: string }} PlatformInfos
@@ -37,7 +37,7 @@ const dataStore = ({ platform, language }) => ({
 });
 
 let connection = null;
-let targetOrigin = '*';
+const targetOrigin = '*';
 
 /**
  * Connect to the Staffbase App.

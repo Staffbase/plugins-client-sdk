@@ -83,7 +83,7 @@ describe('connector/postmessage-legacy', () => {
           };
 
           for (const cmd in command) {
-            if (command.hasOwnProperty(cmd)) {
+            if (cmd in command) {
               it('command.' + cmd, async () => {
                 const sendFn = await connect();
                 return expect(sendFn(command[cmd], commandData[cmd])).resolves.toMatchSnapshot();

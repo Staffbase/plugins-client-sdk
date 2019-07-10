@@ -4,9 +4,9 @@
 import locales from './../../../model/locales';
 import normalize from './../../utils/normalize';
 
-let log = require('loglevel');
-let userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
-let currentLanguage = normalize(window && window.navigator.language);
+const log = require('loglevel');
+const userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
+const currentLanguage = normalize(window && window.navigator.language);
 
 // initialize Staffbase/platform namespace for ios frontend js code injection
 // in case of executeJs of app version 3.5 this object gets overwritten
@@ -37,7 +37,7 @@ export const getVersion = () => {
  */
 export const isNative = () => {
   log.debug('fallback/isNative');
-  let safari = /safari/i.test(userAgent);
+  const safari = /safari/i.test(userAgent);
   return (
     window.Staffbase.platform.native === 'android' ||
     window.Staffbase.platform.native === 'ios' ||

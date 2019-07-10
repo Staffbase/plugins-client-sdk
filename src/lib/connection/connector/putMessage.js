@@ -7,7 +7,7 @@ import {
   get as getPromise
 } from '../manager.js';
 
-let log = require('loglevel');
+const log = require('loglevel');
 
 let connection = null;
 let outMsgQueue = [];
@@ -70,7 +70,7 @@ export default connect;
  */
 function multiMessageProvider() {
   log.info('putMessage/multiMessageProvider');
-  let queueRef = outMsgQueue;
+  const queueRef = outMsgQueue;
   log.debug('putMessage/multiMessageProvider/queue/before ' + JSON.stringify(outMsgQueue));
   outMsgQueue = [];
   log.debug('putMessage/multiMessageProvider/queue/after ' + JSON.stringify(outMsgQueue));
