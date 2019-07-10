@@ -10,12 +10,12 @@ import { unload as unloadManager } from '../../../../src/lib/connection/manager'
 
 jest.mock('../../../../src/lib/utils/genId');
 
-let mockVersion = '3.6-dev';
-let info = { native: 'ios', mobile: true, version: mockVersion };
+const mockVersion = '3.6-dev';
+const info = { native: 'ios', mobile: true, version: mockVersion };
 
-let language = { branchDefaultLanguage: 'de_DE' };
+const language = { branchDefaultLanguage: 'de_DE' };
 
-let welcomeMessage = ['SUCCESS', 'abcd', { platform: info, language: language }];
+const welcomeMessage = ['SUCCESS', 'abcd', { platform: info, language: language }];
 
 describe('putmessage', () => {
   describe('connect', () => {
@@ -37,7 +37,7 @@ describe('putmessage', () => {
     });
 
     it('should yield a Promise', () => {
-      let res = connect();
+      const res = connect();
       expect(res instanceof Promise).toBeTrue();
     });
 
@@ -49,7 +49,7 @@ describe('putmessage', () => {
 
     it('should send a HELLO message', () => {
       connect();
-      let message = window.Staffbase.plugins.getMessages();
+      const message = window.Staffbase.plugins.getMessages();
       expect(message[0][0]).toEqual('HELLO');
     });
 
@@ -58,39 +58,39 @@ describe('putmessage', () => {
     });
 
     it('should provide a function', async () => {
-      let fn = await connect();
+      const fn = await connect();
       return expect(fn).toBeFunction();
     });
 
-    describe('send function', async () => {
-      describe('should accept sdk commands', async () => {
+    describe('send function', () => {
+      describe('should accept sdk commands', () => {
         it(command.ios, async () => {
-          let sendFn = await connect();
-          let ios = await sendFn(command.ios);
+          const sendFn = await connect();
+          const ios = await sendFn(command.ios);
           expect(ios).toBeTrue();
         });
 
         it(command.android, async () => {
-          let sendFn = await connect();
-          let android = await sendFn(command.android);
+          const sendFn = await connect();
+          const android = await sendFn(command.android);
           expect(android).toBeFalse();
         });
 
         it(command.mobile, async () => {
-          let sendFn = await connect();
-          let mobile = await sendFn(command.mobile);
+          const sendFn = await connect();
+          const mobile = await sendFn(command.mobile);
           expect(mobile).toBeTrue();
         });
 
         it(command.version, async () => {
-          let sendFn = await connect();
-          let version = await sendFn(command.version);
+          const sendFn = await connect();
+          const version = await sendFn(command.version);
           expect(version).toEqual(mockVersion);
         });
 
         it('throw error on unknown commands', async () => {
-          let sendFn = await connect();
-          let data = 'Command unknown not supported by driver';
+          const sendFn = await connect();
+          const data = 'Command unknown not supported by driver';
 
           try {
             await sendFn('unknown');
@@ -100,23 +100,23 @@ describe('putmessage', () => {
         });
       });
 
-      describe('should send invoke commands', async () => {
+      describe('should send invoke commands', () => {
         it(command.openLink, async () => {
-          let sendFn = await connect();
-          let data = 'Link opened';
-          let success = ['SUCCESS', 'ff33', data];
+          const sendFn = await connect();
+          const data = 'Link opened';
+          const success = ['SUCCESS', 'ff33', data];
 
           genId.mockReturnValue('ff33');
           messageMock.changeMsg(success);
-          let result = await sendFn(command.openLink, 'http://staffbase.com');
+          const result = await sendFn(command.openLink, 'http://staffbase.com');
 
           expect(result).toEqual(data);
         });
 
         it('reject on error', async () => {
-          let sendFn = await connect();
-          let data = 'No url set.';
-          let error = ['ERROR', 'ff33', data];
+          const sendFn = await connect();
+          const data = 'No url set.';
+          const error = ['ERROR', 'ff33', data];
 
           genId.mockReturnValue('ff33');
           messageMock.changeMsg(error);

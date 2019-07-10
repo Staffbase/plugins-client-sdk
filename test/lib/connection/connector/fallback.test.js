@@ -15,34 +15,34 @@ describe('connector/fallback', () => {
     });
 
     test('should yield a Promise', () => {
-      let res = connect();
+      const res = connect();
       expect(res instanceof Promise).toBeTrue();
     });
 
     test('should provide a function', async () => {
-      let fn = await connect();
+      const fn = await connect();
       expect(fn).toBeFunction();
     });
 
     test('should resolve after 500 ms', async () => {
-      let start = new Date().getTime();
+      const start = new Date().getTime();
       return connect().then(() => {
-        let end = new Date().getTime();
+        const end = new Date().getTime();
         expect(end - start).toBeGreaterThan(490);
       });
     });
 
     test('should resolve before 600 ms', async () => {
-      let start = new Date().getTime();
+      const start = new Date().getTime();
       return connect().then(() => {
-        let end = new Date().getTime();
+        const end = new Date().getTime();
         expect(end - start).toBeLessThan(600);
       });
     });
 
-    describe('send function', async () => {
+    describe('send function', () => {
       test('should reject on unknown commands', async () => {
-        let sendFn = await connect();
+        const sendFn = await connect();
         try {
           await sendFn('unknown-command');
         } catch (e) {
@@ -50,18 +50,18 @@ describe('connector/fallback', () => {
         }
       });
 
-      describe('accepts all comands', async () => {
+      describe('accepts all comands', () => {
         // mock window open
         window.open = function() {};
 
-        let commandData = {
+        const commandData = {
           prefContentLang: ['de_DE', 'en_US']
         };
 
-        for (let cmd in command) {
-          if (command.hasOwnProperty(cmd)) {
+        for (const cmd in command) {
+          if (cmd in command) {
             test('command.' + cmd, async () => {
-              let sendFn = await connect();
+              const sendFn = await connect();
               return expect(sendFn(command[cmd], commandData[cmd])).resolves.toMatchSnapshot();
             });
           }
