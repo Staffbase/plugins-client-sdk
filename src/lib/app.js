@@ -84,6 +84,26 @@ export const openNativeFileDialog = async () => {
 };
 
 /**
+ * Open a share dialog on native devices
+ *
+ * @example
+ *   openNativeShareDialog({
+ *      image: "https://example.com/test.png",
+ *      subject: "The string you would like to use as a subject for the share",
+ *      text: "This text is shared",
+ *      url: "https://example.com"
+ *   })
+ *
+ * @param {object} content the content to share
+ *
+ * @return {Promise<string>}
+ */
+export const openNativeShareDialog = async content => {
+  log.debug('app/openNativeShareDialog');
+  return sendMessage(cmd.nativeShare, content);
+};
+
+/**
  * Get the content languages configured for the branch.
  *
  * @return {Promise<Object>}

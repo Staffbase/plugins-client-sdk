@@ -62,14 +62,15 @@ export const sendMessage = async (cmd, ...payload) => {
       return fallbacks.isAndroid();
     case action.openLink:
       return fallbacks.openLink.apply(null, payload);
-    case action.nativeUpload:
-      return fallbacks.nativeUpload();
     case action.langInfos:
       return fallbacks.langInfos();
     case action.branchDefaultLang:
       return fallbacks.getBranchDefaultLanguage();
     case action.prefContentLang:
       return fallbacks.getPreferredContentLocale.apply(null, payload);
+    case action.nativeUpload:
+    case action.nativeShare:
+      return fallbacks.unSupported(cmd);
     default:
       // should actually never ever happen
       throw new Error('Command ' + cmd + ' not supported by driver');

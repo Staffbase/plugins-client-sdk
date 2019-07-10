@@ -91,4 +91,9 @@ describe('app', () => {
     messageStub.changeMsg(['SUCCESS', 0, true]);
     expect(await App.openNativeFileDialog()).toEqual(true);
   });
+
+  it('should open a sharing menu', async () => {
+    messageStub.changeMsg(['SUCCESS', 0, true]);
+    expect(await App.openNativeShareDialog()).toEqual(true);
+  });
 });
