@@ -1,3 +1,11 @@
+# [1.1.0-beta.2](https://github.com/Staffbase/plugins-client-sdk/compare/v1.1.0-beta.1@beta...v1.1.0-beta.2@beta) (2019-07-11)
+
+
+### Features
+
+* **nativeShareDialog:** exports main function (NFS-398) ([a8884fb](https://github.com/Staffbase/plugins-client-sdk/commit/a8884fb))
+* **nativeShareDialog:** fix lint ([c6c2caa](https://github.com/Staffbase/plugins-client-sdk/commit/c6c2caa))
+
 # [1.1.0-beta.1](https://github.com/Staffbase/plugins-client-sdk/compare/v1.0.6...v1.1.0-beta.1@beta) (2019-07-10)
 
 
