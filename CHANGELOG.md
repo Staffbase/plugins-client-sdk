@@ -1,3 +1,10 @@
+# [1.1.0-beta.1](https://github.com/Staffbase/plugins-client-sdk/compare/v1.0.6...v1.1.0-beta.1@beta) (2019-07-10)
+
+
+### Features
+
+* **nativeShareDialog:** adds command to call the share function (NFS-398) ([2987e4c](https://github.com/Staffbase/plugins-client-sdk/commit/2987e4c))
+
 ## [1.0.6](https://github.com/Staffbase/plugins-client-sdk/compare/v1.0.5...v1.0.6) (2018-12-10)
 
 
