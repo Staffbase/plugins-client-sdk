@@ -132,7 +132,7 @@ export const getPreferredContentLocale = async content => app.getPreferredConten
  *
  * @return {Promise<string>}
  */
-export const openNativeShareDialog = async (content) => app.openNativeShareDialog(content);
+export const openNativeShareDialog = async content => app.openNativeShareDialog(content);
 
 /** @inheritdoc */
 export { openNativeFileDialog } from './lib/app'; /* experimental */
