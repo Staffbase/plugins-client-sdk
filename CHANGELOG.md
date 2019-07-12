@@ -1,3 +1,11 @@
+# [1.1.0-beta.3](https://github.com/Staffbase/plugins-client-sdk/compare/v1.1.0-beta.2@beta...v1.1.0-beta.3@beta) (2019-07-12)
+
+
+### Features
+
+* **nativeShareDialog:** added openNativeShare to usage.md, fix empty case clause (NFS-398) ([a3cf9c2](https://github.com/Staffbase/plugins-client-sdk/commit/a3cf9c2))
+* **nativeShareDialog:** adds Putmessage support (NFS-398) ([f34f17a](https://github.com/Staffbase/plugins-client-sdk/commit/f34f17a))
+
 # [1.1.0-beta.2](https://github.com/Staffbase/plugins-client-sdk/compare/v1.1.0-beta.1@beta...v1.1.0-beta.2@beta) (2019-07-11)
 
 
