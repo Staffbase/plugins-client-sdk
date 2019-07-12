@@ -176,6 +176,22 @@ With the SDK you can invoke methods, which are in the scope of the native app.
     })
    ```
 
+2. `openNativeShareDialog` {content: object} -> string
+
+    open the native share view to share an object consisting of an image link, subject, text and url. 
+    
+    ```js
+    const contentObject = {image: "https://example.com/test.png",
+                           subject: "The string you would like to use as a subject for the share",
+                           text: "This text is shared",
+                           url: "https://example.com"};
+    
+    openNativeShareDialog(contentObject).then(function (opened) {
+        console.log(opened); // true
+    })
+
+    ``` 
+
 2. `openLink` {url: string} -> boolean
    
    open a link in the app, supports internal and external links. Returns a boolean
@@ -204,7 +220,7 @@ With the SDK you can invoke methods, which are in the scope of the native app.
     })
    ```
 
-3. `openLinkInternal` {url: string} -> boolean
+4. `openLinkInternal` {url: string} -> boolean
    
    open a link in the app browser. Returns a boolean which indicates if the link has been opened. This can be used to call the method in a click event
 
@@ -215,7 +231,7 @@ With the SDK you can invoke methods, which are in the scope of the native app.
     })
    ```
 
-4. `openNativeFileDialog` -> Blob **!experimental**
+5. `openNativeFileDialog` -> Blob **!experimental**
    
    open a native file upload dialog, which is currently only needed for Android devices.
    After the file has been chosen, the data is returned as a blob.
