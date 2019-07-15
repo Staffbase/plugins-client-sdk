@@ -5,7 +5,7 @@ import fallback, { disconnect as fallbackDisconnect } from './connector/fallback
 import postMessage, { disconnect as postMessageDisconnect } from './connector/postmessage.js';
 import putMessage, { disconnect as putMessageDisconnect } from './connector/putMessage.js';
 import { unload as unloadManager } from './manager';
-let log = require('loglevel');
+const log = require('loglevel');
 
 let connector;
 
@@ -59,7 +59,7 @@ const sendMessage = async (msg, ...payload) => {
     connector = connect();
   }
 
-  let sendFn = await connector;
+  const sendFn = await connector;
   return sendFn(msg, ...payload);
 };
 

@@ -3,7 +3,7 @@ import cmd from './connection/commands';
 import sendMessage from './connection/connection';
 import { isNative, getVersion } from './app';
 import compareVersions from 'compare-versions';
-let log = require('loglevel');
+const log = require('loglevel');
 /**
  * Check if device is using ios.
  *
@@ -34,7 +34,7 @@ export const canDownload = async () => {
   let [native, version, ios] = await Promise.all([isNative(), getVersion(), isIos()]);
 
   // support any development versions like X.Y-dev for compare versions
-  let dashIndex = version.indexOf('-');
+  const dashIndex = version.indexOf('-');
   version = version.substring(0, dashIndex != -1 ? dashIndex : version.length);
 
   // mobile ios devices can not download with an app version less than 3.5

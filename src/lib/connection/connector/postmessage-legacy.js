@@ -8,11 +8,11 @@ import {
 
 import { sendMessage as fallBackSendMessage } from './fallback.js';
 
-let log = require('loglevel');
+const log = require('loglevel');
 
 let connection = null;
 let connectId = null;
-let targetOrigin = '*';
+const targetOrigin = '*';
 
 /**
  * @typedef {{ mobile: boolean, version: string|number, native: string }} PlatformInfos

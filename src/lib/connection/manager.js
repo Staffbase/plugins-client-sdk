@@ -1,5 +1,5 @@
 import genID from './../utils/genId';
-let log = require('loglevel');
+const log = require('loglevel');
 /**
  * @type {Object.<string, {resolve: function, reject: function, promise: Promise}>}
  */
@@ -11,10 +11,10 @@ let promiseMap = {};
  * @return {string} id of the promise
  */
 function createPromiseObject() {
-  let id = genID();
+  const id = genID();
 
   // When the id is already used, it invokes the function again
-  if (promiseMap.hasOwnProperty(id)) return createPromiseObject();
+  if (id in promiseMap) return createPromiseObject();
 
   promiseMap[id] = { resolve: null, reject: null, promise: null };
   return id;
@@ -28,9 +28,9 @@ function createPromiseObject() {
  * @return {string} id of the promise
  */
 export const create = () => {
-  let id = createPromiseObject();
+  const id = createPromiseObject();
 
-  let p = new Promise(function(resolve, reject) {
+  const p = new Promise(function(resolve, reject) {
     promiseMap[id].resolve = resolve;
     promiseMap[id].reject = reject;
   });
@@ -50,8 +50,7 @@ export const create = () => {
  */
 export const resolve = (id, msg) => {
   log.debug('promiseManager/resolve ' + id);
-  if (!promiseMap.hasOwnProperty(id))
-    throw new Error('Tried to resolve an unknown [' + id + '] promise.');
+  if (!(id in promiseMap)) throw new Error('Tried to resolve an unknown [' + id + '] promise.');
 
   promiseMap[id].resolve(msg);
 
@@ -67,8 +66,7 @@ export const resolve = (id, msg) => {
  */
 export const reject = (id, err) => {
   log.debug('promiseManager/reject ' + id);
-  if (!promiseMap.hasOwnProperty(id))
-    throw new Error('Tried to reject an unknown [' + id + '] promise.');
+  if (!(id in promiseMap)) throw new Error('Tried to reject an unknown [' + id + '] promise.');
 
   promiseMap[id].reject(err);
   delete promiseMap[id];
@@ -82,8 +80,7 @@ export const reject = (id, err) => {
  * @throws {Error} on unknown id
  */
 export const get = id => {
-  if (!promiseMap.hasOwnProperty(id))
-    throw new Error('Tried to get an unknown [' + id + '] promise.');
+  if (!(id in promiseMap)) throw new Error('Tried to get an unknown [' + id + '] promise.');
 
   return promiseMap[id].promise;
 };

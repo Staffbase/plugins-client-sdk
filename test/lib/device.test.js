@@ -7,9 +7,9 @@ import * as FallbackHandler from './../../src/lib/connection/connector/fallback-
 
 describe('device', () => {
   describe('canDownload', () => {
-    let isNativeStub = jest.spyOn(App, 'isNative');
-    let getVersionStub = jest.spyOn(App, 'getVersion');
-    let isIosStub = jest.spyOn(FallbackHandler, 'isIos');
+    const isNativeStub = jest.spyOn(App, 'isNative');
+    const getVersionStub = jest.spyOn(App, 'getVersion');
+    const isIosStub = jest.spyOn(FallbackHandler, 'isIos');
     beforeEach(() => {
       disconnect();
     });
@@ -19,7 +19,7 @@ describe('device', () => {
       isNativeStub.mockReturnValue(false);
       getVersionStub.mockReturnValue('3.4');
       isIosStub.mockReturnValue(false);
-      let result = await canDownload();
+      const result = await canDownload();
       expect(result).toBeTruthy();
     });
 
@@ -28,7 +28,7 @@ describe('device', () => {
       isNativeStub.mockReturnValue(true);
       getVersionStub.mockReturnValue('3.4');
       isIosStub.mockReturnValue(true);
-      let result = await canDownload();
+      const result = await canDownload();
       expect(result).toBeFalsy();
     });
 
@@ -37,7 +37,7 @@ describe('device', () => {
       isNativeStub.mockReturnValue(true);
       getVersionStub.mockReturnValue('3.6-dev');
       isIosStub.mockReturnValue(true);
-      let result = await canDownload();
+      const result = await canDownload();
       expect(result).toBeTruthy();
     });
   });
