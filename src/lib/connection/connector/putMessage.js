@@ -153,7 +153,6 @@ const sendMessage = store => async (cmd, ...payload) => {
       return store[reversedActions[cmd]];
     case actions.openLink:
     case actions.prefContentLang:
-    case actions.nativeShare:
       return sendInvocationCall(invocationMapping[cmd], payload);
     default:
       throw new Error('Command ' + cmd + ' not supported by driver');
