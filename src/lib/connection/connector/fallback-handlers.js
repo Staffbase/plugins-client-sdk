@@ -96,13 +96,13 @@ export const openLink = url => {
 };
 
 /**
- * Open an external link
+ * Handler for unpossible functions
  *
- * @param {String} url address
+ * @param {String} cmd command name
  */
-export const nativeUpload = url => {
-  log.debug('fallback/nativeUpload');
-  log.warn('Native upload is not possible in fallback mode.');
+export const unSupported = cmd => {
+  log.debug('fallback/' + cmd);
+  log.warn('Command is not possible in fallback mode.');
   // nothing we can do here
   return;
 };

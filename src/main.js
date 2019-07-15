@@ -117,5 +117,22 @@ export const getContentLanguages = async () => app.getContentLanguages();
  */
 export const getPreferredContentLocale = async content => app.getPreferredContentLocale(content);
 
+/**
+ * Open a share dialog on native devices
+ *
+ * @example
+ *   openNativeShareDialog({
+ *      image: "https://example.com/test.png",
+ *      subject: "The string you would like to use as a subject for the share",
+ *      text: "This text is shared",
+ *      url: "https://example.com"
+ *   })
+ *
+ * @param {object} content the content to share
+ *
+ * @return {Promise<string>}
+ */
+export const openNativeShareDialog = async content => app.openNativeShareDialog(content);
+
 /** @inheritdoc */
 export { openNativeFileDialog } from './lib/app'; /* experimental */

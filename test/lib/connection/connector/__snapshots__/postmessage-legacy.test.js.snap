@@ -430,6 +430,8 @@ exports[`connector/postmessage-legacy connect send function accepts sdk commands
 
 exports[`connector/postmessage-legacy connect send function accepts sdk commands accepts all comands command.native 1`] = `true`;
 
+exports[`connector/postmessage-legacy connect send function accepts sdk commands accepts all comands command.nativeShare 1`] = `undefined`;
+
 exports[`connector/postmessage-legacy connect send function accepts sdk commands accepts all comands command.nativeUpload 1`] = `
 Object {
   "mobile": true,

@@ -145,6 +145,7 @@ const sendMessage = store => async (cmd, ...payload) => {
     case actions.langInfos:
     case actions.openLink:
     case actions.nativeUpload:
+    case actions.nativeShare:
     case actions.prefContentLang:
       return sendInvocationCall(createPromise())(invocationMapping[cmd], payload);
     default:

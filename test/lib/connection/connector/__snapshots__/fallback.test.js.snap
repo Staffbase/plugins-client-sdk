@@ -430,6 +430,8 @@ exports[`connector/fallback connect send function accepts all comands command.mo
 
 exports[`connector/fallback connect send function accepts all comands command.native 1`] = `false`;
 
+exports[`connector/fallback connect send function accepts all comands command.nativeShare 1`] = `undefined`;
+
 exports[`connector/fallback connect send function accepts all comands command.nativeUpload 1`] = `undefined`;
 
 exports[`connector/fallback connect send function accepts all comands command.openLink 1`] = `undefined`;
