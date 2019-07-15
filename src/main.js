@@ -5,7 +5,7 @@
 /**
  * @ignore
  */
-let log = require('loglevel');
+const log = require('loglevel');
 log.enableAll(); /* experimental */
 
 import * as device from './lib/device';

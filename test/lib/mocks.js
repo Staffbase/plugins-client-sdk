@@ -11,8 +11,8 @@
  * @return {function}
  */
 const stubPostMessage = (msg = '', timeout = 10) => {
-  let callbacks = [];
-  let fakeEvent = [msg];
+  const callbacks = [];
+  const fakeEvent = [msg];
   let timeouts = [];
 
   const addEventListener = (m, cb) => {
