@@ -1,3 +1,19 @@
+# [1.1.0](https://github.com/Staffbase/plugins-client-sdk/compare/v1.0.6...v1.1.0) (2019-07-15)
+
+
+### Features
+
+* **nativeShareDialog:** added openNativeShare to usage.md, fix empty case clause (NFS-398) ([a3cf9c2](https://github.com/Staffbase/plugins-client-sdk/commit/a3cf9c2))
+* **nativeShareDialog:** adds command to call the share function (NFS-398) ([2987e4c](https://github.com/Staffbase/plugins-client-sdk/commit/2987e4c))
+* **nativeShareDialog:** adds Putmessage support (NFS-398) ([f34f17a](https://github.com/Staffbase/plugins-client-sdk/commit/f34f17a))
+* **nativeShareDialog:** exports main function (NFS-398) ([a8884fb](https://github.com/Staffbase/plugins-client-sdk/commit/a8884fb))
+* **nativeShareDialog:** fix lint ([c6c2caa](https://github.com/Staffbase/plugins-client-sdk/commit/c6c2caa))
+
+
+### Reverts
+
+* "feat(nativeShareDialog): adds Putmessage support (NFS-398)" ([a16f531](https://github.com/Staffbase/plugins-client-sdk/commit/a16f531))
+
 ## [1.0.6](https://github.com/Staffbase/plugins-client-sdk/compare/v1.0.5...v1.0.6) (2018-12-10)
 
 
