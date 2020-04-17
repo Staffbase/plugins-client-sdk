@@ -30,6 +30,12 @@ const dataStore = ({ platform, language }) => ({
   branchDefaultLang: language.branchDefaultLanguage
 });
 
+window.Staffbase = window.Staffbase || {};
+window.Staffbase.plugins = {
+  getMessages: multiMessageProvider,
+  putMessage: singleMessageReceiver
+};
+
 /**
  * Connect to the Staffbase App.
  *
@@ -41,17 +47,12 @@ const connect = () => {
     return connection;
   }
 
+  log.info('putMessage/connect start');
   const connectId = createPromise();
   connection = getPromise(connectId).then(function(payload) {
     log.info('putMessage/connect succeeded');
     return sendMessage(dataStore(payload));
   });
-
-  window.Staffbase = window.Staffbase || {};
-  window.Staffbase.plugins = {
-    getMessages: multiMessageProvider,
-    putMessage: singleMessageReceiver
-  };
 
   outMsgQueue.push([protocol.HELLO, connectId, []]);
 
@@ -69,11 +70,11 @@ export default connect;
  * @return {Array} ordered list of messages
  */
 function multiMessageProvider() {
-  log.info('putMessage/multiMessageProvider');
   const queueRef = outMsgQueue;
-  log.debug('putMessage/multiMessageProvider/queue/before ' + JSON.stringify(outMsgQueue));
+  if (queueRef.length) {
+    log.debug('putMessage/multiMessageProvider/queue', queueRef);
+  }
   outMsgQueue = [];
-  log.debug('putMessage/multiMessageProvider/queue/after ' + JSON.stringify(outMsgQueue));
   return queueRef;
 }
 
