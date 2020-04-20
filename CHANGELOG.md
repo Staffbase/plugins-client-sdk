@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/Staffbase/plugins-client-sdk/compare/v1.1.0...v1.1.1) (2020-04-20)
+
+
+### Bug Fixes
+
+* **putMessage:** fixes fallback on ios ([bf2a8a0](https://github.com/Staffbase/plugins-client-sdk/commit/bf2a8a0))
+
 # [1.1.0](https://github.com/Staffbase/plugins-client-sdk/compare/v1.0.6...v1.1.0) (2019-07-15)
 
 
