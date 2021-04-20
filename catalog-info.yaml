@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: plugins-client-sdk
+  annotations:
+    github.com/project-slug: Staffbase/plugins-client-sdk
+  tags:
+    - JavaScript
+spec:
+  type: service
+  lifecycle: production
