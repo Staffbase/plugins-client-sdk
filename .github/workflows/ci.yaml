@@ -3,10 +3,7 @@
 
 name: Continous Integration
 
-on:
-  push:
-    branches:
-      - '**'
+on: [push, pull_request]
 
 env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -35,9 +32,6 @@ jobs:
 
     - name: Unit test
       run: yarn jest --coverage
-
-    - name: Danger TS
-      run: yarn danger ci
 
   release:
     name: Release
