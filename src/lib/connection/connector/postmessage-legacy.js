@@ -8,7 +8,7 @@ import {
 
 import { sendMessage as fallBackSendMessage } from './fallback.js';
 
-const log = require('loglevel');
+import log from 'loglevel';
 
 let connection = null;
 let connectId = null;

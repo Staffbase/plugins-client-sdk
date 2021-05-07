@@ -5,7 +5,7 @@ import fallback, { disconnect as fallbackDisconnect } from './connector/fallback
 import postMessage, { disconnect as postMessageDisconnect } from './connector/postmessage.js';
 import putMessage, { disconnect as putMessageDisconnect } from './connector/putMessage.js';
 import { unload as unloadManager } from './manager';
-const log = require('loglevel');
+import log from 'loglevel';
 
 let connector;
 

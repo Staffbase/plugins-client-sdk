@@ -6,7 +6,8 @@ import {
   reject as rejectPromise,
   get as getPromise
 } from '../manager.js';
-const log = require('loglevel');
+
+import log from 'loglevel';
 
 /**
  * @typedef {{ mobile: boolean, version: string|number, native: string }} PlatformInfos

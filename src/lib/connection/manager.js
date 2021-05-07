@@ -1,5 +1,5 @@
 import genID from './../utils/genId';
-const log = require('loglevel');
+import log from 'loglevel';
 /**
  * @type {Object.<string, {resolve: function, reject: function, promise: Promise}>}
  */

@@ -1,6 +1,6 @@
 import cmd from './connection/commands';
 import sendMessage from './connection/connection';
-const log = require('loglevel');
+import log from 'loglevel';
 
 /**
  * Get the version of the Staffbase App.
