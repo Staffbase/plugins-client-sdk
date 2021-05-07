@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Staffbase Custom Plugin Example | Home Page</title>
+    <!-- favicon-->
+    <link rel="shortcut icon" href="/icon.ico" type="image/x-icon" />
+    <!-- Bootstrap CSS-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <!-- Fontawsome-->
+    <script
+      src="https://kit.fontawesome.com/0b48447cd5.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Staffbase Plugins Client SDK for JavaScript-->
+    <script
+      src="plugins-client-sdk.umd.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      var PluginSDK = window["plugins-client-sdk"];
+      const shareContentObject = {
+        image:
+          "https://staffbase.com/wp-content/themes/staffbase-theme/img/staffbase_logo.png",
+        subject: "I just shared something out of my custom plugin.",
+        text: "Staffbase is awesome!",
+        url: "https://staffbase.com/en/",
+      };
+    </script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <a
+        data-toggle="tooltip"
+        data-placement="left"
+        title="Support Portal"
+        href="https://support.staffbase.com"
+        target="_blank"
+        onclick="PluginSDK.openLinkExternal('https://support.staffbase.com')"
+        class="floatingBtn"
+        ><i class="fas fa-question floatingContent text-white"></i
+      ></a>
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="text-center">Custom Plugin Example</h1>
+          <p class="text-center">
+            <span class="badge badge-info">npm</span>&nbsp;<span
+              class="badge badge-info"
+              >NodeJS / express / JADE</span
+            >&nbsp;<span class="badge badge-info">HTML / CSS / JS</span
+            >&nbsp;<span class="badge badge-info">JWT</span>
+          </p>
+        </div>
+      </div>
+      <div class="row notificationLinkExternal">
+        <div class="col-sm-12">
+          <div class="notificationsLinks">
+            <div
+              role="alert"
+              class="alert alert-success alert-dismissible fade show"
+            >
+              <div>
+                <p>
+                  <strong>Staffbase Plugins Client SDK for JavaScript</strong>
+                </p>
+                <pre class="overflow-atuo">
+                            1. include: https://unpkg.com/@staffbase/plugins-client-sdk</pre
+                >
+                <pre class="overflow-atuo">
+                            2. declare: var PluginSDK = window['plugins-client-sdk'];</pre
+                >
+                <p>
+                  <strong
+                    >All links to external pages have the following attribute in
+                    order to open externally on desktop & native
+                    devices:</strong
+                  >
+                </p>
+                <pre class="overflow-atuo">
+                            onclick="PluginSDK.openLinkExternal('LINK')"</pre
+                >
+              </div>
+              <button
+                type="button"
+                data-dismiss="alert"
+                aria-label="Close"
+                class="close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row notificationSDKAppVersion">
+        <div class="col-sm-12">
+          <div class="notificationsAppVersion">
+            <div
+              role="alert"
+              class="alert alert-info alert-dismissible fade show"
+            >
+              <div>
+                <strong>App Version:</strong> <span id="isAppVersion1"></span>
+              </div>
+              <button
+                type="button"
+                data-dismiss="alert"
+                aria-label="Close"
+                class="close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row notificationSDKFunctions">
+        <div class="col-sm-12">
+          <div class="notificationsFunctions">
+            <div
+              role="alert"
+              class="alert alert-info alert-dismissible fade show"
+            >
+              <div>
+                <strong>App Version:</strong> <span id="isAppVersion2"></span
+                ><br />
+                <strong>Mobile App:</strong> <span id="isMobileApp"></span
+                ><br />
+                <strong>Native App:</strong> <span id="isNativeApp"></span
+                ><br />
+                <strong>iOS Device:</strong> <span id="isIOS"></span><br />
+                <strong>Android Device:</strong>
+                <span id="isAndroid"></span><br />
+                <strong>Can Download:</strong>
+                <span id="isDownload"></span>
+              </div>
+              <button
+                type="button"
+                data-dismiss="alert"
+                aria-label="Close"
+                class="close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <h2>Documentation</h2>
+        </div>
+        <div class="col-sm-6">
+          <div id="accordionDocumentation" class="accordion">
+            <div class="card">
+              <div id="headingGeneral" class="card-header">
+                <h2 class="mb-0">
+                  <button
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseDocuGeneral"
+                    aria-expanded="false"
+                    aria-controls="collapseDocuGeneral"
+                    class="btn btn-secondary collapsed"
+                  >
+                    General
+                  </button>
+                </h2>
+              </div>
+              <div
+                id="collapseDocuGeneral"
+                aria-labelledby="headingGeneral"
+                data-parent="#accordionDocumentation"
+                class="collapse"
+              >
+                <div class="card-body">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <a
+                        href="https://developers.staffbase.com"
+                        target="_blank"
+                        onclick="PluginSDK.openLinkExternal('https://developers.staffbase.com')"
+                      >
+                        Staffbase Developer Portal</a
+                      >
+                    </li>
+                    <li class="list-group-item">
+                      <a
+                        href="https://developers.staffbase.com/guide/customplugin-overview/"
+                        target="_blank"
+                        onclick="PluginSDK.openLinkExternal('https://developers.staffbase.com/guide/customplugin-overview/')"
+                      >
+                        Staffbase Plugin SSO</a
+                      >
+                    </li>
+                    <li class="list-group-item">
+                      <a
+                        href="https://github.com/Staffbase"
+                        target="_blank"
+                        onclick="PluginSDK.openLinkExternal('https://jwt.io/')"
+                      >
+                        Staffbase SDKs</a
+                      >
+                    </li>
+                    <li class="list-group-item">
+                      <a
+                        href="https://jwt.io/"
+                        target="_blank"
+                        onclick="PluginSDK.openLinkExternal('https://jwt.io/')"
+                      >
+                        JWT.io</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div id="headingAPIdetails" class="card-header">
+                <h2 class="mb-0">
+                  <button
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseDocuAPIdetails"
+                    aria-expanded="false"
+                    aria-controls="collapseDocuAPIdetails"
+                    class="btn btn-secondary collapsed"
+                  >
+                    Staffbase API Details
+                  </button>
+                </h2>
+              </div>
+              <div
+                id="collapseDocuAPIdetails"
+                aria-labelledby="headingAPIdetails"
+                data-parent="#accordionDocumentation"
+                class="collapse"
+              >
+                <div class="card-body">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <a
+                        href="https://developers.staffbase.com/basic-concepts/authentication/"
+                        target="_blank"
+                        onclick="PluginSDK.openLinkExternal('https://developers.staffbase.com/basic-concepts/authentication/')"
+                      >
+                        Authentication</a
+                      >
+                    </li>
+                    <li class="list-group-item">
+                      <a
+                        href="https://developers.staffbase.com/basic-concepts/user-model/"
+                        target="_blank"
+                        onclick="PluginSDK.openLinkExternal('https://developers.staffbase.com/basic-concepts/user-model/')"
+                      >
+                        User Model</a
+                      >
+                    </li>
+                    <li class="list-group-item">
+                      <a
+                        href="https://developers.staffbase.com/basic-concepts/role-type/"
+                        target="_blank"
+                        onclick="PluginSDK.openLinkExternal('https://developers.staffbase.com/basic-concepts/role-type/')"
+                      >
+                        User Role Type</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div id="accordionDocumentation" class="accordion">
+            <div class="card">
+              <div id="headingPlugin" class="card-header">
+                <h2 class="mb-0">
+                  <button
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseDocuPlugin"
+                    aria-expanded="false"
+                    aria-controls="collapseDocuPlugin"
+                    class="btn btn-secondary collapsed"
+                  >
+                    This Plugin
+                  </button>
+                </h2>
+              </div>
+              <div
+                id="collapseDocuPlugin"
+                aria-labelledby="headingPlugin"
+                data-parent="#accordionDocumentation"
+                class="collapse"
+              >
+                <div class="card-body">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <a
+                        href="https://github.com/Staffbase/plugins-sdk-nodejs"
+                        target="_blank"
+                        onclick="PluginSDK.openLinkExternal('https://github.com/Staffbase/plugins-sdk-nodejs')"
+                      >
+                        Staffbase Plugins SDK for Node.js</a
+                      >
+                    </li>
+                    <li class="list-group-item">
+                      <a
+                        href="https://github.com/Staffbase/create-staffbase-plugin-nodejs"
+                        target="_blank"
+                        onclick="PluginSDK.openLinkExternal('https://github.com/Staffbase/create-staffbase-plugin-nodejs')"
+                      >
+                        Staffbase Plugin Skeleton for Node.js</a
+                      >
+                    </li>
+                    <li class="list-group-item">
+                      <a
+                        href="https://github.com/Staffbase/plugins-client-sdk"
+                        target="_blank"
+                        onclick="PluginSDK.openLinkExternal('https://github.com/Staffbase/plugins-client-sdk')"
+                      >
+                        Staffbase Plugins Client SDK for JavaScript</a
+                      >
+                    </li>
+                    <li class="list-group-item">
+                      <a
+                        href="https://getbootstrap.com/"
+                        target="_blank"
+                        onclick="PluginSDK.openLinkExternal('https://getbootstrap.com/')"
+                      >
+                        Bootstrap*</a
+                      >
+                    </li>
+                    <li class="list-group-item">
+                      <a
+                        href="https://fontawesome.com/"
+                        target="_blank"
+                        onclick="PluginSDK.openLinkExternal('https://fontawesome.com/')"
+                      >
+                        Fontawesome*</a
+                      >
+                    </li>
+                  </ul>
+                  <p>
+                    <span class="badge badge-secondary"
+                      >* not included in Staffbase SDKs/dependencies</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-sm-12">
+          <h2>JWT Token</h2>
+          <div id="accordionJWTtoken" class="accordion">
+            <div class="card">
+              <div id="headingUserInfo" class="card-header">
+                <h2 class="mb-0">
+                  <button
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseUserInfo"
+                    aria-expanded="false"
+                    aria-controls="collapseUserInfo"
+                    class="btn btn-secondary collapsed"
+                  >
+                    User Info
+                  </button>
+                </h2>
+              </div>
+              <div
+                id="collapseUserInfo"
+                aria-labelledby="headingUserInfo"
+                data-parent="#accordionJWTtoken"
+                class="collapse"
+              >
+                <div class="card-body">
+                  <table class="table table-hover table-responsive">
+                    <thead>
+                      <tr>
+                        <th scope="col">Attribute</th>
+                        <th scope="col">Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">First Name</th>
+                        <td>Daniel</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Last Name</th>
+                        <td>Grosse</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Full Name</th>
+                        <td>Daniel Grosse</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Role<sup>1</sup></th>
+                        <td>editor</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Locale</th>
+                        <td>lv_LV</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Staffbase User ID</th>
+                        <td>5f58a43f79dc23375a2881df</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">User External ID</th>
+                        <td>daniel.grosse@staffbase.com</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Primary Email Address<sup>2</sup></th>
+                        <td>daniel.grosse@staffbase.com</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Username<sup>2</sup></th>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Type<sup>3</sup></th>
+                        <td>user</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Tags</th>
+                        <td>
+                          <p>There are no tags.</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Theme Text Color</th>
+                        <td>#FFFFFF</td>
+                        <td width="50" style="background-color: #ffffff"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Theme Background Color</th>
+                        <td>#00A4FD</td>
+                        <td width="50" style="background-color: #00a4fd"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <sup
+                    >1 The role of the accessing user. If this is set to
+                    “editor”, the requesting user may manage the contents of the
+                    plugin instance (instance_id), i.e. she has administration
+                    rights.</sup
+                  ><br />
+                  <sup
+                    >2 The primary email address and username are not sent by
+                    default.</sup
+                  ><br />
+                  <sup
+                    >3 The type of the accessing entity could be either a “user”
+                    or a “token”.</sup
+                  ><br />
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div id="headingPluginInfo" class="card-header">
+                <h2 class="mb-0">
+                  <button
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapsePluginInfo"
+                    aria-expanded="false"
+                    aria-controls="collapsePluginInfo"
+                    class="btn btn-secondary collapsed"
+                  >
+                    Plugin Info
+                  </button>
+                </h2>
+              </div>
+              <div
+                id="collapsePluginInfo"
+                aria-labelledby="headingPluginInfo"
+                data-parent="#accordionJWTtoken"
+                class="collapse"
+              >
+                <div class="card-body">
+                  <table class="table table-hover table-responsive">
+                    <thead>
+                      <tr>
+                        <th scope="col">Attribute</th>
+                        <th scope="col">Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Instance ID</th>
+                        <td>605c8323f828444c61394d75</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Instance Name</th>
+                        <td>xxx</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div id="headingTokenInfo" class="card-header">
+                <h2 class="mb-0">
+                  <button
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseTokenInfo"
+                    aria-expanded="false"
+                    aria-controls="collapseTokenInfo"
+                    class="btn btn-secondary collapsed"
+                  >
+                    Token Info
+                  </button>
+                </h2>
+              </div>
+              <div
+                id="collapseTokenInfo"
+                aria-labelledby="headingTokenInfo"
+                data-parent="#accordionJWTtoken"
+                class="collapse"
+              >
+                <div class="card-body">
+                  <table class="table table-hover table-responsive">
+                    <thead>
+                      <tr>
+                        <th scope="col">Attribute</th>
+                        <th scope="col">Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Claim Audience</th>
+                        <td>maximizeit.msacustomplugin</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Expire At</th>
+                        <td>
+                          Thu Mar 25 2021 12:43:19 GMT+0000 (Coordinated
+                          Universal Time)
+                        </td>
+                        <td>1616676259</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Valid Not Before</th>
+                        <td>
+                          Thu Mar 25 2021 12:43:19 GMT+0000 (Coordinated
+                          Universal Time)
+                        </td>
+                        <td>1616676169</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Issued At</th>
+                        <td>
+                          Thu Mar 25 2021 12:43:19 GMT+0000 (Coordinated
+                          Universal Time)
+                        </td>
+                        <td>1616676199</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Issuer</th>
+                        <td>staffbase-backend-dev</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Subject</th>
+                        <td>5f58a43f79dc23375a2881df</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row notificationSDKLanguage">
+        <div class="col-sm-12">
+          <div class="notificationsLanguage">
+            <div
+              role="alert"
+              class="alert alert-dark alert-dismissible fade show"
+            >
+              <h2>Languages</h2>
+              <h5>
+                Info retrieved with Staffbase Plugins Client SDK for JavaScript.
+              </h5>
+              <br />
+              <div>
+                <strong>getBranchLanguages() - Branch Languages:</strong>
+                <pre id="isBranchLangs"></pre>
+                <br />
+                <strong
+                  >getBranchDefaultLanguage() - Branch Default Language:</strong
+                >
+                <pre id="isBranchDefaultLang"></pre>
+                <br />
+                <strong>getContentLanguages() - Content Languages:</strong>
+                <pre id="isContentLangs"></pre>
+                <br />
+                <strong
+                  >getPreferredContentLocale() - Preferred Content
+                  Locale:</strong
+                >
+                <pre id="isPreferredContentLocale"></pre>
+              </div>
+              <button
+                type="button"
+                data-dismiss="alert"
+                aria-label="Close"
+                class="close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row notificationSDKNativeDialog">
+        <div class="col-sm-6">
+          <div class="notificationsNativeFileUploadDialog">
+            <div
+              role="alert"
+              class="alert alert-dark alert-dismissible fade show"
+            >
+              <h5>Native File Upload Dialog</h5>
+              <a id="openNativeFileDialogBtn" href="#">Here</a> you can upload
+              an image via the native file dialog. (only in native app)<button
+                type="button"
+                data-dismiss="alert"
+                aria-label="Close"
+                class="close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="notificationsNativeShareDialog">
+            <div
+              role="alert"
+              class="alert alert-dark alert-dismissible fade show"
+            >
+              <h5>Native Share Dialog</h5>
+              <strong>WiP -</strong>Click<a
+                href="#"
+                target="_blank"
+                onclick="console.log('shareContentObject: ',shareContentObject);PluginSDK.openNativeShareDialog(shareContentObject);console.log('openNativeShareDialog() true')"
+                >here</a
+              >
+              or<a id="openNativeShareDialogBtn" href="#">here</a> to open
+              the<strong>native share dialog</strong>. (only in native
+              app)<button
+                type="button"
+                data-dismiss="alert"
+                aria-label="Close"
+                class="close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row SDKNativeFileUploadOutput">
+        <div class="col-sm-12">
+          <img id="output" src="" width="150" alt="Thumb preview..." />
+        </div>
+      </div>
+      <br />
+      <br />
+    </div>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS-->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      $(".alert").alert();
+      $('[data-toggle="tooltip"]').tooltip();
+      $('[data-toggle="popover"]').popover();
+    </script>
+    <!-- Staffbase Plugins Client SDK-->
+    <script type="text/javascript">
+     PluginSDK.isIosDevice()
+              .then(function (isIOS) {
+                  console.log("iOS Device: ", isIOS);
+                  document.getElementById("isIOS").innerText = isIOS;
+              })
+              .catch(function (error) {
+                  console.warn("Something went wrong with isIosDevice(): ", error);
+              });
+     PluginSDK.isAndroidDevice()
+              .then(function (isAndroid) {
+                  console.log("Android Device: ", isAndroid);
+                  document.getElementById("isAndroid").innerText = isAndroid;
+              })
+              .catch(function (error) {
+                  console.warn("Something went wrong with isAndroidDevice(): ", error);
+              });
+     PluginSDK.isMobileApp()
+              .then(function (isMobileApp) {
+                  console.log("Mobile App: ", isMobileApp);
+                  document.getElementById("isMobileApp").innerText = isMobileApp;
+              })
+              .catch(function (error) {
+                  console.warn("Something went wrong with isMobileApp(): ", error);
+              });
+     PluginSDK.isNativeApp()
+              .then(function (isNativeApp) {
+                  console.log("Native App: ", isNativeApp);
+                  if (!isNativeApp) {
+                      $(".notificationSDKFunctions").css("display", "none");
+                      // $(".notificationSDKNativeDialog").css("display","none");
+                      // $(".notificationLinkExternal").css("display","none");
+                  } else {
+                      $(".notificationSDKAppVersion").css("display", "none");
+                  }
+                  document.getElementById("isNativeApp").innerText = isNativeApp;
+              })
+              .catch(function (error) {
+                  console.warn("Something went wrong with isNativeApp(): ", error);
+              });
+     PluginSDK.deviceCanDownload()
+              .then(function (isDownload) {
+                  console.log("Device can download: ", isDownload);
+                  document.getElementById("isDownload").innerText = isDownload;
+              })
+              .catch(function (error) {
+                  console.warn(
+                      "Something went wrong with deviceCanDownload(): ",
+                      error
+                  );
+              });
+     PluginSDK.getAppVersion()
+        .then(function (isAppVersion) {
+          console.log("App Version: ", isAppVersion);
+          document.getElementById("isAppVersion1").innerText = isAppVersion;
+          document.getElementById("isAppVersion2").innerText = isAppVersion;
+        })
+        .catch(function (error) {
+          console.warn("Something went wrong with getAppVersion(): ", error);
+        });
+     PluginSDK.getBranchLanguages()
+              .then(function (isBranchLangs) {
+                  console.log("Branch Languages: ", isBranchLangs);
+                  document.getElementById("isBranchLangs").textContent = JSON.stringify(
+                      isBranchLangs,
+                      undefined,
+                      2
+                  );
+              })
+              .catch(function (error) {
+                  console.warn(
+                      "Something went wrong with getBranchLanguages(): ",
+                      error
+                  );
+              });
+     PluginSDK.getBranchDefaultLanguage()
+              .then(function (isBranchDefaultLang) {
+                  console.log("Branch Default Language: ", isBranchDefaultLang);
+                  document.getElementById(
+                      "isBranchDefaultLang"
+                  ).textContent = JSON.stringify(isBranchDefaultLang, undefined, 2);
+              })
+              .catch(function (error) {
+                  console.warn(
+                      "Something went wrong with getBranchDefaultLanguage(): ",
+                      error
+                  );
+              });
+     PluginSDK.getContentLanguages()
+              .then(function (isContentLangs) {
+                  console.log("Content Languages: ", isContentLangs);
+                  document.getElementById(
+                      "isContentLangs"
+                  ).textContent = JSON.stringify(isContentLangs, undefined, 2);
+              })
+              .catch(function (error) {
+                  console.warn(
+                      "Something went wrong with getContentLanguages(): ",
+                      error
+                  );
+              });
+     PluginSDK.getPreferredContentLocale()
+              .then(function (isPreferredContentLocale) {
+                  console.log("Preferred Content Locale: ", isPreferredContentLocale);
+                  document.getElementById(
+                      "isPreferredContentLocale"
+                  ).textContent = JSON.stringify(
+                      isPreferredContentLocale,
+                      undefined,
+                      2
+                  );
+              })
+              .catch(function (error) {
+                  console.warn(
+                      "Something went wrong with getPreferredContentLocale(): ",
+                      error
+                  );
+              });
+     $("#openNativeShareDialogBtn").click(function () {
+         PluginSDK.openNativeShareDialog(shareContentObject)
+                  .then(function () {
+                      console.log("openNativeShareDialog() opened");
+                  })
+                  .catch(function (error) {
+                      console.warn(
+                          "Something went wrong with openNativeShareDialog(): ",
+                          error
+                      );
+                  });
+         return false;
+     });
+     $("#openNativeFileDialogBtn").click(function () {
+         PluginSDK.openNativeFileDialog()
+                  .then(function (res) {
+                      console.log("Fileurl: " + URL.createObjectURL(res));
+                      const reader = new FileReader();
+                      reader.onloadend = () => {
+                          const dataURL = reader.result;
+                          const output = document.getElementById("output");
+                          output.src = dataURL;
+                      };
+                      reader.readAsDataURL(res);
+                  })
+                  .catch(function (error) {
+                      console.warn(
+                          "Something went wrong with openNativeFileDialog(): ",
+                          error
+                      );
+                  });
+         return false;
+     });
+    </script>
+  </body>
+</html>

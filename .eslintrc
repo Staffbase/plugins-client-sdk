@@ -30,7 +30,7 @@
         "singleQuote": true,
         "trailingComma": "none",
         "bracketSpacing": true,
-        "parser": "babylon"
+        "parser": "babel"
       }
     ]
   }

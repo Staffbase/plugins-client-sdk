@@ -1,15 +1,14 @@
 {
-	"presets": [
-		[
-			"@babel/preset-env",
-			{
-				"targets": {
-					"browsers": ["last 2 versions", "IE >= 10"] 
-				}
-			}
-		]
-	],
-	"plugins": [
-        ["@babel/transform-runtime"]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": ["last 2 versions", "IE >= 11"]
+        },
+        "exclude": ["transform-regenerator", "transform-async-to-generator"]
+      }
     ]
+  ],
+  "plugins": ["module:fast-async"]
 }
