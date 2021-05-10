@@ -8,6 +8,6 @@ metadata:
   tags:
     - javascript
 spec:
-  type: bridge
+  type: other
   lifecycle: production
   owner: need-for-speed
