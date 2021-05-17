@@ -49,7 +49,7 @@ const connect = () => {
 
   log.info('putMessage/connect start');
   const connectId = createPromise();
-  connection = getPromise(connectId).then(function(payload) {
+  connection = getPromise(connectId).then(function (payload) {
     log.info('putMessage/connect succeeded');
     return sendMessage(dataStore(payload));
   });
@@ -140,25 +140,27 @@ export const disconnect = () => {
  * @return {Promise<any>} which awaits the response of the Staffbase App
  * @throws {Error} on commands not supported by protocol
  */
-const sendMessage = store => async (cmd, ...payload) => {
-  log.info('putMessage/sendMessage ' + cmd);
-  log.debug('putMessage/sendMessage/payload ' + JSON.stringify(payload));
-  switch (cmd) {
-    case actions.version:
-    case actions.native:
-    case actions.mobile:
-    case actions.ios:
-    case actions.android:
-    case actions.langInfos:
-    case actions.branchDefaultLang:
-      return store[reversedActions[cmd]];
-    case actions.openLink:
-    case actions.prefContentLang:
-      return sendInvocationCall(invocationMapping[cmd], payload);
-    default:
-      throw new Error('Command ' + cmd + ' not supported by driver');
-  }
-};
+const sendMessage =
+  (store) =>
+  async (cmd, ...payload) => {
+    log.info('putMessage/sendMessage ' + cmd);
+    log.debug('putMessage/sendMessage/payload ' + JSON.stringify(payload));
+    switch (cmd) {
+      case actions.version:
+      case actions.native:
+      case actions.mobile:
+      case actions.ios:
+      case actions.android:
+      case actions.langInfos:
+      case actions.branchDefaultLang:
+        return store[reversedActions[cmd]];
+      case actions.openLink:
+      case actions.prefContentLang:
+        return sendInvocationCall(invocationMapping[cmd], payload);
+      default:
+        throw new Error('Command ' + cmd + ' not supported by driver');
+    }
+  };
 
 /**
  * Create a promise and send an invocation call to the frontend

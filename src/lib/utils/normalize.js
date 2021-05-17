@@ -5,7 +5,7 @@
  *
  * @return {string} the first part of the locale
  */
-const normalize = locale => {
+const normalize = (locale) => {
   locale = (locale && locale.split(/-|_/)[0]) || locale; // use only first part
 
   if (['nb', 'nn'].indexOf(locale) !== -1) {

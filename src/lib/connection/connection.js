@@ -24,7 +24,7 @@ const connect = async () => {
   const fallbackConnectionBucket = realConnectionBucket.concat(fallbackConnection);
 
   // Wait on the real communication and replace the connector with
-  Promise.race(realConnectionBucket).then(newConnector => {
+  Promise.race(realConnectionBucket).then((newConnector) => {
     log.debug('connection/replace connector ' + newConnector.toString());
     connector = newConnector;
   });
