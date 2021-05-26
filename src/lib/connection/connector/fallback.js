@@ -18,7 +18,7 @@ export default () => {
   }
 
   connection = new Promise((resolve, reject) => {
-    setTimeout(function() {
+    setTimeout(function () {
       log.info('fallback/connect succeeded');
       resolve(sendMessage);
     }, fallbackKickIn);

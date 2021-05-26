@@ -81,7 +81,7 @@ describe('connection', () => {
   });
 });
 
-const delay = duration => new Promise(resolve => setTimeout(resolve, duration));
+const delay = (duration) => new Promise((resolve) => setTimeout(resolve, duration));
 
 /*
  * Mock the post message interface

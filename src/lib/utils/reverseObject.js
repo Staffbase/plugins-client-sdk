@@ -6,7 +6,7 @@ import entries from 'object.entries-ponyfill';
  * @param {object} obj the object to reverse
  * @return {object}
  */
-const reverse = obj =>
+const reverse = (obj) =>
   entries(obj).reduce((acc, [k, p]) => {
     acc[p] = k;
     return acc;

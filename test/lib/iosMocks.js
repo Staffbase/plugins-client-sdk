@@ -30,7 +30,7 @@ const stubPutMessage = (msg = '', rate = 50) => {
     }
   };
 
-  const changeMsg = msg => {
+  const changeMsg = (msg) => {
     fakeEvent = msg;
   };
 

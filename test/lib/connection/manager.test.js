@@ -8,7 +8,7 @@ describe('manager', () => {
 
   afterEach(() => {});
 
-  test('should delete a promise after resolving', done => {
+  test('should delete a promise after resolving', (done) => {
     const promiseID = manager.create();
     const promise = manager.get(promiseID);
 
@@ -16,7 +16,7 @@ describe('manager', () => {
       .then(() => {
         manager.get(promiseID);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         expect(error).toBe.ok;
         done();
       });
@@ -24,16 +24,16 @@ describe('manager', () => {
     manager.resolve(promiseID, true);
   });
 
-  test('should delete a promise after rejecting', done => {
+  test('should delete a promise after rejecting', (done) => {
     const promiseID = manager.create();
     const promise = manager.get(promiseID);
 
     promise
       .then(() => {})
-      .catch(function() {
+      .catch(function () {
         manager.get(promiseID);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         expect(error).toBe.ok;
         done();
       });

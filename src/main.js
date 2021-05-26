@@ -63,7 +63,7 @@ export const isMobileApp = async () => app.isMobile();
  * @function
  * @return {Promise<any>}
  */
-export const openLink = async url => app.openLink(url);
+export const openLink = async (url) => app.openLink(url);
 
 /**
  * Open a link explicitly in the external browser.
@@ -72,7 +72,7 @@ export const openLink = async url => app.openLink(url);
  * @function
  * @return {Promise<any>}
  */
-export const openLinkExternal = async url => app.openLinkExternal(url);
+export const openLinkExternal = async (url) => app.openLinkExternal(url);
 
 /**
  * Open a link explicitly in the internal browser.
@@ -81,7 +81,7 @@ export const openLinkExternal = async url => app.openLinkExternal(url);
  * @function
  * @return {Promise<any>}
  */
-export const openLinkInternal = async url => app.openLinkInternal(url);
+export const openLinkInternal = async (url) => app.openLinkInternal(url);
 
 /**
  * Get all enabled content languages configured in the app.
@@ -115,7 +115,7 @@ export const getContentLanguages = async () => app.getContentLanguages();
  * @function
  * @return {Promise<string>}
  */
-export const getPreferredContentLocale = async content => app.getPreferredContentLocale(content);
+export const getPreferredContentLocale = async (content) => app.getPreferredContentLocale(content);
 
 /**
  * Open a share dialog on native devices
@@ -132,7 +132,7 @@ export const getPreferredContentLocale = async content => app.getPreferredConten
  *
  * @return {Promise<string>}
  */
-export const openNativeShareDialog = async content => app.openNativeShareDialog(content);
+export const openNativeShareDialog = async (content) => app.openNativeShareDialog(content);
 
 /** @inheritdoc */
 export { openNativeFileDialog } from './lib/app'; /* experimental */

@@ -27,7 +27,7 @@ const targetOrigin = '*';
  * @static
  * @return {StaticValueStore}
  */
-const dataStore = initial => ({
+const dataStore = (initial) => ({
   mobile: initial.mobile,
   version: initial.version,
   native: !!initial.native,
@@ -47,7 +47,7 @@ const connect = () => {
   }
 
   connectId = createPromise();
-  connection = getPromise(connectId).then(function(payload) {
+  connection = getPromise(connectId).then(function (payload) {
     log.info('pm-legacy/connect succeeded');
     return sendMessage(dataStore(payload));
   });
@@ -108,23 +108,25 @@ const receiveMessage = async ({ data = {} }) => {
  * @return {Promise<any>} which awaits the response of the Staffbase App
  * @throws {Error} on commands not supported by protocol
  */
-const sendMessage = store => async (cmd, ...payload) => {
-  log.info('pm-legacy/sendMessage ' + cmd);
-  log.debug('pm-legacy/sendMessage/payload ' + JSON.stringify(payload));
+const sendMessage =
+  (store) =>
+  async (cmd, ...payload) => {
+    log.info('pm-legacy/sendMessage ' + cmd);
+    log.debug('pm-legacy/sendMessage/payload ' + JSON.stringify(payload));
 
-  switch (cmd) {
-    case actions.version:
-    case actions.native:
-    case actions.mobile:
-    case actions.ios:
-    case actions.android:
-      return store[reversedActions[cmd]];
-    case actions.nativeUpload:
-      return sendInvocationCall(invocationMapping[cmd], payload);
-    default:
-      return fallBackSendMessage.apply(null, [cmd, ...payload]);
-  }
-};
+    switch (cmd) {
+      case actions.version:
+      case actions.native:
+      case actions.mobile:
+      case actions.ios:
+      case actions.android:
+        return store[reversedActions[cmd]];
+      case actions.nativeUpload:
+        return sendInvocationCall(invocationMapping[cmd], payload);
+      default:
+        return fallBackSendMessage.apply(null, [cmd, ...payload]);
+    }
+  };
 
 /**
  * Create a promise and send an invocation call to the frontend

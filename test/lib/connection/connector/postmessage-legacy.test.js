@@ -76,7 +76,7 @@ describe('connector/postmessage-legacy', () => {
 
         describe('accepts all comands', () => {
           // mock window open
-          window.open = function() {};
+          window.open = function () {};
 
           const commandData = {
             prefContentLang: ['de_DE', 'en_US']
