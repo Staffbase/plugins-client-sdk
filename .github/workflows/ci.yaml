@@ -39,6 +39,10 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
       - uses: actions/setup-node@v2
         with:
           node-version: 14.x
@@ -48,6 +52,10 @@ jobs:
 
       - name: Build
         run: yarn build
+
+      - name: Remove NPM publish
+        if: ${{ github.ref == 'refs/heads/alpha' }}
+        run: "sed -i '/public:/d' .releaserc"
 
       - name: Release
         run: yarn semantic-release

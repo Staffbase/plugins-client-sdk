@@ -14,13 +14,9 @@
   },
   "extends": [
     "eslint:recommended",
-    "google",
-    "prettier"
-  ],
-  "plugins": [
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   "rules": {
-    "prefer-const": "warn"
+    "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
   }
 }
