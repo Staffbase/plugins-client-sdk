@@ -21,17 +21,6 @@
     "prettier"
   ],
   "rules": {
-    "prefer-const": "warn",
-    "prettier/prettier": [
-      2,
-      {
-        "printWidth": 100,
-        "tabWidth": 2,
-        "singleQuote": true,
-        "trailingComma": "none",
-        "bracketSpacing": true,
-        "parser": "babylon"
-      }
-    ]
+    "prefer-const": "warn"
   }
 }
