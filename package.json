@@ -8,6 +8,7 @@
   "scripts": {
     "build": "rollup -c",
     "prebuild": "yarn run lint",
+    "prepare": "husky install",
     "dev": "rollup -c -w --config rollup.dev.js",
     "test-unit": "jest",
     "test-dev": "jest --watch",
@@ -16,8 +17,7 @@
     "lint-size": "yarn size-limit",
     "fix": "eslint --fix 'src/**/*.js' 'test/**/*.js'",
     "doc": "mkdir -p doc && yarn jsdoc2md src/main.js > doc/api.md",
-    "semantic-release": "semantic-release",
-    "commitmsg": "validate-commit-msg"
+    "release": "semantic-release"
   },
   "repository": "https://github.com/Staffbase/plugins-client-sdk.git",
   "keywords": [
@@ -31,7 +31,6 @@
   "author": "Staffbase GmbH (https://staffbase.com/)",
   "contributors": [
     "Stefan Staude <stefan.staude@staffbase.com>",
-    "Vitaliy Ivanov <vitaliy@staffbase.com>",
     "Daniel Große <daniel.grosse@staffbase.com>"
   ],
   "license": "Apache-2.0",
@@ -64,23 +63,18 @@
     "@babel/preset-env": "^7.14.2",
     "@babel/register": "^7.13.16",
     "@babel/runtime": "^7.14.0",
+    "@commitlint/cli": "12.1.1",
+    "@commitlint/config-conventional": "12.1.1",
     "@rollup/plugin-babel": "5.3.0",
     "@rollup/plugin-commonjs": "19.0.0",
     "@rollup/plugin-node-resolve": "13.0.0",
     "@rollup/plugin-strip": "2.0.1",
-    "@semantic-release/changelog": "^5.0.1",
-    "@semantic-release/git": "^9.0.0",
-    "@semantic-release/github": "^7.2.3",
     "@size-limit/preset-small-lib": "4.10.2",
     "@tmware/semantic-release-npm-github-publish": "1.4.3",
-    "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "26.6.3",
     "babel-plugin-istanbul": "^6.0.0",
-    "commitizen": "^4.2.4",
     "compare-versions": "^3.6.0",
-    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.26.0",
-    "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "husky": "^6.0.0",
@@ -88,24 +82,12 @@
     "jest-extended": "0.11.5",
     "jsdoc-to-markdown": "^7.0.1",
     "prettier": "^2.3.0",
-    "prettier-eslint": "^12.0.0",
     "regenerator-runtime": "0.13.7",
     "rollup": "^2.48.0",
     "rollup-plugin-license": "2.3.0",
     "rollup-plugin-strip-logger": "0.4.1",
     "rollup-plugin-terser": "7.0.2",
     "semantic-release": "^17.4.3",
-    "size-limit": "^4.10.2",
-    "validate-commit-msg": "^2.14.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "validate-commit-msg"
-    }
+    "size-limit": "^4.10.2"
   }
 }
