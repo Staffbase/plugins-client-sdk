@@ -10,5 +10,7 @@
       }
     ]
   ],
-  "plugins": ["module:fast-async"]
+  "plugins": [
+     ["module:fast-async", { "spec": true }]
+  ]
 }
