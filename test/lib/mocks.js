@@ -15,7 +15,7 @@ const stubPostMessage = (msg = '', timeout = 10) => {
   const fakeEvent = [msg];
   let timeouts = [];
 
-  const addEventListener = (m, cb) => {
+  const addEventListener = (_m, cb) => {
     // console.log('add eventlistener', m, cb.toString().match(/log\.info\((.*)\);/)[1]);
     callbacks.push(cb);
   };
@@ -30,7 +30,7 @@ const stubPostMessage = (msg = '', timeout = 10) => {
     receiver({ data: message });
   };
 
-  const postMessage = (m, o) => {
+  const postMessage = (m, _o) => {
     // console.log('postmessage received ', m, o);
     let message;
 
@@ -77,10 +77,10 @@ const stubPostMessage = (msg = '', timeout = 10) => {
 export const mockPostMessage = (cbAEL, cbPM) => {
   jest
     .spyOn(window, 'addEventListener')
-    .mockImplementation(cbAEL || function (message, receiveMessage) {});
+    .mockImplementation(cbAEL || function (_message, _receiveMessage) {});
   jest
     .spyOn(window.parent, 'postMessage')
-    .mockImplementation(cbPM || function (message, origin) {});
+    .mockImplementation(cbPM || function (_message, _origin) {});
 };
 
 export default stubPostMessage;

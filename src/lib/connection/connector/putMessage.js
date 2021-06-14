@@ -7,7 +7,7 @@ import {
   get as getPromise
 } from '../manager.js';
 
-const log = require('loglevel');
+import log from 'loglevel';
 
 let connection = null;
 let outMsgQueue = [];

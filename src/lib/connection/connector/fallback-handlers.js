@@ -4,7 +4,8 @@
 import locales from './../../../model/locales';
 import normalize from './../../utils/normalize';
 
-const log = require('loglevel');
+import log from 'loglevel';
+
 const userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
 const currentLanguage = normalize(window && window.navigator.language);
 
