@@ -19,6 +19,7 @@ export const commands = {
   native: 'app-native',
   openLink: 'openExternalLink',
   nativeUpload: 'nativeFileUpload',
+  //keyboardHandling: 'applyKeyboardHandling',
   nativeShare: 'nativeShareDialog',
   langInfos: 'getLanguageInfos',
   branchDefaultLang: 'getBranchDefaultLanguage',

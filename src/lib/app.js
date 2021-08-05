@@ -84,6 +84,18 @@ export const openNativeFileDialog = async () => {
 };
 
 /**
+ * Add keyboardListeners for correct resizing and scrolling to ifroam context
+ *
+ * Works only for android now
+ *
+ * @return {Promise<any>}
+ */
+// export const applyKeyboardHandling = async () => {
+//   log.debug('app/applyKeyboardHandling');
+//   return sendMessage(cmd.keyboardHandling, frameElement);
+// };
+
+/**
  * Open a share dialog on native devices
  *
  * @example
