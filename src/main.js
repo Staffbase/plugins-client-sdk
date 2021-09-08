@@ -134,5 +134,12 @@ export const getPreferredContentLocale = async (content) => app.getPreferredCont
  */
 export const openNativeShareDialog = async (content) => app.openNativeShareDialog(content);
 
+/**
+ * Add keyboardListeners for correct resizing and scrolling to iframe context
+ *
+ * @return {Promise<any>}
+ */
+export const applyKeyboardHandling = async () => app.applyKeyboardHandling();
+
 /** @inheritdoc */
 export { openNativeFileDialog } from './lib/app'; /* experimental */

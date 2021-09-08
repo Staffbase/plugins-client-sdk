@@ -247,3 +247,14 @@ With the SDK you can invoke methods, which are in the scope of the native app.
 		console.log('Fileurl: ' + URL.createObjectURL(res)); // blob:d3958f5c-0777-0845-9dcf-2cb28783acaf
 	})
    ```
+
+6. `applyKeyboardHandling` -> Blob **!experimental**
+
+   Add keyboardListeners for correct resizing and scrolling to iframe context
+   When clicking on an input field, the field should be scrolled into view
+
+   ```js
+    applyKeyboardHandling().then(function (res) {
+		console.log('Fileurl: ' + URL.createObjectURL(res)); // blob:d3958f5c-0777-0845-9dcf-2cb28783acaf
+	})
+   ```

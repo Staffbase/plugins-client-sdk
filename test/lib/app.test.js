@@ -96,4 +96,9 @@ describe('app', () => {
     messageStub.changeMsg(['SUCCESS', 0, true]);
     expect(await App.openNativeShareDialog()).toEqual(true);
   });
+
+  it('should apply keyboard handling', async () => {
+    messageStub.changeMsg(['SUCCESS', 0, true]);
+    expect(await App.applyKeyboardHandling()).toEqual(true);
+  });
 });

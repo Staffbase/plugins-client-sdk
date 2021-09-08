@@ -149,6 +149,7 @@ const sendMessage =
       case actions.openLink:
       case actions.nativeUpload:
       case actions.nativeShare:
+      case actions.keyboardHandling:
       case actions.prefContentLang:
         return sendInvocationCall(createPromise())(invocationMapping[cmd], payload);
       default:
