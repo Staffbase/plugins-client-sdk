@@ -5,7 +5,6 @@ import sendMessage, { disconnect } from '../../../src/lib/connection/connection.
 import command from '../../../src/lib/connection/commands.js';
 
 const mockVersion36 = '3.6';
-const mockVersion35 = '3.5';
 const standardMsg36 = [
   'SUCCESS',
   0,
@@ -30,11 +29,6 @@ const standardMsg36 = [
   }
 ];
 
-const standardMsg35 = {
-  state: 'platformInfo',
-  info: { native: 'ios', mobile: true, version: mockVersion35 }
-};
-
 describe('connection', () => {
   describe('sendMessage', () => {
     let messageStup;
@@ -55,14 +49,6 @@ describe('connection', () => {
       messageStup.stopMessaging();
 
       expect(result).toBe(mockVersion36);
-    });
-
-    test('should receive a message from postmessage legacy connector if available', async () => {
-      messageStup = stubPostMessage(standardMsg35);
-      const result = await sendMessage(command.version);
-      messageStup.stopMessaging();
-
-      expect(result).toBe(mockVersion35);
     });
 
     test('should upgrade a connection if the postmessage takes longer than the fallback timeout', async () => {
