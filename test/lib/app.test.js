@@ -97,8 +97,8 @@ describe('app', () => {
     expect(await App.openNativeShareDialog()).toEqual(true);
   });
 
-  it('should apply keyboard handling', async () => {
+  it('should apply Input scrolling on keyboard', async () => {
     messageStub.changeMsg(['SUCCESS', 0, true]);
-    expect(await App.applyKeyboardHandling()).toEqual(true);
+    expect(await App.scrollInputIntoView()).toEqual(true);
   });
 });

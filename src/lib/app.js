@@ -90,9 +90,9 @@ export const openNativeFileDialog = async () => {
  *
  * @return {Promise<any>}
  */
-export const applyKeyboardHandling = async () => {
-  log.debug('app/applyKeyboardHandling');
-  return sendMessage(cmd.keyboardHandling, frameElement);
+export const scrollInputIntoView = async () => {
+  log.debug('app/scrollInputIntoView');
+  return sendMessage(cmd.scrollInput, frameElement);
 };
 
 /**

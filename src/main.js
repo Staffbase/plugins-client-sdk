@@ -139,7 +139,7 @@ export const openNativeShareDialog = async (content) => app.openNativeShareDialo
  *
  * @return {Promise<any>}
  */
-export const applyKeyboardHandling = async () => app.applyKeyboardHandling();
+export const scrollInputIntoView = async () => app.scrollInputIntoView();
 
 /** @inheritdoc */
 export { openNativeFileDialog } from './lib/app'; /* experimental */

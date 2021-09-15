@@ -248,13 +248,13 @@ With the SDK you can invoke methods, which are in the scope of the native app.
 	})
    ```
 
-6. `applyKeyboardHandling` -> Blob **!experimental**
+6. `scrollInputIntoView` -> Blob **!experimental**
 
-   Add keyboardListeners for correct resizing and scrolling to iframe context
+   Apply keyboard handling for mobile contexts for correct scrolling to iframe context
    When clicking on an input field, the field should be scrolled into view
-
+   
    ```js
-    applyKeyboardHandling().then(function (res) {
+    scrollInputIntoView().then(function (res) {
 		console.log('Fileurl: ' + URL.createObjectURL(res)); // blob:d3958f5c-0777-0845-9dcf-2cb28783acaf
 	})
    ```
