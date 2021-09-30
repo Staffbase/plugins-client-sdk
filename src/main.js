@@ -139,7 +139,8 @@ export const openNativeShareDialog = async (content) => app.openNativeShareDialo
  *
  * @return {Promise<any>}
  */
-export const scrollInputIntoView = async () => app.scrollInputIntoView();
+export const scrollInputIntoView = async (pos, shouldScroll) =>
+  app.scrollInputIntoView(pos, shouldScroll);
 
 /** @inheritdoc */
 export { openNativeFileDialog } from './lib/app'; /* experimental */

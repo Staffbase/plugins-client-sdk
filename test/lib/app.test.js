@@ -99,6 +99,6 @@ describe('app', () => {
 
   it('should apply Input scrolling on keyboard', async () => {
     messageStub.changeMsg(['SUCCESS', 0, true]);
-    expect(await App.scrollInputIntoView()).toEqual(true);
+    expect(await App.scrollInputIntoView(0, true)).toEqual(true);
   });
 });

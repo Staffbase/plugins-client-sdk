@@ -154,6 +154,7 @@ const sendMessage =
       case actions.langInfos:
       case actions.branchDefaultLang:
         return store[reversedActions[cmd]];
+      case actions.scrollInput:
       case actions.openLink:
       case actions.prefContentLang:
         return sendInvocationCall(invocationMapping[cmd], payload);

@@ -13,6 +13,7 @@ export default {
 
 export const invocationMapping = {
   [commands.openLink]: 'openLink',
+  [commands.scrollInput]: 'scrollInputIntoView',
   [commands.nativeUpload]: 'nativeFileUpload',
   [commands.nativeShare]: 'nativeShareDialog',
   [commands.langInfos]: 'getPluginLanguageInfo',

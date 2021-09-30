@@ -97,6 +97,16 @@ export const openLink = (url) => {
 };
 
 /**
+ * Open an external link
+ *
+ * @param {String} url address
+ */
+export const scrollInputIntoView = (_pos, _shouldScroll) => {
+  log.debug('fallback/scrollInputIntoView');
+  return 0;
+};
+
+/**
  * Handler for unpossible functions
  *
  * @param {String} cmd command name

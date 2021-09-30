@@ -90,9 +90,9 @@ export const openNativeFileDialog = async () => {
  *
  * @return {Promise<any>}
  */
-export const scrollInputIntoView = async () => {
+export const scrollInputIntoView = async (pos, shouldScroll) => {
   log.debug('app/scrollInputIntoView');
-  return sendMessage(cmd.scrollInput, frameElement);
+  return sendMessage(cmd.scrollInput, pos, shouldScroll);
 };
 
 /**

@@ -254,7 +254,7 @@ With the SDK you can invoke methods, which are in the scope of the native app.
    When clicking on an input field, the field should be scrolled into view
    
    ```js
-    scrollInputIntoView().then(function (res) {
+    scrollInputIntoView(pos, shouldScroll).then(function (res) {
 		console.log('Fileurl: ' + URL.createObjectURL(res)); // blob:d3958f5c-0777-0845-9dcf-2cb28783acaf
 	})
    ```
