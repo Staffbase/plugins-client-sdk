@@ -1,3 +1,27 @@
+# [1.2.0](https://github.com/Staffbase/plugins-client-sdk/compare/1.1.2...1.2.0) (2021-11-19)
+
+
+### Build System
+
+* **deps:** npm audit fix ([28262df](https://github.com/Staffbase/plugins-client-sdk/commit/28262dfe364caf52a48a813f53cb502141055727))
+
+
+### Chores
+
+* add dependency update bot ([15a7831](https://github.com/Staffbase/plugins-client-sdk/commit/15a78316b0601da91e5d846aded9916b2e1aecf6))
+
+
+### Features
+
+* remove legacy mode ([b43a238](https://github.com/Staffbase/plugins-client-sdk/commit/b43a2382b07cb1960034e7dbaf259b2e794e5c28))
+* remove legacy mode ([88b510a](https://github.com/Staffbase/plugins-client-sdk/commit/88b510a6305dd5b3cbde7a20d7d08e68a1faa6b4))
+
+
+### Miscellaneous
+
+*  ([ab0f6d3](https://github.com/Staffbase/plugins-client-sdk/commit/ab0f6d318f1424a020089d0f5a3d9b210cf45189))
+*  ([83288ea](https://github.com/Staffbase/plugins-client-sdk/commit/83288ea3660fd7a5c7fe4df6940e91616e0acf6b))
+
 ## [1.1.2](https://github.com/Staffbase/plugins-client-sdk/compare/v1.1.1...1.1.2) (2021-06-14)
 
 
