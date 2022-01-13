@@ -1,11 +1,10 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import babel, { getBabelOutputPlugin } from '@rollup/plugin-babel';
+import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import stripLogger from 'rollup-plugin-strip-logger';
 import license from 'rollup-plugin-license';
 import pkg from './package.json';
-import path from 'path';
 
 const bannerTemplate = `
 Bundle of <%= pkg.name %>
