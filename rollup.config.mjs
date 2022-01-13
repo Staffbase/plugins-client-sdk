@@ -18,15 +18,21 @@ Bundle of <%= pkg.name %>
 @license <%= pkg.license %>
 `;
 
+const stripLog = stripLogger({
+  variableNames: ['log'],
+  propertyNames: ['debug', 'info', 'enableAll'],
+  packageNames: ['log-level']
+});
+
 const defaultPlugins = [
-  stripLogger({
-    variableNames: ['log'],
-    propertyNames: ['debug', 'info', 'enableAll'],
-    packageNames: ['log-level']
-  }),
+  stripLog,
   nodeResolve(),
   commonjs(),
-  babel({ babelHelpers: 'bundled' }),
+  babel({
+    babelHelpers: 'bundled',
+    include: ['src/**/*.js'],
+    exclude: './node_modules/**'
+  }),
   license({
     banner: bannerTemplate
   })
@@ -53,13 +59,12 @@ export default {
       plugins: [terser()]
     },
 
-    // CommonJS (for Node) and ES module (for bundlers) build.
-    // (We could have three entries in the configuration array
-    // instead of two, but it's quicker to generate multiple
-    // builds from a single configuration where possible, using
-    // an array for the `output` option, where we can specify
-    // `file` and `format` for each target)
-    { file: pkg.main, format: 'cjs', sourcemap: true },
-    { file: pkg.module, format: 'esm', sourcemap: true }
+    { file: pkg.module, format: 'esm', sourcemap: true },
+    {
+      file: pkg.module.replace('.js', '.min.js'),
+      format: 'esm',
+      sourcemap: true,
+      plugins: [terser()]
+    }
   ]
 };
