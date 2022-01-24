@@ -4,12 +4,11 @@ import resolve from '@rollup/plugin-node-resolve';
 import pkg from './package.json';
 import html from 'rollup-plugin-template-html';
 import serve from 'rollup-plugin-serve';
-import path from 'path';
 
 const defaultBrowserPluginOptions = [
   resolve(),
   commonjs(),
-  babel({    babelHelpers: 'bundled'  }),
+  babel({ babelHelpers: 'bundled' }),
   html({
     template: 'resources/index.html',
     fileName: 'index.html'
