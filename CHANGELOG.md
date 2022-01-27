@@ -1,3 +1,30 @@
+## [1.2.1-alpha.1](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.0...1.2.1-alpha.1) (2022-01-27)
+
+
+### build
+
+* **deps:** npm audit fix ([e3747e2](https://github.com/Staffbase/plugins-client-sdk/commit/e3747e2b744755c2302ff5fda9225532e630c07f))
+* **deps:** npm audit fix ([8fa93bf](https://github.com/Staffbase/plugins-client-sdk/commit/8fa93bf8c6072ed618a55ee94a759e0adc9fa0d3))
+* **deps:** npm audit fix ([7ff4ee8](https://github.com/Staffbase/plugins-client-sdk/commit/7ff4ee86690189d29e6cffba40f3da12f1910033))
+
+
+### chore
+
+* update dependencies ([baa04ef](https://github.com/Staffbase/plugins-client-sdk/commit/baa04ef9cb89962e8333ed2dcc87c106bb24df62))
+* update dependencies ([a2ae6bd](https://github.com/Staffbase/plugins-client-sdk/commit/a2ae6bd610f7f197beec07b15fb4842fa96877c6))
+* update dependencies, add modules export ([2606cc8](https://github.com/Staffbase/plugins-client-sdk/commit/2606cc82c156e30749acd44b17e9c7cd3a8fd457))
+
+
+### fix
+
+* change title ([f9f06b6](https://github.com/Staffbase/plugins-client-sdk/commit/f9f06b622422a0f60dba482d9c847c17c9013d32))
+
+
+### test
+
+* fix babel test transpilation ([2f1985b](https://github.com/Staffbase/plugins-client-sdk/commit/2f1985b6b7824167cf172040a448fc30f4a75ffe))
+* fix tests ([001cb90](https://github.com/Staffbase/plugins-client-sdk/commit/001cb90e05d34fa675cb9749f9e8d08ea7b0d5e4))
+
 ## [1.1.2-alpha.1](https://github.com/Staffbase/plugins-client-sdk/compare/v1.1.1...1.1.2-alpha.1) (2021-05-26)
 
 
