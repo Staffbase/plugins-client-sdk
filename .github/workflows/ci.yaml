@@ -6,7 +6,7 @@ name: Continuous Integration
 on: [push, pull_request]
 
 env:
-  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.STAFFBOT_GITHUB_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
@@ -22,9 +22,6 @@ jobs:
         node-version: 14.x
 
     - name: Install dependencies
-      env:
-        GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        CI_BRANCH_BASE: ${{ steps.fetch_pr.outputs.pr_base || 'master' }}
       run: yarn install
 
     - name: Lint code
@@ -61,6 +58,6 @@ jobs:
         run: yarn semantic-release
         env:
           GITHUB_NPM_CONFIG_REGISTRY: https://npm.pkg.github.com/
-          GITHUB_NPM_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_NPM_TOKEN: ${{ secrets.STAFFBOT_GITHUB_TOKEN }}
           PUBLIC_NPM_CONFIG_REGISTRY: https://registry.npmjs.org
           PUBLIC_NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
