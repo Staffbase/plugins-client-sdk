@@ -1,3 +1,10 @@
+## [1.2.1-alpha.2](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.1-alpha.1...1.2.1-alpha.2) (2022-01-27)
+
+
+### fix
+
+* change entry file ([166bf46](https://github.com/Staffbase/plugins-client-sdk/commit/166bf46b8cfb95fae8e8f4ad851e61ef64c2b2df))
+
 ## [1.2.1-alpha.1](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.0...1.2.1-alpha.1) (2022-01-27)
 
 
