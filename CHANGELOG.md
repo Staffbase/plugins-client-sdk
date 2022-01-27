@@ -1,3 +1,11 @@
+## [1.2.2](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.1...1.2.2) (2022-01-27)
+
+
+### fix
+
+* force version for security problems ([ed45c0c](https://github.com/Staffbase/plugins-client-sdk/commit/ed45c0cda07bf83f6bff051ae5ef40541afd7529))
+* force version for security problems ([aad9886](https://github.com/Staffbase/plugins-client-sdk/commit/aad98865d3f9ed87b8ef5b711a443f1caa0081c1))
+
 ## [1.2.1](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.0...1.2.1) (2022-01-27)
 
 
