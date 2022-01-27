@@ -6,8 +6,8 @@
   "module": "dist/plugins-client-sdk.esm.js",
   "browser": "dist/plugins-client-sdk.umd.js",
   "exports": {
-    "require": "./dist/cjs/index.js",
-    "import": "./dist/esm/index.js"
+    "require": "./dist/cjs/main.js",
+    "import": "./dist/esm/main.js"
   },
   "scripts": {
     "build:esm": "BABEL_ENV=esmUnbundled babel src --extensions '.js' --out-dir 'dist/esm' --source-maps",
