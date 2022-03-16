@@ -1,3 +1,15 @@
+## [1.2.3-alpha.2](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.3-alpha.1...1.2.3-alpha.2) (2022-03-16)
+
+
+### chore
+
+* moved dep to dev part ([412227e](https://github.com/Staffbase/plugins-client-sdk/commit/412227e71bbc9fcf779fd4b44ef8e0cc64578d35))
+
+
+### fix
+
+* trigger ci ([c437f76](https://github.com/Staffbase/plugins-client-sdk/commit/c437f760e018b00aa798a8d86c43572dc4180fd0))
+
 ## [1.2.3-alpha.1](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.2...1.2.3-alpha.1) (2022-03-16)
 
 
