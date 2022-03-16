@@ -27,14 +27,7 @@
     "release": "semantic-release"
   },
   "repository": "https://github.com/Staffbase/plugins-client-sdk.git",
-  "keywords": [
-    "staffbase",
-    "client",
-    "sdk",
-    "javascript",
-    "plugin",
-    "api"
-  ],
+  "keywords": ["staffbase", "client", "sdk", "javascript", "plugin", "api"],
   "author": "Staffbase GmbH (https://staffbase.com/)",
   "contributors": [
     "Stefan Staude <stefan.staude@staffbase.com>",
@@ -48,9 +41,7 @@
   "directories": {
     "test": "test"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "size-limit": [
     {
       "limit": "8 kB",
