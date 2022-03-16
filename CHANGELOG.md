@@ -1,4 +1,39 @@
-## [1.2.1-alpha.2](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.1-alpha.1...1.2.1-alpha.2) (2022-01-27)
+## [1.2.2](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.1...1.2.2) (2022-01-27)
+
+
+### fix
+
+* force version for security problems ([ed45c0c](https://github.com/Staffbase/plugins-client-sdk/commit/ed45c0cda07bf83f6bff051ae5ef40541afd7529))
+* force version for security problems ([aad9886](https://github.com/Staffbase/plugins-client-sdk/commit/aad98865d3f9ed87b8ef5b711a443f1caa0081c1))
+
+## [1.2.1](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.0...1.2.1) (2022-01-27)
+
+
+### build
+
+* **deps:** npm audit fix ([e0b6dfc](https://github.com/Staffbase/plugins-client-sdk/commit/e0b6dfcf2325854d43257be973f18b6a54b55251))
+* **deps:** npm audit fix ([2447b42](https://github.com/Staffbase/plugins-client-sdk/commit/2447b426991af4acbb39c62a4df81e68cfc618f9))
+* **deps:** npm audit fix ([e3747e2](https://github.com/Staffbase/plugins-client-sdk/commit/e3747e2b744755c2302ff5fda9225532e630c07f))
+* **deps:** npm audit fix ([8fa93bf](https://github.com/Staffbase/plugins-client-sdk/commit/8fa93bf8c6072ed618a55ee94a759e0adc9fa0d3))
+* **deps:** npm audit fix ([7ff4ee8](https://github.com/Staffbase/plugins-client-sdk/commit/7ff4ee86690189d29e6cffba40f3da12f1910033))
+
+
+### chore
+
+* update dependencies ([baa04ef](https://github.com/Staffbase/plugins-client-sdk/commit/baa04ef9cb89962e8333ed2dcc87c106bb24df62))
+* update dependencies ([a2ae6bd](https://github.com/Staffbase/plugins-client-sdk/commit/a2ae6bd610f7f197beec07b15fb4842fa96877c6))
+
+
+### fix
+
+* update security dependencies ([63311e6](https://github.com/Staffbase/plugins-client-sdk/commit/63311e633b26b99d4018088aca9b9144de01ff7a))
+
+
+### test
+
+* fix tests ([001cb90](https://github.com/Staffbase/plugins-client-sdk/commit/001cb90e05d34fa675cb9749f9e8d08ea7b0d5e4))
+
+# [1.2.0](https://github.com/Staffbase/plugins-client-sdk/compare/1.1.2...1.2.0) (2021-11-19)
 
 
 ### fix
