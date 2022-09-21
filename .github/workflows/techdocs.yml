@@ -11,17 +11,7 @@ on:
 
 jobs:
   publish-techdocs-site:
-    name: Publish TechDocs Site
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3.0.2
-
-      - name: Build and Publish Site
-        uses: Staffbase/backstage-techdocs-action@v0.1.1
-        with:
-          entity-name: 'plugins-client-sdk'
-          publisher-type: 'awsS3'
-          storage-name: 'staffbase-backstage-techdocs'
-          aws-access-key-id: ${{ secrets.TECHDOCS_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.TECHDOCS_AWS_SECRET_ACCESS_KEY }}
+    uses: Staffbase/gha-workflows/.github/workflows/template_techdocs.yml@v1.7.0
+    secrets:
+      aws-access-key-id: ${{ secrets.TECHDOCS_AWS_ACCESS_KEY_ID }}
+      aws-secret-access-key: ${{ secrets.TECHDOCS_AWS_SECRET_ACCESS_KEY }}
