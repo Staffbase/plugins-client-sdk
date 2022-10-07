@@ -1,3 +1,15 @@
+## [1.2.3-alpha.3](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.3-alpha.2...1.2.3-alpha.3) (2022-10-07)
+
+
+### fix
+
+* **NFS-1911:** update fallback locales ([6a756ce](https://github.com/Staffbase/plugins-client-sdk/commit/6a756ce754b41a22f8c00b63e0a6f36435cf17dd))
+
+
+### test
+
+* update snapshots, raise sizelimit ([9f21cbb](https://github.com/Staffbase/plugins-client-sdk/commit/9f21cbb11aad0ecc7e6fdab24974ec96342e8162))
+
 ## [1.2.3-alpha.2](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.3-alpha.1...1.2.3-alpha.2) (2022-03-16)
 
 
