@@ -49,3 +49,17 @@ To run the tests a simple `# yarn jest` command in the root directory will suffi
 Copyright 2018 Staffbase GmbH.
 
 Licensed under the Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
+
+
+<table>
+  <tr>
+    <td>
+      <img src="docs/assets/images/staffbase.png" alt="Staffbase GmbH" width="96" />
+    </td>
+    <td>
+      <b>Staffbase GmbH</b>
+      <br />Staffbase is an internal communications platform built to revolutionize the way you work and unite your company. Staffbase is hiring: <a href="https://jobs.staffbase.com" target="_blank" rel="noreferrer">jobs.staffbase.com</a>
+      <br /><a href="https://github.com/Staffbase" target="_blank" rel="noreferrer">GitHub</a> | <a href="https://staffbase.com/" target="_blank" rel="noreferrer">Website</a> | <a href="https://jobs.staffbase.com" target="_blank" rel="noreferrer">Jobs</a>
+    </td>
+  </tr>
+</table>
