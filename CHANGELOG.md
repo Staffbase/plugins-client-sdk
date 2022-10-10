@@ -1,3 +1,23 @@
+## [1.2.3-alpha.4](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.3-alpha.3...1.2.3-alpha.4) (2022-10-10)
+
+
+### chore
+
+* add babel cli tool ([1ec06ea](https://github.com/Staffbase/plugins-client-sdk/commit/1ec06eaad49c69eadc38866ae0212b0895417576))
+* moved dep to dev part ([a9928c8](https://github.com/Staffbase/plugins-client-sdk/commit/a9928c88b6d0445be593441913c36f29c5f6506c))
+* update dependencies, add modules export ([a9f8544](https://github.com/Staffbase/plugins-client-sdk/commit/a9f854489f0df8db1eeb650ecbcc1f665b4cd7ec))
+
+
+### fix
+
+* change entry file ([e37bd07](https://github.com/Staffbase/plugins-client-sdk/commit/e37bd073f723546f9260aec9ae06fe35ffa1be2b))
+* change title ([36061db](https://github.com/Staffbase/plugins-client-sdk/commit/36061db6f1fdb41d9fc5595131f7bdcbc02836f3))
+
+
+### test
+
+* fix babel test transpilation ([ca3071f](https://github.com/Staffbase/plugins-client-sdk/commit/ca3071fe17f1e88d8db9fd2f1a38ee0e46ae220e))
+
 ## [1.2.3-alpha.3](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.3-alpha.2...1.2.3-alpha.3) (2022-10-07)
 
 
