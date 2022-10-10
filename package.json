@@ -27,7 +27,14 @@
     "release": "semantic-release"
   },
   "repository": "https://github.com/Staffbase/plugins-client-sdk.git",
-  "keywords": ["staffbase", "client", "sdk", "javascript", "plugin", "api"],
+  "keywords": [
+    "staffbase",
+    "client",
+    "sdk",
+    "javascript",
+    "plugin",
+    "api"
+  ],
   "author": "Staffbase GmbH (https://staffbase.com/)",
   "contributors": [
     "Stefan Staude <stefan.staude@staffbase.com>",
@@ -41,7 +48,9 @@
   "directories": {
     "test": "test"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "size-limit": [
     {
       "limit": "8 kB",
@@ -70,6 +79,7 @@
     "@rollup/plugin-terser": "^0.4.0",
     "@size-limit/preset-small-lib": "8.2.4",
     "@tmware/semantic-release-npm-github-publish": "^1.5.5",
+    "babel-cli": "^6.26.0",
     "babel-jest": "29.5.0",
     "babel-plugin-istanbul": "^6.1.1",
     "compare-versions": "^5.0.3",
