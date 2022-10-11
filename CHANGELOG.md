@@ -1,3 +1,5 @@
+## [1.2.3-alpha.5](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.3-alpha.4...1.2.3-alpha.5) (2022-10-11)
+
 ## [1.2.3-alpha.4](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.3-alpha.3...1.2.3-alpha.4) (2022-10-10)
 
 

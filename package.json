@@ -1,6 +1,6 @@
 {
   "name": "@staffbase/plugins-client-sdk",
-  "version": "1.2.3-alpha.4",
+  "version": "1.2.3-alpha.5",
   "description": "Staffbase plugins client SDK for JavaScript",
   "main": "dist/plugins-client-sdk.js",
   "module": "dist/plugins-client-sdk.esm.js",
