@@ -5,15 +5,8 @@
   "main": "dist/plugins-client-sdk.js",
   "module": "dist/plugins-client-sdk.esm.js",
   "browser": "dist/plugins-client-sdk.umd.js",
-  "exports": {
-    "require": "./dist/cjs/index.js",
-    "import": "./dist/esm/index.js"
-  },
   "scripts": {
-    "build:esm": "BABEL_ENV=esmUnbundled babel src --extensions '.js' --out-dir 'dist/esm' --source-maps",
-    "build:cjs": "BABEL_ENV=cjs babel src --extensions '.js' --out-dir 'dist/cjs' --source-maps",
-    "build:bundles": "BABEL_ENV=esmBundled rollup -c",
-    "build": "yarn build:esm & yarn build:cjs & yarn build:bundles",
+    "build": "rollup -c",
     "prebuild": "yarn run lint",
     "prepare": "husky install",
     "dev": "rollup -c -w --config rollup.dev.js",
