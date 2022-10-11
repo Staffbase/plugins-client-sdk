@@ -5,6 +5,10 @@
   "main": "dist/plugins-client-sdk.js",
   "module": "dist/plugins-client-sdk.esm.js",
   "browser": "dist/plugins-client-sdk.umd.js",
+  "exports": {
+    "require": "./dist/cjs/index.js",
+    "import": "./dist/esm/index.js"
+  },
   "scripts": {
     "build": "rollup -c",
     "prebuild": "yarn run lint",
