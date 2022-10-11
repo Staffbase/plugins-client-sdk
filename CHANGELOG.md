@@ -1,3 +1,21 @@
+## [1.2.3](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.2...1.2.3) (2022-10-11)
+
+
+### chore
+
+* change tokens ([36061d5](https://github.com/Staffbase/plugins-client-sdk/commit/36061d531c869e48b81aaeee6df4aa86c5c8065c))
+* change tokens ([b2c29ff](https://github.com/Staffbase/plugins-client-sdk/commit/b2c29ffa4b2ed71f753674cf5e4dc817cbb78ca7))
+
+
+### fix
+
+* **NFS-1911:** update fallback locales ([6a756ce](https://github.com/Staffbase/plugins-client-sdk/commit/6a756ce754b41a22f8c00b63e0a6f36435cf17dd))
+
+
+### test
+
+* update snapshots, raise sizelimit ([9f21cbb](https://github.com/Staffbase/plugins-client-sdk/commit/9f21cbb11aad0ecc7e6fdab24974ec96342e8162))
+
 ## [1.2.2](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.1...1.2.2) (2022-01-27)
 
 
