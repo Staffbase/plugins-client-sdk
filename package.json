@@ -46,7 +46,7 @@
   ],
   "size-limit": [
     {
-      "limit": "6 kB",
+      "limit": "8 kB",
       "path": "src/main.js"
     }
   ],
