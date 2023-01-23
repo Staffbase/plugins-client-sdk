@@ -1,3 +1,15 @@
+# [2.0.0-alpha.1](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.4-alpha.1...2.0.0-alpha.1) (2023-01-23)
+
+
+### fix
+
+* updated all dependencies ([939a9a7](https://github.com/Staffbase/plugins-client-sdk/commit/939a9a7ec4aa2a3805c663dfbd795f5559f920cf))
+
+
+### Breaking changes
+
+* - moved to Node 16
+
 ## [1.2.4-alpha.1](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.3...1.2.4-alpha.1) (2023-01-23)
 
 
