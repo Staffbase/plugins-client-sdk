@@ -2,8 +2,8 @@
 import cmd from './connection/commands';
 import sendMessage from './connection/connection';
 import { isNative, getVersion } from './app';
-import compareVersions from 'compare-versions';
-const log = require('loglevel');
+import { compareVersions } from 'compare-versions';
+import log from 'loglevel';
 /**
  * Check if device is using ios.
  *

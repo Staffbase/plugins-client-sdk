@@ -1,6 +1,6 @@
 import { commands as action } from '../commands';
 import * as fallbacks from './fallback-handlers';
-const log = require('loglevel');
+import log from 'loglevel';
 
 let connection = null;
 const fallbackKickIn = 500;
@@ -17,8 +17,8 @@ export default () => {
     return connection;
   }
 
-  connection = new Promise((resolve, reject) => {
-    setTimeout(function() {
+  connection = new Promise((resolve) => {
+    setTimeout(function () {
       log.info('fallback/connect succeeded');
       resolve(sendMessage);
     }, fallbackKickIn);

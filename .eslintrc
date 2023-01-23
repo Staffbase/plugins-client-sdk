@@ -14,24 +14,9 @@
   },
   "extends": [
     "eslint:recommended",
-    "google",
-    "prettier"
-  ],
-  "plugins": [
-    "prettier"
+    "plugin:prettier/recommended"
   ],
   "rules": {
-    "prefer-const": "warn",
-    "prettier/prettier": [
-      2,
-      {
-        "printWidth": 100,
-        "tabWidth": 2,
-        "singleQuote": true,
-        "trailingComma": "none",
-        "bracketSpacing": true,
-        "parser": "babylon"
-      }
-    ]
+    "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
   }
 }

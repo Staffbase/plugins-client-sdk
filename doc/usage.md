@@ -176,22 +176,6 @@ With the SDK you can invoke methods, which are in the scope of the native app.
     })
    ```
 
-2. `openNativeShareDialog` {content: object} -> string
-
-    open the native share view to share an object consisting of an image link, subject, text and url. 
-    
-    ```js
-    const contentObject = {image: "https://example.com/test.png",
-                           subject: "The string you would like to use as a subject for the share",
-                           text: "This text is shared",
-                           url: "https://example.com"};
-    
-    openNativeShareDialog(contentObject).then(function (opened) {
-        console.log(opened); // true
-    })
-
-    ``` 
-
 2. `openLink` {url: string} -> boolean
    
    open a link in the app, supports internal and external links. Returns a boolean
@@ -231,7 +215,25 @@ With the SDK you can invoke methods, which are in the scope of the native app.
     })
    ```
 
-5. `openNativeFileDialog` -> Blob **!experimental**
+5. `openNativeShareDialog` {content: object} -> string
+
+   - **native only** 
+   - **version > 4.0.0**
+
+    open the native share view to share an object consisting of an image link, subject, text or url. 
+    
+    ```js
+    const contentObject = {image: "https://example.com/test.png",
+                           subject: "The string you would like to use as a subject for the share",
+                           text: "This text is shared",
+                           url: "https://example.com"};
+    
+    openNativeShareDialog(contentObject).then(function (opened) {
+        console.log(opened); // true
+    })
+    ``` 
+
+6. `openNativeFileDialog` -> Blob **!experimental**
    
    open a native file upload dialog, which is currently only needed for Android devices.
    After the file has been chosen, the data is returned as a blob.
@@ -243,5 +245,5 @@ With the SDK you can invoke methods, which are in the scope of the native app.
    ```js
     openNativeFileDialog().then(function (res) {
 		console.log('Fileurl: ' + URL.createObjectURL(res)); // blob:d3958f5c-0777-0845-9dcf-2cb28783acaf
-	});
+	})
    ```

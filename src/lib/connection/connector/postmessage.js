@@ -6,7 +6,8 @@ import {
   reject as rejectPromise,
   get as getPromise
 } from '../manager.js';
-const log = require('loglevel');
+
+import log from 'loglevel';
 
 /**
  * @typedef {{ mobile: boolean, version: string|number, native: string }} PlatformInfos
@@ -51,7 +52,7 @@ const connect = () => {
   }
 
   const connectId = createPromise();
-  connection = getPromise(connectId).then(function(payload) {
+  connection = getPromise(connectId).then(function (payload) {
     log.info('postMessage/connect succeeded');
     return sendMessage(dataStore(payload));
   });
@@ -80,7 +81,7 @@ export const disconnect = () => {
  * Can be attached to window.onPostMessage
  * @param {MessageEvent} evt onPostMessage event result
  */
-const receiveMessage = async evt => {
+const receiveMessage = async (evt) => {
   log.info('postMessage/receiveMessage ' + evt);
 
   let type;
@@ -130,28 +131,30 @@ const receiveMessage = async evt => {
  * @return {Promise<any>} which awaits the response of the Staffbase App
  * @throws {Error} on commands not supported by protocol
  */
-const sendMessage = store => async (cmd, ...payload) => {
-  log.info('postMessage/sendMessage ' + cmd);
-  log.debug('postMessage/sendMessage/payload ' + JSON.stringify(payload));
+const sendMessage =
+  (store) =>
+  async (cmd, ...payload) => {
+    log.info('postMessage/sendMessage ' + cmd);
+    log.debug('postMessage/sendMessage/payload ' + JSON.stringify(payload));
 
-  switch (cmd) {
-    case actions.version:
-    case actions.native:
-    case actions.mobile:
-    case actions.ios:
-    case actions.android:
-    case actions.branchDefaultLang:
-      return store[reversedActions[cmd]];
-    case actions.langInfos:
-    case actions.openLink:
-    case actions.nativeUpload:
-    case actions.nativeShare:
-    case actions.prefContentLang:
-      return sendInvocationCall(createPromise())(invocationMapping[cmd], payload);
-    default:
-      throw new Error('Command ' + cmd + ' not supported by driver');
-  }
-};
+    switch (cmd) {
+      case actions.version:
+      case actions.native:
+      case actions.mobile:
+      case actions.ios:
+      case actions.android:
+      case actions.branchDefaultLang:
+        return store[reversedActions[cmd]];
+      case actions.langInfos:
+      case actions.openLink:
+      case actions.nativeUpload:
+      case actions.nativeShare:
+      case actions.prefContentLang:
+        return sendInvocationCall(createPromise())(invocationMapping[cmd], payload);
+      default:
+        throw new Error('Command ' + cmd + ' not supported by driver');
+    }
+  };
 
 /**
  * Create a promise and send an invocation call to the frontend
@@ -162,7 +165,7 @@ const sendMessage = store => async (cmd, ...payload) => {
  *
  * @return {Promise}
  */
-const sendInvocationCall = promiseID => (process, args) => {
+const sendInvocationCall = (promiseID) => (process, args) => {
   log.info('postMessage/sendInvocationCall ' + process);
   log.debug('postMessage/sendInvocationCall/payload ' + JSON.stringify(args));
 

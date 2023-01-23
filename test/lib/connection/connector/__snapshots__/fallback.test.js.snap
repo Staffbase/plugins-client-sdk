@@ -3,9 +3,10 @@
 exports[`connector/fallback connect send function accepts all comands command.android 1`] = `false`;
 
 exports[`connector/fallback connect send function accepts all comands command.branchDefaultLang 1`] = `
-Object {
+{
   "key": "en",
   "locale": "en_US",
+  "localizedName": "English",
   "name": "English",
 }
 `;
@@ -13,414 +14,877 @@ Object {
 exports[`connector/fallback connect send function accepts all comands command.ios 1`] = `false`;
 
 exports[`connector/fallback connect send function accepts all comands command.langInfos 1`] = `
-Object {
-  "branchDefaultLanguage": Object {
+{
+  "branchDefaultLanguage": {
     "key": "en",
     "locale": "en_US",
+    "localizedName": "English",
     "name": "English",
   },
-  "branchLanguages": Object {
-    "ar": Object {
-      "key": "ar",
-      "locale": "ar_AE",
-      "name": "العربية",
+  "branchLanguages": {
+    "af": {
+      "key": "af",
+      "locale": "af_ZA",
+      "localizedName": "Afrikaans",
+      "name": "Afrikaans",
     },
-    "bg": Object {
+    "am": {
+      "key": "am",
+      "locale": "am_ET",
+      "localizedName": "Amharic",
+      "name": "አማርኛ",
+    },
+    "ar": {
+      "direction": "rtl",
+      "key": "ar",
+      "locale": "ar_SA",
+      "localizedName": "Arabic (Saudi Arabia)",
+      "name": "العربية (المملكة العربية السعودية)",
+    },
+    "arAE": {
+      "direction": "rtl",
+      "key": "arAE",
+      "locale": "ar_AE",
+      "localizedName": "Arabic (United Arab Emirates)",
+      "name": "العربية (الإمارات العربية المتحدة)",
+    },
+    "arEG": {
+      "direction": "rtl",
+      "key": "arEG",
+      "locale": "ar_EG",
+      "localizedName": "Arabic (Egypt)",
+      "name": "العربية (مصر)",
+    },
+    "bg": {
       "key": "bg",
       "locale": "bg_BG",
+      "localizedName": "Bulgarian",
       "name": "български",
     },
-    "bn": Object {
+    "bn": {
       "key": "bn",
       "locale": "bn_BD",
+      "localizedName": "Bengali",
       "name": "বাংলা",
     },
-    "cs": Object {
+    "bs": {
+      "key": "bs",
+      "locale": "bs_BA",
+      "localizedName": "Bosnian",
+      "name": "Bosanski",
+    },
+    "cs": {
       "key": "cs",
       "locale": "cs_CZ",
+      "localizedName": "Czech",
       "name": "Čeština",
     },
-    "da": Object {
+    "cy": {
+      "key": "cy",
+      "locale": "cy_GB",
+      "localizedName": "Welsh",
+      "name": "Cymraeg",
+    },
+    "da": {
       "key": "da",
       "locale": "da_DK",
+      "localizedName": "Danish",
       "name": "Dansk",
     },
-    "de": Object {
+    "de": {
       "key": "de",
       "locale": "de_DE",
+      "localizedName": "German",
       "name": "Deutsch",
     },
-    "el": Object {
+    "el": {
       "key": "el",
       "locale": "el_GR",
+      "localizedName": "Greek",
       "name": "Ελληνικά",
     },
-    "en": Object {
+    "en": {
       "key": "en",
       "locale": "en_US",
+      "localizedName": "English",
       "name": "English",
     },
-    "es": Object {
+    "es": {
       "key": "es",
       "locale": "es_ES",
-      "name": "Español",
+      "localizedName": "Spanish (Spain)",
+      "name": "Español (España)",
     },
-    "et": Object {
+    "esMX": {
+      "key": "esMX",
+      "locale": "es_MX",
+      "localizedName": "Spanish (Mexico)",
+      "name": "Español (México)",
+    },
+    "et": {
       "key": "et",
       "locale": "et_EE",
+      "localizedName": "Estonian",
       "name": "Eesti keel",
     },
-    "fi": Object {
+    "fi": {
       "key": "fi",
       "locale": "fi_FI",
+      "localizedName": "Finnish",
       "name": "Suomi",
     },
-    "fr": Object {
+    "fr": {
       "key": "fr",
       "locale": "fr_FR",
-      "name": "Français",
+      "localizedName": "French (France)",
+      "name": "Français (France)",
     },
-    "he": Object {
+    "frCA": {
+      "key": "frCA",
+      "locale": "fr_CA",
+      "localizedName": "French (Canada)",
+      "name": "Français (Canada)",
+    },
+    "he": {
+      "direction": "rtl",
       "key": "he",
       "locale": "he_IL",
+      "localizedName": "Hebrew",
       "name": "עִבְרִית",
     },
-    "hi": Object {
+    "hi": {
       "key": "hi",
       "locale": "hi_IN",
+      "localizedName": "Hindi",
       "name": "िन्दी",
     },
-    "hr": Object {
+    "hk": {
+      "key": "hk",
+      "locale": "zh_HK",
+      "localizedName": "Chinese traditional",
+      "name": "繁體中文",
+    },
+    "hr": {
       "key": "hr",
       "locale": "hr_HR",
+      "localizedName": "Croatian",
       "name": "Hrvatski",
     },
-    "hu": Object {
+    "ht": {
+      "key": "ht",
+      "locale": "ht_HT",
+      "localizedName": "Haitian Creole",
+      "name": "kreyòl ayisyen",
+    },
+    "hu": {
       "key": "hu",
       "locale": "hu_HU",
+      "localizedName": "Hungarian",
       "name": "Magyar",
     },
-    "is": Object {
+    "in": {
+      "key": "in",
+      "locale": "in_ID",
+      "localizedName": "Indonesian",
+      "name": "Bahasa Indonesia",
+    },
+    "is": {
       "key": "is",
       "locale": "is_IS",
+      "localizedName": "Icelandic",
       "name": "Íslenska",
     },
-    "it": Object {
+    "it": {
       "key": "it",
       "locale": "it_IT",
+      "localizedName": "Italian",
       "name": "Italiano",
     },
-    "ja": Object {
+    "ja": {
       "key": "ja",
       "locale": "ja_JP",
+      "localizedName": "Japanese",
       "name": "日本語",
     },
-    "ko": Object {
+    "kl": {
+      "key": "kl",
+      "locale": "kl_GL",
+      "localizedName": "Greenlandic",
+      "name": "Kalaallisut",
+    },
+    "km": {
+      "key": "km",
+      "locale": "km_KH",
+      "localizedName": "Khmer",
+      "name": "ខ្មែរ",
+    },
+    "ko": {
       "key": "ko",
       "locale": "ko_KR",
+      "localizedName": "Korean",
       "name": "한국어",
     },
-    "lt": Object {
+    "lo": {
+      "key": "lo",
+      "locale": "lo_LA",
+      "localizedName": "Lao",
+      "name": "ລາວ",
+    },
+    "lt": {
       "key": "lt",
       "locale": "lt_LT",
+      "localizedName": "Lithuanian",
       "name": "Lietuvių",
     },
-    "lv": Object {
+    "lv": {
       "key": "lv",
       "locale": "lv_LV",
+      "localizedName": "Latvian",
       "name": "Latviešu",
     },
-    "mk": Object {
+    "mg": {
+      "key": "mg",
+      "locale": "mg_MG",
+      "localizedName": "Malagasy",
+      "name": "Malagasy",
+    },
+    "mh": {
+      "key": "mh",
+      "locale": "mh_MH",
+      "localizedName": "Marshallese",
+      "name": "Kajin M̧ajeļ",
+    },
+    "mi": {
+      "key": "mi",
+      "locale": "mi_NZ",
+      "localizedName": "Māori",
+      "name": "Māori",
+    },
+    "mk": {
       "key": "mk",
       "locale": "mk_MK",
+      "localizedName": "Macedonian",
       "name": "Македонски",
     },
-    "ms": Object {
+    "mn": {
+      "key": "mn",
+      "locale": "mn_MN",
+      "localizedName": "Mongolian",
+      "name": "монгол",
+    },
+    "mr": {
+      "key": "mr",
+      "locale": "mr_IN",
+      "localizedName": "Marathi",
+      "name": "मराठी",
+    },
+    "ms": {
       "key": "ms",
       "locale": "ms_MY",
+      "localizedName": "Malay",
       "name": "Bahasa Melayu",
     },
-    "nl": Object {
+    "my": {
+      "key": "my",
+      "locale": "my_MM",
+      "localizedName": "Burmese",
+      "name": "Burmese",
+    },
+    "ne": {
+      "key": "ne",
+      "locale": "ne_NP",
+      "localizedName": "Nepali",
+      "name": "नेपाली",
+    },
+    "nl": {
       "key": "nl",
       "locale": "nl_NL",
+      "localizedName": "Dutch",
       "name": "Nederlands",
     },
-    "no": Object {
+    "nlBE": {
+      "key": "nlBE",
+      "locale": "nl_BE",
+      "localizedName": "Flemish",
+      "name": "Vlaemsch",
+    },
+    "no": {
       "key": "no",
       "locale": "no_NO",
+      "localizedName": "Norwegian",
       "name": "Norsk",
     },
-    "pl": Object {
+    "pl": {
       "key": "pl",
       "locale": "pl_PL",
+      "localizedName": "Polish",
       "name": "Polski",
     },
-    "pt": Object {
+    "pt": {
       "key": "pt",
-      "locale": "pt_BR",
-      "name": "Português",
+      "locale": "pt_PT",
+      "localizedName": "Portuguese (Portugal)",
+      "name": "Português (Portugal)",
     },
-    "ro": Object {
+    "ptBR": {
+      "key": "ptBR",
+      "locale": "pt_BR",
+      "localizedName": "Portuguese (Brazil)",
+      "name": "Português (Brasil)",
+    },
+    "ro": {
       "key": "ro",
       "locale": "ro_RO",
+      "localizedName": "Romanian",
       "name": "Română",
     },
-    "ru": Object {
+    "ru": {
       "key": "ru",
       "locale": "ru_RU",
+      "localizedName": "Russian",
       "name": "Русский",
     },
-    "sk": Object {
+    "si": {
+      "key": "si",
+      "locale": "si_LK",
+      "localizedName": "Sinhala",
+      "name": "සිංහල",
+    },
+    "sk": {
       "key": "sk",
       "locale": "sk_SK",
+      "localizedName": "Slovak",
       "name": "Slovenský",
     },
-    "sl": Object {
+    "sl": {
       "key": "sl",
       "locale": "sl_SI",
+      "localizedName": "Slovenian",
       "name": "Slovenščina",
     },
-    "sr": Object {
+    "so": {
+      "key": "so",
+      "locale": "so_SO",
+      "localizedName": "Somali",
+      "name": "Af-Soomaali",
+    },
+    "sq": {
+      "key": "sq",
+      "locale": "sq_AL",
+      "localizedName": "Albanian",
+      "name": "Shqip",
+    },
+    "sr": {
       "key": "sr",
       "locale": "sr_RS",
+      "localizedName": "Serbian",
       "name": "Српски",
     },
-    "sv": Object {
+    "sv": {
       "key": "sv",
       "locale": "sv_SE",
+      "localizedName": "Swedish",
       "name": "Svenska",
     },
-    "th": Object {
+    "sw": {
+      "key": "sw",
+      "locale": "sw_TZ",
+      "localizedName": "Swahili",
+      "name": "Swahili",
+    },
+    "ta": {
+      "key": "ta",
+      "locale": "ta_IN",
+      "localizedName": "Tamil",
+      "name": "தமிழ்",
+    },
+    "th": {
       "key": "th",
       "locale": "th_TH",
+      "localizedName": "Thai",
       "name": "ภาษาไทย",
     },
-    "tr": Object {
+    "tl": {
+      "key": "tl",
+      "locale": "tl_PH",
+      "localizedName": "Filipino",
+      "name": "Filipino",
+    },
+    "tr": {
       "key": "tr",
       "locale": "tr_TR",
+      "localizedName": "Turkish",
       "name": "Türkçe",
     },
-    "uk": Object {
+    "uk": {
       "key": "uk",
       "locale": "uk_UA",
+      "localizedName": "Ukrainian",
       "name": "Українська",
     },
-    "vi": Object {
+    "ur": {
+      "direction": "rtl",
+      "key": "ur",
+      "locale": "ur_PK",
+      "localizedName": "Urdu",
+      "name": "اُردُو",
+    },
+    "vi": {
       "key": "vi",
       "locale": "vi_VN",
+      "localizedName": "Vietnamese",
       "name": "Tiếng Việt",
     },
-    "zh": Object {
+    "zh": {
       "key": "zh",
       "locale": "zh_CN",
+      "localizedName": "Chinese",
       "name": "简体中文",
     },
+    "zu": {
+      "key": "zu",
+      "locale": "zu_ZA",
+      "localizedName": "Zulu",
+      "name": "isiZulu",
+    },
   },
-  "contentLanguage": Object {
+  "contentLanguage": {
     "key": "en",
     "locale": "en_US",
+    "localizedName": "English",
     "name": "English",
   },
-  "contentLanguages": Object {
-    "ar": Object {
-      "key": "ar",
-      "locale": "ar_AE",
-      "name": "العربية",
+  "contentLanguages": {
+    "af": {
+      "key": "af",
+      "locale": "af_ZA",
+      "localizedName": "Afrikaans",
+      "name": "Afrikaans",
     },
-    "bg": Object {
+    "am": {
+      "key": "am",
+      "locale": "am_ET",
+      "localizedName": "Amharic",
+      "name": "አማርኛ",
+    },
+    "ar": {
+      "direction": "rtl",
+      "key": "ar",
+      "locale": "ar_SA",
+      "localizedName": "Arabic (Saudi Arabia)",
+      "name": "العربية (المملكة العربية السعودية)",
+    },
+    "arAE": {
+      "direction": "rtl",
+      "key": "arAE",
+      "locale": "ar_AE",
+      "localizedName": "Arabic (United Arab Emirates)",
+      "name": "العربية (الإمارات العربية المتحدة)",
+    },
+    "arEG": {
+      "direction": "rtl",
+      "key": "arEG",
+      "locale": "ar_EG",
+      "localizedName": "Arabic (Egypt)",
+      "name": "العربية (مصر)",
+    },
+    "bg": {
       "key": "bg",
       "locale": "bg_BG",
+      "localizedName": "Bulgarian",
       "name": "български",
     },
-    "bn": Object {
+    "bn": {
       "key": "bn",
       "locale": "bn_BD",
+      "localizedName": "Bengali",
       "name": "বাংলা",
     },
-    "cs": Object {
+    "bs": {
+      "key": "bs",
+      "locale": "bs_BA",
+      "localizedName": "Bosnian",
+      "name": "Bosanski",
+    },
+    "cs": {
       "key": "cs",
       "locale": "cs_CZ",
+      "localizedName": "Czech",
       "name": "Čeština",
     },
-    "da": Object {
+    "cy": {
+      "key": "cy",
+      "locale": "cy_GB",
+      "localizedName": "Welsh",
+      "name": "Cymraeg",
+    },
+    "da": {
       "key": "da",
       "locale": "da_DK",
+      "localizedName": "Danish",
       "name": "Dansk",
     },
-    "de": Object {
+    "de": {
       "key": "de",
       "locale": "de_DE",
+      "localizedName": "German",
       "name": "Deutsch",
     },
-    "el": Object {
+    "el": {
       "key": "el",
       "locale": "el_GR",
+      "localizedName": "Greek",
       "name": "Ελληνικά",
     },
-    "en": Object {
+    "en": {
       "key": "en",
       "locale": "en_US",
+      "localizedName": "English",
       "name": "English",
     },
-    "es": Object {
+    "es": {
       "key": "es",
       "locale": "es_ES",
-      "name": "Español",
+      "localizedName": "Spanish (Spain)",
+      "name": "Español (España)",
     },
-    "et": Object {
+    "esMX": {
+      "key": "esMX",
+      "locale": "es_MX",
+      "localizedName": "Spanish (Mexico)",
+      "name": "Español (México)",
+    },
+    "et": {
       "key": "et",
       "locale": "et_EE",
+      "localizedName": "Estonian",
       "name": "Eesti keel",
     },
-    "fi": Object {
+    "fi": {
       "key": "fi",
       "locale": "fi_FI",
+      "localizedName": "Finnish",
       "name": "Suomi",
     },
-    "fr": Object {
+    "fr": {
       "key": "fr",
       "locale": "fr_FR",
-      "name": "Français",
+      "localizedName": "French (France)",
+      "name": "Français (France)",
     },
-    "he": Object {
+    "frCA": {
+      "key": "frCA",
+      "locale": "fr_CA",
+      "localizedName": "French (Canada)",
+      "name": "Français (Canada)",
+    },
+    "he": {
+      "direction": "rtl",
       "key": "he",
       "locale": "he_IL",
+      "localizedName": "Hebrew",
       "name": "עִבְרִית",
     },
-    "hi": Object {
+    "hi": {
       "key": "hi",
       "locale": "hi_IN",
+      "localizedName": "Hindi",
       "name": "िन्दी",
     },
-    "hr": Object {
+    "hk": {
+      "key": "hk",
+      "locale": "zh_HK",
+      "localizedName": "Chinese traditional",
+      "name": "繁體中文",
+    },
+    "hr": {
       "key": "hr",
       "locale": "hr_HR",
+      "localizedName": "Croatian",
       "name": "Hrvatski",
     },
-    "hu": Object {
+    "ht": {
+      "key": "ht",
+      "locale": "ht_HT",
+      "localizedName": "Haitian Creole",
+      "name": "kreyòl ayisyen",
+    },
+    "hu": {
       "key": "hu",
       "locale": "hu_HU",
+      "localizedName": "Hungarian",
       "name": "Magyar",
     },
-    "is": Object {
+    "in": {
+      "key": "in",
+      "locale": "in_ID",
+      "localizedName": "Indonesian",
+      "name": "Bahasa Indonesia",
+    },
+    "is": {
       "key": "is",
       "locale": "is_IS",
+      "localizedName": "Icelandic",
       "name": "Íslenska",
     },
-    "it": Object {
+    "it": {
       "key": "it",
       "locale": "it_IT",
+      "localizedName": "Italian",
       "name": "Italiano",
     },
-    "ja": Object {
+    "ja": {
       "key": "ja",
       "locale": "ja_JP",
+      "localizedName": "Japanese",
       "name": "日本語",
     },
-    "ko": Object {
+    "kl": {
+      "key": "kl",
+      "locale": "kl_GL",
+      "localizedName": "Greenlandic",
+      "name": "Kalaallisut",
+    },
+    "km": {
+      "key": "km",
+      "locale": "km_KH",
+      "localizedName": "Khmer",
+      "name": "ខ្មែរ",
+    },
+    "ko": {
       "key": "ko",
       "locale": "ko_KR",
+      "localizedName": "Korean",
       "name": "한국어",
     },
-    "lt": Object {
+    "lo": {
+      "key": "lo",
+      "locale": "lo_LA",
+      "localizedName": "Lao",
+      "name": "ລາວ",
+    },
+    "lt": {
       "key": "lt",
       "locale": "lt_LT",
+      "localizedName": "Lithuanian",
       "name": "Lietuvių",
     },
-    "lv": Object {
+    "lv": {
       "key": "lv",
       "locale": "lv_LV",
+      "localizedName": "Latvian",
       "name": "Latviešu",
     },
-    "mk": Object {
+    "mg": {
+      "key": "mg",
+      "locale": "mg_MG",
+      "localizedName": "Malagasy",
+      "name": "Malagasy",
+    },
+    "mh": {
+      "key": "mh",
+      "locale": "mh_MH",
+      "localizedName": "Marshallese",
+      "name": "Kajin M̧ajeļ",
+    },
+    "mi": {
+      "key": "mi",
+      "locale": "mi_NZ",
+      "localizedName": "Māori",
+      "name": "Māori",
+    },
+    "mk": {
       "key": "mk",
       "locale": "mk_MK",
+      "localizedName": "Macedonian",
       "name": "Македонски",
     },
-    "ms": Object {
+    "mn": {
+      "key": "mn",
+      "locale": "mn_MN",
+      "localizedName": "Mongolian",
+      "name": "монгол",
+    },
+    "mr": {
+      "key": "mr",
+      "locale": "mr_IN",
+      "localizedName": "Marathi",
+      "name": "मराठी",
+    },
+    "ms": {
       "key": "ms",
       "locale": "ms_MY",
+      "localizedName": "Malay",
       "name": "Bahasa Melayu",
     },
-    "nl": Object {
+    "my": {
+      "key": "my",
+      "locale": "my_MM",
+      "localizedName": "Burmese",
+      "name": "Burmese",
+    },
+    "ne": {
+      "key": "ne",
+      "locale": "ne_NP",
+      "localizedName": "Nepali",
+      "name": "नेपाली",
+    },
+    "nl": {
       "key": "nl",
       "locale": "nl_NL",
+      "localizedName": "Dutch",
       "name": "Nederlands",
     },
-    "no": Object {
+    "nlBE": {
+      "key": "nlBE",
+      "locale": "nl_BE",
+      "localizedName": "Flemish",
+      "name": "Vlaemsch",
+    },
+    "no": {
       "key": "no",
       "locale": "no_NO",
+      "localizedName": "Norwegian",
       "name": "Norsk",
     },
-    "pl": Object {
+    "pl": {
       "key": "pl",
       "locale": "pl_PL",
+      "localizedName": "Polish",
       "name": "Polski",
     },
-    "pt": Object {
+    "pt": {
       "key": "pt",
-      "locale": "pt_BR",
-      "name": "Português",
+      "locale": "pt_PT",
+      "localizedName": "Portuguese (Portugal)",
+      "name": "Português (Portugal)",
     },
-    "ro": Object {
+    "ptBR": {
+      "key": "ptBR",
+      "locale": "pt_BR",
+      "localizedName": "Portuguese (Brazil)",
+      "name": "Português (Brasil)",
+    },
+    "ro": {
       "key": "ro",
       "locale": "ro_RO",
+      "localizedName": "Romanian",
       "name": "Română",
     },
-    "ru": Object {
+    "ru": {
       "key": "ru",
       "locale": "ru_RU",
+      "localizedName": "Russian",
       "name": "Русский",
     },
-    "sk": Object {
+    "si": {
+      "key": "si",
+      "locale": "si_LK",
+      "localizedName": "Sinhala",
+      "name": "සිංහල",
+    },
+    "sk": {
       "key": "sk",
       "locale": "sk_SK",
+      "localizedName": "Slovak",
       "name": "Slovenský",
     },
-    "sl": Object {
+    "sl": {
       "key": "sl",
       "locale": "sl_SI",
+      "localizedName": "Slovenian",
       "name": "Slovenščina",
     },
-    "sr": Object {
+    "so": {
+      "key": "so",
+      "locale": "so_SO",
+      "localizedName": "Somali",
+      "name": "Af-Soomaali",
+    },
+    "sq": {
+      "key": "sq",
+      "locale": "sq_AL",
+      "localizedName": "Albanian",
+      "name": "Shqip",
+    },
+    "sr": {
       "key": "sr",
       "locale": "sr_RS",
+      "localizedName": "Serbian",
       "name": "Српски",
     },
-    "sv": Object {
+    "sv": {
       "key": "sv",
       "locale": "sv_SE",
+      "localizedName": "Swedish",
       "name": "Svenska",
     },
-    "th": Object {
+    "sw": {
+      "key": "sw",
+      "locale": "sw_TZ",
+      "localizedName": "Swahili",
+      "name": "Swahili",
+    },
+    "ta": {
+      "key": "ta",
+      "locale": "ta_IN",
+      "localizedName": "Tamil",
+      "name": "தமிழ்",
+    },
+    "th": {
       "key": "th",
       "locale": "th_TH",
+      "localizedName": "Thai",
       "name": "ภาษาไทย",
     },
-    "tr": Object {
+    "tl": {
+      "key": "tl",
+      "locale": "tl_PH",
+      "localizedName": "Filipino",
+      "name": "Filipino",
+    },
+    "tr": {
       "key": "tr",
       "locale": "tr_TR",
+      "localizedName": "Turkish",
       "name": "Türkçe",
     },
-    "uk": Object {
+    "uk": {
       "key": "uk",
       "locale": "uk_UA",
+      "localizedName": "Ukrainian",
       "name": "Українська",
     },
-    "vi": Object {
+    "ur": {
+      "direction": "rtl",
+      "key": "ur",
+      "locale": "ur_PK",
+      "localizedName": "Urdu",
+      "name": "اُردُو",
+    },
+    "vi": {
       "key": "vi",
       "locale": "vi_VN",
+      "localizedName": "Vietnamese",
       "name": "Tiếng Việt",
     },
-    "zh": Object {
+    "zh": {
       "key": "zh",
       "locale": "zh_CN",
+      "localizedName": "Chinese",
       "name": "简体中文",
     },
+    "zu": {
+      "key": "zu",
+      "locale": "zu_ZA",
+      "localizedName": "Zulu",
+      "name": "isiZulu",
+    },
   },
-  "deviceLanguage": Object {
+  "deviceLanguage": {
     "key": "en",
     "locale": "en_US",
+    "localizedName": "English",
     "name": "English",
   },
 }

@@ -1,30 +1,21 @@
-import postMessageLegacy, {
-  disconnect as postMessageLegacyDisconnect
-} from './connector/postmessage-legacy.js';
 import fallback, { disconnect as fallbackDisconnect } from './connector/fallback.js';
 import postMessage, { disconnect as postMessageDisconnect } from './connector/postmessage.js';
 import putMessage, { disconnect as putMessageDisconnect } from './connector/putMessage.js';
 import { unload as unloadManager } from './manager';
-const log = require('loglevel');
+import log from 'loglevel';
 
 let connector;
 
 const connect = async () => {
   const putMessageConnection = putMessage();
   const postMessageConnection = postMessage();
-  const postMessagLegacyConnection = postMessageLegacy();
   const fallbackConnection = fallback();
 
-  const realConnectionBucket = [
-    putMessageConnection,
-    postMessageConnection,
-    postMessagLegacyConnection
-  ];
-
+  const realConnectionBucket = [putMessageConnection, postMessageConnection];
   const fallbackConnectionBucket = realConnectionBucket.concat(fallbackConnection);
 
   // Wait on the real communication and replace the connector with
-  Promise.race(realConnectionBucket).then(newConnector => {
+  Promise.race(realConnectionBucket).then((newConnector) => {
     log.debug('connection/replace connector ' + newConnector.toString());
     connector = newConnector;
   });
@@ -35,7 +26,6 @@ const connect = async () => {
 export const disconnect = () => {
   postMessageDisconnect();
   putMessageDisconnect();
-  postMessageLegacyDisconnect();
   fallbackDisconnect();
   unloadManager();
   connector = null;

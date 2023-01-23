@@ -4,7 +4,8 @@
 import locales from './../../../model/locales';
 import normalize from './../../utils/normalize';
 
-const log = require('loglevel');
+import log from 'loglevel';
+
 const userAgent = navigator.userAgent || navigator.vendor || window.opera || '';
 const currentLanguage = normalize(window && window.navigator.language);
 
@@ -90,7 +91,7 @@ export const isIos = () => {
  *
  * @param {String} url address
  */
-export const openLink = url => {
+export const openLink = (url) => {
   log.debug('fallback/openLink');
   window.open(url, '_blank');
 };
@@ -100,7 +101,7 @@ export const openLink = url => {
  *
  * @param {String} cmd command name
  */
-export const unSupported = cmd => {
+export const unSupported = (cmd) => {
   log.debug('fallback/' + cmd);
   log.warn('Command is not possible in fallback mode.');
   // nothing we can do here
@@ -143,7 +144,7 @@ export const getBranchDefaultLanguage = () => {
  *
  * @return {string}
  */
-export const getPreferredContentLocale = content => {
+export const getPreferredContentLocale = (content) => {
   log.debug('fallback/getPreferredContentLocale');
   const locale = getBranchDefaultLanguage().locale;
 

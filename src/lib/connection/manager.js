@@ -1,5 +1,5 @@
 import genID from './../utils/genId';
-const log = require('loglevel');
+import log from 'loglevel';
 /**
  * @type {Object.<string, {resolve: function, reject: function, promise: Promise}>}
  */
@@ -30,7 +30,7 @@ function createPromiseObject() {
 export const create = () => {
   const id = createPromiseObject();
 
-  const p = new Promise(function(resolve, reject) {
+  const p = new Promise(function (resolve, reject) {
     promiseMap[id].resolve = resolve;
     promiseMap[id].reject = reject;
   });
@@ -79,7 +79,7 @@ export const reject = (id, err) => {
  * @return {Promise} the promise identified by id
  * @throws {Error} on unknown id
  */
-export const get = id => {
+export const get = (id) => {
   if (!(id in promiseMap)) throw new Error('Tried to get an unknown [' + id + '] promise.');
 
   return promiseMap[id].promise;

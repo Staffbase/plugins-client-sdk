@@ -7,7 +7,7 @@ import {
   get as getPromise
 } from '../manager.js';
 
-const log = require('loglevel');
+import log from 'loglevel';
 
 let connection = null;
 let outMsgQueue = [];
@@ -30,6 +30,12 @@ const dataStore = ({ platform, language }) => ({
   branchDefaultLang: language.branchDefaultLanguage
 });
 
+window.Staffbase = window.Staffbase || {};
+window.Staffbase.plugins = {
+  getMessages: multiMessageProvider,
+  putMessage: singleMessageReceiver
+};
+
 /**
  * Connect to the Staffbase App.
  *
@@ -41,17 +47,12 @@ const connect = () => {
     return connection;
   }
 
+  log.info('putMessage/connect start');
   const connectId = createPromise();
-  connection = getPromise(connectId).then(function(payload) {
+  connection = getPromise(connectId).then(function (payload) {
     log.info('putMessage/connect succeeded');
     return sendMessage(dataStore(payload));
   });
-
-  window.Staffbase = window.Staffbase || {};
-  window.Staffbase.plugins = {
-    getMessages: multiMessageProvider,
-    putMessage: singleMessageReceiver
-  };
 
   outMsgQueue.push([protocol.HELLO, connectId, []]);
 
@@ -69,11 +70,11 @@ export default connect;
  * @return {Array} ordered list of messages
  */
 function multiMessageProvider() {
-  log.info('putMessage/multiMessageProvider');
   const queueRef = outMsgQueue;
-  log.debug('putMessage/multiMessageProvider/queue/before ' + JSON.stringify(outMsgQueue));
+  if (queueRef.length) {
+    log.debug('putMessage/multiMessageProvider/queue', queueRef);
+  }
   outMsgQueue = [];
-  log.debug('putMessage/multiMessageProvider/queue/after ' + JSON.stringify(outMsgQueue));
   return queueRef;
 }
 
@@ -139,26 +140,27 @@ export const disconnect = () => {
  * @return {Promise<any>} which awaits the response of the Staffbase App
  * @throws {Error} on commands not supported by protocol
  */
-const sendMessage = store => async (cmd, ...payload) => {
-  log.info('putMessage/sendMessage ' + cmd);
-  log.debug('putMessage/sendMessage/payload ' + JSON.stringify(payload));
-  switch (cmd) {
-    case actions.version:
-    case actions.native:
-    case actions.mobile:
-    case actions.ios:
-    case actions.android:
-    case actions.langInfos:
-    case actions.branchDefaultLang:
-      return store[reversedActions[cmd]];
-    case actions.openLink:
-    case actions.prefContentLang:
-    case actions.nativeShare:
-      return sendInvocationCall(invocationMapping[cmd], payload);
-    default:
-      throw new Error('Command ' + cmd + ' not supported by driver');
-  }
-};
+const sendMessage =
+  (store) =>
+  async (cmd, ...payload) => {
+    log.info('putMessage/sendMessage ' + cmd);
+    log.debug('putMessage/sendMessage/payload ' + JSON.stringify(payload));
+    switch (cmd) {
+      case actions.version:
+      case actions.native:
+      case actions.mobile:
+      case actions.ios:
+      case actions.android:
+      case actions.langInfos:
+      case actions.branchDefaultLang:
+        return store[reversedActions[cmd]];
+      case actions.openLink:
+      case actions.prefContentLang:
+        return sendInvocationCall(invocationMapping[cmd], payload);
+      default:
+        throw new Error('Command ' + cmd + ' not supported by driver');
+    }
+  };
 
 /**
  * Create a promise and send an invocation call to the frontend

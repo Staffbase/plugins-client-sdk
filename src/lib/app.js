@@ -1,6 +1,6 @@
 import cmd from './connection/commands';
 import sendMessage from './connection/connection';
-const log = require('loglevel');
+import log from 'loglevel';
 
 /**
  * Get the version of the Staffbase App.
@@ -42,7 +42,7 @@ export const isMobile = async () => {
  *
  * @return {Promise<any>}
  */
-export const openLink = async url => {
+export const openLink = async (url) => {
   log.debug('app/openLink');
   return sendMessage(cmd.openLink, url);
 };
@@ -54,7 +54,7 @@ export const openLink = async url => {
  *
  * @return {Promise<any>}
  */
-export const openLinkExternal = async url => {
+export const openLinkExternal = async (url) => {
   log.debug('app/openLinkExternal');
   return sendMessage(cmd.openLink, url, { inAppBrowser: false });
 };
@@ -66,7 +66,7 @@ export const openLinkExternal = async url => {
  *
  * @return {Promise<any>}
  */
-export const openLinkInternal = async url => {
+export const openLinkInternal = async (url) => {
   log.debug('app/openLinkInternal');
   return sendMessage(cmd.openLink, url, { inAppBrowser: true });
 };
@@ -98,7 +98,7 @@ export const openNativeFileDialog = async () => {
  *
  * @return {Promise<string>}
  */
-export const openNativeShareDialog = async content => {
+export const openNativeShareDialog = async (content) => {
   log.debug('app/openNativeShareDialog');
   return sendMessage(cmd.nativeShare, content);
 };
@@ -110,7 +110,7 @@ export const openNativeShareDialog = async content => {
  */
 export const getBranchLanguages = async () => {
   log.debug('app/getContentLanguages');
-  return sendMessage(cmd.langInfos).then(res => res.branchLanguages);
+  return sendMessage(cmd.langInfos).then((res) => res.branchLanguages);
 };
 
 /**
@@ -120,7 +120,7 @@ export const getBranchLanguages = async () => {
  */
 export const getBranchDefaultLanguage = async () => {
   log.debug('app/getBranchDefaultLanguage');
-  return sendMessage(cmd.langInfos).then(res => res.branchDefaultLanguage);
+  return sendMessage(cmd.langInfos).then((res) => res.branchDefaultLanguage);
 };
 
 /**
@@ -130,7 +130,7 @@ export const getBranchDefaultLanguage = async () => {
  */
 export const getContentLanguages = async () => {
   log.debug('app/getContentLanguages');
-  return sendMessage(cmd.langInfos).then(res => res.contentLanguages);
+  return sendMessage(cmd.langInfos).then((res) => res.contentLanguages);
 };
 
 /**
@@ -144,7 +144,7 @@ export const getContentLanguages = async () => {
  *
  * @return {Promise<string>}
  */
-export const getPreferredContentLocale = async content => {
+export const getPreferredContentLocale = async (content) => {
   log.debug('app/getPreferredContentLocale');
   return sendMessage(cmd.prefContentLang, content);
 };
