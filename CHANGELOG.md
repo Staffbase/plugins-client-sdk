@@ -1,3 +1,23 @@
+# [2.0.0-beta.1](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.3...2.0.0-beta.1) (2023-01-23)
+
+
+### chore
+
+* **release:** 1.1.0-beta.1 [skip ci] ([f83b361](https://github.com/Staffbase/plugins-client-sdk/commit/f83b36167e117f4c3ef5ca6fb9b1487d2911d9be))
+* **release:** 1.1.0-beta.2 [skip ci] ([99c2827](https://github.com/Staffbase/plugins-client-sdk/commit/99c282715244924ca35b936c93634b6143cc519b))
+* **release:** 1.1.0-beta.3 [skip ci] ([f302d79](https://github.com/Staffbase/plugins-client-sdk/commit/f302d79b8709e30b35868f52a444f5b2a2343e97))
+* **travis:**  change deployment ([7010912](https://github.com/Staffbase/plugins-client-sdk/commit/7010912e69d5ee0f0f27a71badbaf6828eb852b2))
+
+
+### fix
+
+* updated all dependencies ([939a9a7](https://github.com/Staffbase/plugins-client-sdk/commit/939a9a7ec4aa2a3805c663dfbd795f5559f920cf))
+
+
+### Breaking changes
+
+* - moved to Node 16
+
 ## [1.2.3](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.2...1.2.3) (2022-10-11)
 
 ### chore
