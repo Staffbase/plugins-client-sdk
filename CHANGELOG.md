@@ -1,3 +1,30 @@
+## [1.2.4-alpha.1](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.3...1.2.4-alpha.1) (2023-01-23)
+
+
+### chore
+
+* moved dep to dev part ([412227e](https://github.com/Staffbase/plugins-client-sdk/commit/412227e71bbc9fcf779fd4b44ef8e0cc64578d35))
+* update dependencies, add modules export ([2606cc8](https://github.com/Staffbase/plugins-client-sdk/commit/2606cc82c156e30749acd44b17e9c7cd3a8fd457))
+* updated all dependencies ([d9dc246](https://github.com/Staffbase/plugins-client-sdk/commit/d9dc246cb5b99ac96aeb3a9eb25d40e96663e089))
+
+
+### fix
+
+* change entry file ([166bf46](https://github.com/Staffbase/plugins-client-sdk/commit/166bf46b8cfb95fae8e8f4ad851e61ef64c2b2df))
+* change title ([33effe1](https://github.com/Staffbase/plugins-client-sdk/commit/33effe1d27dbd98f94cda75b9171955b1ef71dc1))
+* change title ([f9f06b6](https://github.com/Staffbase/plugins-client-sdk/commit/f9f06b622422a0f60dba482d9c847c17c9013d32))
+* trigger ci ([c437f76](https://github.com/Staffbase/plugins-client-sdk/commit/c437f760e018b00aa798a8d86c43572dc4180fd0))
+
+
+### test
+
+* fix babel test transpilation ([2f1985b](https://github.com/Staffbase/plugins-client-sdk/commit/2f1985b6b7824167cf172040a448fc30f4a75ffe))
+
+
+### Breaking changes
+
+* - moved to Node 16
+
 ## [1.2.3](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.2...1.2.3) (2022-10-11)
 
 ### chore
