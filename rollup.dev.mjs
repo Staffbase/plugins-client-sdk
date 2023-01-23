@@ -1,12 +1,12 @@
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
-import pkg from './package.json';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import pkg from './package.json' assert { type: 'json' };
 import html from 'rollup-plugin-template-html';
 import serve from 'rollup-plugin-serve';
 
 const defaultBrowserPluginOptions = [
-  resolve(),
+  nodeResolve(),
   commonjs(),
   babel({ babelHelpers: 'bundled' }),
   html({
