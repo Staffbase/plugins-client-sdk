@@ -8,7 +8,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Yarn Lock Changes
-        uses: Simek/yarn-lock-changes@v0.6.0
+        uses: Simek/yarn-lock-changes@v0.11.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           collapsibleThreshold: '25'
