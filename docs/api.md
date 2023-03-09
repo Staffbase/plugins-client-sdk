@@ -1,3 +1,11 @@
+## Constants
+
+<dl>
+<dt><a href="#openNativeShareDialog">openNativeShareDialog</a> ⇒ <code>Promise.&lt;string&gt;</code></dt>
+<dd><p>Open a share dialog on native devices</p>
+</dd>
+</dl>
+
 ## Functions
 
 <dl>
@@ -44,6 +52,26 @@ should be used.</p>
 </dd>
 </dl>
 
+<a name="openNativeShareDialog"></a>
+
+## openNativeShareDialog ⇒ <code>Promise.&lt;string&gt;</code>
+Open a share dialog on native devices
+
+**Kind**: global constant  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| content | <code>object</code> | the content to share |
+
+**Example**  
+```js
+openNativeShareDialog({
+     image: "https://example.com/test.png",
+     subject: "The string you would like to use as a subject for the share",
+     text: "This text is shared",
+     url: "https://example.com"
+  })
+```
 <a name="deviceCanDownload"></a>
 
 ## deviceCanDownload() ⇒ <code>Promise.&lt;boolean&gt;</code>
