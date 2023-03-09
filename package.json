@@ -1,6 +1,6 @@
 {
   "name": "@staffbase/plugins-client-sdk",
-  "version": "1.2.3",
+  "version": "2.0.0",
   "description": "Staffbase plugins client SDK for JavaScript",
   "main": "dist/plugins-client-sdk.js",
   "module": "dist/plugins-client-sdk.esm.js",
@@ -20,7 +20,14 @@
     "release": "semantic-release"
   },
   "repository": "https://github.com/Staffbase/plugins-client-sdk.git",
-  "keywords": ["staffbase", "client", "sdk", "javascript", "plugin", "api"],
+  "keywords": [
+    "staffbase",
+    "client",
+    "sdk",
+    "javascript",
+    "plugin",
+    "api"
+  ],
   "author": "Staffbase GmbH (https://staffbase.com/)",
   "contributors": [
     "Stefan Staude <stefan.staude@staffbase.com>",
@@ -34,7 +41,9 @@
   "directories": {
     "test": "test"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "size-limit": [
     {
       "limit": "8 kB",

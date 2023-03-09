@@ -1,3 +1,23 @@
+# [2.0.0](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.3...2.0.0) (2023-03-09)
+
+
+### chore
+
+* **deps:** bump Staffbase/gha-workflows from 1.8.0 to 1.12.0 ([#107](https://github.com/Staffbase/plugins-client-sdk/issues/107)) ([7374171](https://github.com/Staffbase/plugins-client-sdk/commit/737417157f33c8ad32df8ee0c3802577483e1362))
+* removed file path from doc ([5839905](https://github.com/Staffbase/plugins-client-sdk/commit/5839905c1bfe3e36a8720825fdba1df5e873ca0f))
+* update dependencies ([45aaf09](https://github.com/Staffbase/plugins-client-sdk/commit/45aaf09b0b8edfa644cbb005356d352e3a8dd9ab))
+* updated all dependencies ([9427b80](https://github.com/Staffbase/plugins-client-sdk/commit/9427b80817ecfe1e8bbb1406d051f212c873e481))
+
+
+### fix
+
+* updated all dependencies ([fbf1ec8](https://github.com/Staffbase/plugins-client-sdk/commit/fbf1ec8b394ff0dbb8f013ed9200437b69db33b7))
+
+
+### Breaking changes
+
+* - moved to Node 16
+
 ## [1.2.3](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.2...1.2.3) (2022-10-11)
 
 
