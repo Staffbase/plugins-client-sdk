@@ -2,24 +2,22 @@
   "name": "@staffbase/plugins-client-sdk",
   "version": "2.0.0",
   "description": "Staffbase plugins client SDK for JavaScript",
-  "main": "dist/plugins-client-sdk.js",
-  "module": "dist/plugins-client-sdk.esm.js",
-  "browser": "dist/plugins-client-sdk.umd.js",
+  "main": "./dist/plugins-client-sdk.cjs.min.js",
+  "module": "./dist/plugins-client-sdk.esm.min.js",
+  "browser": "dist/plugins-client-sdk.umd.min.js",
   "exports": {
-    "require": "./dist/cjs/main.js",
-    "import": "./dist/esm/main.js"
+    "require": "./dist/plugins-client-sdk.cjs.min.js",
+    "import": "./dist/plugins-client-sdk.esm.min.js"
   },
   "scripts": {
-    "build:esm": "BABEL_ENV=esmUnbundled babel src --extensions '.js' --out-dir 'dist/esm' --source-maps",
-    "build:cjs": "BABEL_ENV=cjs babel src --extensions '.js' --out-dir 'dist/cjs' --source-maps",
-    "build:bundles": "BABEL_ENV=esmBundled rollup -c",
-    "build": "yarn build:esm & yarn build:cjs & yarn build:bundles",
+    "build": "yarn rollup -c",
     "prebuild": "yarn run lint",
+    "postbuild": "yarn run size-limit",
     "prepare": "husky install",
     "dev": "rollup -c rollup.dev.mjs -w",
     "test-unit": "BABEL_ENV=test jest",
     "test-dev": "BABEL_ENV=test jest --watch",
-    "lint": "yarn run lint-code && yarn run lint-size",
+    "lint": "yarn run lint-code",
     "lint-code": "yarn eslint src test",
     "lint-size": "yarn size-limit",
     "fix": "eslint --fix 'src/**/*.js' 'test/**/*.js'",
@@ -27,14 +25,7 @@
     "release": "semantic-release"
   },
   "repository": "https://github.com/Staffbase/plugins-client-sdk.git",
-  "keywords": [
-    "staffbase",
-    "client",
-    "sdk",
-    "javascript",
-    "plugin",
-    "api"
-  ],
+  "keywords": ["staffbase", "client", "sdk", "javascript", "plugin", "api"],
   "author": "Staffbase GmbH (https://staffbase.com/)",
   "contributors": [
     "Stefan Staude <stefan.staude@staffbase.com>",
@@ -48,13 +39,21 @@
   "directories": {
     "test": "test"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "size-limit": [
     {
       "limit": "8 kB",
       "path": "src/main.js"
+    },
+    {
+      "path": "dist/plugins-client-sdk.umd.min.js"
+    },
+    {
+      "path": "dist/plugins-client-sdk.esm.min.js",
+      "import": "{ openLinkExternal }"
+    },
+    {
+      "path": "dist/plugins-client-sdk.esm.min.js"
     }
   ],
   "dependencies": {
@@ -76,6 +75,7 @@
     "@rollup/plugin-commonjs": "24.0.1",
     "@rollup/plugin-node-resolve": "15.0.1",
     "@rollup/plugin-strip": "3.0.2",
+    "@rollup/plugin-sucrase": "^5.0.1",
     "@rollup/plugin-terser": "^0.4.0",
     "@size-limit/preset-small-lib": "8.2.4",
     "@tmware/semantic-release-npm-github-publish": "^1.5.5",
@@ -93,11 +93,10 @@
     "jsdoc-to-markdown": "^8.0.0",
     "prettier": "^2.8.4",
     "regenerator-runtime": "0.13.11",
-    "rollup": "^3.18.0",
+    "rollup": "^3.19.1",
     "rollup-plugin-license": "3.0.1",
     "rollup-plugin-serve": "2.0.2",
     "rollup-plugin-strip-logger": "0.4.1",
-    "rollup-plugin-template-html": "0.0.3",
     "size-limit": "^8.2.4"
   }
 }
