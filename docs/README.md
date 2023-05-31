@@ -20,7 +20,7 @@ yarn add @staffbase/plugins-client-sdk
 
 ## API Reference
 
-Please look into our [API documentation](https://github.com/Staffbase/plugins-client-sdk/blob/master/dosc/api.md)
+Please look into our [API documentation](https://github.com/Staffbase/plugins-client-sdk/blob/master/docs/api.md)
 
 ## Usage
 
