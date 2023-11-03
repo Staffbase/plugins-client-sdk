@@ -1,3 +1,20 @@
+## [2.0.1](https://github.com/Staffbase/plugins-client-sdk/compare/2.0.0...2.0.1) (2023-11-03)
+
+
+### chore
+
+* change action event ([3eddbb0](https://github.com/Staffbase/plugins-client-sdk/commit/3eddbb097f91281591c40837ef7577a30ecfe840))
+* **deps:** bump [@babel](https://github.com/babel)/traverse from 7.16.8 to 7.23.2 ([ede9600](https://github.com/Staffbase/plugins-client-sdk/commit/ede96004b01859556073a9c2ed3ae131f70b6046))
+* **deps:** bump actions/checkout from 1 to 3 ([f896d64](https://github.com/Staffbase/plugins-client-sdk/commit/f896d64b57bdc2faa2b5cb06c7839b1457690890))
+* **deps:** bump actions/checkout from 1 to 3 ([b456f5d](https://github.com/Staffbase/plugins-client-sdk/commit/b456f5dfedf06cd552a0651fbba46d57766c651b))
+* **deps:** bump http-cache-semantics from 4.1.0 to 4.1.1 ([29e336f](https://github.com/Staffbase/plugins-client-sdk/commit/29e336f58670f2f3a0d4c33989d7fd5f4d572b92))
+* **deps:** bump http-cache-semantics from 4.1.0 to 4.1.1 ([7d20977](https://github.com/Staffbase/plugins-client-sdk/commit/7d209771ab05be9098725d390e274ed10ffeac86))
+
+
+### fix
+
+* changed indonesian language to id ([df83d04](https://github.com/Staffbase/plugins-client-sdk/commit/df83d04df7d6a8cc479f5eb8021c824556a7f917))
+
 # [2.0.0](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.3...2.0.0) (2023-03-09)
 
 
