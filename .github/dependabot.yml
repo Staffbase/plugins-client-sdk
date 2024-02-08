@@ -7,8 +7,6 @@ updates:
     time: "08:00"
     timezone: "Europe/Berlin"
   open-pull-requests-limit: 8
-  reviewers:
-    - "Staffbase/need-for-speed-devs"
   groups:
     npm-updates:
       update-types:
@@ -29,5 +27,3 @@ updates:
   open-pull-requests-limit: 8
   allow:
     - dependency-type: production
-  reviewers:
-    - "Staffbase/need-for-speed-devs"
