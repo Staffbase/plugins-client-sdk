@@ -78,7 +78,7 @@
     "regenerator-runtime": "0.13.11",
     "rollup": "^3.18.0",
     "rollup-plugin-license": "3.0.1",
-    "rollup-plugin-serve": "2.0.2",
+    "rollup-plugin-serve": "3.0.0",
     "rollup-plugin-strip-logger": "0.4.1",
     "rollup-plugin-template-html": "0.0.3",
     "size-limit": "^8.2.4"
