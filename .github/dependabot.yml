@@ -1,6 +1,29 @@
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "monthly"
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "08:00"
+    timezone: "Europe/Berlin"
+  open-pull-requests-limit: 8
+  groups:
+    npm-updates:
+      update-types:
+        - "minor"
+        - "patch"
+  labels:
+        - dependencies
+        - javascript
+        - security
+        - dev
+
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "08:00"
+    timezone: "Europe/Berlin"
+  open-pull-requests-limit: 8
+  allow:
+    - dependency-type: production
