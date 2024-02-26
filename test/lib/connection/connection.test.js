@@ -39,14 +39,16 @@ describe('connection', () => {
     });
 
     test('should provide a working sendmessage without a connection', async () => {
-      const result = await sendMessage(command.version);
+      const result = sendMessage(command.version);
+      jest.runOnlyPendingTimers();
 
-      expect(result).toBe('3.4');
+      expect(await result).toBe('3.4');
     });
 
     test('should receive a message from postmessage connector if available', async () => {
       messageStup = stubPostMessage(standardMsg36);
       const result = await sendMessage(command.version);
+      jest.runOnlyPendingTimers();
       messageStup.stopMessaging();
 
       expect(result).toBe(mockVersion36);
@@ -55,17 +57,15 @@ describe('connection', () => {
     test('should upgrade a connection if the postmessage takes longer than the fallback timeout', async () => {
       messageStup = stubPostMessage(standardMsg36, 600);
 
-      let result = await sendMessage(command.version);
-      expect(result).toBe('3.4');
-      jest.advanceTimersByTime(2000);
-      // await delay(200);
+      let result = sendMessage(command.version);
+      jest.runOnlyPendingTimers();
+      expect(await result).toBe('3.4');
 
-      result = await sendMessage(command.version);
+      result = sendMessage(command.version);
+      jest.runOnlyPendingTimers();
       messageStup.stopMessaging();
 
-      expect(result).toBe(mockVersion36);
+      expect(await result).toBe(mockVersion36);
     });
   });
 });
-
-const delay = (duration) => new Promise((resolve) => setTimeout(resolve, duration));

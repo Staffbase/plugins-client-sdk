@@ -15,18 +15,18 @@ const stubPostMessage = (msg = '', timeout = 10) => {
   const fakeEvent = [msg];
   let timeouts = [];
 
-  const addEventListener = (m, cb) => {
-    console.log('add eventlistener', m, cb.name);
+  const addEventListener = (_m, cb) => {
+    // console.log('add eventlistener', m, cb.name);
     callbacks.push(cb);
   };
 
   const answerMessage = (message) => (receiver) => {
-    console.log('send message ', fakeEvent, 'to ', receiver.name);
+    // console.log('send message ', fakeEvent, 'to ', receiver.name);
     receiver({ data: message });
   };
 
-  const postMessage = (m, o) => {
-    console.log('postmessage received ', m, o);
+  const postMessage = (m, _o) => {
+    // console.log('postmessage received ', m, o);
     let message;
 
     if (m === 'pluginLoaded' || m[0] === 'HELLO') {
@@ -38,8 +38,6 @@ const stubPostMessage = (msg = '', timeout = 10) => {
     if (Array.isArray(message) && Array.isArray(m)) {
       message[1] = m[1];
     }
-
-    // stopMessaging();
 
     timeouts = timeouts.concat(
       callbacks.map((cb) => {

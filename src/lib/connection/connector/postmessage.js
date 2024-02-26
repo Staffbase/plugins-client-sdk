@@ -67,7 +67,6 @@ const connect = () => {
 
   const recurringConnect = (delay = 500) => {
     log.info('postMessage/connect retry');
-    console.log('postMessage/connect retry');
     timeout = window.setTimeout(() => {
       if (delay < 1200) {
         log.info('postMessage/connect abort');
@@ -125,7 +124,6 @@ const receiveMessage = async (evt) => {
   }
 
   log.debug('postMessage/receiveMessage/payload ' + JSON.stringify([type, id, payload]));
-  console.log('postMessage/receiveMessage/payload ', [type, id, payload]);
 
   switch (type) {
     case protocol.SUCCESS:
@@ -161,7 +159,6 @@ const sendMessage =
     log.info('postMessage/sendMessage ' + cmd);
     log.debug('postMessage/sendMessage/payload ' + JSON.stringify(payload));
 
-    console.log('postMessage/sendMessage ' + cmd);
     switch (cmd) {
       case actions.version:
       case actions.native:
