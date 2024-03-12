@@ -11,7 +11,7 @@ on:
 
 jobs:
   publish-techdocs-site:
-    uses: Staffbase/gha-workflows/.github/workflows/template_techdocs.yml@v1.13.1
+    uses: Staffbase/gha-workflows/.github/workflows/template_techdocs.yml@v4.0.2
     with:
       entity-name: plugins-client-sdk
     secrets:
