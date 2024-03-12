@@ -1,4 +1,47 @@
-# [2.0.0-alpha.1](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.4-alpha.1...2.0.0-alpha.1) (2023-01-23)
+## [2.0.1](https://github.com/Staffbase/plugins-client-sdk/compare/2.0.0...2.0.1) (2023-11-03)
+
+
+### chore
+
+* change action event ([3eddbb0](https://github.com/Staffbase/plugins-client-sdk/commit/3eddbb097f91281591c40837ef7577a30ecfe840))
+* **deps:** bump [@babel](https://github.com/babel)/traverse from 7.16.8 to 7.23.2 ([ede9600](https://github.com/Staffbase/plugins-client-sdk/commit/ede96004b01859556073a9c2ed3ae131f70b6046))
+* **deps:** bump actions/checkout from 1 to 3 ([f896d64](https://github.com/Staffbase/plugins-client-sdk/commit/f896d64b57bdc2faa2b5cb06c7839b1457690890))
+* **deps:** bump actions/checkout from 1 to 3 ([b456f5d](https://github.com/Staffbase/plugins-client-sdk/commit/b456f5dfedf06cd552a0651fbba46d57766c651b))
+* **deps:** bump http-cache-semantics from 4.1.0 to 4.1.1 ([29e336f](https://github.com/Staffbase/plugins-client-sdk/commit/29e336f58670f2f3a0d4c33989d7fd5f4d572b92))
+* **deps:** bump http-cache-semantics from 4.1.0 to 4.1.1 ([7d20977](https://github.com/Staffbase/plugins-client-sdk/commit/7d209771ab05be9098725d390e274ed10ffeac86))
+
+
+### fix
+
+* changed indonesian language to id ([df83d04](https://github.com/Staffbase/plugins-client-sdk/commit/df83d04df7d6a8cc479f5eb8021c824556a7f917))
+
+# [2.0.0](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.3...2.0.0) (2023-03-09)
+
+
+### chore
+
+* **deps:** bump Staffbase/gha-workflows from 1.8.0 to 1.12.0 ([#107](https://github.com/Staffbase/plugins-client-sdk/issues/107)) ([7374171](https://github.com/Staffbase/plugins-client-sdk/commit/737417157f33c8ad32df8ee0c3802577483e1362))
+* removed file path from doc ([5839905](https://github.com/Staffbase/plugins-client-sdk/commit/5839905c1bfe3e36a8720825fdba1df5e873ca0f))
+* update dependencies ([45aaf09](https://github.com/Staffbase/plugins-client-sdk/commit/45aaf09b0b8edfa644cbb005356d352e3a8dd9ab))
+* updated all dependencies ([9427b80](https://github.com/Staffbase/plugins-client-sdk/commit/9427b80817ecfe1e8bbb1406d051f212c873e481))
+
+
+### fix
+
+* updated all dependencies ([fbf1ec8](https://github.com/Staffbase/plugins-client-sdk/commit/fbf1ec8b394ff0dbb8f013ed9200437b69db33b7))
+
+
+### Breaking changes
+
+* - moved to Node 16
+
+## [1.2.3](https://github.com/Staffbase/plugins-client-sdk/compare/1.2.2...1.2.3) (2022-10-11)
+
+
+### chore
+
+* change tokens ([36061d5](https://github.com/Staffbase/plugins-client-sdk/commit/36061d531c869e48b81aaeee6df4aa86c5c8065c))
+* change tokens ([b2c29ff](https://github.com/Staffbase/plugins-client-sdk/commit/b2c29ffa4b2ed71f753674cf5e4dc817cbb78ca7))
 
 
 ### fix
