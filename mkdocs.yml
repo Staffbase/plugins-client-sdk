@@ -2,8 +2,8 @@ site_name: 'Plugin Clients SDK'
 
 nav:
   - Intro: 'README.md'
-  - API: 'doc/api.md'
-  - Usage: 'doc/usage.md'
+  - API: 'api.md'
+  - Usage: 'usage.md'
 
 plugins:
   - techdocs-core

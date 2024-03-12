@@ -182,9 +182,9 @@ exports[`connector/fallback connect send function accepts all comands command.la
       "localizedName": "Hungarian",
       "name": "Magyar",
     },
-    "in": {
-      "key": "in",
-      "locale": "in_ID",
+    "id": {
+      "key": "id",
+      "locale": "id_ID",
       "localizedName": "Indonesian",
       "name": "Bahasa Indonesia",
     },
@@ -615,9 +615,9 @@ exports[`connector/fallback connect send function accepts all comands command.la
       "localizedName": "Hungarian",
       "name": "Magyar",
     },
-    "in": {
-      "key": "in",
-      "locale": "in_ID",
+    "id": {
+      "key": "id",
+      "locale": "id_ID",
       "localizedName": "Indonesian",
       "name": "Bahasa Indonesia",
     },

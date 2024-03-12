@@ -159,9 +159,9 @@ export default {
     name: 'Magyar',
     localizedName: 'Hungarian'
   },
-  in: {
-    key: 'in',
-    locale: 'in_ID',
+  id: {
+    key: 'id',
+    locale: 'id_ID',
     name: 'Bahasa Indonesia',
     localizedName: 'Indonesian'
   },
