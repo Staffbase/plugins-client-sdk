@@ -1,3 +1,68 @@
+# [3.0.0-alpha.1](https://github.com/Staffbase/plugins-client-sdk/compare/2.0.1...3.0.0-alpha.1) (2024-03-12)
+
+
+### build
+
+* **deps:** npm audit fix ([23d57b4](https://github.com/Staffbase/plugins-client-sdk/commit/23d57b468da70fb7a4a0160a98a4944e9ca172b9))
+* **deps:** npm audit fix ([c2251bd](https://github.com/Staffbase/plugins-client-sdk/commit/c2251bda030f10ae70df062de5f45d5253369565))
+* **deps:** npm audit fix ([1e0dd78](https://github.com/Staffbase/plugins-client-sdk/commit/1e0dd785b9df1f8082a059ada90c448e8cb33110))
+* **deps:** npm audit fix ([58bf876](https://github.com/Staffbase/plugins-client-sdk/commit/58bf87652c30e16353a28c5bcc36dba966e0bc70))
+* **deps:** npm audit fix ([c7bb2e0](https://github.com/Staffbase/plugins-client-sdk/commit/c7bb2e0f893138e709e0a32a63589457aa414abf))
+
+
+### chore
+
+* **deps-dev:** bump husky from 8.0.3 to 9.0.10 ([5ed67e9](https://github.com/Staffbase/plugins-client-sdk/commit/5ed67e9c6e5da6be6316af19bfc30282bc5e6673))
+* **deps-dev:** bump husky from 8.0.3 to 9.0.10 ([680772f](https://github.com/Staffbase/plugins-client-sdk/commit/680772f7764174bf6ec59c1d60af0a8c7e6409c5))
+* **deps-dev:** bump jest-extended from 3.2.4 to 4.0.2 ([351b726](https://github.com/Staffbase/plugins-client-sdk/commit/351b72693d2a437a226042bad3694f2a6bed7b4a))
+* **deps-dev:** bump jest-extended from 3.2.4 to 4.0.2 ([d42a82e](https://github.com/Staffbase/plugins-client-sdk/commit/d42a82edf342ed27deadf3a87307850afd563514))
+* **deps-dev:** bump rollup from 3.18.0 to 3.29.4 ([8a7239c](https://github.com/Staffbase/plugins-client-sdk/commit/8a7239cf88b19d5914c857e66ec37846905fbc68))
+* **deps-dev:** bump rollup from 3.18.0 to 3.29.4 ([d58a3ce](https://github.com/Staffbase/plugins-client-sdk/commit/d58a3ce462cb158bb7da13b6ee8f73b2bb0133b5))
+* **deps-dev:** bump rollup-plugin-serve from 2.0.2 to 3.0.0 ([2232350](https://github.com/Staffbase/plugins-client-sdk/commit/22323505058cc5b106ffa3b655dfd14e0d884bc3))
+* **deps-dev:** bump rollup-plugin-serve from 2.0.2 to 3.0.0 ([1527a41](https://github.com/Staffbase/plugins-client-sdk/commit/1527a41fe890b6b8f85a31db25db1654de0fd845))
+* **deps:** bump actions/checkout from 3 to 4 ([d1134f6](https://github.com/Staffbase/plugins-client-sdk/commit/d1134f65f0ff337638e6702b71d9825739079a8b))
+* **deps:** bump actions/checkout from 3 to 4 ([5c888fe](https://github.com/Staffbase/plugins-client-sdk/commit/5c888fe91aff489f1c129d3455841e191d03e66b))
+* **deps:** bump ip from 2.0.0 to 2.0.1 ([ab5dc48](https://github.com/Staffbase/plugins-client-sdk/commit/ab5dc4850c37f35c182797431593068b2ee0514b))
+* **deps:** bump ip from 2.0.0 to 2.0.1 ([58f0138](https://github.com/Staffbase/plugins-client-sdk/commit/58f01388e667c1649ca31338a7fe72dd9cd8464f))
+* **deps:** bump Simek/yarn-lock-changes from 0.11.1 to 0.12.0 ([726cc18](https://github.com/Staffbase/plugins-client-sdk/commit/726cc1825940b19c95f6b36bd78bcdb809eb5200))
+* **deps:** bump Simek/yarn-lock-changes from 0.11.1 to 0.12.0 ([e42f5cd](https://github.com/Staffbase/plugins-client-sdk/commit/e42f5cd2fb78f6061a1294140eef34f44b9b8a11))
+* **deps:** bump Staffbase/gha-workflows from 1.13.1 to 4.0.2 ([2d06787](https://github.com/Staffbase/plugins-client-sdk/commit/2d06787ceb7a63754c62ea82fec583de17f90228))
+* **deps:** bump Staffbase/gha-workflows from 1.13.1 to 4.0.2 ([13ddd9f](https://github.com/Staffbase/plugins-client-sdk/commit/13ddd9fd34f9db8aca2c6b3e95cbebc2bbd50aa9))
+* **deps:** bump tough-cookie from 4.1.2 to 4.1.3 ([96a533e](https://github.com/Staffbase/plugins-client-sdk/commit/96a533ee2e1c85323dfb50b7522317ff82ebf7bd))
+* **deps:** bump tough-cookie from 4.1.2 to 4.1.3 ([cfc8435](https://github.com/Staffbase/plugins-client-sdk/commit/cfc843523eed48049fb5d74faa36e030bd3337e6))
+* **deps:** bump word-wrap from 1.2.3 to 1.2.5 ([fc6a197](https://github.com/Staffbase/plugins-client-sdk/commit/fc6a1970ba4b7712c803bc951f2bbd232d778b7c))
+* **deps:** bump word-wrap from 1.2.3 to 1.2.5 ([62d8434](https://github.com/Staffbase/plugins-client-sdk/commit/62d84347899cbed620a5cf6783ca4b10a830e099))
+* fix ci run ([84ca02d](https://github.com/Staffbase/plugins-client-sdk/commit/84ca02ddb650883cee538fe1b2cd424383270d6e))
+* moved dep to dev part ([412227e](https://github.com/Staffbase/plugins-client-sdk/commit/412227e71bbc9fcf779fd4b44ef8e0cc64578d35))
+* pin wrap-ansi to 7.0.0 ([f9facf7](https://github.com/Staffbase/plugins-client-sdk/commit/f9facf73128524a65d17931afa82318ab2a63b9a))
+* update ci deps ([0b691a3](https://github.com/Staffbase/plugins-client-sdk/commit/0b691a35c79f57c334b03a9aa9b3065580e6ae6e))
+* update dependencies, add modules export ([2606cc8](https://github.com/Staffbase/plugins-client-sdk/commit/2606cc82c156e30749acd44b17e9c7cd3a8fd457))
+* updated all dependencies ([d9dc246](https://github.com/Staffbase/plugins-client-sdk/commit/d9dc246cb5b99ac96aeb3a9eb25d40e96663e089))
+* upgrade node version ([3157985](https://github.com/Staffbase/plugins-client-sdk/commit/3157985838cde9d08bfad96f3b516b03b9ee018c))
+
+
+### fix
+
+* change entry file ([166bf46](https://github.com/Staffbase/plugins-client-sdk/commit/166bf46b8cfb95fae8e8f4ad851e61ef64c2b2df))
+* change title ([33effe1](https://github.com/Staffbase/plugins-client-sdk/commit/33effe1d27dbd98f94cda75b9171955b1ef71dc1))
+* change title ([f9f06b6](https://github.com/Staffbase/plugins-client-sdk/commit/f9f06b622422a0f60dba482d9c847c17c9013d32))
+* raise node version ([44da375](https://github.com/Staffbase/plugins-client-sdk/commit/44da3756e02c503e71792d531f77de242c82dde0))
+* trigger ci ([c437f76](https://github.com/Staffbase/plugins-client-sdk/commit/c437f760e018b00aa798a8d86c43572dc4180fd0))
+* updated all dependencies ([939a9a7](https://github.com/Staffbase/plugins-client-sdk/commit/939a9a7ec4aa2a3805c663dfbd795f5559f920cf))
+* wait on connections ([eaf4c93](https://github.com/Staffbase/plugins-client-sdk/commit/eaf4c93fbfc058e3532a094adea486c613d1a5ab))
+
+
+### test
+
+* fix babel test transpilation ([2f1985b](https://github.com/Staffbase/plugins-client-sdk/commit/2f1985b6b7824167cf172040a448fc30f4a75ffe))
+* fix test ([2e936c6](https://github.com/Staffbase/plugins-client-sdk/commit/2e936c6f12266b2795c8ce39ca2eef34b29de107))
+
+
+### Breaking changes
+
+* - moved to Node 16
+* - moved to Node 16
+
 ## [2.0.1](https://github.com/Staffbase/plugins-client-sdk/compare/2.0.0...2.0.1) (2023-11-03)
 
 
