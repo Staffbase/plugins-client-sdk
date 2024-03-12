@@ -21,8 +21,7 @@ Bundle of <%= pkg.name %>
 const defaultPlugins = [
   stripLogger({
     variableNames: ['log'],
-    propertyNames: ['debug', 'info', 'enableAll'],
-    packageNames: ['log-level']
+    propertyNames: ['debug']
   }),
   nodeResolve(),
   commonjs(),

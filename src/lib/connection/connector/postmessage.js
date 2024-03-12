@@ -43,8 +43,10 @@ const targetOrigin = '*';
 /**
  * Connect to the Staffbase App.
  *
- * Create a connection to a Staffbase app 3.6
- * @return {Promise<function>} An appropriate send function
+ * Create a connection to a Staffbase app
+ * Tries to reconnect until an answer is received
+ *
+ * @return {Promise<Function>} An appropriate send function
  */
 const connect = () => {
   if (connection) {
@@ -52,13 +54,33 @@ const connect = () => {
   }
 
   const connectId = createPromise();
-  connection = getPromise(connectId).then(function (payload) {
+  let timeout;
+  const delayFactor = 1.2;
+
+  connection = getPromise(connectId).then((payload) => {
     log.info('postMessage/connect succeeded');
+    window.clearTimeout(timeout);
     return sendMessage(dataStore(payload));
   });
 
   window.addEventListener('message', receiveMessage);
-  window.parent.postMessage([protocol.HELLO, connectId, []], targetOrigin);
+
+  const recurringConnect = (delay = 500) => {
+    log.info('postMessage/connect retry');
+    timeout = window.setTimeout(() => {
+      if (delay < 1200) {
+        log.info('postMessage/connect abort');
+        recurringConnect(delay * delayFactor);
+      } else {
+        rejectPromise(connectId, 'No answer from Staffbase App');
+        disconnect();
+      }
+    }, delay);
+
+    window.parent.postMessage([protocol.HELLO, connectId, []], targetOrigin);
+  };
+
+  recurringConnect();
 
   return connection;
 };
@@ -82,7 +104,7 @@ export const disconnect = () => {
  * @param {MessageEvent} evt onPostMessage event result
  */
 const receiveMessage = async (evt) => {
-  log.info('postMessage/receiveMessage ' + evt);
+  log.info('postMessage/receiveMessage');
 
   let type;
   let id;
