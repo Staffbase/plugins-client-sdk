@@ -45,12 +45,10 @@ export const create = () => {
  *
  * @param {string} id of the promise
  * @param {any} msg the message which will will be passed to resolve
- *
- * @throws {Error} on unknown id
  */
 export const resolve = (id, msg) => {
   log.debug('promiseManager/resolve ' + id);
-  if (!(id in promiseMap)) throw new Error('Tried to resolve an unknown [' + id + '] promise.');
+  if (!(id in promiseMap)) return;
 
   promiseMap[id].resolve(msg);
 
@@ -62,11 +60,10 @@ export const resolve = (id, msg) => {
  *
  * @param {string} id of the promise
  * @param {any} err the error which will will be passed to reject
- * @throws {Error} on unknown id
  */
 export const reject = (id, err) => {
   log.debug('promiseManager/reject ' + id);
-  if (!(id in promiseMap)) throw new Error('Tried to reject an unknown [' + id + '] promise.');
+  if (!(id in promiseMap)) return;
 
   promiseMap[id].reject(err);
   delete promiseMap[id];

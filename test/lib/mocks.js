@@ -16,17 +16,12 @@ const stubPostMessage = (msg = '', timeout = 10) => {
   let timeouts = [];
 
   const addEventListener = (_m, cb) => {
-    // console.log('add eventlistener', m, cb.toString().match(/log\.info\((.*)\);/)[1]);
+    // console.log('add eventlistener', m, cb.name);
     callbacks.push(cb);
   };
 
   const answerMessage = (message) => (receiver) => {
-    // console.log(
-    //   'send message ',
-    //   fakeEvent,
-    //   'to ',
-    //   receiver.toString().match(/log\.info\((.*)\);/)[1]
-    // );
+    // console.log('send message ', fakeEvent, 'to ', receiver.name);
     receiver({ data: message });
   };
 
@@ -44,8 +39,6 @@ const stubPostMessage = (msg = '', timeout = 10) => {
       message[1] = m[1];
     }
 
-    stopMessaging();
-
     timeouts = timeouts.concat(
       callbacks.map((cb) => {
         return window.setTimeout(answerMessage(message), timeout, cb);
@@ -57,9 +50,10 @@ const stubPostMessage = (msg = '', timeout = 10) => {
     timeouts.forEach((timeout) => window.clearTimeout(timeout));
   };
 
-  mockPostMessage(addEventListener, postMessage);
+  const { messageSpy } = mockPostMessage(addEventListener, postMessage);
 
   return {
+    messageSpy,
     changeMsg: (msg) => fakeEvent.push(msg),
     stopMessaging: stopMessaging
   };
@@ -71,16 +65,15 @@ const stubPostMessage = (msg = '', timeout = 10) => {
  * so acting on post message will yield no results by default
  * or provide custom implementations
  *
- * @param {function} cbAEL window.addEventListener implementation
- * @param {function} cbPM window.postMessage implementation
+ * @param {function} eventListener window.addEventListener implementation
+ * @param {function} messageListener window.postMessage implementation
  */
-export const mockPostMessage = (cbAEL, cbPM) => {
-  jest
-    .spyOn(window, 'addEventListener')
-    .mockImplementation(cbAEL || function (_message, _receiveMessage) {});
-  jest
-    .spyOn(window.parent, 'postMessage')
-    .mockImplementation(cbPM || function (_message, _origin) {});
-};
+export const mockPostMessage = (
+  eventListener = (_m, _r) => {},
+  messageListener = (_m, _r) => {}
+) => ({
+  eventSpy: jest.spyOn(window, 'addEventListener').mockImplementation(eventListener),
+  messageSpy: jest.spyOn(window.parent, 'postMessage').mockImplementation(messageListener)
+});
 
 export default stubPostMessage;
