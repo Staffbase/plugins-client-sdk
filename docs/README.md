@@ -43,7 +43,7 @@ To run the tests a simple `# yarn jest` command in the root directory will suffi
 
 ## License
 
-Copyright 2018 Staffbase GmbH.
+Copyright 20224 Staffbase GmbH.
 
 Licensed under the Apache License, Version 2.0: <http://www.apache.org/licenses/LICENSE-2.0>
 
