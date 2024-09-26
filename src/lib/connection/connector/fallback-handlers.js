@@ -163,3 +163,15 @@ export const getPreferredContentLocale = (content) => {
     return keys[index] || keys[0];
   }
 };
+
+/**
+ * Get the current user's content language, fallback to branch default language
+ *
+ * @return {Object} the language object
+ */
+export const getUserContentLanguage = () => {
+  log.debug('fallback/getUserContentLanguage');
+
+  // TODO
+  return locales[currentLanguage] || locales.en;
+};

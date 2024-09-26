@@ -22,7 +22,8 @@ export const commands = {
   nativeShare: 'nativeShareDialog',
   langInfos: 'getLanguageInfos',
   branchDefaultLang: 'getBranchDefaultLanguage',
-  prefContentLang: 'getPreferredContentLocale'
+  prefContentLang: 'getPreferredContentLocale',
+  userContentLang: 'getUserContentLanguage',
 };
 
 /**

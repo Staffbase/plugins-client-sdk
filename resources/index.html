@@ -799,6 +799,19 @@
                       error
                   );
               });
+     PluginSDK.getUserContentLanguage()
+              .then(function (isUserContentLang) {
+                  console.log("User Content Language: ", isUserContentLang);
+                  document.getElementById(
+                      "isUserContentLang"
+                  ).textContent = JSON.stringify(isUserContentLang, undefined, 2);
+              })
+              .catch(function (error) {
+                  console.warn(
+                      "Something went wrong with getUserContentLanguage(): ",
+                      error
+                  );
+              });
      PluginSDK.getContentLanguages()
               .then(function (isContentLangs) {
                   console.log("Content Languages: ", isContentLangs);
