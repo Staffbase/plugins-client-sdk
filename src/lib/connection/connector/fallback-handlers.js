@@ -171,7 +171,8 @@ export const getPreferredContentLocale = (content) => {
  */
 export const getUserContentLanguage = () => {
   log.debug('fallback/getUserContentLanguage');
+  const locale = getBranchDefaultLanguage().locale;
+  // TO-DO: implement user language detection
 
-  // TODO
-  return locales[currentLanguage] || locales.en;
+  return locale;
 };

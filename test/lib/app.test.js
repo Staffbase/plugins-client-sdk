@@ -83,7 +83,7 @@ describe('app', () => {
 
   it('should get the current user content language', async () => {
     messageStub.changeMsg(langInfoMsg);
-    expect(await App.getUserContentLanguage()).toEqual(langInfos.userContentLanguage);
+    expect(await App.getUserContentLanguage()).toEqual(langInfos.userContentLanguage.locale);
   });
 
   it('should open links', async () => {

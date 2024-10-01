@@ -156,5 +156,5 @@ export const getPreferredContentLocale = async (content) => {
  */
 export const getUserContentLanguage = async () => {
   log.debug('app/getUserContentLanguage');
-  return sendMessage(cmd.langInfos).then((res) => res.userContentLanguage);
+  return sendMessage(cmd.langInfos).then((res) => res.userContentLanguage.locale);
 };
