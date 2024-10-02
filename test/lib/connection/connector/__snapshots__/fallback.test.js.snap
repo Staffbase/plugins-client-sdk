@@ -902,6 +902,6 @@ exports[`connector/fallback connect send function accepts all comands command.op
 
 exports[`connector/fallback connect send function accepts all comands command.prefContentLang 1`] = `"en_US"`;
 
-exports[`connector/fallback connect send function accepts all comands command.userContentLang 1`] = `"en_US"`;
+exports[`connector/fallback connect send function accepts all comands command.userContentLocale 1`] = `"en_US"`;
 
 exports[`connector/fallback connect send function accepts all comands command.version 1`] = `"3.4"`;

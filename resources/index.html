@@ -614,9 +614,9 @@
                 <pre id="isBranchDefaultLang"></pre>
                 <br />
                 <strong
-                  >getUserContentLanguage() - User Content Language:</strong
+                  >getUserConentLocale() - User Content Locale:</strong
                 >
-                <pre id="isUserContentLang"></pre>
+                <pre id="isUserContentLocale"></pre>
                 <br />
                 <strong>getContentLanguages() - Content Languages:</strong>
                 <pre id="isContentLangs"></pre>
@@ -804,16 +804,16 @@
                       error
                   );
               });
-     PluginSDK.getUserContentLanguage()
-              .then(function (isUserContentLang) {
-                  console.log("User Content Language: ", isUserContentLang);
+     PluginSDK.getUserContentLocale()
+              .then(function (isUserContentLocale) {
+                  console.log("User Content Language: ", isUserContentLocale);
                   document.getElementById(
-                      "isUserContentLang"
-                  ).textContent = JSON.stringify(isUserContentLang, undefined, 2);
+                      "isUserContentLocale"
+                  ).textContent = JSON.stringify(isUserContentLocale, undefined, 2);
               })
               .catch(function (error) {
                   console.warn(
-                      "Something went wrong with getUserContentLanguage(): ",
+                      "Something went wrong with getUserContentLocale(): ",
                       error
                   );
               });

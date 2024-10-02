@@ -23,7 +23,7 @@ export const commands = {
   langInfos: 'getLanguageInfos',
   branchDefaultLang: 'getBranchDefaultLanguage',
   prefContentLang: 'getPreferredContentLocale',
-  userContentLang: 'getUserContentLanguage'
+  userContentLocale: 'getUserContentLocale'
 };
 
 /**

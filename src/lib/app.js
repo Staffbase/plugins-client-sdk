@@ -154,7 +154,7 @@ export const getPreferredContentLocale = async (content) => {
  *
  * @return {Promise<Object>}
  */
-export const getUserContentLanguage = async () => {
-  log.debug('app/getUserContentLanguage');
-  return sendMessage(cmd.langInfos).then((res) => res.userContentLanguage.locale);
+export const getUserContentLocale = async () => {
+  log.debug('app/getUserContentLocale');
+  return sendMessage(cmd.langInfos).then((res) => res.userContentLocale);
 };
