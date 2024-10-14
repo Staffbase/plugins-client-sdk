@@ -16,8 +16,7 @@
     "lint-code": "yarn eslint src test",
     "lint-size": "yarn size-limit",
     "fix": "eslint --fix 'src/**/*.js' 'test/**/*.js'",
-    "doc": "mkdir -p doc && yarn --silent jsdoc2md src/main.js > doc/api.md",
-    "release": "semantic-release"
+    "doc": "mkdir -p doc && yarn --silent jsdoc2md src/main.js > doc/api.md"
   },
   "repository": "https://github.com/Staffbase/plugins-client-sdk.git",
   "keywords": [
@@ -56,7 +55,6 @@
     "object.entries-ponyfill": "1.0.1"
   },
   "devDependencies": {
-    "@amanda-mitchell/semantic-release-npm-multiple": "3.9.0",
     "@babel/core": "7.24.7",
     "@babel/plugin-external-helpers": "^7.18.6",
     "@babel/plugin-transform-runtime": "7.24.7",
@@ -71,7 +69,6 @@
     "@rollup/plugin-strip": "3.0.4",
     "@rollup/plugin-terser": "^0.4.0",
     "@size-limit/preset-small-lib": "8.2.4",
-    "@tmware/semantic-release-npm-github-publish": "^1.5.5",
     "babel-jest": "29.7.0",
     "babel-plugin-istanbul": "^6.1.1",
     "compare-versions": "^5.0.3",
