@@ -35,10 +35,18 @@ jobs:
     needs: test
     runs-on: ubuntu-20.04
     steps:
+      - name: Obtain App Token
+        uses: actions/create-github-app-token@v1.10.3
+        id: get_token
+        with:
+          app-id: ${{ vars.STAFFBASE_ACTIONS_APP_ID }}
+          private-key: ${{ secrets.STAFFBASE_ACTIONS_PRIVATE_KEY }}
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
+          token: ${{ steps.get_token.outputs.token }}
 
       - uses: actions/setup-node@v4
         with:
@@ -58,6 +66,7 @@ jobs:
         run: yarn semantic-release
         env:
           GITHUB_NPM_CONFIG_REGISTRY: https://npm.pkg.github.com/
-          GITHUB_NPM_TOKEN: ${{ secrets.STAFFBOT_GITHUB_TOKEN }}
+          GITHUB_NPM_TOKEN: ${{ secrets.STAFFBOT_NPM_WRITE }}
+          GITHUB_TOKEN: ${{ steps.get_token.outputs.token }}
           PUBLIC_NPM_CONFIG_REGISTRY: https://registry.npmjs.org
           PUBLIC_NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

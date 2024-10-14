@@ -118,6 +118,13 @@ export const getContentLanguages = async () => app.getContentLanguages();
 export const getPreferredContentLocale = async (content) => app.getPreferredContentLocale(content);
 
 /**
+ * Get the current user's content locale, fallback to branch default locale
+ * @function
+ * @return {Promise<any>}
+ */
+export const getUserContentLocale = async () => app.getUserContentLocale();
+
+/**
  * Open a share dialog on native devices
  *
  * @example

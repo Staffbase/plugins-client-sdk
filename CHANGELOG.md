@@ -1,3 +1,44 @@
+# [3.0.0-alpha.2](https://github.com/Staffbase/plugins-client-sdk/compare/3.0.0-alpha.1...3.0.0-alpha.2) (2024-10-14)
+
+
+### chore
+
+* **deps-dev:** bump rollup from 3.29.4 to 4.21.0 ([4edc9cf](https://github.com/Staffbase/plugins-client-sdk/commit/4edc9cf8e1bf3682f10690e65986c7e5875535b2))
+* **deps-dev:** bump rollup from 3.29.4 to 4.21.0 ([05b19b6](https://github.com/Staffbase/plugins-client-sdk/commit/05b19b6454492697a03532b0d6a68d5dabbf86ac))
+* **deps:** bump braces from 3.0.2 to 3.0.3 ([d816fcb](https://github.com/Staffbase/plugins-client-sdk/commit/d816fcbbb27b44ae5de70eaf953c800812bdb59d))
+* **deps:** bump Staffbase/gha-workflows from 4.0.2 to 5.2.0 ([8c0adf6](https://github.com/Staffbase/plugins-client-sdk/commit/8c0adf62e806a8c06661d3bcec92d95b8504d2e3))
+* **deps:** bump Staffbase/gha-workflows from 5.2.0 to 5.5.0 ([9627af1](https://github.com/Staffbase/plugins-client-sdk/commit/9627af16e0c889e1066fab2bcca98b346fc3af67))
+* **deps:** bump Staffbase/gha-workflows from 5.5.0 to 6.0.0 ([3d83de6](https://github.com/Staffbase/plugins-client-sdk/commit/3d83de65789a729fcb586d8f4b050187336b7124))
+* **deps:** bump tar from 6.1.11 to 6.2.1 ([579df8e](https://github.com/Staffbase/plugins-client-sdk/commit/579df8e105a005cfba5f7f6e32df30e12dc6f404))
+* **deps:** bump the npm-updates group across 1 directory with 20 updates ([356913b](https://github.com/Staffbase/plugins-client-sdk/commit/356913b4081a68eee520d128df9cef3014ebeb02))
+* **deps:** bump the npm-updates group across 1 directory with 20 updates ([75578e2](https://github.com/Staffbase/plugins-client-sdk/commit/75578e218b056ef2adf42eec434cce9fadbfc493))
+* **deps:** bump ws from 8.12.0 to 8.17.1 ([8fa5d6a](https://github.com/Staffbase/plugins-client-sdk/commit/8fa5d6a568a34e397216d4209460bb1cde61cb77))
+* finish implementation ([c7cd832](https://github.com/Staffbase/plugins-client-sdk/commit/c7cd832d425c8413a459c55d13fb2851e4d1c09e))
+* fix ([36b97e5](https://github.com/Staffbase/plugins-client-sdk/commit/36b97e58f57c037933e5430d0c80a01069204d55))
+* fix typo ([0fc5f16](https://github.com/Staffbase/plugins-client-sdk/commit/0fc5f1691380dc6daf1ec6dee112027d9d84766a))
+* fix typo ([816e564](https://github.com/Staffbase/plugins-client-sdk/commit/816e564bf872951032c1f6eca13566eeea22fc60))
+* fix typo ([5e44be1](https://github.com/Staffbase/plugins-client-sdk/commit/5e44be143c6289c56dfbe67e02751abff7b76206))
+* try release workflow with the sb actions token ([c701170](https://github.com/Staffbase/plugins-client-sdk/commit/c701170776a2ac5f58b37d69341b34654a7222e4))
+* try release workflow with the sb actions token ([faf9f39](https://github.com/Staffbase/plugins-client-sdk/commit/faf9f3953fa93ee7a8546bd4e8a5661a84b81bbd))
+* update index.html ([53583c9](https://github.com/Staffbase/plugins-client-sdk/commit/53583c9dda113fc9b5781b5076347113613f23dc))
+* update semver ([800a05a](https://github.com/Staffbase/plugins-client-sdk/commit/800a05ad1fafce75aeed4b1d1ade5cab341dbea7))
+* updated api.md ([1812b09](https://github.com/Staffbase/plugins-client-sdk/commit/1812b09f937ba2845801ba31cdd1199a14bc4760))
+* updated docs ([377268d](https://github.com/Staffbase/plugins-client-sdk/commit/377268dff57096d9982c86a9ff426348b51af344))
+* updated docs ([bb1b8da](https://github.com/Staffbase/plugins-client-sdk/commit/bb1b8dadd17d61694d435d43e5ded8701f6f6dec))
+* updated method naming ([d649474](https://github.com/Staffbase/plugins-client-sdk/commit/d6494745a8524f9e32523fd1ee4066ef8fcb4679))
+* updated snapshot ([8ee0427](https://github.com/Staffbase/plugins-client-sdk/commit/8ee0427739c9f17ff884327a460cda69fc59a158))
+* updated test & readme ([9a3ddd7](https://github.com/Staffbase/plugins-client-sdk/commit/9a3ddd7f8c1210bf389da6bd957091d6e67059a1))
+
+
+### feat
+
+* add getusercontentlanguage to client sdk ([f1ad989](https://github.com/Staffbase/plugins-client-sdk/commit/f1ad98920e0f8ad1b1216d504b5a6853a3c16a87))
+
+
+### refactor
+
+* remove from error from doc ([8de8250](https://github.com/Staffbase/plugins-client-sdk/commit/8de82502520c176e6c2d322ec8f156039e988e20))
+
 # [3.0.0-alpha.1](https://github.com/Staffbase/plugins-client-sdk/compare/2.0.1...3.0.0-alpha.1) (2024-03-12)
 
 
