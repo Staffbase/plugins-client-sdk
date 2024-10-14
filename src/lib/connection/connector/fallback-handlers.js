@@ -173,7 +173,5 @@ export const getUserContentLocale = () => {
   log.debug('fallback/getUserContentLocale');
   const locale = getBranchDefaultLanguage().locale;
 
-  // TO-DO: implement user language detection
-
   return locale;
 };
