@@ -1,3 +1,4 @@
+$ /Users/danielgrosse/Projects/plugins/plugin-client-sdk/node_modules/.bin/jsdoc2md src/main.js
 ## Constants
 
 <dl>

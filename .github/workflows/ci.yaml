@@ -15,20 +15,20 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 18
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-    - name: Install dependencies
-      run: yarn install
+      - name: Install dependencies
+        run: yarn install
 
-    - name: Lint code
-      run: yarn lint
+      - name: Lint code
+        run: yarn lint
 
-    - name: Unit test
-      run: yarn jest --coverage
+      - name: Unit test
+        run: yarn jest --coverage
 
   release:
     name: Release
@@ -40,9 +40,9 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Install dependencies
         run: yarn install

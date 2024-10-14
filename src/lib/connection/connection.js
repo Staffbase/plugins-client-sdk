@@ -1,17 +1,15 @@
 import fallback, { disconnect as fallbackDisconnect } from './connector/fallback.js';
 import postMessage, { disconnect as postMessageDisconnect } from './connector/postmessage.js';
-import putMessage, { disconnect as putMessageDisconnect } from './connector/putMessage.js';
 import { unload as unloadManager } from './manager';
 import log from 'loglevel';
 
 let connector;
 
 const connect = async () => {
-  const putMessageConnection = putMessage();
   const postMessageConnection = postMessage();
   const fallbackConnection = fallback();
 
-  const realConnectionBucket = [putMessageConnection, postMessageConnection];
+  const realConnectionBucket = [postMessageConnection];
   const fallbackConnectionBucket = realConnectionBucket.concat(fallbackConnection);
 
   // Wait on the real communication and replace the connector with
@@ -25,7 +23,6 @@ const connect = async () => {
 
 export const disconnect = () => {
   postMessageDisconnect();
-  putMessageDisconnect();
   fallbackDisconnect();
   unloadManager();
   connector = null;
