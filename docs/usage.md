@@ -164,6 +164,17 @@ As a developer you can request various informations from the Staffbase app.
    }
    ```
 
+1. `getUserContentLocale` -> string
+
+   the content locale which is set for current user. Fallback is the branch default locale
+
+   ```js
+   // example for user with german content locale in an english app
+   getUserContentLocale().then(function (locale) {
+        console.log(locale); // 'de_DE'
+    })
+   ```
+
 ### Invoking native methods
 
 With the SDK you can invoke methods, which are in the scope of the native app.

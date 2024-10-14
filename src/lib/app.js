@@ -148,3 +148,13 @@ export const getPreferredContentLocale = async (content) => {
   log.debug('app/getPreferredContentLocale');
   return sendMessage(cmd.prefContentLang, content);
 };
+
+/**
+ * Get the default content language configured for the branch.
+ *
+ * @return {Promise<Object>}
+ */
+export const getUserContentLocale = async () => {
+  log.debug('app/getUserContentLocale');
+  return sendMessage(cmd.langInfos).then((res) => res.userContentLocale);
+};

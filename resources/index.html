@@ -613,6 +613,11 @@
                 >
                 <pre id="isBranchDefaultLang"></pre>
                 <br />
+                <strong
+                  >getUserContentLocale() - User Content Locale:</strong
+                >
+                <pre id="isUserContentLocale"></pre>
+                <br />
                 <strong>getContentLanguages() - Content Languages:</strong>
                 <pre id="isContentLangs"></pre>
                 <br />
@@ -796,6 +801,19 @@
               .catch(function (error) {
                   console.warn(
                       "Something went wrong with getBranchDefaultLanguage(): ",
+                      error
+                  );
+              });
+     PluginSDK.getUserContentLocale()
+              .then(function (isUserContentLocale) {
+                  console.log("User Content Language: ", isUserContentLocale);
+                  document.getElementById(
+                      "isUserContentLocale"
+                  ).textContent = JSON.stringify(isUserContentLocale, undefined, 2);
+              })
+              .catch(function (error) {
+                  console.warn(
+                      "Something went wrong with getUserContentLocale(): ",
                       error
                   );
               });
