@@ -23,7 +23,8 @@ const langInfos = {
   branchLanguages: branchLanguages,
   branchDefaultLanguage: branchLanguages.de,
   deviceLanguage: branchLanguages.en,
-  contentLanguages: branchLanguages
+  contentLanguages: branchLanguages,
+  userContentLocale: branchLanguages.en.locale
 };
 
 const mockVersion = '3.6-dev';
@@ -78,6 +79,11 @@ describe('app', () => {
   it('should get the preferred content language', async () => {
     messageStub.changeMsg(['SUCCESS', 0, 'de_DE']);
     expect(await App.getPreferredContentLocale(['de_DE', 'EN_US'])).toEqual('de_DE');
+  });
+
+  it('should get the current user content locale', async () => {
+    messageStub.changeMsg(langInfoMsg);
+    expect(await App.getUserContentLocale()).toEqual(langInfos.userContentLocale);
   });
 
   it('should open links', async () => {

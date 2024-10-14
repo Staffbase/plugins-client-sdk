@@ -51,6 +51,9 @@ should be used.</p>
 <dt><a href="#getPreferredContentLocale">getPreferredContentLocale(content)</a> ⇒ <code>Promise.&lt;string&gt;</code></dt>
 <dd><p>Gets the chosen language from a given content object</p>
 </dd>
+<dt><a href="#getUserContentLocale">getUserContentLocale()</a> ⇒ <code>Promise.&lt;any&gt;</code></dt>
+<dd><p>Get the current user&#39;s content locale, fallback to branch default locale</p>
+</dd>
 </dl>
 
 <a name="openNativeShareDialog"></a>
@@ -179,3 +182,9 @@ Gets the chosen language from a given content object
 getPreferredContentLocale(['de_DE', 'en_EN']) // => 'de_DE'
    getPreferredContentLocale({'de_DE': {1,'eins'}, 'en_EN': {1: 'one'}}) // => 'de_DE'
 ```
+<a name="getUserContentLocale"></a>
+
+## getUserContentLocale() ⇒ <code>Promise.&lt;any&gt;</code>
+Get the current user's content locale, fallback to branch default locale
+
+**Kind**: global function  
