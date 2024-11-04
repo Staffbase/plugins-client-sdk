@@ -5,14 +5,13 @@ name: Continuous Integration
 
 on: [push, pull_request]
 
-env:
-  GITHUB_TOKEN: ${{ secrets.STAFFBOT_GITHUB_TOKEN }}
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+permissions:
+  contents: write # we need to read secrets
 
 jobs:
   test:
     name: Build and Test
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v4
