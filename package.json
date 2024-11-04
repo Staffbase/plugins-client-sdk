@@ -8,7 +8,7 @@
   "scripts": {
     "build": "rollup -c",
     "prebuild": "yarn run lint",
-    "prepare": "husky install",
+    "prepare": "husky",
     "dev": "rollup -c rollup.dev.mjs -w",
     "test-unit": "jest",
     "test-dev": "jest --watch",
@@ -18,7 +18,10 @@
     "fix": "eslint --fix 'src/**/*.js' 'test/**/*.js'",
     "doc": "mkdir -p doc && yarn --silent jsdoc2md src/main.js > doc/api.md"
   },
-  "repository": "https://github.com/Staffbase/plugins-client-sdk.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Staffbase/plugins-client-sdk.git"
+  },
   "keywords": [
     "staffbase",
     "client",
