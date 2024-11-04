@@ -8,7 +8,6 @@
   "scripts": {
     "build": "rollup -c",
     "prebuild": "yarn run lint",
-    "prepare": "husky",
     "dev": "rollup -c rollup.dev.mjs -w",
     "test-unit": "jest",
     "test-dev": "jest --watch",

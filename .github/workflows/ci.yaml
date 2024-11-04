@@ -69,7 +69,6 @@ jobs:
           extra_plugins: |
             conventional-changelog-conventionalcommits
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.STAFFBOT_NPM_WRITE }}
           GITHUB_TOKEN: ${{ steps.get_token.outputs.token }}
           NPM_TOKEN: ${{ secrets.STAFFBOT_NPM_WRITE }}
 
