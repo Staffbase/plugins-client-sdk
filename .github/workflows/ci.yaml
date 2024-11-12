@@ -85,4 +85,4 @@ jobs:
           npm config set loglevel verbose --global
           npm publish --registry=https://registry.npmjs.org --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: "wrong-token"
