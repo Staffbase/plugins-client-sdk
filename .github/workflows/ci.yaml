@@ -82,6 +82,7 @@ jobs:
       - name: Publish to NPM
         if: steps.semantic.outputs.new_release_published == 'true' && github.ref != 'refs/heads/alpha'
         run: |
+          npm config set loglevel verbose --global
           npm publish --registry=https://registry.npmjs.org --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
