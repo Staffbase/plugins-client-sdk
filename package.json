@@ -92,6 +92,7 @@
     "size-limit": "^8.2.4"
   },
   "resolutions": {
+    "cross-spawn": "^7.0.6",
     "wrap-ansi": "^7.0.0",
     "semver": "^7.3.2"
   }

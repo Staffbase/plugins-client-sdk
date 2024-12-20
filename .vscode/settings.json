@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "Staffbase",
+        "projectKey": "com.staffbase:plugins-client-sdk"
+    }
+}
