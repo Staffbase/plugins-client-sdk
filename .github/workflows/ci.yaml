@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Obtain App Token
-        uses: actions/create-github-app-token@v1.10.3
+        uses: actions/create-github-app-token@v2.0.2
         id: get_token
         with:
           app-id: ${{ vars.STAFFBASE_ACTIONS_APP_ID }}
