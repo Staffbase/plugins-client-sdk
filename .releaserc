@@ -1,8 +1,6 @@
-
 tagFormat: ${version}
 debug: true
 dryRun: false
-extends: '@tmware/semantic-release-npm-github-publish'
 plugins:
   - - '@semantic-release/commit-analyzer'
     - releaseRules:
@@ -23,17 +21,5 @@ plugins:
 
   - '@semantic-release/release-notes-generator'
   - '@semantic-release/changelog'
-  - - '@amanda-mitchell/semantic-release-npm-multiple'
-    - registries:
-        github: {}
-        public: {}
-  - - '@semantic-release/git'
-    - assets:
-        - package.json
-        - package-lock.json
-        - CHANGELOG.md
-      message: |-
-        release(version): Release ${nextRelease.version} [skip ci]
-
-        ${nextRelease.notes}
+  - '@semantic-release/npm'
   - '@semantic-release/github'
