@@ -1,3 +1,5 @@
+branches:
+  - main
 tagFormat: ${version}
 debug: true
 dryRun: false

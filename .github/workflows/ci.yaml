@@ -14,7 +14,7 @@ permissions:
 jobs:
   test:
     name: Build and Test
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v4
@@ -37,7 +37,7 @@ jobs:
     name: Release
     needs: test
     permissions: write-all
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Obtain App Token
         uses: actions/create-github-app-token@v1.10.3
