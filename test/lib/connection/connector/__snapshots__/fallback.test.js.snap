@@ -109,6 +109,12 @@ exports[`connector/fallback connect send function accepts all comands command.la
       "localizedName": "English",
       "name": "English",
     },
+    "enGB": {
+      "key": "enGB",
+      "locale": "en_GB",
+      "localizedName": "English (United Kingdom)",
+      "name": "English (United Kingdom)",
+    },
     "es": {
       "key": "es",
       "locale": "es_ES",
@@ -541,6 +547,12 @@ exports[`connector/fallback connect send function accepts all comands command.la
       "locale": "en_US",
       "localizedName": "English",
       "name": "English",
+    },
+    "enGB": {
+      "key": "enGB",
+      "locale": "en_GB",
+      "localizedName": "English (United Kingdom)",
+      "name": "English (United Kingdom)",
     },
     "es": {
       "key": "es",
