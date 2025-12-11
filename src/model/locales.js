@@ -86,6 +86,12 @@ export default {
     name: 'English',
     localizedName: 'English'
   },
+  enGB: {
+    key: 'enGB',
+    locale: 'en_GB',
+    name: 'English (United Kingdom)',
+    localizedName: 'English (United Kingdom)'
+  },
   es: {
     key: 'es',
     locale: 'es_ES',
