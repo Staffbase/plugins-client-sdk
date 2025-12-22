@@ -73,7 +73,7 @@
     "babel-jest": "29.7.0",
     "babel-plugin-istanbul": "^6.1.1",
     "compare-versions": "^5.0.3",
-    "eslint": "^8.35.0",
+    "eslint": "^9.39.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^9.0.10",
