@@ -9,7 +9,7 @@ on:
       - "**"
 
 permissions:
-  id-token: write
+  id-token: write #required for oidc
   contents: read # we need to read secrets
 
 jobs:
@@ -54,7 +54,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 24.x
           registry-url: 'https://npm.pkg.github.com'
           scope: '@staffbase'
 
@@ -86,4 +86,4 @@ jobs:
       - name: Publish to NPM
         if: steps.semantic.outputs.new_release_published == 'true' && github.ref != 'refs/heads/alpha'
         run: |
-          npm publish --registry=https://registry.npmjs.org --access public
+          npm publish --registry=https://registry.npmjs.org --access public --provenance
