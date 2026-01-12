@@ -4,7 +4,7 @@ import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
 import stripLogger from 'rollup-plugin-strip-logger';
 import license from 'rollup-plugin-license';
-import pkg from './package.json' assert { type: 'json' };
+import pkg from './package.json' with { type: 'json' };
 
 const bannerTemplate = `
 Bundle of <%= pkg.name %>
