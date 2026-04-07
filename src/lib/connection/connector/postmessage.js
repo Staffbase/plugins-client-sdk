@@ -27,14 +27,15 @@ import log from 'loglevel';
  * @static
  * @return {StaticValueStore}
  */
-const dataStore = ({ platform, language }) => ({
+const dataStore = ({ platform, language, instance }) => ({
   mobile: platform.mobile,
   version: platform.version,
   native: !!platform.native,
   ios: platform.native === 'ios',
   android: platform.native === 'android',
   langInfos: language,
-  branchDefaultLanguage: language.branchDefaultLanguage
+  branchDefaultLanguage: language.branchDefaultLanguage,
+  instanceUrl: (instance && instance.url) || ''
 });
 
 let connection = null;
@@ -166,6 +167,7 @@ const sendMessage =
       case actions.ios:
       case actions.android:
       case actions.branchDefaultLang:
+      case actions.instanceUrl:
         return store[reversedActions[cmd]];
       case actions.langInfos:
       case actions.openLink:

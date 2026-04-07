@@ -11,6 +11,8 @@ exports[`connector/fallback connect send function accepts all comands command.br
 }
 `;
 
+exports[`connector/fallback connect send function accepts all comands command.instanceUrl 1`] = `""`;
+
 exports[`connector/fallback connect send function accepts all comands command.ios 1`] = `false`;
 
 exports[`connector/fallback connect send function accepts all comands command.langInfos 1`] = `

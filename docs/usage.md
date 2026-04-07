@@ -59,24 +59,26 @@ So the whole interface is asynchronous as well.
 Every SDK method returns a promise, which resolves with the requested information or throws an error if something has gone wrong.
 
 ```js
-PluginSDK.isIosDevice().then(function(isIOS) {
+PluginSDK.isIosDevice()
+  .then(function (isIOS) {
     console.log('IOS Device: ', isIOS);
-}).catch(function(error) {
-    console.warn('Something went wrong: ', error)
-})
+  })
+  .catch(function (error) {
+    console.warn('Something went wrong: ', error);
+  });
 ```
 
 To get multiple informations at once, you can use `Promise.all`.
 
 ```js
 Promise.all([PluginSDK.isIosDevice(), PluginSDK.isNativeApp()])
-        .then(function(isIOS, isNative) {
-            console.log('IOS Device: ', isIOS);
-            console.log('Native App: ', isNative);
-        })
-        .catch(function(error) {
-            console.warn('Something went wrong: ', error)
-        })
+  .then(function (isIOS, isNative) {
+    console.log('IOS Device: ', isIOS);
+    console.log('Native App: ', isNative);
+  })
+  .catch(function (error) {
+    console.warn('Something went wrong: ', error);
+  });
 ```
 
 ### Getting infos from the Staffbase app
@@ -171,8 +173,18 @@ As a developer you can request various informations from the Staffbase app.
    ```js
    // example for user with german content locale in an english app
    getUserContentLocale().then(function (locale) {
-        console.log(locale); // 'de_DE'
-    })
+     console.log(locale); // 'de_DE'
+   });
+   ```
+
+1. `getInstanceUrl` -> string
+
+   the URL of the Staffbase instance (frontend domain) the plugin is embedded in
+
+   ```js
+   getInstanceUrl().then(function (url) {
+     console.log(url); // 'https://customer.staffbase.com'
+   });
    ```
 
 ### Invoking native methods
@@ -184,16 +196,16 @@ With the SDK you can invoke methods, which are in the scope of the native app.
    checks a given list of locale tags, or an object with locale tags as keys and returns the matching locale tag as string.
 
    ```js
-    const localesArray = ['de_DE', 'en_US'];
-    const localesObject = { 'de_DE': {}, 'en_US':{} };
+   const localesArray = ['de_DE', 'en_US'];
+   const localesObject = { de_DE: {}, en_US: {} };
 
-    getPreferredContentLocale(localesArray).then(function (locale) {
-        console.log(locale); // 'en_US'
-    })
+   getPreferredContentLocale(localesArray).then(function (locale) {
+     console.log(locale); // 'en_US'
+   });
 
-    getPreferredContentLocale(localesObject).then(function (locale) {
-        console.log(locale); // 'en_US'
-    })
+   getPreferredContentLocale(localesObject).then(function (locale) {
+     console.log(locale); // 'en_US'
+   });
    ```
 
 2. `openLink` {url: string} -> boolean
@@ -202,15 +214,15 @@ With the SDK you can invoke methods, which are in the scope of the native app.
    which indicates if the link has been opened. This can be used to call the method in a click event
 
    ```js
-    // internal link
-    openLink('/settings/password').then(function (opened) {
-        console.log(opened); // true
-    })
+   // internal link
+   openLink('/settings/password').then(function (opened) {
+     console.log(opened); // true
+   });
 
-    // external link
-    openLink('https://staffbase.com').then(function (opened) {
-        console.log(opened); // true
-    })
+   // external link
+   openLink('https://staffbase.com').then(function (opened) {
+     console.log(opened); // true
+   });
    ```
 
 3. `openLinkExternal` {url: string} -> boolean
@@ -218,10 +230,10 @@ With the SDK you can invoke methods, which are in the scope of the native app.
    open a link in the device browser. Returns a boolean which indicates if the link has been opened. This can be used to call the method in a click event
 
    ```js
-    // external link
-    openLinkExternal('https://staffbase.com').then(function (opened) {
-        console.log(opened); // true
-    })
+   // external link
+   openLinkExternal('https://staffbase.com').then(function (opened) {
+     console.log(opened); // true
+   });
    ```
 
 4. `openLinkInternal` {url: string} -> boolean
@@ -229,10 +241,10 @@ With the SDK you can invoke methods, which are in the scope of the native app.
    open a link in the app browser. Returns a boolean which indicates if the link has been opened. This can be used to call the method in a click event
 
    ```js
-    // external link
-    openLinkInternal('https://staffbase.com').then(function (opened) {
-        console.log(opened); // true
-    })
+   // external link
+   openLinkInternal('https://staffbase.com').then(function (opened) {
+     console.log(opened); // true
+   });
    ```
 
 5. `openNativeShareDialog` {content: object} -> string
@@ -240,18 +252,20 @@ With the SDK you can invoke methods, which are in the scope of the native app.
    - **native only**
    - **version > 4.0.0**
 
-    open the native share view to share an object consisting of an image link, subject, text or url.
+   open the native share view to share an object consisting of an image link, subject, text or url.
 
-    ```js
-    const contentObject = {image: "https://example.com/test.png",
-                           subject: "The string you would like to use as a subject for the share",
-                           text: "This text is shared",
-                           url: "https://example.com"};
+   ```js
+   const contentObject = {
+     image: 'https://example.com/test.png',
+     subject: 'The string you would like to use as a subject for the share',
+     text: 'This text is shared',
+     url: 'https://example.com'
+   };
 
-    openNativeShareDialog(contentObject).then(function (opened) {
-        console.log(opened); // true
-    })
-    ```
+   openNativeShareDialog(contentObject).then(function (opened) {
+     console.log(opened); // true
+   });
+   ```
 
 6. `openNativeFileDialog` -> Blob **!experimental**
 
@@ -263,7 +277,7 @@ With the SDK you can invoke methods, which are in the scope of the native app.
    > Attention! This function is still in development and will have a changed behavior in the future!
 
    ```js
-    openNativeFileDialog().then(function (res) {
-		console.log('Fileurl: ' + URL.createObjectURL(res)); // blob:d3958f5c-0777-0845-9dcf-2cb28783acaf
-	})
+   openNativeFileDialog().then(function (res) {
+     console.log('Fileurl: ' + URL.createObjectURL(res)); // blob:d3958f5c-0777-0845-9dcf-2cb28783acaf
+   });
    ```

@@ -70,6 +70,8 @@ export const sendMessage = async (cmd, ...payload) => {
       return fallbacks.getPreferredContentLocale.apply(null, payload);
     case action.userContentLocale:
       return fallbacks.getUserContentLocale();
+    case action.instanceUrl:
+      return fallbacks.getInstanceUrl();
     case action.nativeUpload:
     case action.nativeShare:
       return fallbacks.unSupported(cmd);

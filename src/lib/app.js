@@ -158,3 +158,13 @@ export const getUserContentLocale = async () => {
   log.debug('app/getUserContentLocale');
   return sendMessage(cmd.langInfos).then((res) => res.userContentLocale);
 };
+
+/**
+ * Get the Staffbase instance URL / frontend domain.
+ *
+ * @return {Promise<string>}
+ */
+export const getInstanceUrl = async () => {
+  log.debug('app/getInstanceUrl');
+  return sendMessage(cmd.instanceUrl);
+};
