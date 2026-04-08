@@ -125,6 +125,13 @@ export const getPreferredContentLocale = async (content) => app.getPreferredCont
 export const getUserContentLocale = async () => app.getUserContentLocale();
 
 /**
+ * Get the Staffbase instance URL / frontend domain.
+ * @function
+ * @return {Promise<string>}
+ */
+export const getInstanceUrl = async () => app.getInstanceUrl();
+
+/**
  * Open a share dialog on native devices
  *
  * @example

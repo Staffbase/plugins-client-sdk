@@ -25,7 +25,8 @@ const standardMsg36 = [
           localizedName: 'Englisch'
         }
       }
-    }
+    },
+    instance: { url: 'https://example.staffbase.com' }
   }
 ];
 

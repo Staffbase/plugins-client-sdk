@@ -618,6 +618,11 @@
                 >
                 <pre id="isUserContentLocale"></pre>
                 <br />
+                <strong
+                  >getInstanceUrl() - Instance URL:</strong
+                >
+                <pre id="isInstanceUrl"></pre>
+                <br />
                 <strong>getContentLanguages() - Content Languages:</strong>
                 <pre id="isContentLangs"></pre>
                 <br />
@@ -814,6 +819,19 @@
               .catch(function (error) {
                   console.warn(
                       "Something went wrong with getUserContentLocale(): ",
+                      error
+                  );
+              });
+     PluginSDK.getInstanceUrl()
+              .then(function (instanceUrl) {
+                  console.log("Instance URL: ", instanceUrl);
+                  document.getElementById(
+                      "isInstanceUrl"
+                  ).textContent = JSON.stringify(instanceUrl, undefined, 2);
+              })
+              .catch(function (error) {
+                  console.warn(
+                      "Something went wrong with getInstanceUrl(): ",
                       error
                   );
               });

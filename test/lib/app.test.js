@@ -33,7 +33,8 @@ const standardMsg = [
   'abc2',
   {
     platform: { native: 'ios', mobile: true, version: mockVersion },
-    language: langInfos
+    language: langInfos,
+    instance: { url: 'https://example.staffbase.com' }
   }
 ];
 
@@ -84,6 +85,10 @@ describe('app', () => {
   it('should get the current user content locale', async () => {
     messageStub.changeMsg(langInfoMsg);
     expect(await App.getUserContentLocale()).toEqual(langInfos.userContentLocale);
+  });
+
+  it('should return the instance url', async () => {
+    expect(await App.getInstanceUrl()).toEqual('https://example.staffbase.com');
   });
 
   it('should open links', async () => {

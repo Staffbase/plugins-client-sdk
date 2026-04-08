@@ -17,6 +17,7 @@ export const commands = {
   version: 'app-version',
   mobile: 'app-mobile',
   native: 'app-native',
+  instanceUrl: 'instance-url',
   openLink: 'openExternalLink',
   nativeUpload: 'nativeFileUpload',
   nativeShare: 'nativeShareDialog',

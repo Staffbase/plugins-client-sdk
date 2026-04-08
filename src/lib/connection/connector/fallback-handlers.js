@@ -175,3 +175,20 @@ export const getUserContentLocale = () => {
 
   return locale;
 };
+
+/**
+ * Get the Staffbase instance URL / frontend domain.
+ *
+ * Uses ancestorOrigins when available (chrome/safari in iframe),
+ * falls back to document.referrer or empty string.
+ *
+ * @return {String} the instance URL
+ */
+export const getInstanceUrl = () => {
+  log.debug('fallback/getInstanceUrl');
+  return (
+    (window.location.ancestorOrigins && window.location.ancestorOrigins[0]) ||
+    document.referrer ||
+    ''
+  );
+};
