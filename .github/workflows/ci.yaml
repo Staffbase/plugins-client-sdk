@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Use Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 24
 
@@ -52,7 +52,7 @@ jobs:
           persist-credentials: false
           ref: ${{ github.head_ref }}
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 24.x
           registry-url: 'https://npm.pkg.github.com'
@@ -75,7 +75,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.STAFFBOT_NPM_WRITE }}
           GITHUB_TOKEN: ${{ steps.get_token.outputs.token }}
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         if: steps.semantic.outputs.new_release_published == 'true'
         with:
           node-version: 24.x
