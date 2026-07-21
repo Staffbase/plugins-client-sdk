@@ -85,7 +85,7 @@
     "prettier": "^2.8.4",
     "regenerator-runtime": "0.14.1",
     "rollup": "^4.21.0",
-    "rollup-plugin-license": "3.6.0",
+    "rollup-plugin-license": "3.7.1",
     "rollup-plugin-serve": "3.0.0",
     "rollup-plugin-strip-logger": "0.4.1",
     "rollup-plugin-template-html": "0.0.3",
