@@ -1,5 +1,3 @@
-/* eslint-env jest, es6 */
-
 import stubPostMessage from './mocks';
 import { disconnect } from '../../src/lib/connection/connection';
 import * as App from './../../src/lib/app';

@@ -116,7 +116,7 @@ const receiveMessage = async (evt) => {
     ({
       data: [type, id, payload]
     } = evt);
-  } catch (e) {
+  } catch (_e) {
     // even thought catch-ignore is a bad style
     // there may be other participants listening
     // to messages in a different format so we

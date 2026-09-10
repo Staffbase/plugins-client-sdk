@@ -1,5 +1,3 @@
-/* eslint-env jest, es6 */
-
 import stubPostMessage from './../mocks';
 import sendMessage, { disconnect } from '../../../src/lib/connection/connection.js';
 import command from '../../../src/lib/connection/commands.js';

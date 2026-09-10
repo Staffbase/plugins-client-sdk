@@ -1,6 +1,3 @@
-/* eslint-disable no-global-assign */
-/* eslint-env jest, es6 */
-
 import * as manager from '../../../src/lib/connection/manager';
 
 describe('manager', () => {

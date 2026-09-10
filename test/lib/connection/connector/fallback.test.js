@@ -1,5 +1,3 @@
-/* eslint-env jest, es6 */
-
 import connect from '../../../../src/lib/connection/connector/fallback';
 import { disconnect } from '../../../../src/lib/connection/connector/fallback';
 import command from '../../../../src/lib/connection/commands';
