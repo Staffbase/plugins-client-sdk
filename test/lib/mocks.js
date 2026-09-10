@@ -1,5 +1,3 @@
-/* eslint-env jest, es6 */
-
 /**
  * Stub the post message interface
  *

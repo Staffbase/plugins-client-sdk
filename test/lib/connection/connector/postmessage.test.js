@@ -1,6 +1,3 @@
-/* eslint-disable no-global-assign */
-/* eslint-env jest, es6 */
-
 import stubPostMessage from '../../mocks';
 import connect from '../../../../src/lib/connection/connector/postmessage';
 import { disconnect } from '../../../../src/lib/connection/connector/postmessage';

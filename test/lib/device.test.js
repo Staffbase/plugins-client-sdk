@@ -1,5 +1,3 @@
-/* eslint-env jest, es6 */
-
 import { canDownload } from '../../src/lib/device';
 import connect, { disconnect } from '../../src/lib/connection/connector/fallback';
 import * as App from './../../src/lib/app';

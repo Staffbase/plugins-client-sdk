@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import cmd from './connection/commands';
 import sendMessage from './connection/connection';
 import { isNative, getVersion } from './app';
