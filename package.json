@@ -73,7 +73,7 @@
     "@rollup/plugin-terser": "^0.4.0",
     "@size-limit/preset-small-lib": "^12.1.0",
     "babel-jest": "29.7.0",
-    "babel-plugin-istanbul": "^6.1.1",
+    "babel-plugin-istanbul": "^8.0.0",
     "compare-versions": "^6.1.1",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^9.1.0",
