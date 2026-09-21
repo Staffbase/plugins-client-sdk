@@ -12,7 +12,7 @@ on:
 jobs:
   publish-techdocs-site:
     # Pinned: v16.0.0 needs TECHDOCS_AZURE_ACCOUNT_NAME, which isn't scoped to this repo. See #333.
-    uses: Staffbase/gha-workflows/.github/workflows/template_techdocs.yml@v17.0.1
+    uses: Staffbase/gha-workflows/.github/workflows/template_techdocs.yml@v17.1.0
     with:
       entity-name: plugins-client-sdk
     secrets:
