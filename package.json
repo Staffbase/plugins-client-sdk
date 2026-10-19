@@ -106,7 +106,7 @@
     "baseline-browser-mapping": "^2.11.0",
     "js-yaml": "^4.3.1",
     "@istanbuljs/load-nyc-config/js-yaml": "^3.15.1",
-    "brace-expansion": "^2.1.4",
+    "brace-expansion": "^2.1.7",
     "**/jsdoc/underscore": "^1.13.8",
     "**/@commitlint/config-validator/ajv": "^8.18.0"
   },
