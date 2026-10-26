@@ -71,7 +71,7 @@
     "@rollup/plugin-node-resolve": "15.3.0",
     "@rollup/plugin-strip": "3.0.4",
     "@rollup/plugin-terser": "^1.0.2",
-    "@size-limit/preset-small-lib": "^12.1.0",
+    "@size-limit/preset-small-lib": "^14.3.0",
     "babel-jest": "29.7.0",
     "babel-plugin-istanbul": "^8.0.0",
     "compare-versions": "^6.1.1",
@@ -92,7 +92,7 @@
     "rollup-plugin-serve": "3.0.0",
     "rollup-plugin-strip-logger": "0.4.1",
     "rollup-plugin-template-html": "0.0.3",
-    "size-limit": "^12.1.0"
+    "size-limit": "^14.3.0"
   },
   "resolutions": {
     "cross-spawn": "^7.0.6",
