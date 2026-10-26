@@ -63,7 +63,7 @@
     "@babel/register": "^7.21.0",
     "@babel/runtime": "^8.0.5",
     "@commitlint/cli": "21.2.3",
-    "@commitlint/config-conventional": "20.2.0",
+    "@commitlint/config-conventional": "21.2.4",
     "@eslint/eslintrc": "^3.3.7",
     "@eslint/js": "^10.0.1",
     "@rollup/plugin-babel": "7.1.0",
