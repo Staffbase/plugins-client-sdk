@@ -2,8 +2,11 @@ site_name: 'Plugin Clients SDK'
 
 nav:
   - Intro: 'README.md'
+  - Getting started: 'getting-started.md'
+  - App information: 'app-information.md'
+  - Native methods: 'native-methods.md'
+  - Usage guides: 'usage.md'
   - API: 'api.md'
-  - Usage: 'usage.md'
 
 plugins:
   - techdocs-core
