@@ -11,9 +11,8 @@ on:
 
 jobs:
   publish-techdocs-site:
-    # Pinned: v16.0.0 and later need TECHDOCS_AZURE_ACCOUNT_NAME, which isn't scoped to this repo.
-    # See #333. Unpin once the org variable is available here.
-    uses: Staffbase/gha-workflows/.github/workflows/template_techdocs.yml@v11.1.0
+    # Pinned: v16.0.0 needs TECHDOCS_AZURE_ACCOUNT_NAME, which isn't scoped to this repo. See #333.
+    uses: Staffbase/gha-workflows/.github/workflows/template_techdocs.yml@e34b2accb1b680216761fee50c88cf606c9da66a # v20.3.0
     with:
       entity-name: plugins-client-sdk
     secrets:

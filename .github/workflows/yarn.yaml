@@ -6,9 +6,9 @@ jobs:
     runs-on: ubuntu-slim
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - name: Yarn Lock Changes
-        uses: Simek/yarn-lock-changes@v0.14.1
+        uses: Simek/yarn-lock-changes@59f47ee499424d2c2437c5aebf863b5c6d50a5bc # v0.14.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           collapsibleThreshold: '25'
