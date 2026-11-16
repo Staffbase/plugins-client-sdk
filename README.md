@@ -38,7 +38,7 @@ Run the unit tests from the repository root with `yarn jest`.
 
 ## License
 
-Copyright 2024 Staffbase SE.
+Copyright 2026 Staffbase SE.
 
 Licensed under the Apache License, Version 2.0:
 <http://www.apache.org/licenses/LICENSE-2.0>
