@@ -32,8 +32,7 @@ Please look into our [Usage documentation](https://github.com/Staffbase/plugins-
 - Create a branch `git checkout -b feature-description`
 - Put your name into AUTHORS.txt
 - Commit your changes
-  - As this repository is commitizen friendly you may use `yarn git-cz` to create a commit
-  - Your commit message is validated with a husky managed githook
+  - To create a commit, use `git commit` with a Conventional Commits message; a Husky-managed Git hook validates it.
 - Push to the branch `git push origin feature-description`
 - Open a Pull Request
 
