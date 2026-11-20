@@ -56,6 +56,15 @@ should be used.</p>
 <dt><a href="#getInstanceUrl">getInstanceUrl()</a> ⇒ <code>Promise.&lt;string&gt;</code></dt>
 <dd><p>Get the Staffbase instance URL / frontend domain.</p>
 </dd>
+<dt><a href="#scrollIntoViewContained">scrollIntoViewContained(element, [options])</a> ⇒ <code>void</code></dt>
+<dd><p>Scroll an element into view without scrolling the page around the plugin.</p>
+<p>Takes the same arguments as <code>Element.scrollIntoView</code>, but only scrolls inside the plugin&#39;s own
+document. The native method also scrolls the Staffbase page that embeds the plugin.</p>
+</dd>
+<dt><a href="#installScrollContainment">installScrollContainment()</a> ⇒ <code>function</code></dt>
+<dd><p>Make <code>Element.prototype.scrollIntoView</code> leave the page around the plugin alone.</p>
+<p>Call it once at startup. It does nothing when the plugin is not inside a frame.</p>
+</dd>
 </dl>
 
 <a name="openNativeShareDialog"></a>
@@ -215,4 +224,41 @@ Get the current user's content locale, fallback to branch default locale
 
 Get the Staffbase instance URL / frontend domain.
 
+**Kind**: global function  
+<a name="scrollIntoViewContained"></a>
+
+## scrollIntoViewContained(element, [options]) ⇒ <code>void</code>
+
+Scroll an element into view without scrolling the page around the plugin.
+
+Takes the same arguments as `Element.scrollIntoView`, but only scrolls inside the plugin's own
+document. The native method also scrolls the Staffbase page that embeds the plugin.
+
 **Kind**: global function
+
+| Param     | Type                                        | Description                                        |
+| --------- | ------------------------------------------- | -------------------------------------------------- |
+| element   | <code>Element</code>                        | the element to bring into view                     |
+| [options] | <code>boolean</code> \| <code>object</code> | `alignToTop` flag or `{ block, inline, behavior }` |
+
+**Example**
+
+```js
+scrollIntoViewContained(document.getElementById('section'), { block: 'start', behavior: 'smooth' });
+```
+
+<a name="installScrollContainment"></a>
+
+## installScrollContainment() ⇒ <code>function</code>
+
+Make `Element.prototype.scrollIntoView` leave the page around the plugin alone.
+
+Call it once at startup. It does nothing when the plugin is not inside a frame.
+
+**Kind**: global function  
+**Returns**: <code>function</code> - restores the original `scrollIntoView`  
+**Example**
+
+```js
+const restore = installScrollContainment();
+```

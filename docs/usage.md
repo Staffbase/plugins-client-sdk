@@ -187,6 +187,25 @@ As a developer you can request various informations from the Staffbase app.
    });
    ```
 
+### Scrolling inside the plugin
+
+`Element.scrollIntoView` scrolls every scrollable ancestor, including the Staffbase page around your plugin's iframe. As soon as the app shows a footer, that page can scroll, so a call such as `heading.scrollIntoView()` also moves the page under the app header.
+
+Call `installScrollContainment` once at startup and the native method only scrolls inside your plugin. Libraries that use `scrollIntoView` internally, such as dropdowns and comboboxes, are covered too. It does nothing when the plugin does not run in a frame.
+
+```js
+import { installScrollContainment } from '@staffbase/plugins-client-sdk';
+
+installScrollContainment();
+
+// from now on this stays inside the plugin
+document.getElementById('letter-M').scrollIntoView({ block: 'start', behavior: 'smooth' });
+```
+
+To keep the native method untouched, use `scrollIntoViewContained(element, options)` for the calls that need it. It takes the same arguments as `scrollIntoView`.
+
+Other ways to scroll, such as `window.scrollTo`, `element.scrollTo`, `focus()` and `#anchor` links, already stay inside the plugin.
+
 ### Invoking native methods
 
 With the SDK you can invoke methods, which are in the scope of the native app.

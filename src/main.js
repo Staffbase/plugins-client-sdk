@@ -10,6 +10,7 @@ log.enableAll(); /* experimental */
 
 import * as device from './lib/device';
 import * as app from './lib/app';
+import * as scroll from './lib/scroll';
 
 /**
  * Check if device is able to perform a download.
@@ -150,3 +151,33 @@ export const openNativeShareDialog = async (content) => app.openNativeShareDialo
 
 /** @inheritdoc */
 export { openNativeFileDialog } from './lib/app'; /* experimental */
+
+/**
+ * Scroll an element into view without scrolling the page around the plugin.
+ *
+ * Takes the same arguments as `Element.scrollIntoView`, but only scrolls inside the plugin's own
+ * document. The native method also scrolls the Staffbase page that embeds the plugin.
+ *
+ * @example
+ *   scrollIntoViewContained(document.getElementById('section'), { block: 'start', behavior: 'smooth' });
+ *
+ * @param {Element} element the element to bring into view
+ * @param {boolean|object} [options] `alignToTop` flag or `{ block, inline, behavior }`
+ * @function
+ * @return {void}
+ */
+export const scrollIntoViewContained = (element, options) =>
+  scroll.scrollIntoViewContained(element, options);
+
+/**
+ * Make `Element.prototype.scrollIntoView` leave the page around the plugin alone.
+ *
+ * Call it once at startup. It does nothing when the plugin is not inside a frame.
+ *
+ * @example
+ *   const restore = installScrollContainment();
+ *
+ * @function
+ * @return {function(): void} restores the original `scrollIntoView`
+ */
+export const installScrollContainment = () => scroll.installScrollContainment();
